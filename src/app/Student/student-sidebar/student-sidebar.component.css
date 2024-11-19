@@ -226,7 +226,7 @@
     }
     .home-section {
       position: relative;
-      background: #E4E9F7;
+      background: #f0efef;
       height: 100vh;
       left: 78px;
       width: calc(100% - 78px);
@@ -243,3 +243,4 @@
       font-weight: 500;
       margin: 18px;
     }
+    
