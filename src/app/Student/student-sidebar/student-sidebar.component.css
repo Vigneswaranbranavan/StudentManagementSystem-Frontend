@@ -231,6 +231,7 @@
       left: 78px;
       width: calc(100% - 78px);
       transition: all 0.5s ease;
+      padding: 0 20px;
     }
     .sidebar.open ~ .home-section {
       left: 250px;
@@ -238,9 +239,10 @@
     }
     .home-section .text {
       display: inline;
+
       color: #11101d;
       font-size: 25px;
       font-weight: 500;
-      margin: 18px;
+      margin: 18px ;
     }
     

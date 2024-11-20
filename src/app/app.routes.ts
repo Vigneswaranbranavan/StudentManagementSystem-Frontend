@@ -5,6 +5,7 @@ import { StudentNotificationComponent } from './Student/student-notification/stu
 import { StudentTimetableComponent } from './Student/student-timetable/student-timetable.component';
 import { StudentHomeComponent } from './Student/student-home/student-home.component';
 import { LoginComponent } from './Auth/login/login.component';
+import { EditProfileComponent } from './Student/edit-profile/edit-profile.component';
 
 export const routes: Routes = [
     {path : '', component: StudentHomeComponent },
@@ -12,6 +13,8 @@ export const routes: Routes = [
     {path : 'feedback', component: StudentFeedbackComponent },
     {path : 'notification', component: StudentNotificationComponent },
     {path : 'timetable', component: StudentTimetableComponent },
+    {path : 'edit-profile', component: EditProfileComponent },
+
     
 
 ];

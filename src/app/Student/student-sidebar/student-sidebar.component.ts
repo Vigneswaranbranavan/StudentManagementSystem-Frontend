@@ -8,6 +8,7 @@ import { RouterModule } from '@angular/router';
   selector: 'app-student-sidebar',
   standalone: true,
   imports: [NgClass,  RouterModule],
+
   templateUrl: './student-sidebar.component.html',
   styleUrl: './student-sidebar.component.css'
 })
