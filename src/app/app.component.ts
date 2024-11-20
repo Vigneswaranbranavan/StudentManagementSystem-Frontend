@@ -3,6 +3,7 @@ import { RouterOutlet } from '@angular/router';
 import { LoginComponent } from "./Auth/login/login.component";
 import { StudentSidebarComponent } from './Student/student-sidebar/student-sidebar.component';
 import { HomeComponent } from './Home/home/home.component';
+import { DashboardComponent } from './Administrator/dashboard/dashboard.component';
 
 @Component({
   selector: 'app-root',
