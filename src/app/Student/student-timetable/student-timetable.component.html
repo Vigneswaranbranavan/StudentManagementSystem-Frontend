@@ -1,1 +1,22 @@
-<p>student-timetable works!</p>
+<div class="container timetable">
+    <h1>Weekly Timetable</h1>
+    <table class="table table-bordered text-center">
+      <thead>
+        <tr>
+          <th *ngFor="let day of timetable">{{ day.day }}</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td *ngFor="let day of timetable">
+            <div *ngFor="let classInfo of day.classes" class="class">
+              <div class="class-time">{{ classInfo.time }}</div>
+              <div class="class-subject">{{ classInfo.subject }}</div>
+              <div class="class-location">{{ classInfo.location }}</div>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  

@@ -1,0 +1,85 @@
+:host {
+    font-family: Arial, sans-serif;
+  }
+  
+  .dashboard {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .section {
+    background-color: #ffffff;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .section h2 {
+    color: #333;
+    margin-bottom: 15px;
+    font-size: 1.5rem;
+  }
+  
+  .overview {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+  }
+  
+  .card-body {
+    background-color: #f4f4f9;
+  }
+  
+  .card-title {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+    color: #2d3a4b;
+  }
+  
+  .card-text {
+    font-size: 1.5rem;
+    color: #333;
+  }
+  
+  .table th,
+  .table td {
+    padding: 12px;
+    border-bottom: 1px solid #f0f0f0;
+    text-align: left;
+  }
+  
+  .table th {
+    background-color: #070707;
+    color: #ffffff;
+  }
+  
+  .list-group-item {
+    border-bottom: 1px solid #f0f0f0;
+    color: #333;
+  }
+  
+  .list-group-item:last-child {
+    border-bottom: none;
+  }
+  
+  .bi-bell {
+    color: #2d3a4b;
+    margin-right: 10px;
+  }
+  
+  /* Button Styling for Consistency */
+  .btn {
+    padding: 10px 20px;
+    background-color: #11101d;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+  }
+  
+  .btn:hover {
+    background-color: #444;
+  }
+  

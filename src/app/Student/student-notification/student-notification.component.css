@@ -1,0 +1,65 @@
+
+.notifications {
+  max-width: 1500PX;
+  margin: 0 auto;
+  background-color: #ffffff;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+  text-align: center;
+  color: #2d3a4b;
+  margin-bottom: 20px;
+}
+
+/* Notification item */
+.notification-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  border-bottom: 1px solid #f0f0f0;
+  transition: background 0.3s;
+}
+
+.notification-item:hover {
+  background-color: #f9f9f9;
+}
+
+.notification-item.unread {
+  background-color: #e9f5ff;
+}
+
+.notification-content {
+  display: flex;
+  align-items: center;
+}
+
+.notification-content i {
+  font-size: 1.5rem;
+  color: #ffc107;
+  margin-right: 15px;
+}
+
+.notification-text {
+  max-width: 600px;
+}
+
+.notification-text h3 {
+  font-size: 1.2rem;
+  margin: 0;
+  color: #2d3a4b;
+}
+
+.notification-text p {
+  font-size: 0.9rem;
+  color: #555;
+  margin: 5px 0 0;
+}
+
+.notification-date {
+  font-size: 0.9rem;
+  color: #888;
+}
