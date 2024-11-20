@@ -1,1 +1,59 @@
-<p>manage-timetable works!</p>
+<div class="container mt-5">
+    <div class="card shadow p-4 mb-5 bg-white rounded">
+      <h2 class="text-center mb-4">Add Timetable</h2>
+      <form>
+        <div class="form-group">
+            <label for="classGrade">Class Grade:</label>
+            <select class="form-control" name="classGrade" required>
+              <option value="" disabled selected>Select Grade</option>
+              <!-- Generate grades from 1 to 13 -->
+              <option value="1">Grade 1</option>
+              <option value="2">Grade 2</option>
+              <option value="3">Grade 3</option>
+              <option value="4">Grade 4</option>
+              <option value="5">Grade 5</option>
+              <option value="6">Grade 6</option>
+              <option value="7">Grade 7</option>
+              <option value="8">Grade 8</option>
+              <option value="9">Grade 9</option>
+              <option value="10">Grade 10</option>
+              <option value="11">Grade 11</option>
+              <option value="12">Grade 12</option>
+              <option value="13">Grade 13</option>
+            </select>
+          </div>
+          
+  
+        <div class="form-group">
+          <label for="subjectName">Subject Name:</label>
+          <!-- Replace input with a select dropdown -->
+          <select name="subjectName" id="subjectName" class="form-control" required>
+            <option value="">Select a Subject</option>
+            <option value="Maths">Maths</option>
+            <option value="Science">Science</option>
+            <option value="English">English</option>
+            <option value="History">History</option>
+            <option value="Geography">Geography</option>
+          </select>
+        </div>
+  
+        <div class="form-group">
+          <label for="date">Date:</label>
+          <input type="date" class="form-control" name="date" required>
+        </div>
+  
+        <div class="form-group">
+          <label for="startTime">Start Time:</label>
+          <input type="time" class="form-control" name="startTime" required>
+        </div>
+  
+        <div class="form-group">
+          <label for="endTime">End Time:</label>
+          <input type="time" class="form-control" name="endTime" required>
+        </div>
+  
+        <button type="submit" class="btn btn-secondary btn-block mt-4">Save Timetable</button>
+      </form>
+    </div>
+  </div>
+  
