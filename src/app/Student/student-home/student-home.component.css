@@ -14,7 +14,7 @@ body {
 
 }
 
-/* Section styling */
+
 .section {
   background-color: #ffffff;
   border-radius: 8px;
@@ -28,7 +28,7 @@ body {
   font-size: 1.5rem;
 }
 
-/* Overview section */
+
 .overview {
   display: flex;
   justify-content: space-between;
@@ -54,7 +54,7 @@ body {
   color: #333;
 }
 
-/* Upcoming classes table */
+
 .table {
   width: 100%;
   border-collapse: collapse;
@@ -68,11 +68,11 @@ body {
 }
 
 .table th {
-  background-color: #ffc107;
-  color: #2d3a4b;
+  background-color: #070707;
+  color: #ffffff;
 }
 
-/* Notifications list */
+
 .notifications {
   list-style: none;
   padding: 0;

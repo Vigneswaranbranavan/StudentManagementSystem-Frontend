@@ -11,7 +11,7 @@
     <ul class="nav-list">
     
       <li>
-        <a href="#" [routerLink]="['/home']">
+        <a href="#" [routerLink]="['']">
           <i class='bx bx-home'></i>
           <span class="links_name">Home</span>
         </a>
@@ -19,11 +19,11 @@
       </li>
 
       <li>
-        <a href="#" [routerLink]="['/profile']">
-          <i class='bx bx-user'></i>
+        <a href="#" [routerLink]="['/edit-profile']">
+            <i class='bx bx-check-circle'></i>
           <span class="links_name">Profile</span>
         </a>
-        <span class="tooltip">Profile</span>
+        <span class="tooltip">profile</span>
       </li>
 
       <li>
@@ -73,6 +73,5 @@
   <section class="home-section" [class.open]="isOpen">
     <div class="text">
         <router-outlet></router-outlet>
-        <!-- <app-student-home></app-student-home> -->
     </div>
   </section>
