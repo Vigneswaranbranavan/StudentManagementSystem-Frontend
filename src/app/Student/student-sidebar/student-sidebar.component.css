@@ -237,7 +237,7 @@
       width: calc(100% - 250px);
     }
     .home-section .text {
-      display: inline-block;
+      display: inline;
       color: #11101d;
       font-size: 25px;
       font-weight: 500;
