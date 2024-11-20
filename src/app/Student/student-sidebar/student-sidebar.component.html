@@ -11,7 +11,7 @@
     <ul class="nav-list">
     
       <li>
-        <a href="#" [routerLink]="['']">
+        <a href="#" [routerLink]="['/home']">
           <i class='bx bx-home'></i>
           <span class="links_name">Home</span>
         </a>
@@ -73,5 +73,6 @@
   <section class="home-section" [class.open]="isOpen">
     <div class="text">
         <router-outlet></router-outlet>
+        <!-- <app-student-home></app-student-home> -->
     </div>
   </section>
