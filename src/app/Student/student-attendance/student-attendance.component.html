@@ -1,1 +1,43 @@
-<p>student-attendance works!</p>
+<div class="attendance">
+    <h1>Attendance Overview</h1>
+  
+    <!-- Attendance Summary -->
+    <div class="attendance-summary">
+      <div class="summary-item">
+        <h2>22</h2>
+        <p>Present Days</p>
+      </div>
+      <div class="summary-item">
+        <h2>3</h2>
+        <p>Absent Days</p>
+      </div>
+      <div class="summary-item">
+        <h2>1</h2>
+        <p>Late Days</p>
+      </div>
+    </div>
+  
+    <div class="container">
+      <h1>Student Attendance</h1>
+  
+      <!-- Date Search Section -->
+      <div class="search-section">
+        <label for="attendance-date">Select Date: </label>
+        <input type="date" id="attendance-date" onchange="showAttendanceDetails()">
+      </div>
+  
+      <!-- Attendance Table -->
+      <table id="attendance-table" class="attendance-table" style="display:none;">
+        <thead>
+          <tr>
+            <th>Time</th>
+            <th>Subject</th>
+            <th>Attendance Status</th>
+          </tr>
+        </thead>
+        <tbody id="attendance-body">
+        </tbody>
+      </table>
+    </div>
+  </div>
+  
