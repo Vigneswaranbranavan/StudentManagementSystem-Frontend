@@ -8,7 +8,7 @@ import { StudentNotificationComponent } from './Student/student-notification/stu
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, LoginComponent, StudentSidebarComponent,HomeComponent],
+  imports: [ StudentSidebarComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
