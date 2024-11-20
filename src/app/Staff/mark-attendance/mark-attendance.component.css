@@ -1,0 +1,109 @@
+
+.container {
+    width: 100% ;
+    display: flex;
+    justify-content: space-between;
+}
+
+/* Sidebar */
+.sidebar {
+    width: 250px;
+    /* background-color: #2a2841; */
+    background: linear-gradient(to right, #161419, #1a1821, #1e1c29, #222031, #262439, #2a2841);
+    color: white;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar h3 {
+    margin-top: 0;
+    color: #fff;
+    font-size: 1.5em;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.sidebar ul li {
+    margin-bottom: 10px;
+}
+
+.sidebar ul li span {
+    color: #fff;
+    font-size: 1.1em;
+}
+
+.sidebar ul li small {
+    color: #d1d1d1;
+}
+
+/* Main Content */
+.main-content {
+    flex: 1;
+    margin-left: 20px;
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+
+.table th,
+.table td {
+    text-align: center;
+    vertical-align: middle;
+}
+
+.table th {
+    background-color: #11101d;
+    color: white;
+}
+
+.attendance-checkbox {
+    cursor: pointer;
+}
+
+.status-list li {
+    font-size: 1.2em;
+    padding: 8px 0;
+}
+
+.status-list li.present {
+    color: green;
+}
+
+.status-list li.absent {
+    color: red;
+}
+
+.status-header {
+    font-size: 1.5em;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.date-picker {
+    margin-bottom: 20px;
+}
+
+.search-bar {
+    margin-bottom: 20px;
+}
+
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    .main-content {
+        margin-left: 0;
+    }
+}

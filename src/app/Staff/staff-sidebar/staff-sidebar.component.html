@@ -1,0 +1,57 @@
+
+<div class="sidebar" [class.open]="isOpen">
+    <div class="logo-details">
+        <div >
+            <img class="icon" src="/logo.jpg" alt="" width="45px">
+        </div>
+        
+      <div class="logo_name">ClassMate</div>
+      <i class='bx' [ngClass]="isOpen ? 'bx-menu-alt-right' : 'bx-menu'" id="btn" (click)="toggleSidebar()"></i>
+    </div>
+    <ul class="nav-list">
+    
+
+
+      <li>
+        <a href="#" [routerLink]="['/student-register']">
+            <i class="bi bi-person-plus-fill"></i>
+          <span class="links_name">Register Student</span>
+        </a>
+        <span class="tooltip">Register Student</span>
+      </li>
+
+      <li>
+        <a href="#" [routerLink]="['/manage-timetable']">
+            <i class="bi bi-calendar3-range"></i>
+          <span class="links_name">Timetable</span>
+        </a>
+        <span class="tooltip">Add Timetable</span>
+      </li>
+
+      <li>
+        <a href="#" [routerLink]="['/mark-attendance']" >
+            <i class="bi bi-card-checklist"></i>
+          <span class="links_name">Mark Attendance </span>
+        </a>
+        <span class="tooltip">Mark Attendance</span>
+      </li>
+
+
+      <li class="logout">
+        <div class="logout-details">
+          <div class="name_job">
+            <div class="name">Staff Name</div>
+          </div>
+        </div>
+        <i class='bx bx-log-out' id="log_out"></i>
+      </li>
+
+    </ul>
+  </div>
+
+  <section class="home-section" [class.open]="isOpen">
+    <div class="text">
+        <router-outlet></router-outlet>
+    </div>
+  </section>
+
