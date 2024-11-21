@@ -1,0 +1,48 @@
+<section class="min-vh-100 gradient-form d-flex justify-content-center align-items-center">
+    <div class="container mt-4">
+        <div class="signup-section">
+            <h1 class="text-center mb-4">Student Registration</h1>
+
+            <!-- Signup Form -->
+            <div class="signup-form mb-5">
+                <h2>Submit Registration</h2>
+                <form [formGroup]="studentForm" (ngSubmit)="onSubmit()">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input id="name" formControlName="name" type="text" class="form-control" placeholder="Enter your full name">
+                        <div *ngIf="studentForm.get('name')?.invalid && studentForm.get('name')?.touched" class="error-message">
+                            Name is required.
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input id="email" formControlName="email" type="email" class="form-control" placeholder="Enter your email address">
+                        <div *ngIf="studentForm.get('email')?.invalid && studentForm.get('email')?.touched" class="error-message">
+                            A valid email is required.
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone</label>
+                        <input id="phone" formControlName="phone" type="text" class="form-control" placeholder="Enter your phone number">
+                        <div *ngIf="studentForm.get('phone')?.invalid && studentForm.get('phone')?.touched" class="error-message">
+                            A valid phone number is required.
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="class">Class</label>
+                        <select id="class" formControlName="class" class="form-control">
+                            <option value="" disabled selected>Select a class</option>
+                            <option *ngFor="let classOption of classes" [value]="classOption">{{ classOption }}</option>
+                        </select>
+                        <div *ngIf="studentForm.get('class')?.invalid && studentForm.get('class')?.touched" class="error-message">
+                            Class is required.
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary mt-3" [disabled]="studentForm.invalid">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>

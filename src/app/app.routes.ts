@@ -9,6 +9,10 @@ import { MarkAttendanceComponent } from './Staff/mark-attendance/mark-attendance
 import { ManageTimetableComponent } from './Staff/manage-timetable/manage-timetable.component';
 import { LoginComponent } from './Auth/login/login.component';
 import { EditProfileComponent } from './Student/edit-profile/edit-profile.component';
+import { TeacherNotificationComponent } from './Teacher/teacher-notification/teacher-notification.component';
+import { TeacherFeedbackComponent } from './Teacher/teacher-feedback/teacher-feedback.component';
+import { TeacherProfileComponent } from './Teacher/teacher-profile/teacher-profile.component';
+import { TeacherTimetableComponent } from './Teacher/teacher-timetable/teacher-timetable.component';
 
 export const routes: Routes = [
     // for student
@@ -21,9 +25,15 @@ export const routes: Routes = [
     //for staff
     {path : 'student-register', component: RegisterStudentComponent},
     {path : 'mark-attendance' , component: MarkAttendanceComponent},
-    {path : 'manage-timetable' , component: ManageTimetableComponent}
+    {path : 'manage-timetable' , component: ManageTimetableComponent},
     {path : 'edit-profile', component: EditProfileComponent },
 
     
+    //for teachers
+    {path : 't-notification', component: TeacherNotificationComponent },
+    {path : 't-feedback', component: TeacherFeedbackComponent },
+    {path : 't-profile', component: TeacherProfileComponent },
+    {path : 't-timetable', component: TeacherTimetableComponent },
+    {path : 't-home', component: EditProfileComponent },
 
 ];
