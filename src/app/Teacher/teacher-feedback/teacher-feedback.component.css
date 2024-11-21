@@ -1,0 +1,128 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+    margin: 0;
+    padding: 20px;
+  }
+  
+  .feedback-section {
+    max-width: 1500px;
+    margin: 0 auto;
+    background-color: #ffffff;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  h1 {
+    text-align: center;
+    color: #2d3a4b;
+    margin-bottom: 20px;
+  }
+  
+  /* Feedback Form */
+  .feedback-form {
+    margin-bottom: 30px;
+  }
+  
+  .feedback-form h2 {
+    color: #2d3a4b;
+    margin-bottom: 15px;
+  }
+  
+  .feedback-form label {
+    display: block;
+    margin-bottom: 5px;
+    color: #333;
+  }
+  
+  .feedback-form input[type="text"], .feedback-form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+  }
+  
+  .feedback-form button {
+    padding: 10px 20px;
+    border: none;
+    background-color: #2d3a4b;
+    color: #ffffff;
+    font-size: 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+  }
+  
+  .feedback-form button:hover {
+    background-color: #ffc107;
+  }
+  
+  /* Feedback List */
+  .feedback-list {
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+  }
+  
+  .feedback-list h2 {
+    color: #2d3a4b;
+    margin-bottom: 15px;
+  }
+  
+  .feedback-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 15px;
+    border-bottom: 1px solid #f0f0f0;
+    transition: background 0.3s;
+  }
+  
+  .feedback-item:hover {
+    background-color: #f9f9f9;
+  }
+  
+  .feedback-details {
+    display: flex;
+    align-items: center;
+  }
+  
+  .feedback-details i {
+    font-size: 1.5rem;
+    color: #ffc107;
+    margin-right: 15px;
+  }
+  
+  .feedback-text {
+    max-width: 600px;
+  }
+  
+  .feedback-text h3 {
+    font-size: 1.1rem;
+    margin: 0;
+    color: #2d3a4b;
+  }
+  
+  .feedback-text p {
+    font-size: 0.9rem;
+    color: #555;
+    margin: 5px 0 0;
+  }
+  
+  .feedback-status {
+    font-size: 0.9rem;
+    color: #888;
+    text-align: right;
+  }
+  
+  .feedback-status.pending {
+    color: #ffc107;
+  }
+  
+  .feedback-status.resolved {
+    color: #4caf50;
+  }
+  
