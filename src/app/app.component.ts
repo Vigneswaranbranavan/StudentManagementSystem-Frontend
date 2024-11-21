@@ -12,7 +12,7 @@ import { RegisterUserComponent } from './Administrator/register-user/register-us
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, LoginComponent, StudentSidebarComponent,HomeComponent ,StaffSidebarComponent,RegisterUserComponent],
+  imports: [RouterOutlet, LoginComponent, StudentSidebarComponent,HomeComponent ,StaffSidebarComponent,RegisterUserComponent,RegisterStudentComponent],
 
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'

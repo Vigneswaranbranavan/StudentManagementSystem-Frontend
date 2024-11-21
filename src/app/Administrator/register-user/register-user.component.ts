@@ -10,44 +10,21 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angula
   styleUrl: './register-user.component.css'
 })
 export class RegisterUserComponent {
-  userForm: FormGroup;
-  roles: string[] = ['Staff', 'Teacher'];
-  subjects: string[] = ['Math', 'Science', 'History', 'English'];
-  classes: string[] = ['Class A', 'Class B', 'Class C', 'Class D']; // List of classes for teachers
-  showSubjectField: boolean = false;
-  showClassField: boolean = false;
+  studentForm: FormGroup;
+  classes: string[] = ['Class A', 'Class B', 'Class C', 'Class D']; // List of classes for students
 
   constructor(private fb: FormBuilder) {
-    this.userForm = this.fb.group({
+    this.studentForm = this.fb.group({
       name: ['', [Validators.required]],
       email: ['', [Validators.required, Validators.email]],
       phone: ['', [Validators.required, Validators.pattern('^[0-9]{10}$')]],
-      role: ['', [Validators.required]],
-      subject: [''],
-      class: [''] // Add class field
-    });
-
-    // Listen for role changes and show subject and class fields when needed
-    this.userForm.get('role')?.valueChanges.subscribe((role) => {
-      if (role === 'Teacher') {
-        this.showSubjectField = true;
-        this.showClassField = true;
-        this.userForm.get('subject')?.setValidators([Validators.required]);
-        this.userForm.get('class')?.setValidators([Validators.required]);
-      } else {
-        this.showSubjectField = false;
-        this.showClassField = false;
-        this.userForm.get('subject')?.clearValidators();
-        this.userForm.get('class')?.clearValidators();
-        this.userForm.get('subject')?.setValue('');
-        this.userForm.get('class')?.setValue('');
-      }
+      class: ['', [Validators.required]] // Class field for students
     });
   }
 
   onSubmit() {
-    if (this.userForm.valid) {
-      console.log(this.userForm.value);
+    if (this.studentForm.valid) {
+      console.log(this.studentForm.value); // Handle form submission
     } else {
       console.log('Form is not valid');
     }

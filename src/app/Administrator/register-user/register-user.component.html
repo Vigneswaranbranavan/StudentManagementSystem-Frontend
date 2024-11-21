@@ -1,64 +1,46 @@
 <section class="min-vh-100 gradient-form d-flex justify-content-center align-items-center">
     <div class="container mt-4">
         <div class="signup-section">
-            <h1 class="text-center mb-4">User Registration</h1>
+            <h1 class="text-center mb-4">Student Registration</h1>
 
             <!-- Signup Form -->
             <div class="signup-form mb-5">
                 <h2>Submit Registration</h2>
-                <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+                <form [formGroup]="studentForm" (ngSubmit)="onSubmit()">
                     <div class="form-group">
                         <label for="name">Name</label>
                         <input id="name" formControlName="name" type="text" class="form-control" placeholder="Enter your full name">
-                        <div *ngIf="userForm.get('name')?.invalid && userForm.get('name')?.touched" class="error-message">
+                        <div *ngIf="studentForm.get('name')?.invalid && studentForm.get('name')?.touched" class="error-message">
                             Name is required.
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="email">Email</label>
                         <input id="email" formControlName="email" type="email" class="form-control" placeholder="Enter your email address">
-                        <div *ngIf="userForm.get('email')?.invalid && userForm.get('email')?.touched" class="error-message">
+                        <div *ngIf="studentForm.get('email')?.invalid && studentForm.get('email')?.touched" class="error-message">
                             A valid email is required.
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="phone">Phone</label>
                         <input id="phone" formControlName="phone" type="text" class="form-control" placeholder="Enter your phone number">
-                        <div *ngIf="userForm.get('phone')?.invalid && userForm.get('phone')?.touched" class="error-message">
+                        <div *ngIf="studentForm.get('phone')?.invalid && studentForm.get('phone')?.touched" class="error-message">
                             A valid phone number is required.
                         </div>
                     </div>
+
                     <div class="form-group">
-                        <label for="role">Role</label>
-                        <select id="role" formControlName="role" class="form-control">
-                            <option value="" disabled selected>Select a role</option>
-                            <option *ngFor="let role of roles" [value]="role">{{ role }}</option>
-                        </select>
-                    </div>
-
-                    <!-- Show subject and class fields when role is Teacher -->
-                    <div *ngIf="showSubjectField" class="form-group">
-                        <label for="subject">Subject</label>
-                        <select id="subject" formControlName="subject" class="form-control">
-                            <option *ngFor="let subject of subjects" [value]="subject">{{ subject }}</option>
-                        </select>
-                        <div *ngIf="userForm.get('subject')?.invalid && userForm.get('subject')?.touched" class="error-message">
-                            Subject is required for Teachers.
-                        </div>
-                    </div>
-
-                    <!-- Show class field when role is Teacher -->
-                    <div *ngIf="showClassField" class="form-group">
                         <label for="class">Class</label>
                         <select id="class" formControlName="class" class="form-control">
+                            <option value="" disabled selected>Select a class</option>
                             <option *ngFor="let classOption of classes" [value]="classOption">{{ classOption }}</option>
                         </select>
-                        <div *ngIf="userForm.get('class')?.invalid && userForm.get('class')?.touched" class="error-message">
-                            Class is required for Teachers.
+                        <div *ngIf="studentForm.get('class')?.invalid && studentForm.get('class')?.touched" class="error-message">
+                            Class is required.
                         </div>
                     </div>
 
-                    <button type="submit" class="btn btn-primary mt-3" [disabled]="userForm.invalid">Submit</button>
+                    <button type="submit" class="btn btn-primary mt-3" [disabled]="studentForm.invalid">Submit</button>
                 </form>
             </div>
         </div>
