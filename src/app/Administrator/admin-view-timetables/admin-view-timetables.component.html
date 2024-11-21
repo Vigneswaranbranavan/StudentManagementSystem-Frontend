@@ -1,0 +1,34 @@
+<div class="container timetable">
+    <h1>Weekly Timetable</h1>
+  
+    <!-- Admin Select Class -->
+    <div class="class-select">
+      <label for="class-select">Select Class:</label>
+      <select id="class-select" (change)="onClassChange($event)" [(ngModel)]="selectedClass">
+        <option *ngFor="let classOption of classOptions" [value]="classOption.value">
+          {{ classOption.name }}
+        </option>
+      </select>
+    </div>
+  
+    <!-- Timetable Display -->
+    <table class="table table-bordered text-center" *ngIf="selectedClassTimetable">
+      <thead>
+        <tr>
+          <th *ngFor="let day of daysOfWeek">{{ day }}</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td *ngFor="let day of daysOfWeek">
+            <div *ngFor="let classInfo of getClassForDay(day)" class="class">
+              <div class="class-time">{{ classInfo.time }}</div>
+              <div class="class-subject">{{ classInfo.subject }}</div>
+              <div class="class-location">{{ classInfo.location }}</div>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  

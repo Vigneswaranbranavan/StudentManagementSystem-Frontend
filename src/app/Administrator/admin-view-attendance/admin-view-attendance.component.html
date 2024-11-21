@@ -1,0 +1,72 @@
+<div class="container-fluid mt-4">
+    
+    <!-- Attendance Section -->
+    <div class="section">
+     
+        <h2 class="text-center  mb-4">Student Attendance Overview</h2>
+      <!-- Class Selection and Date Range -->
+      <div class="row mb-4">
+        <div class="col-md-6">
+          <label for="class-select" class="form-label">Select Class:</label>
+          <select id="class-select" class="form-select" (change)="showTotalAttendance()">
+            <option value="">--Select Class--</option>
+            <option value="class1">Class 1</option>
+            <option value="class2">Class 2</option>
+          </select>
+        </div>
+        <div class="col-md-6">
+          <label for="attendance-date" class="form-label">Date:</label>
+          <input
+            type="date"
+            id="attendance-date"
+            class="form-control"
+            (change)="showTotalAttendance()"
+          />
+        </div>
+      </div>
+  
+      <!-- Attendance Summary -->
+      <div id="attendance-summary" class="row text-center" style="display: none">
+        <div class="col-md-4 mb-3">
+          <div class="card shadow-sm">
+            <div class="card-body">
+              <h5 class="card-title">Present</h5>
+              <p class="card-text">{{ presentCount }}</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 mb-3">
+          <div class="card shadow-sm">
+            <div class="card-body">
+              <h5 class="card-title">Absent</h5>
+              <p class="card-text">{{ absentCount }}</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 mb-3">
+          <div class="card shadow-sm">
+            <div class="card-body">
+              <h5 class="card-title">Late</h5>
+              <p class="card-text">{{ lateCount }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+  
+      <!-- Attendance Table -->
+      <div id="attendance-table" class="container-fluid text-center" style="display: none">
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th>Date</th>
+              <th>Total Present</th>
+              <th>Total Absent</th>
+              <th>Total Late</th>
+            </tr>
+          </thead>
+          <tbody id="attendance-body"></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  
