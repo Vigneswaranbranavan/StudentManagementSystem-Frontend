@@ -1,0 +1,74 @@
+
+<div class="sidebar" [class.open]="isOpen">
+    <div class="logo-details">
+        <div >
+            <img class="icon" src="/logo.jpg" alt="" width="45px">
+        </div>
+        
+      <div class="logo_name">ClassMate</div>
+      <i class='bx' [ngClass]="isOpen ? 'bx-menu-alt-right' : 'bx-menu'" id="btn" (click)="toggleSidebar()"></i>
+    </div>
+    <ul class="nav-list">
+    
+      <li>
+        <a href="#" [routerLink]="['']">
+          <i class='bx bx-home'></i>
+          <span class="links_name">Home</span>
+        </a>
+        <span class="tooltip">Home</span>
+      </li>
+
+      <li>
+        <a href="#" [routerLink]="['/register']">
+            <i class='bx bx-chalkboard'></i>
+          <span class="links_name">Add Teachers & Staffs</span>
+        </a>
+        <span class="tooltip">Add Teachers & Staffs</span>
+      </li>
+
+      <li>
+        <a href="#" [routerLink]="['/viewAttendance']">
+            <i class='bx bx-check-circle'></i>
+          <span class="links_name">View Attendance</span>
+        </a>
+        <span class="tooltip">View Attendance</span>
+      </li>
+
+      <li>
+        <a href="#" [routerLink]="['/viewTimetable']" >
+            <i class='bx bx-calendar'></i>
+          <span class="links_name">View Timetable</span>
+        </a>
+        <span class="tooltip">View Timetable</span>
+      </li>
+
+      
+
+      <li>
+        <a href="#" [routerLink]="['/viewFeedback']" >
+            <i class='bx bx-message-dots'></i>
+          <span class="links_name">View Feedback</span>
+        </a>
+        <span class="tooltip">View Feedback</span>
+      </li>
+
+      <li class="logout">
+        <div class="logout-details">
+          <div class="name_job">
+            <div class="name">AdminName</div>
+          </div>
+        </div>
+        <i class='bx bx-log-out' id="log_out"></i>
+      </li>
+
+    </ul>
+  </div>
+
+  <section class="home-section" [class.open]="isOpen">
+    <div class="text">
+        <router-outlet></router-outlet>
+<!-- <app-student-notification></app-student-notification> -->
+
+    </div>
+  </section>
+
