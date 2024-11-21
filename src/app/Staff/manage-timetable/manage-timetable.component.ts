@@ -1,10 +1,11 @@
+import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { NgModel } from '@angular/forms';
+import { FormsModule, NgModel } from '@angular/forms';
 
 @Component({
   selector: 'app-manage-timetable',
   standalone: true,
-  imports: [],
+  imports: [FormsModule],
   templateUrl: './manage-timetable.component.html',
   styleUrl: './manage-timetable.component.css'
 })

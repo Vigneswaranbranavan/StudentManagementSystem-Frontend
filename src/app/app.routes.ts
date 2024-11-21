@@ -21,7 +21,7 @@ export const routes: Routes = [
     //for staff
     {path : 'student-register', component: RegisterStudentComponent},
     {path : 'mark-attendance' , component: MarkAttendanceComponent},
-    {path : 'manage-timetable' , component: ManageTimetableComponent}
+    {path : 'manage-timetable' , component: ManageTimetableComponent},
     {path : 'edit-profile', component: EditProfileComponent },
 
     

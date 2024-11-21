@@ -8,7 +8,6 @@
 /* Sidebar */
 .sidebar {
     width: 250px;
-    /* background-color: #2a2841; */
     background: linear-gradient(to right, #161419, #1a1821, #1e1c29, #222031, #262439, #2a2841);
     color: white;
     padding: 25px;
@@ -58,7 +57,9 @@
 }
 
 .table th {
-    background-color: #11101d;
+    background-color: #1c1b2c;
+    /* background: linear-gradient(to right, #161419, #1a1821, #1e1c29, #222031, #262439, #2a2841); */
+
     color: white;
 }
 

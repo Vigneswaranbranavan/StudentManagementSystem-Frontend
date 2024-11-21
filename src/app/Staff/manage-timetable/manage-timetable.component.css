@@ -1,7 +1,58 @@
-/* Custom styles for the timetable form */
+/* Custom styles for the timetable form page */
 body {
     background-color: #11101d;
     color: #f4f4f4;
+}
+
+/* Main Container */
+.container {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+/* Side Component */
+.side-component {
+    width: 250px;
+    background: linear-gradient(to right, #161419, #1a1821, #1e1c29, #222031, #262439, #2a2841);
+    color: white;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.side-component h3 {
+    margin-top: 0;
+    font-size: 1.5em;
+}
+
+.side-component ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.side-component ul li {
+    margin-bottom: 10px;
+}
+
+.side-component ul li span {
+    color: #fff;
+    font-size: 1.1em;
+}
+
+.side-component ul li small {
+    color: #d1d1d1;
+}
+
+/* Main Content */
+.main-content {
+    flex: 1;
+    margin-left: 20px;
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 h2 {
@@ -11,39 +62,66 @@ h2 {
     text-align: center;
 }
 
-.card {
-    background-color: #ffffff;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-    border-radius: 8px;
-    max-width: 600px;
-    margin: 0 auto;
+/* Form Group */
+.form-group {
+    margin-bottom: 20px;
 }
 
-input[type="text"], input[type="date"] {
-    padding: 10px;
+/* Input and Select Styling */
+input[type="text"], input[type="date"], input[type="time"], select {
+    padding: 12px;
     border-radius: 4px;
     font-size: 1rem;
     margin-top: 5px;
     border: 1px solid #ccc;
-}
-select ,option{
-    padding: 10px;
-    border-radius: 4px;
-    font-size: 1rem;
-    margin-top: 5px;
-    border: 1px solid #ccc;
+    width: 100%;
 }
 
 button[type="submit"] {
-    padding: 10px 20px;
+    padding: 12px 20px;
     border: none;
     border-radius: 4px;
     font-size: 1.1rem;
     width: 100%;
     cursor: pointer;
+    background-color: #02113b; /* Blue color */
+    color: white;
 }
 
-/* button[type="submit"]:hover {
-    background-color: #0098c0;
-} */
+button[type="submit"]:hover {
+    background-color: #121f42;
+}
+
+/* Side Component item style */
+.side-component ul li span {
+    font-size: 1.1em;
+}
+
+.side-component ul li small {
+    color: #d1d1d1;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+    }
+
+    .side-component {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    .main-content {
+        margin-left: 0;
+    }
+
+    h2 {
+        font-size: 1.5rem;
+    }
+
+    button[type="submit"] {
+        padding: 10px 16px;
+        font-size: 1rem;
+    }
+}

@@ -12,7 +12,6 @@ import { DashboardComponent } from './Administrator/dashboard/dashboard.componen
   standalone: true,
   imports: [RouterOutlet, LoginComponent, StudentSidebarComponent,HomeComponent ,StaffSidebarComponent],
 
-  imports: [StudentSidebarComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
