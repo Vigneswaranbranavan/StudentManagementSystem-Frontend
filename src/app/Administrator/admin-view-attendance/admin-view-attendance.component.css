@@ -1,0 +1,159 @@
+/* Global Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f6f9;
+    color: #333;
+  }
+  
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  /* Heading */
+  h1 {
+    font-size: 2rem;
+    color: #3c3c3c;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  
+  /* Search and Class Selection Section */
+  .class-selection {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+  }
+  
+  .class-selection select,
+  .class-selection input {
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    width: 200px;
+  }
+  
+  .class-selection select:focus,
+  .class-selection input:focus {
+    border-color: #1d1b31;
+    outline: none;
+  }
+  
+  /* Table Styles */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 30px;
+    text-align: center;
+  }
+  
+  th,
+  td {
+    padding: 12px 15px;
+    text-align: center;
+    border: 1px solid #ddd;
+  }
+  
+  th {
+    background-color: #1d1b31;
+    color: white;
+    font-weight: bold;
+  }
+  
+  td {
+    background-color: #f9f9f9;
+  }
+  
+  td:nth-child(odd) {
+    background-color: #e9ecef;
+  }
+  
+  tr:hover td {
+    background-color: #f1f1f1;
+    cursor: pointer;
+  }
+  
+  /* Summary Section */
+  .attendance-summary {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+  }
+  
+  .attendance-summary div {
+    font-size: 1.2rem;
+    color: #333;
+  }
+  
+  .attendance-summary div span {
+    font-weight: bold;
+    color: #1d1b31;
+  }
+  
+  /* Button Styling */
+  button {
+    background-color: #1d1b31;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-top: 20px;
+  }
+  
+  button:hover {
+    background-color: #1d1b31;
+  }
+  
+  button:focus {
+    outline: none;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .class-selection {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  
+    .class-selection select,
+    .class-selection input {
+      width: 100%;
+      margin-bottom: 10px;
+    }
+  
+    .attendance-summary {
+      flex-direction: column;
+    }
+  
+    table {
+      font-size: 0.9rem;
+    }
+  
+    th, td {
+      padding: 8px;
+    }
+  
+    button {
+      width: 100%;
+      padding: 12px 20px;
+    }
+  }
+  
+  
