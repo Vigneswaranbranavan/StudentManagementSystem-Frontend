@@ -8,11 +8,12 @@ import { StudentNotificationComponent } from './Student/student-notification/stu
 import { DashboardComponent } from './Administrator/dashboard/dashboard.component';
 import { RegisterStudentComponent } from './Staff/register-student/register-student.component';
 import { RegisterUserComponent } from './Administrator/register-user/register-user.component';
+import { TeacherSidebarComponent } from './Teacher/teacher-sidebar/teacher-sidebar.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, LoginComponent, StudentSidebarComponent,HomeComponent ,StaffSidebarComponent,RegisterUserComponent,RegisterStudentComponent],
+  imports: [RouterOutlet, LoginComponent, StudentSidebarComponent,HomeComponent ,StaffSidebarComponent,RegisterUserComponent,RegisterStudentComponent,TeacherSidebarComponent],
 
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
