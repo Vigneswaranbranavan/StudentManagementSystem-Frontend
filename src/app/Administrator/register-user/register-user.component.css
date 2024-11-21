@@ -1,2 +1,85 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+    margin: 0;
+    padding: 20px;
+}
 
-  
+.signup-section {
+    max-width: 1500px;
+    margin: 0 auto;
+    background-color: #ffffff;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    text-align: center;
+    color: #2d3a4b;
+    margin-bottom: 20px;
+}
+
+.signup-form {
+    margin-bottom: 30px;
+}
+
+.signup-form h2 {
+    color: #2d3a4b;
+    margin-bottom: 15px;
+}
+
+.signup-form label {
+    display: block;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+.signup-form input[type="text"],
+.signup-form input[type="email"],
+.signup-form input[type="number"],
+.signup-form select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+.signup-form button {
+    padding: 10px 20px;
+    border: none;
+    background-color: #2d3a4b;
+    color: #ffffff;
+    font-size: 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.signup-form button:hover {
+    background-color: #ffc107;
+}
+
+.error-message {
+    color: #f44336;
+    font-size: 0.9em;
+    margin-top: 0.5rem;
+}
+
+.signup-form .form-group {
+    margin-bottom: 20px;
+}
+
+.signup-form .form-group select {
+    padding: 12px;
+}
+
+.signup-form .form-group input:focus,
+.signup-form .form-group select:focus {
+    border-color: #ffc107;
+    background-color: #fff;
+    box-shadow: 0 0 6px rgba(255, 193, 7, 0.5);
+    outline: none;
+}
