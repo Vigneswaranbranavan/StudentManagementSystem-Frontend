@@ -1,48 +1,72 @@
-<div class="attendance">
-    <h1>Student Attendance Overview</h1>
+<div class="container-fluid mt-4">
+    <h2 class="text-center  mb-4">Student Attendance Overview</h2>
+    <!-- Attendance Section -->
+    <div class="section">
+     
   
-    <!-- Class Selection and Date Range -->
-    <div class="search-section">
-      <label for="class-select">Select Class: </label>
-      <select id="class-select" (change)="showTotalAttendance()">
-        <option value="">--Select Class--</option>
-        <option value="class1">Class 1</option>
-        <option value="class2">Class 2</option>
-      </select>
+      <!-- Class Selection and Date Range -->
+      <div class="row mb-4">
+        <div class="col-md-6">
+          <label for="class-select" class="form-label">Select Class:</label>
+          <select id="class-select" class="form-select" (change)="showTotalAttendance()">
+            <option value="">--Select Class--</option>
+            <option value="class1">Class 1</option>
+            <option value="class2">Class 2</option>
+          </select>
+        </div>
+        <div class="col-md-6">
+          <label for="attendance-date" class="form-label">Date:</label>
+          <input
+            type="date"
+            id="attendance-date"
+            class="form-control"
+            (change)="showTotalAttendance()"
+          />
+        </div>
+      </div>
   
-      <label for="attendance-date"> Date: </label>
-      <input type="date" id="attendance-date" (change)="showTotalAttendance()">
+      <!-- Attendance Summary -->
+      <div id="attendance-summary" class="row text-center" style="display: none">
+        <div class="col-md-4 mb-3">
+          <div class="card shadow-sm">
+            <div class="card-body">
+              <h5 class="card-title">Present</h5>
+              <p class="card-text">{{ presentCount }}</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 mb-3">
+          <div class="card shadow-sm">
+            <div class="card-body">
+              <h5 class="card-title">Absent</h5>
+              <p class="card-text">{{ absentCount }}</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 mb-3">
+          <div class="card shadow-sm">
+            <div class="card-body">
+              <h5 class="card-title">Late</h5>
+              <p class="card-text">{{ lateCount }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+  
+      <!-- Attendance Table -->
+      <div id="attendance-table" class="container-fluid text-center" style="display: none">
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th>Date</th>
+              <th>Total Present</th>
+              <th>Total Absent</th>
+              <th>Total Late</th>
+            </tr>
+          </thead>
+          <tbody id="attendance-body"></tbody>
+        </table>
+      </div>
     </div>
-  
-    <!-- Attendance Summary -->
-    <div id="attendance-summary" class="attendance-summary" style="display:none;">
-      <div class="summary-item">
-        <h2>{{ presentCount }}</h2>
-        <p>Present</p>
-      </div>
-      <div class="summary-item">
-        <h2>{{ absentCount }}</h2>
-        <p>Absent</p>
-      </div>
-      <div class="summary-item">
-        <h2>{{ lateCount }}</h2>
-        <p>Late</p>
-      </div>
-    </div>
-  
-    <!-- Attendance Table -->
-    <table id="attendance-table" class="attendance-table" style="display:none;">
-      <thead>
-        <tr>
-          <th>Date</th>
-          <th>Total Present</th>
-          <th>Total Absent</th>
-          <th>Total Late</th>
-        </tr>
-      </thead>
-      <tbody id="attendance-body">
-      </tbody>
-    </table>
-  
   </div>
   

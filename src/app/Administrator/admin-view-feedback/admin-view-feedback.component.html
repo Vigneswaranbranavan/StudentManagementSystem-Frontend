@@ -1,60 +1,57 @@
-<div class="search-section">
+<div class="container-fluid mt-4">
+    <h2 class="text-center  mb-4">Student Feedback Overview</h2>
+    <div class="section">
+        <div class="search-section">
+
+            <div>
+                <label for="feedback-search">Search Feedback:</label>
+                <input type="text" id="feedback-search" placeholder="Search by student name or feedback"
+                    (input)="onSearch($event)" />
+            </div>
+            <div>
+                <label for="feedback-filter">Filter by Date:</label>
+                <select id="feedback-filter" (change)="onDateFilterChange($event)">
+                    <option value="">Select Date</option>
+                    <option value="2024-11-19">November 19, 2024</option>
+                    <option value="2024-11-20">November 20, 2024</option>
+                    <option value="2024-11-21">November 21, 2024</option>
+                </select>
+            </div>
+        </div>
     
-    <div>
-      <label for="feedback-search">Search Feedback:</label>
-      <input
-        type="text"
-        id="feedback-search"
-        placeholder="Search by student name or feedback"
-        (input)="onSearch($event)"
-      />
+        <table id="feedback-table" class="feedback-table">
+            <thead>
+                <tr>
+                    <th>Student Name</th>
+                    <th>Feedback Date</th>
+                    <th>Feedback Summary</th>
+                    <th>View Details</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let feedback of filteredFeedbacks">
+                    <td>{{ feedback.studentName }}</td>
+                    <td>{{ feedback.feedbackDate }}</td>
+                    <td>{{ feedback.message }}</td>
+                    <td>
+                        <a href="#" class="view-details"
+                            (click)="openModal(feedback.studentName, feedback.feedbackDate, feedback.message)">View
+                            Details</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
     </div>
-    <div>
-      <label for="feedback-filter">Filter by Date:</label>
-      <select id="feedback-filter" (change)="onDateFilterChange($event)">
-        <option value="">Select Date</option>
-        <option value="2024-11-19">November 19, 2024</option>
-        <option value="2024-11-20">November 20, 2024</option>
-        <option value="2024-11-21">November 21, 2024</option>
-      </select>
+    
+
+    <!-- Modal -->
+    <div id="feedback-modal" class="modal" *ngIf="isModalOpen">
+        <div class="modal-content">
+            <span class="close" (click)="closeModal()">&times;</span>
+            <h2>Feedback Details</h2>
+            <p><strong>Student Name:</strong> {{ modalStudentName }}</p>
+            <p><strong>Feedback Date:</strong> {{ modalFeedbackDate }}</p>
+            <p><strong>Feedback:</strong> {{ modalFeedbackMessage }}</p>
+        </div>
     </div>
-  </div>
-  
-  <table id="feedback-table" class="feedback-table">
-    <thead>
-      <tr>
-        <th>Student Name</th>
-        <th>Feedback Date</th>
-        <th>Feedback Summary</th>
-        <th>View Details</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let feedback of filteredFeedbacks">
-        <td>{{ feedback.studentName }}</td>
-        <td>{{ feedback.feedbackDate }}</td>
-        <td>{{ feedback.message }}</td>
-        <td>
-          <a
-            href="#"
-            class="view-details"
-            (click)="openModal(feedback.studentName, feedback.feedbackDate, feedback.message)"
-            >View Details</a
-          >
-        </td>
-      </tr>
-    </tbody>
-  </table>
-  
-  <!-- Modal -->
-<div id="feedback-modal" class="modal" *ngIf="isModalOpen">
-    <div class="modal-content">
-      <span class="close" (click)="closeModal()">&times;</span>
-      <h2>Feedback Details</h2>
-      <p><strong>Student Name:</strong> {{ modalStudentName }}</p>
-      <p><strong>Feedback Date:</strong> {{ modalFeedbackDate }}</p>
-      <p><strong>Feedback:</strong> {{ modalFeedbackMessage }}</p>
-    </div>
-  </div>
-  
-  
+</div>
