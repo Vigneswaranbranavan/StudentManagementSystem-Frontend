@@ -1,61 +1,60 @@
 <div class="container-fluid mt-4">
-    <div class="profile-section">
-        <h1>Teacher Profile</h1>
-      
-        <!-- Personal Information -->
-        <div class="profile-info">
-          <h2>Personal Information</h2>
-          <div class="profile-item">
-            <label>Full Name:</label>
-            <p>John Doe</p>
-          </div>
-          <div class="profile-item">
-            <label>Date of Birth:</label>
-            <p>1980-09-15</p>
-          </div>
-          <div class="profile-item">
-            <label>Contact Number:</label>
-            <p>+1 234 567 890</p>
-          </div>
-          <div class="profile-item">
-            <label>Email Address:</label>
-            <p>johndoe.com</p>
-          </div>
-          <div class="profile-item">
-            <label>Address:</label>
-            <p>1234 Elm Street, Springfield, USA</p>
+  <div class="profile-section">
+    <h1>Teacher Profile</h1>
+
+    <!-- Personal Information Form -->
+    <form [formGroup]="teacherForm" (ngSubmit)="updateProfile()">
+
+      <div class="profile-info">
+        <h2>Personal Information</h2>
+
+        <div class="profile-item">
+          <label for="Name">Full Name:</label>
+          <input
+            formControlName="Name"
+            id="Name"
+            type="text"
+            placeholder="Enter full name"
+            required
+          >
+          <div *ngIf="teacherForm.get('Name')?.invalid && teacherForm.get('Name')?.touched" class="error">
+            Full Name is required.
           </div>
         </div>
-      
-        <!-- Academic and Professional Information -->
-        <div class="academic-info">
-          <h2>Academic & Professional Information</h2>
-          <div class="profile-item">
-            <label>Employee ID:</label>
-            <p>TEA123456</p>
-          </div>
-          <div class="profile-item">
-            <label>Subject Taught:</label>
-            <p>Computer Science</p>
-          </div>
-          <div class="profile-item">
-            <label>Years of Experience:</label>
-            <p>10 years</p>
-          </div>
-          <div class="profile-item">
-            <label>Qualifications:</label>
-            <p>Masters in Computer Science</p>
-          </div>
-          <div class="profile-item">
-            <label>Teaching Rating:</label>
-            <p>4.7/5</p>
+
+        <div class="profile-item">
+          <label for="email">Email Address:</label>
+          <input
+            formControlName="email"
+            id="email"
+            type="email"
+            placeholder="Enter email"
+            required
+          >
+          <div *ngIf="teacherForm.get('email')?.invalid && teacherForm.get('email')?.touched" class="error">
+            Valid email is required.
           </div>
         </div>
-      
-        <!-- Update Button -->
-        <div class="update-profile">
-          <button>Update Profile</button>
+
+        <div class="profile-item">
+          <label for="phone">Contact Number:</label>
+          <input
+            formControlName="phone"
+            id="phone"
+            type="text"
+            placeholder="Enter phone number"
+            required
+          >
+          <div *ngIf="teacherForm.get('phone')?.invalid && teacherForm.get('phone')?.touched" class="error">
+            Phone number is required.
+          </div>
         </div>
-    </div>
-    
+      </div>
+
+      <!-- Update Button -->
+      <div class="update-profile">
+        <button type="submit" [disabled]="teacherForm.invalid">Update Profile</button>
+      </div>
+    </form>
+  </div>
 </div>
