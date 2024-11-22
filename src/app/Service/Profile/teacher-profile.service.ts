@@ -14,20 +14,20 @@ export class TeacherProfileService {
   constructor(private http:HttpClient) { }
 
   
-  createTeacher(teacher:teacher){
-    return this.http.post(this.url,teacher)
-  }
-  getTeachers(){
-    return this.http.get<teacher[]>(this.url)
-  }
+  // createTeacher(teacher:teacher){
+  //   return this.http.post(this.url,teacher)
+  // }
+  // getTeachers(){
+  //   return this.http.get<teacher[]>(this.url)
+  // }
   getTeacher(teacherId:number){
     return this.http.get<teacher>(this.url+'/'+teacherId)
   }
   updateTeacher(teacher:teacher ,teacherId:number){
     return this.http.put(this.url+'/'+teacherId,teacher)
   }
-  deleteTeacher(teacherId: number){
-    return this.http.delete(this.url+'/'+teacherId)
-  }
+  // deleteTeacher(teacherId: number){
+  //   return this.http.delete(this.url+'/'+teacherId)
+  // }
 
 }

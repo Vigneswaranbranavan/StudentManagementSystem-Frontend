@@ -13,21 +13,21 @@ export class StaffProfileService {
   constructor(private http:HttpClient) { }
 
   
-  createStaff(staff:staff){
-    return this.http.post(this.url,staff)
-  }
-  getStaffs(){
-    return this.http.get<staff[]>(this.url)
-  }
+  // createStaff(staff:staff){
+  //   return this.http.post(this.url,staff)
+  // }
+  // getStaffs(){
+  //   return this.http.get<staff[]>(this.url)
+  // }
   getStaff(staffId:number){
     return this.http.get<staff>(this.url+'/'+staffId)
   }
   updateStaff(staff:staff ,staffId:number){
     return this.http.put(this.url+'/'+staffId,staff)
   }
-  deleteStaff(staffid: number){
-    return this.http.delete(this.url+'/'+staffid)
-  }
+  // deleteStaff(staffid: number){
+  //   return this.http.delete(this.url+'/'+staffid)
+  // }
 
 
 }
