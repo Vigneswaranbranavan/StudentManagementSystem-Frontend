@@ -17,7 +17,7 @@ export class StaffProfileService {
     return this.http.post(this.url,staff)
   }
   getStaffs(){
-    return this.http.get<any[]>(this.url)
+    return this.http.get<staff[]>(this.url)
   }
   getStaff(staffId:number){
     return this.http.get<staff>(this.url+'/'+staffId)
