@@ -8,7 +8,7 @@ import { RouterModule } from '@angular/router';
 @Component({
   selector: 'app-manage-timetable',
   standalone: true,
-  imports: [FormsModule,HttpClientModule,RouterModule],
+  imports: [FormsModule,HttpClientModule,RouterModule,CommonModule],
   templateUrl: './manage-timetable.component.html',
   styleUrl: './manage-timetable.component.css',
   providers: [TimetableService]
