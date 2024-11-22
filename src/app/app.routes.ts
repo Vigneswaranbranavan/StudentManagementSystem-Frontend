@@ -19,6 +19,7 @@ import { TeacherNotificationComponent } from './Teacher/teacher-notification/tea
 import { TeacherFeedbackComponent } from './Teacher/teacher-feedback/teacher-feedback.component';
 import { TeacherProfileComponent } from './Teacher/teacher-profile/teacher-profile.component';
 import { TeacherTimetableComponent } from './Teacher/teacher-timetable/teacher-timetable.component';
+import { TeacherSidebarComponent } from './Teacher/teacher-sidebar/teacher-sidebar.component';
 
 export const routes: Routes = [
     // for student
@@ -43,10 +44,11 @@ export const routes: Routes = [
     
 
     //for teachers
+
+    {path : '', component: TeacherSidebarComponent },
     {path : 't-notification', component: TeacherNotificationComponent },
     {path : 't-feedback', component: TeacherFeedbackComponent },
     {path : 't-profile', component: TeacherProfileComponent },
     {path : 't-timetable', component: TeacherTimetableComponent },
-    {path : 't-home', component: EditProfileComponent },
 
 ];

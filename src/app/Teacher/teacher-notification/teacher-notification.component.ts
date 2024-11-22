@@ -1,10 +1,10 @@
-import { NgClass, NgIf } from '@angular/common';
+import { NgClass, NgFor, NgIf } from '@angular/common';
 import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-teacher-notification',
   standalone: true,
-  imports: [NgIf,NgClass],
+  imports: [NgIf,NgClass,NgFor],
   templateUrl: './teacher-notification.component.html',
   styleUrl: './teacher-notification.component.css'
 })
