@@ -9,9 +9,11 @@ export class StudentRegisterService {
 
   constructor(private http:HttpClient) { }
 
-  url = 'http://localhost:5101/api/Student';
+  url = 'https://localhost:7058/api/Student';
 
-
+  getStudents(): Observable<any> {
+    return this.http.get(this.url);
+  }
 
   AddStudent(student: any): Observable<any> {
     return this.http.post(this.url, student);

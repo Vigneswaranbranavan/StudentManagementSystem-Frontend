@@ -1,0 +1,24 @@
+<div class="table-container">
+    <button type="submit" class="btn btn-primary mt-3" (click)="addstudent()" >+ Add Student</button>
+    <table class="styled-table">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Phone</th>
+        <th>Enrollment Date</th>
+        <th>Class ID</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let student of students">
+        <td>{{ student.name }}</td>
+        <td>{{ student.email }}</td>
+        <td>{{ student.phone }}</td>
+        <td>{{ student.enrollmentDate }}</td>
+        <td>{{ student.classID }}</td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+  
