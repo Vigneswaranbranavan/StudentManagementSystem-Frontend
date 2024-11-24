@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { StudentRegisterService } from '../../Service/Register/student-register.service';
 import { HttpClientModule } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { ViewclassService } from '../../Service/Class/viewclass.service';
 
 @Component({
   selector: 'app-register-student',
@@ -11,16 +12,16 @@ import { Router } from '@angular/router';
   imports: [CommonModule,ReactiveFormsModule, HttpClientModule],
   templateUrl: './register-student.component.html',
   styleUrl: './register-student.component.css',
-  providers: [StudentRegisterService]
+  providers: [StudentRegisterService, ViewclassService]
 })
 export class RegisterStudentComponent implements OnInit{
   studentForm: FormGroup;
 
   students: any[] = [];
 
-  classes: string[] = ['Class A', 'Class B', 'Class C', 'Class D']; // List of classes for students
+  classes: any[] = []; // List of classes for students
 
-  constructor(private fb: FormBuilder, private service :  StudentRegisterService, private router: Router) {
+  constructor(private fb: FormBuilder, private service :  StudentRegisterService, private router: Router, private classService : ViewclassService) {
     this.studentForm = this.fb.group({
       name: ['', [Validators.required]],
       email: ['', [Validators.required, Validators.email]],
@@ -30,29 +31,31 @@ export class RegisterStudentComponent implements OnInit{
   }
 
   ngOnInit() {
-    this.service.getStudents().subscribe(data => {
-      this.students = data
+    this.classService.getClasses().subscribe(data => {
+      this.classes = data
     })
   }
+
+
 
   onSubmit() {
     if (this.studentForm.valid) {
       const student = this.studentForm.value;
 
 
-      let obj : any = {
-        name : student.name,
-        email : student.email,
-        phone : student.phone,
-        classID : parseInt(student.classID),
+      // let obj : any = {
+      //   name : student.name,
+      //   email : student.email,
+      //   phone : student.phone,
+      //   classID : parseInt(student.classID),
       
-       }
+      //  }
 
 
 
 
 
-      this.service.AddStudent(obj).subscribe(
+      this.service.AddStudent(student).subscribe(
         () => {
           alert('Student added successfully');
           this.studentForm.reset();

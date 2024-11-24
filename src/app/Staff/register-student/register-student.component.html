@@ -32,10 +32,8 @@
                         <label for="class">Class</label>
                         <select id="class" formControlName="classID" class="form-control">
                             <option value="" disabled selected>Select a class</option>
-                            <option value="Cls-01">Class - 01</option>
-                            <option value="Cls-02">Class - 02</option>
-                            <option value="Cls-03">Class - 03</option>
-                            <option value="Cls-04">Class - 04</option>
+                            <option value="Cls-01" *ngFor="let class of classes" value="{{class.id}}">{{class.className}}</option>
+                            
                         </select>
                         <div *ngIf="studentForm.get('class')?.invalid && studentForm.get('class')?.touched" class="error-message">
                             Class is required.
