@@ -11,7 +11,6 @@ import { LoginComponent } from './Auth/login/login.component';
 import { EditProfileComponent } from './Student/edit-profile/edit-profile.component';
 
 import { DashboardComponent } from './Administrator/dashboard/dashboard.component';
-import { RegisterUserComponent } from './Administrator/register-user/register-user.component';
 import { AdminViewAttendanceComponent } from './Administrator/admin-view-attendance/admin-view-attendance.component';
 import { AdminViewFeedbackComponent } from './Administrator/admin-view-feedback/admin-view-feedback.component';
 import { AdminViewTimetablesComponent } from './Administrator/admin-view-timetables/admin-view-timetables.component';
@@ -20,6 +19,7 @@ import { TeacherFeedbackComponent } from './Teacher/teacher-feedback/teacher-fee
 import { TeacherProfileComponent } from './Teacher/teacher-profile/teacher-profile.component';
 import { TeacherTimetableComponent } from './Teacher/teacher-timetable/teacher-timetable.component';
 import { ViewStudentsComponent } from './Staff/view-students/view-students.component';
+import { ViewClassComponent } from './Staff/view-class/view-class.component';
 
 export const routes: Routes = [
     // for student
@@ -34,10 +34,10 @@ export const routes: Routes = [
     {path : 'mark-attendance' , component: MarkAttendanceComponent},
     {path : 'manage-timetable' , component: ManageTimetableComponent},
     {path : 'viewStudents', component: ViewStudentsComponent },
+    {path : 'viewClass', component: ViewClassComponent },
 
     //for admin
     {path : '', component: DashboardComponent },
-    {path : 'register', component: RegisterUserComponent },
     {path : 'viewAttendance', component: AdminViewAttendanceComponent },
     {path : 'viewFeedback', component: AdminViewFeedbackComponent },
     {path : 'viewTimetable', component: AdminViewTimetablesComponent },

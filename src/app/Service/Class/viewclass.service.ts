@@ -13,5 +13,18 @@ export class ViewclassService {
   getClasses() {
     return this.http.get<any[]>(this.url)
   }
+
+  AddClass(Class : any){
+    return this.http.post(this.url, Class);
+  }
+
+ 
+
+  deleteClass(classId: any) {
+    return this.http.delete(this.url + '?id=' + classId);
+}
+
   
 }
+
+
