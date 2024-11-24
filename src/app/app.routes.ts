@@ -48,7 +48,8 @@ export const routes: Routes = [
     {path : '', component: TeacherSidebarComponent },
     {path : 't-notification', component: TeacherNotificationComponent },
     {path : 't-feedback', component: TeacherFeedbackComponent },
-    {path : 't-profile/:id', component: TeacherProfileComponent },
+    { path: 't-profile/:id', component: TeacherProfileComponent },
+
     {path : 't-timetable', component: TeacherTimetableComponent },
 
 ];

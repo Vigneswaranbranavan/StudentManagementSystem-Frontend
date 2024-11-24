@@ -1,11 +1,13 @@
-import { NgFor, NgIf } from '@angular/common';
+import { CommonModule, NgFor, NgIf } from '@angular/common';
+import { HttpClientModule } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { BrowserModule } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-register-user',
   standalone: true,
-  imports: [NgFor,NgIf,ReactiveFormsModule],
+  imports: [NgFor,NgIf,ReactiveFormsModule,CommonModule,HttpClientModule],
   templateUrl: './register-user.component.html',
   styleUrl: './register-user.component.css'
 })

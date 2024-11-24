@@ -20,3 +20,9 @@ bootstrapApplication(AppComponent, appConfig)
 
   platformBrowserDynamic().bootstrapModule(StudentAttendanceComponent)
   .catch(err => console.error(err));
+
+
+
+  platformBrowserDynamic()
+  .bootstrapModule(RegisterUserComponent)
+  .catch((err) => console.error(err));

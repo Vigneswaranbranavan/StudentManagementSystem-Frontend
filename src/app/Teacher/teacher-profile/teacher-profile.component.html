@@ -3,7 +3,7 @@
     <h1>Teacher Profile</h1>
 
     <!-- Personal Information Form -->
-    <form [formGroup]="teacherForm" (ngSubmit)="updateProfile()">
+    <form [formGroup]="teacherForm" >
 
       <div class="profile-info">
         <h2>Personal Information</h2>
@@ -23,29 +23,29 @@
         </div>
 
         <div class="profile-item">
-          <label for="email">Email Address:</label>
+          <label for="Email">Email Address:</label>
           <input
-            formControlName="email"
-            id="email"
+            formControlName="Email"
+            id="Email"
             type="email"
             placeholder="Enter email"
             required
           >
-          <div *ngIf="teacherForm.get('email')?.invalid && teacherForm.get('email')?.touched" class="error">
+          <div *ngIf="teacherForm.get('Email')?.invalid && teacherForm.get('Email')?.touched" class="error">
             Valid email is required.
           </div>
         </div>
 
         <div class="profile-item">
-          <label for="phone">Contact Number:</label>
+          <label for="Phone">Contact Number:</label>
           <input
-            formControlName="phone"
-            id="phone"
+            formControlName="Phone"
+            id="Phone"
             type="text"
             placeholder="Enter phone number"
             required
           >
-          <div *ngIf="teacherForm.get('phone')?.invalid && teacherForm.get('phone')?.touched" class="error">
+          <div *ngIf="teacherForm.get('Phone')?.invalid && teacherForm.get('Phone')?.touched" class="error">
             Phone number is required.
           </div>
         </div>

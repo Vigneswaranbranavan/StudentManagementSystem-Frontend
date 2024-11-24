@@ -8,9 +8,9 @@ export interface staff {
 
 export interface teacher {
     id: number;
-    name: string;
-    email: string;
-    phone: string;
+    Name: string;
+    Email: string;
+    Phone: string;
 
 
 }
