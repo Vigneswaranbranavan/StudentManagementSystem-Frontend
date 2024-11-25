@@ -6,7 +6,7 @@ src/app/Student/student-sidebar/student-sidebar.component.html
       <img class="icon" src="/logo.jpg" alt="" width="45px">
     </div>
     <div class="logo_name">ClassMate</div>
-    <!-- <i class='bx' [ngClass]="isOpen ? 'bx-menu-alt-right' : 'bx-menu'" id="btn" (click)="toggleSidebar()"></i> -->
+    <i class='bx' [ngClass]="isOpen ? 'bx-menu-alt-right' : 'bx-menu'" id="btn" (click)="toggleSidebar()"></i>
   </div>
   <ul class="nav-list">
     <li>
@@ -17,13 +17,12 @@ src/app/Student/student-sidebar/student-sidebar.component.html
       <span class="tooltip">Home</span>
     </li>
     <li>
-      <!-- <a [routerLink]="['/edit-profile', studentId]"> -->
+      <a [routerLink]="['/edit-profile', studentid]">
 
         <i class='bx bx-check-circle'></i>
         <span class="links_name">Profile</span>
-      <!-- </a> -->
-      <span class="tooltip">Profile</span>
-    </li>
+        <!-- </a> -->
+        <span class="tooltip">Profile</span>
     <li>
       <a href="#" [routerLink]="['/attendance']">
         <i class='bx bx-check-circle'></i>
@@ -55,16 +54,16 @@ src/app/Student/student-sidebar/student-sidebar.component.html
     <li class="logout">
       <div class="logout-details">
         <div class="name_job">
-          <div class="name">{{ student.name }}jhyj</div>  <!-- Dynamically show the username -->
+          <div class="name">{{ student.name }}jhyj</div> <!-- Dynamically show the username -->
         </div>
       </div>
       <i class='bx bx-log-out' id="log_out"></i>
     </li>
-  </ul>
-</div>
+  </a></li></ul>
 
-<section class="home-section" [class.open]="isOpen">
-  <div class="text">
-    <router-outlet></router-outlet>
-  </div>
-</section>
+  
+    <section class="home-section" [class.open]="isOpen">
+      <div class="text">
+        <router-outlet></router-outlet>
+      </div>
+    </section>

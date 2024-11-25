@@ -57,7 +57,7 @@ export const routes: Routes = [
     //for teachers
     {path : 't-notification', component: TeacherNotificationComponent },
     {path : 't-feedback', component: TeacherFeedbackComponent },
-    {path : 't-profile', component: TeacherProfileComponent },
+    {path : 't-profile/:id', component: TeacherProfileComponent },
     {path : 't-timetable', component: TeacherTimetableComponent },
     {path : 't-home', component: EditProfileComponent },
 

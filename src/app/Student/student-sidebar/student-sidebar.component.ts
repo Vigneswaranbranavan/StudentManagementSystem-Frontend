@@ -3,13 +3,15 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, RouterModule } from '@angular/router';
 import { student } from '../../Service/Models/model';
 import { StudentProfileService } from '../../Service/Profile/student-profile.service';
+import { HttpClientModule } from '@angular/common/http';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 
 @Component({
   selector: 'app-student-sidebar',
   standalone: true,
-  imports: [NgClass,  RouterModule],
+  imports: [NgClass,  RouterModule,HttpClientModule,ReactiveFormsModule],
 
   templateUrl: './student-sidebar.component.html',
   styleUrl: './student-sidebar.component.css'
