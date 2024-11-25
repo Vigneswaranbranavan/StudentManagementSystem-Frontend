@@ -20,6 +20,10 @@ import { TeacherProfileComponent } from './Teacher/teacher-profile/teacher-profi
 import { TeacherTimetableComponent } from './Teacher/teacher-timetable/teacher-timetable.component';
 import { ViewStudentsComponent } from './Staff/view-students/view-students.component';
 import { ViewClassComponent } from './Staff/view-class/view-class.component';
+import { TeacherAddUpdateComponent } from './Administrator/teacher-add-update/teacher-add-update.component';
+import { StaffAddUpdateComponent } from './Administrator/staff-add-update/staff-add-update.component';
+import { ViewTeacherComponent } from './Administrator/view-teacher/view-teacher.component';
+import { ViewStaffComponent } from './Administrator/view-staff/view-staff.component';
 
 export const routes: Routes = [
     // for student
@@ -31,6 +35,7 @@ export const routes: Routes = [
 
     //for staff
     {path : 'student-register', component: RegisterStudentComponent},
+    {path : 'studentupdate/:id', component : RegisterStudentComponent},
     {path : 'mark-attendance' , component: MarkAttendanceComponent},
     {path : 'manage-timetable' , component: ManageTimetableComponent},
     {path : 'viewStudents', component: ViewStudentsComponent },
@@ -41,6 +46,11 @@ export const routes: Routes = [
     {path : 'viewAttendance', component: AdminViewAttendanceComponent },
     {path : 'viewFeedback', component: AdminViewFeedbackComponent },
     {path : 'viewTimetable', component: AdminViewTimetablesComponent },
+    {path : 'viewTeacher', component: ViewTeacherComponent },
+    {path : 'ViewStaff', component: ViewStaffComponent },
+    {path : 'addStaff', component: StaffAddUpdateComponent },
+    {path : 'addTeacher', component: TeacherAddUpdateComponent },
+    {path : 'teacherupdate/:id', component: TeacherAddUpdateComponent },
     
 
     //for teachers

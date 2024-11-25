@@ -11,18 +11,22 @@ export class ViewclassService {
   constructor(private http: HttpClient) { }
 
   getClasses() {
-    return this.http.get<any[]>(this.url)
+    return this.http.get<any[]>(this.url);
   }
 
   AddClass(Class : any){
     return this.http.post(this.url, Class);
   }
 
- 
-
   deleteClass(classId: any) {
     return this.http.delete(this.url + '?id=' + classId);
 }
+
+  // editClass( classid: string, class: any)
+  // {
+  //   return this.http.put(this.url + "?id=" + classid, class);
+
+  // }
 
   
 }

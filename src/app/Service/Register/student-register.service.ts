@@ -15,7 +15,22 @@ export class StudentRegisterService {
     return this.http.get(this.url);
   }
 
+  getStudent(studentId: string) {
+    return this.http.get<any>(this.url + "/" + studentId);
+  }
+
   AddStudent(student: any): Observable<any> {
     return this.http.post(this.url, student);
+  }
+
+  deleteStudent(deleteId : any)
+  {
+    return this.http.delete(this.url + "/" + deleteId)
+  }
+
+  editStudent( studentid : string, student: any)
+  {
+    return this.http.put(this.url + "/" + studentid, student)
+
   }
 }
