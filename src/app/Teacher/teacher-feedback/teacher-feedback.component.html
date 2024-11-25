@@ -21,10 +21,7 @@
         <div *ngFor="let feedback of feedbackList" class="feedback-item" [ngClass]="{'pending': feedback.status === 'Pending', 'resolved': feedback.status === 'Resolved'}">
           <div class="feedback-details">
             <!-- Hardcoded icons based on feedback title -->
-            <i *ngIf="feedback.title === 'Request for Additional Study Materials'" class="bx bx-message-rounded-dots"></i>
-            <i *ngIf="feedback.title === 'Resolved Issue in Assignment Portal'" class="bx bx-check-circle"></i>
-            <i *ngIf="feedback.title === 'Technical Issue in Attendance System'" class="bx bx-error"></i>
-  
+            
             <div class="feedback-text">
               <h3>{{ feedback.title }}</h3>
               <p>{{ feedback.message }}</p>
