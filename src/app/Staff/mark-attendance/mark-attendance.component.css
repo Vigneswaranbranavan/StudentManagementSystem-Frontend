@@ -54,10 +54,14 @@
 .table td {
     text-align: center;
     vertical-align: middle;
+    font-family: 'Arial', sans-serif;
+    font-size: 18px; 
+    font-weight: bold;
+    padding: 12px; 
 }
 
 .table th {
-    background-color: #1c1b2c;
+    background-color: #333147;
     /* background: linear-gradient(to right, #161419, #1a1821, #1e1c29, #222031, #262439, #2a2841); */
 
     color: white;
@@ -107,4 +111,13 @@
     .main-content {
         margin-left: 0;
     }
+}
+.attendance-dropdown {
+    background-color: #ffffff; /* Default white background */
+    color: #000000; /* Default text color */
+}
+
+/* Optional: Style for focus effect */
+.attendance-dropdown:focus {
+    border-color: #007bff; /* Add a blue border when focused */
 }
