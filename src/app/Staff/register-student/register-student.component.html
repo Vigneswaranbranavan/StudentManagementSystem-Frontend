@@ -1,11 +1,11 @@
-<section class="min-vh-100 gradient-form d-flex justify-content-center align-items-center">
+<section class=" gradient-form d-flex justify-content-center align-items-center">
     <div class="container mt-4">
         <div class="signup-section">
-            <h1 class="text-center mb-4">Student Registration</h1>
+            <h1 class="text-center mb-4">{{isEditMode == true ? 'Update Student' : 'Student Registration'}}</h1>
 
             <!-- Signup Form -->
             <div class="signup-form mb-5">
-                <h2>Submit Registration</h2>
+                <h2>{{isEditMode == true ? 'Update Student' : 'Student Registration'}}</h2>
                 <form [formGroup]="studentForm" (ngSubmit)="onSubmit()">
                     <div class="form-group">
                         <label for="name">Name</label>
@@ -30,18 +30,37 @@
                     </div>
                     <div class="form-group">
                         <label for="class">Class</label>
-                        <select id="class" formControlName="class" class="form-control">
+                        <select id="class" formControlName="classID" class="form-control">
                             <option value="" disabled selected>Select a class</option>
-                            <option *ngFor="let classOption of classes" [value]="classOption">{{ classOption }}</option>
+                            <option value="Cls-01" *ngFor="let class of classes" value="{{class.id}}">{{class.className}}</option>
+                            
                         </select>
                         <div *ngIf="studentForm.get('class')?.invalid && studentForm.get('class')?.touched" class="error-message">
                             Class is required.
                         </div>
                     </div>
 
-                    <button type="submit" class="btn btn-primary mt-3" [disabled]="studentForm.invalid">Submit</button>
+
+
+
+
+
+
+
+                  
+
+
+
+
+
+
+                    <button type="submit" class="btn btn-primary mt-3 me-3" [disabled]="studentForm.invalid">{{isEditMode == true ? 'Update' : 'Submit'}}</button>
+                    <button  class="btn btn-danger mt-3" (click)="cancel()">Cancel</button>
                 </form>
             </div>
         </div>
     </div>
 </section>
+
+
+

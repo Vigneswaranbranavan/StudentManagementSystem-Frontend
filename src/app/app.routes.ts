@@ -11,7 +11,6 @@ import { LoginComponent } from './Auth/login/login.component';
 import { EditProfileComponent } from './Student/edit-profile/edit-profile.component';
 
 import { DashboardComponent } from './Administrator/dashboard/dashboard.component';
-import { RegisterUserComponent } from './Administrator/register-user/register-user.component';
 import { AdminViewAttendanceComponent } from './Administrator/admin-view-attendance/admin-view-attendance.component';
 import { AdminViewFeedbackComponent } from './Administrator/admin-view-feedback/admin-view-feedback.component';
 import { AdminViewTimetablesComponent } from './Administrator/admin-view-timetables/admin-view-timetables.component';
@@ -19,6 +18,12 @@ import { TeacherNotificationComponent } from './Teacher/teacher-notification/tea
 import { TeacherFeedbackComponent } from './Teacher/teacher-feedback/teacher-feedback.component';
 import { TeacherProfileComponent } from './Teacher/teacher-profile/teacher-profile.component';
 import { TeacherTimetableComponent } from './Teacher/teacher-timetable/teacher-timetable.component';
+import { ViewStudentsComponent } from './Staff/view-students/view-students.component';
+import { ViewClassComponent } from './Staff/view-class/view-class.component';
+import { TeacherAddUpdateComponent } from './Administrator/teacher-add-update/teacher-add-update.component';
+import { StaffAddUpdateComponent } from './Administrator/staff-add-update/staff-add-update.component';
+import { ViewTeacherComponent } from './Administrator/view-teacher/view-teacher.component';
+import { ViewStaffComponent } from './Administrator/view-staff/view-staff.component';
 
 export const routes: Routes = [
     // for student
@@ -30,16 +35,23 @@ export const routes: Routes = [
 
     //for staff
     {path : 'student-register', component: RegisterStudentComponent},
+    {path : 'studentupdate/:id', component : RegisterStudentComponent},
     {path : 'mark-attendance' , component: MarkAttendanceComponent},
     {path : 'manage-timetable' , component: ManageTimetableComponent},
-    {path : 'edit-profile', component: EditProfileComponent },
+    {path : 'viewStudents', component: ViewStudentsComponent },
+    {path : 'viewClass', component: ViewClassComponent },
 
     //for admin
     {path : '', component: DashboardComponent },
-    {path : 'register', component: RegisterUserComponent },
     {path : 'viewAttendance', component: AdminViewAttendanceComponent },
     {path : 'viewFeedback', component: AdminViewFeedbackComponent },
     {path : 'viewTimetable', component: AdminViewTimetablesComponent },
+    {path : 'viewTeacher', component: ViewTeacherComponent },
+    {path : 'ViewStaff', component: ViewStaffComponent },
+    {path : 'addStaff', component: StaffAddUpdateComponent },
+    {path : 'staffupdate/:id', component: StaffAddUpdateComponent },
+    {path : 'addTeacher', component: TeacherAddUpdateComponent },
+    {path : 'teacherupdate/:id', component: TeacherAddUpdateComponent },
     
 
     //for teachers

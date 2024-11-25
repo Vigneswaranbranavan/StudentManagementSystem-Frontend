@@ -20,7 +20,7 @@ body {
     margin-bottom: 20px;
   }
   
-  /* Profile Info */
+  /* Profile Info and Academic Info */
   .profile-info, .academic-info {
     margin-bottom: 30px;
   }
@@ -48,26 +48,5 @@ body {
   
   .profile-item p {
     color: #555;
-  }
-  
-  /* Update Button */
-  .update-profile {
-    text-align: center;
-    margin-top: 20px;
-  }
-  
-  .update-profile button {
-    padding: 10px 20px;
-    border: none;
-    background-color: #2d3a4b;
-    color: #ffffff;
-    font-size: 1rem;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background 0.3s;
-  }
-  
-  .update-profile button:hover {
-    background-color: #11101d;
   }
   

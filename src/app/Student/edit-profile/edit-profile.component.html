@@ -6,44 +6,19 @@
       <h2>Personal Information</h2>
       <div class="profile-item">
         <label>Full Name:</label>
-        <p>John Doe</p>
+        <p>{{ student.name }}</p>
       </div>
       <div class="profile-item">
-        <label>Date of Birth:</label>
-        <p>2001-05-12</p>
+        <label>Phone Number:</label>
+        <p>{{ student.phone }}</p>
       </div>
       <div class="profile-item">
-        <label>Contact Number:</label>
-        <p>+1 234 567 890</p>
+        <label>Enrollment Date:</label>
+        <p>{{ student.enrollmentDate }}</p> <!-- Format the date -->
       </div>
       <div class="profile-item">
-        <label>Email Address:</label>
-        <p>johndoe.com</p>
-      </div>
-      <div class="profile-item">
-        <label>Address:</label>
-        <p>1234 Elm Street, Springfield, USA</p>
-      </div>
-    </div>
-  
-    <!-- Academic Information -->
-    <div class="academic-info">
-      <h2>Academic Information</h2>
-      <div class="profile-item">
-        <label>Student ID:</label>
-        <p>STU123456</p>
-      </div>
-      <div class="profile-item">
-        <label>Course:</label>
-        <p>Bachelor of Science in Computer Science</p>
-      </div>
-      <div class="profile-item">
-        <label>Year of Study:</label>
-        <p>3rd Year</p>
-      </div>
-      <div class="profile-item">
-        <label>GPA:</label>
-        <p>3.8</p>
+        <label>Class ID:</label>
+        <p>{{ student.classID }}</p>
       </div>
     </div>
   </div>
