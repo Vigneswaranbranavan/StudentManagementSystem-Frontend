@@ -1,8 +1,19 @@
-
+/* .container {
+    display: flex;
+    height: 100vh; 
+    overflow: hidden;
+.container {
+    flex-direction: column;
+    height: auto; 
+} */
 .container {
     width: 100% ;
     display: flex;
     justify-content: space-between;
+    overflow: hidden;
+
+    overflow-x: hidden; /* Prevent horizontal overflow */
+
 }
 
 /* Sidebar */
@@ -13,6 +24,7 @@
     padding: 25px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
 }
 
 .sidebar h3 {
@@ -46,9 +58,9 @@
     background-color: #fff;
     padding: 30px;
     border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
 
+    box-shadow: rgb(0, 0, 0) 0px 0px 0px 2px inset;
+}
 
 .table th,
 .table td {
@@ -57,12 +69,13 @@
     font-family: 'Arial', sans-serif;
     font-size: 18px; 
     font-weight: bold;
-    padding: 12px; 
+    padding: 8px; 
 }
 
 .table th {
     background-color: #333147;
     /* background: linear-gradient(to right, #161419, #1a1821, #1e1c29, #222031, #262439, #2a2841); */
+      font-family: "Lucida Console", "Courier New", monospace;
 
     color: white;
 }
@@ -101,6 +114,7 @@
 @media (max-width: 768px) {
     .container {
         flex-direction: column;
+        
     }
 
     .sidebar {
@@ -112,12 +126,61 @@
         margin-left: 0;
     }
 }
-.attendance-dropdown {
-    background-color: #ffffff; /* Default white background */
-    color: #000000; /* Default text color */
+/* .attendance-dropdown {
+    background-color: #ffffff;
+    color: #000000; 
 }
 
-/* Optional: Style for focus effect */
 .attendance-dropdown:focus {
-    border-color: #007bff; /* Add a blue border when focused */
-}
+    border-color: #007bff;
+} */
+
+.status-container {
+    display: flex;
+    gap: 1.5rem;
+    justify-content: center;
+    margin-top: 2rem;
+    font-family: "Times New Roman", Times, serif;
+
+  }
+  
+  .status-card {
+    flex: 1;
+    text-align: center;
+    padding: 0.5rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    color: white;
+    font-weight: bold;
+  }
+  
+  .status-card h4 {
+    margin-bottom: 0.5rem;
+  }
+  
+  .status-card p {
+    font-size: 1.5rem;
+  }
+  
+  /* .present {
+    background: linear-gradient(to right, #161419, #1a1821, #1e1c29, #222031, #262439, #2a2841);
+  }
+  
+  .absent {
+    background: linear-gradient(to right, #161419, #1a1821, #1e1c29, #222031, #262439, #2a2841);
+  }
+  
+  .late-coming {
+    background: linear-gradient(to right, #161419, #1a1821, #1e1c29, #222031, #262439, #2a2841);
+  } */
+  .present {
+    background: linear-gradient(to right, #2e8b57, #3cb371, #66cdaa, #8fbc8f);
+  }
+  
+  .absent {
+    background: linear-gradient(to right, #b22222, #cd5c5c, #f08080, #fa8072);
+  }
+  
+  .late-coming {
+    background: linear-gradient(to right, #ff8c00, #ffa500, #ffb84d, #ffd699); 
+  }

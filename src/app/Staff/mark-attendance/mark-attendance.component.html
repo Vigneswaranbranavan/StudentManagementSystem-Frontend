@@ -1,64 +1,65 @@
-<div class="container py-5">
-
-    <div class="sidebar">
-      <h3>Mark Attendance</h3>
-      <ul id="timetable-list">
-        
-      </ul>
-    </div>
-  
-    <div class="main-content">
-      <h2 class="text-center mb-4">Students Attendance</h2>
-  
-      <div class="row mb-3">
-        <div class="col-6">
-          <input type="date" id="attendance-date" class="form-control date-picker" value="2024-11-19">
-        </div>
-      </div>
-  
-      <!-- <div class="row mb-3">
-        <div class="col-6">
-          
-          <select id="select-class" class="form-control search-bar" [(ngModel)]="selectedClass" (change)="onClassChange()">
-            <option value="" disabled selected>Select a Class</option>
-            <option *ngFor="let classOption of classes" [value]="classOption.id">{{ classOption.name }}</option>
-          </select>
-        </div>
-      </div> -->
-  
-      <div class="table-responsive">
-        <table class="table table-bordered" id="attendance-table">
-          <thead>
-            <tr>
-              <th>#</th>
-              <th>Student Name</th>
-              <th>Attendance</th>
-            </tr>
-          </thead>
-          <tbody id="attendance-list">
-            <tr *ngFor="let student of students">
-              <td>{{ student.id }}</td>
-              <td>{{ student.name }}</td>
-              <td>
-                <select class="form-control attendance-dropdown" 
-                        [(ngModel)]="student.status"
-                        (change)="updateAttendanceStatus(student.id, student.status)" 
-                        [ngStyle]="{ 'background-color': getBackgroundColor(student.status) }">
-                  <option *ngFor="let status of attendanceStatuses" [value]="status.value">{{ status.label }}</option>
-                </select>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-  
-      <div id="attendance-status" class="mt-4">
-        <div class="status-header">Attendance Status:</div>
-        <ul id="status-list" class="status-list">
-          
-        </ul>
-      </div>
-    </div>
-  
+<div class="container">
+  <div class="sidebar">
+    <h3>Mark Attendance</h3>
+    <ul id="timetable-list">
+      <!-- Sidebar content can go here -->
+    </ul>
   </div>
-  
+
+  <div class="main-content">
+    <h2 class="text-center mb-4">Students Attendance</h2>
+    <div class="row mb-3">
+      <div class="col-6">
+        <input type="date" id="attendance-date" class="form-control date-picker" value="2024-11-19" />
+      </div>
+    </div>
+
+    <div class="table-responsive">
+      <table class="table table-bordered" id="attendance-table">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Student Name</th>
+            <th>Attendance</th>
+          </tr>
+        </thead>
+        <tbody id="attendance-list">
+          <tr *ngFor="let student of students">
+            <td>{{ student.id }}</td>
+            <td>{{ student.name }}</td>
+            <td>
+              <select
+                class="form-control attendance-dropdown"
+                [(ngModel)]="student.status"
+                (change)="updateAttendanceStatus(student.id, student.status)"
+                [ngStyle]="{ 'background-color': getBackgroundColor(student.status) }"
+              >
+                <option *ngFor="let status of attendanceStatuses" [value]="status.value">
+                  {{ status.label }}
+                </option>
+              </select>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div id="attendance-status" class="mt-4">
+      <h3 class="text-center mb-4">Attendance Status Summary</h3>
+      <div class="status-container d-flex justify-content-around">
+        <div class="status-card present">
+          <h4>Present</h4>
+          <p>{{ getTotalCount('Present') }}</p>
+        </div>
+        <div class="status-card absent">
+          <h4>Absent</h4>
+          <p>{{ getTotalCount('Absent') }}</p>
+        </div>
+        <div class="status-card late-coming">
+          <h4>Late Coming</h4>
+          <p>{{ getTotalCount('Late Coming') }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
