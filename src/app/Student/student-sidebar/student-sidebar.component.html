@@ -1,79 +1,70 @@
+src/app/Student/student-sidebar/student-sidebar.component.html
 
 <div class="sidebar" [class.open]="isOpen">
-    <div class="logo-details">
-        <div >
-            <img class="icon" src="/logo.jpg" alt="" width="45px">
-        </div>
-        
-      <div class="logo_name">ClassMate</div>
-      <i class='bx' [ngClass]="isOpen ? 'bx-menu-alt-right' : 'bx-menu'" id="btn" (click)="toggleSidebar()"></i>
+  <div class="logo-details">
+    <div>
+      <img class="icon" src="/logo.jpg" alt="" width="45px">
     </div>
-    <ul class="nav-list">
-    
-      <li>
-        <a href="#" [routerLink]="['']">
-          <i class='bx bx-home'></i>
-          <span class="links_name">Home</span>
-        </a>
-        <span class="tooltip">Home</span>
-      </li>
-
-      <li>
-        <a href="#" [routerLink]="['/edit-profile']">
-            <i class='bx bx-check-circle'></i>
-          <span class="links_name">Profile</span>
-        </a>
-        <span class="tooltip">profile</span>
-      </li>
-
-      <li>
-        <a href="#" [routerLink]="['/attendance']">
-            <i class='bx bx-check-circle'></i>
-          <span class="links_name">Attendance</span>
-        </a>
-        <span class="tooltip">Attendance</span>
-      </li>
-
-      <li>
-        <a href="#" [routerLink]="['/timetable']" >
-            <i class='bx bx-calendar'></i>
-          <span class="links_name">Timetable</span>
-        </a>
-        <span class="tooltip">Timetable</span>
-      </li>
-
-      <li>
-        <a href="#" [routerLink]="['/notification']" >
-            <i class='bx bx-bell'></i>
-          <span class="links_name">Notifications</span>
-        </a>
-        <span class="tooltip">Notifications</span>
-      </li>
-
-      <li>
-        <a href="#" [routerLink]="['/feedback']" >
-            <i class='bx bx-message-dots'></i>
-          <span class="links_name">Feedback</span>
-        </a>
-        <span class="tooltip">Feedback</span>
-      </li>
-
-      <li class="logout">
-        <div class="logout-details">
-          <div class="name_job">
-            <div class="name">userName</div>
-          </div>
-        </div>
-        <i class='bx bx-log-out' id="log_out"></i>
-      </li>
-
-    </ul>
+    <div class="logo_name">ClassMate</div>
+    <!-- <i class='bx' [ngClass]="isOpen ? 'bx-menu-alt-right' : 'bx-menu'" id="btn" (click)="toggleSidebar()"></i> -->
   </div>
+  <ul class="nav-list">
+    <li>
+      <a href="#" [routerLink]="['']">
+        <i class='bx bx-home'></i>
+        <span class="links_name">Home</span>
+      </a>
+      <span class="tooltip">Home</span>
+    </li>
+    <li>
+      <!-- <a [routerLink]="['/edit-profile', studentId]"> -->
 
-  <section class="home-section" [class.open]="isOpen">
-    <div class="text">
-        <router-outlet></router-outlet>
-<!-- <app-student-notification></app-student-notification> -->
+        <i class='bx bx-check-circle'></i>
+        <span class="links_name">Profile</span>
+      <!-- </a> -->
+      <span class="tooltip">Profile</span>
+    </li>
+    <li>
+      <a href="#" [routerLink]="['/attendance']">
+        <i class='bx bx-check-circle'></i>
+        <span class="links_name">Attendance</span>
+      </a>
+      <span class="tooltip">Attendance</span>
+    </li>
+    <li>
+      <a href="#" [routerLink]="['/timetable']">
+        <i class='bx bx-calendar'></i>
+        <span class="links_name">Timetable</span>
+      </a>
+      <span class="tooltip">Timetable</span>
+    </li>
+    <li>
+      <a href="#" [routerLink]="['/notification']">
+        <i class='bx bx-bell'></i>
+        <span class="links_name">Notifications</span>
+      </a>
+      <span class="tooltip">Notifications</span>
+    </li>
+    <li>
+      <a href="#" [routerLink]="['/feedback']">
+        <i class='bx bx-message-dots'></i>
+        <span class="links_name">Feedback</span>
+      </a>
+      <span class="tooltip">Feedback</span>
+    </li>
+    <li class="logout">
+      <div class="logout-details">
+        <div class="name_job">
+          <div class="name">{{ student.name }}jhyj</div>  <!-- Dynamically show the username -->
+        </div>
+      </div>
+      <i class='bx bx-log-out' id="log_out"></i>
+    </li>
+  </ul>
+</div>
 
-    </div>
-  </section>
+<section class="home-section" [class.open]="isOpen">
+  <div class="text">
+    <router-outlet></router-outlet>
+  </div>
+</section>
