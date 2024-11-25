@@ -1,60 +1,28 @@
-<div class="container-fluid mt-4">
-  <div class="profile-section">
-    <h1>Teacher Profile</h1>
+<div class="profile-section">
+  <h1>Teacher Profile</h1>
 
-    <!-- Personal Information Form -->
-    <form [formGroup]="teacherForm" >
+  <!-- Personal Information Section -->
+  <div class="profile-info">
+    <h2>Personal Information</h2>
+    <div class="profile-item" *ngIf="">
+      <label>Full Name:</label>
+      <p></p>
+    </div>
+    <div class="profile-item" *ngIf="">
+      <label>Contact Number:</label>
+      <p></p>
+    </div>
+    <div class="profile-item" *ngIf="">
+      <label>Email Address:</label>
+      <p></p>
+    </div>
+  </div>
 
-      <div class="profile-info">
-        <h2>Personal Information</h2>
-
-        <div class="profile-item">
-          <label for="Name">Full Name:</label>
-          <input
-            formControlName="Name"
-            id="Name"
-            type="text"
-            placeholder="Enter full name"
-            required
-          >
-          <div *ngIf="teacherForm.get('Name')?.invalid && teacherForm.get('Name')?.touched" class="error">
-            Full Name is required.
-          </div>
-        </div>
-
-        <div class="profile-item">
-          <label for="Email">Email Address:</label>
-          <input
-            formControlName="Email"
-            id="Email"
-            type="email"
-            placeholder="Enter email"
-            required
-          >
-          <div *ngIf="teacherForm.get('Email')?.invalid && teacherForm.get('Email')?.touched" class="error">
-            Valid email is required.
-          </div>
-        </div>
-
-        <div class="profile-item">
-          <label for="Phone">Contact Number:</label>
-          <input
-            formControlName="Phone"
-            id="Phone"
-            type="text"
-            placeholder="Enter phone number"
-            required
-          >
-          <div *ngIf="teacherForm.get('Phone')?.invalid && teacherForm.get('Phone')?.touched" class="error">
-            Phone number is required.
-          </div>
-        </div>
-      </div>
-
-      <!-- Update Button -->
-      <div class="update-profile">
-        <button type="submit" [disabled]="teacherForm.invalid">Update Profile</button>
-      </div>
-    </form>
+  <!-- Academic Information Section -->
+  <div class="academic-info">
+    <div class="profile-item" *ngIf="">
+      <label>Teacher ID:</label>
+      <p></p>
+    </div>
   </div>
 </div>

@@ -9,20 +9,21 @@ import { StudentAttendanceComponent } from './app/Student/student-attendance/stu
 bootstrapApplication(AppComponent, appConfig)
   .catch((err) => console.error(err));
 
+  // bootstrapApplication(EditProfileComponent).catch(err => console.error(err));
 
-  bootstrapApplication(RegisterUserComponent)
-  .catch(err => console.error(err));
+  // bootstrapApplication(RegisterUserComponent)
+  // .catch(err => console.error(err));
 
 
-  platformBrowserDynamic().bootstrapModule(EditProfileComponent)
-  .catch(err => console.error(err));
+  // platformBrowserDynamic().bootstrapModule(EditProfileComponent)
+  // .catch(err => console.error(err));
   
 
-  platformBrowserDynamic().bootstrapModule(StudentAttendanceComponent)
-  .catch(err => console.error(err));
+  // platformBrowserDynamic().bootstrapModule(StudentAttendanceComponent)
+  // .catch(err => console.error(err));
 
 
 
-  platformBrowserDynamic()
-  .bootstrapModule(RegisterUserComponent)
-  .catch((err) => console.error(err));
+  // platformBrowserDynamic()
+  // .bootstrapModule(RegisterUserComponent)
+  // .catch((err) => console.error(err));

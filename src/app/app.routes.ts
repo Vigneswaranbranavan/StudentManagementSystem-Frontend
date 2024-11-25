@@ -1,4 +1,4 @@
-import { Routes } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 import { StudentAttendanceComponent } from './Student/student-attendance/student-attendance.component';
 import { StudentFeedbackComponent } from './Student/student-feedback/student-feedback.component';
 import { StudentNotificationComponent } from './Student/student-notification/student-notification.component';
@@ -20,6 +20,7 @@ import { TeacherFeedbackComponent } from './Teacher/teacher-feedback/teacher-fee
 import { TeacherProfileComponent } from './Teacher/teacher-profile/teacher-profile.component';
 import { TeacherTimetableComponent } from './Teacher/teacher-timetable/teacher-timetable.component';
 import { TeacherSidebarComponent } from './Teacher/teacher-sidebar/teacher-sidebar.component';
+import { NgModule } from '@angular/core';
 
 export const routes: Routes = [
     // for student
@@ -33,8 +34,7 @@ export const routes: Routes = [
     {path : 'student-register', component: RegisterStudentComponent},
     {path : 'mark-attendance' , component: MarkAttendanceComponent},
     {path : 'manage-timetable' , component: ManageTimetableComponent},
-    {path : 'edit-profile', component: EditProfileComponent },
-
+    { path: 'edit-profile/:id', component: EditProfileComponent },
     //for admin
     {path : '', component: DashboardComponent },
     {path : 'register', component: RegisterUserComponent },
@@ -53,3 +53,4 @@ export const routes: Routes = [
     {path : 't-timetable', component: TeacherTimetableComponent },
 
 ];
+

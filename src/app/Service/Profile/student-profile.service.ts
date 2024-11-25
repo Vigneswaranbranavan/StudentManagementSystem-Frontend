@@ -1,31 +1,26 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { student } from '../Models/models';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class StudentProfileService {
 
-  url ='http://localhost:5101/api/Student/Student';
+  url = 'http://localhost:5101/api/Student';
 
+  constructor(private http: HttpClient) {}
 
-  constructor(private http:HttpClient) { }
-
-  
-  // createStudent(student:student){
-  //   return this.http.post(this.url,student)
+  // getStudentProfile(studentId: number): Observable<any> {
+  //   return this.http.get(`${this.url}/${studentId}`);
   // }
-  // getStudents(){
-  //   return this.http.get<student[]>(this.url)
-  // }
-  getStudent(studentId:number){
-    return this.http.get<student>(this.url+'/'+studentId)
+
+  getStudent(studentId: string) {
+    return this.http.get<student>(`${this.url}/${studentId}`);
   }
-  updateStudent(student:student ,studentId:number){
-    return this.http.put(this.url+'/'+studentId,student)
+
+  updateStudent(student: student, studentId: number) {
+    return this.http.put(`${this.url}/${studentId}`, student);
   }
-  // deleteStudent(studentId: number){
-  //   return this.http.delete(this.url+'/'+studentId)
-  // }
 }
