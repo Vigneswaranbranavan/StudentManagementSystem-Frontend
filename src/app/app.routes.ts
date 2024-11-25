@@ -24,6 +24,7 @@ import { TeacherAddUpdateComponent } from './Administrator/teacher-add-update/te
 import { StaffAddUpdateComponent } from './Administrator/staff-add-update/staff-add-update.component';
 import { ViewTeacherComponent } from './Administrator/view-teacher/view-teacher.component';
 import { ViewStaffComponent } from './Administrator/view-staff/view-staff.component';
+import { HomeComponent } from './Home/home/home.component';
 
 export const routes: Routes = [
     // for student
@@ -60,5 +61,8 @@ export const routes: Routes = [
     {path : 't-profile', component: TeacherProfileComponent },
     {path : 't-timetable', component: TeacherTimetableComponent },
     {path : 't-home', component: EditProfileComponent },
+
+
+    {path : 'home', component: HomeComponent},
 
 ];
