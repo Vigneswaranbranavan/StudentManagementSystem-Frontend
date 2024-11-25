@@ -54,6 +54,7 @@ export class RegisterStudentComponent implements OnInit {
       this.studentForm = this.fb.group({
         name: ['', [Validators.required]],
         email: ['', [Validators.required, Validators.email]],
+        password: ['', [Validators.required, Validators.minLength(6)]],
         phone: ['', [Validators.required, Validators.pattern('^[0-9]{10}$')]],
         classID: ['', [Validators.required]] // Class field for students
       });
@@ -88,7 +89,17 @@ export class RegisterStudentComponent implements OnInit {
 
   onSubmit() {
     if (this.studentForm.valid) {
-      const student = this.studentForm.value; // Get form data
+      const student = this.studentForm.value; 
+      
+      let obj : any = {
+        name : student.name,
+        email : student.email,
+        password : student.password,
+        phone : student.phone,
+        classID : student.classID,
+       }
+      
+      
 
       if (this.isEditMode) {
 
@@ -105,7 +116,7 @@ export class RegisterStudentComponent implements OnInit {
         );
       } else {
         // If adding, add a new student
-        this.service.AddStudent(student).subscribe(
+        this.service.AddStudent(obj).subscribe(
           (data) => {
             alert("Student added successfully!");
             this.studentForm.reset();
