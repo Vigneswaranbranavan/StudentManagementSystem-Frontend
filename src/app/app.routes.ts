@@ -49,6 +49,7 @@ export const routes: Routes = [
     {path : 'viewTeacher', component: ViewTeacherComponent },
     {path : 'ViewStaff', component: ViewStaffComponent },
     {path : 'addStaff', component: StaffAddUpdateComponent },
+    {path : 'staffupdate/:id', component: StaffAddUpdateComponent },
     {path : 'addTeacher', component: TeacherAddUpdateComponent },
     {path : 'teacherupdate/:id', component: TeacherAddUpdateComponent },
     
