@@ -39,22 +39,20 @@ export class TeacherProfileComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log('ngOnInit');
     if (this.teacherid) {
-      this.getTeacherInfo(this.teacherid);  // Fetch teacher data using teacherid
+      this.getTeacherInfo(this.teacherid);  // Fetch student data using studentid
     }
   }
 
   getTeacherInfo(teacherid: string) {
     this.TeacherProfileService.getTeacher(teacherid).subscribe(
       (data) => {
-        console.log('Teacher data:', data);  // Log the response to see the structure
         this.Teacher = data;
       },
       (error) => {
         console.error('Error fetching Teacher:', error);
+        // Optionally, show user-friendly error messages (e.g., using toastr)
       }
     );
   }
-  
 }

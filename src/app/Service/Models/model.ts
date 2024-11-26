@@ -23,3 +23,12 @@ export interface student {
   enrollmentDate: string; // You can later format it if you need a more readable format
   classID: string;
 }
+
+
+
+export interface feedback {
+  id:string;
+  userID:string;
+  feedbackType:string;
+  comments:string; 
+}
