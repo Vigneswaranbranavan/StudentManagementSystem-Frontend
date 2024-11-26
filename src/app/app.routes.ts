@@ -32,6 +32,8 @@ export const routes: Routes = [
     {path : 'feedback', component: StudentFeedbackComponent },
     {path : 'notification', component: StudentNotificationComponent },
     {path : 'timetable', component: StudentTimetableComponent },
+    {path : 'edit-profile/:id', component: EditProfileComponent },
+
 
     //for staff
     {path : 'student-register', component: RegisterStudentComponent},

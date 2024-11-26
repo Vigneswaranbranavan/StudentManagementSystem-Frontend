@@ -1,4 +1,3 @@
-src/app/Student/student-sidebar/student-sidebar.component.html
 
 <div class="sidebar" [class.open]="isOpen">
   <div class="logo-details">
@@ -21,8 +20,9 @@ src/app/Student/student-sidebar/student-sidebar.component.html
 
         <i class='bx bx-check-circle'></i>
         <span class="links_name">Profile</span>
-        <!-- </a> -->
-        <span class="tooltip">Profile</span>
+      </a>
+      <span class="tooltip">Profile</span>
+    </li>
     <li>
       <a href="#" [routerLink]="['/attendance']">
         <i class='bx bx-check-circle'></i>
@@ -54,16 +54,16 @@ src/app/Student/student-sidebar/student-sidebar.component.html
     <li class="logout">
       <div class="logout-details">
         <div class="name_job">
-          <div class="name">{{ student.name }}jhyj</div> <!-- Dynamically show the username -->
+          <div class="name">{{ student.name }}jhyj</div>  <!-- Dynamically show the username -->
         </div>
       </div>
       <i class='bx bx-log-out' id="log_out"></i>
     </li>
-  </a></li></ul>
+  </ul>
+</div>
 
-  
-    <section class="home-section" [class.open]="isOpen">
-      <div class="text">
-        <router-outlet></router-outlet>
-      </div>
-    </section>
+<section class="home-section" [class.open]="isOpen">
+  <div class="text">
+    <router-outlet></router-outlet>
+  </div>
+</section>
