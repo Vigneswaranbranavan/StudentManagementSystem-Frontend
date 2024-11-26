@@ -25,9 +25,11 @@ import { StaffAddUpdateComponent } from './Administrator/staff-add-update/staff-
 import { ViewTeacherComponent } from './Administrator/view-teacher/view-teacher.component';
 import { ViewStaffComponent } from './Administrator/view-staff/view-staff.component';
 import { HomeComponent } from './Home/home/home.component';
+import { StudentSidebarComponent } from './Student/student-sidebar/student-sidebar.component';
 
 export const routes: Routes = [
     // for student
+    {path : 'student', component:StudentSidebarComponent},
     {path : '', component: StudentHomeComponent },
     {path : 'attendance', component: StudentAttendanceComponent },
     {path : 'feedback', component: StudentFeedbackComponent },
@@ -64,5 +66,6 @@ export const routes: Routes = [
 
 
     {path : 'home', component: HomeComponent},
+    {path : 'login', component: LoginComponent}
 
 ];
