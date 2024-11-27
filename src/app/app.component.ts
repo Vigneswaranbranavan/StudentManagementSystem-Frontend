@@ -17,7 +17,7 @@ import { TeacherSidebarComponent } from './Teacher/teacher-sidebar/teacher-sideb
   selector: 'app-root',
   standalone: true,
 
-  imports: [StaffSidebarComponent, AdminSidebarComponent, HomeComponent, LoginComponent],
+  imports: [StaffSidebarComponent, AdminSidebarComponent, HomeComponent, LoginComponent,RouterOutlet,TeacherSidebarComponent,StudentSidebarComponent],
 
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
