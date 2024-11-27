@@ -1,20 +1,23 @@
 import { NgClass } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, RouterModule } from '@angular/router';
-import { student } from '../../Service/Models/model';
+import { HttpClientModule } from '@angular/common/http';
+import { ReactiveFormsModule } from '@angular/forms';
 import { StudentProfileService } from '../../Service/Profile/student-profile.service';
+import { student } from '../../Service/Models/model'; 
 
 
 
 @Component({
   selector: 'app-student-sidebar',
   standalone: true,
-  imports: [NgClass,  RouterModule],
+  imports: [NgClass,  ReactiveFormsModule,RouterModule,HttpClientModule],
 
   templateUrl: './student-sidebar.component.html',
-  styleUrl: './student-sidebar.component.css'
+  styleUrl: './student-sidebar.component.css',
+  providers:[StudentProfileService]
 })
-export class StudentSidebarComponent implements  OnInit {
+export class StudentSidebarComponent implements OnInit {
   isOpen = true;
   userName: string = '';
 
@@ -65,5 +68,13 @@ export class StudentSidebarComponent implements  OnInit {
     );
   }
 }
+
+
+
+
+
+
+
+
 
 

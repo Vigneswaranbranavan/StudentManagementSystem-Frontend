@@ -1,24 +1,24 @@
 import { Component, OnInit } from '@angular/core';
-import { student } from '../../Service/Models/model';
+import { RouterModule, ActivatedRoute } from '@angular/router';
 import { StudentProfileService } from '../../Service/Profile/student-profile.service';
-import { ActivatedRoute } from '@angular/router';
+import { student } from '../../Service/Models/model';
+import { HttpClientModule } from '@angular/common/http';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-edit-profile',
   standalone: true,
-  imports: [],
   templateUrl: './edit-profile.component.html',
-  styleUrl: './edit-profile.component.css'
+  styleUrls: ['./edit-profile.component.css'],
+  imports: [
+    RouterModule,HttpClientModule, ReactiveFormsModule
+  ],
+  providers: [StudentProfileService]
 })
 export class EditProfileComponent implements OnInit {
 
   studentid: string;
   
-
-
-
-
-
   student: student = {
     id: '',
     name: '',

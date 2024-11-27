@@ -33,6 +33,8 @@ export const routes: Routes = [
     {path : 'feedback', component: StudentFeedbackComponent },
     {path : 'notification', component: StudentNotificationComponent },
     {path : 'timetable', component: StudentTimetableComponent },
+    {path : 'edit-profile/:id', component: EditProfileComponent },
+
 
     //for staff
     {path : 'student-register', component: RegisterStudentComponent},
@@ -59,7 +61,7 @@ export const routes: Routes = [
     //for teachers
     {path : 't-notification', component: TeacherNotificationComponent },
     {path : 't-feedback', component: TeacherFeedbackComponent },
-    {path : 't-profile', component: TeacherProfileComponent },
+    {path : 't-profile/:id', component: TeacherProfileComponent },
     {path : 't-timetable', component: TeacherTimetableComponent },
     {path : 't-home', component: EditProfileComponent },
 
