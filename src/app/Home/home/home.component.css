@@ -28,6 +28,18 @@ h2 {
 
 .navbar {
   box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+  background: linear-gradient(to left, #161419, #1a1821, #1e1c29, #222031, #262439, #2a2841);
+
+}
+.navbar a {
+  /* font-family: 'Nunito', sans-serif; */
+  /* font-family: 'Oswald', sans-serif; */
+  font-family: 'Poppins', sans-serif;
+
+  font-size: 1.5rem; 
+  font-weight: 600; /* Use a medium weight for clarity */
+  letter-spacing: 2px; /* Add spacing between letters */
+  /* text-transform: uppercase; */
 }
 
 .custom-btn {
@@ -70,3 +82,14 @@ h2 {
 .shadow p:last-child {
   margin-bottom: 0; /* Remove bottom margin from the last paragraph */
 }
+
+.card {
+  border: none;
+  border-radius: 10px;
+}
+
+.card-title {
+  font-weight: bold;
+}
+
+
