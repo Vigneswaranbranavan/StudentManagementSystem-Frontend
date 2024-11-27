@@ -1,73 +1,72 @@
-
 <div class="sidebar" [class.open]="isOpen">
-    <div class="logo-details">
-        <div >
-            <img class="icon" src="/logo.jpg" alt="" width="45px">
-        </div>
-        
-      <div class="logo_name">ClassMate</div>
-      <i class='bx' [ngClass]="isOpen ? 'bx-menu-alt-right' : 'bx-menu'" id="btn" (click)="toggleSidebar()"></i>
+  <div class="logo-details">
+    <div>
+      <img class="icon" src="/logo.jpg" alt="" width="45px">
     </div>
-    <ul class="nav-list">
-    
-      <!-- <li>
-        <a href="#" [routerLink]="['/t-home']">
-          <i class='bx bx-home'></i>
-          <span class="links_name">Home</span>
-        </a>
-        <span class="tooltip">Home</span>
-      </li> -->
-      <li>
-        <a href="#" [routerLink]="['/t-timetable']" >
-            <i class='bx bx-calendar'></i>
-          <span class="links_name">Timetable</span>
-        </a>
-        <span class="tooltip">Timetable</span>
-      </li>
-    
-    
-
-      <li>
-        <a href="#" [routerLink]="['/t-profile']">
-            <i class='bx bx-check-circle'></i>
-          <span class="links_name">Profile</span>
-        </a>
-        <span class="tooltip">profile</span>
-      </li>
-
-
-      <li>
-        <a href="#" [routerLink]="['/t-notification']" >
-            <i class='bx bx-bell'></i>
-          <span class="links_name">Notifications</span>
-        </a>
-        <span class="tooltip">Notifications</span>
-      </li>
-
-      <li>
-        <a href="#" [routerLink]="['/t-feedback']" >
-            <i class='bx bx-message-dots'></i>
-          <span class="links_name">Feedback</span>
-        </a>
-        <span class="tooltip">Feedback</span>
-      </li>
-
-      <li class="logout">
-        <div class="logout-details">
-          <div class="name_job">
-            <div class="name">userName</div>
-          </div>
-        </div>
-        <i class='bx bx-log-out' id="log_out"></i>
-      </li>
-
-    </ul>
+    <div class="logo_name">ClassMate</div>
+    <i class='bx' [ngClass]="isOpen ? 'bx-menu-alt-right' : 'bx-menu'" id="btn" (click)="toggleSidebar()"></i>
   </div>
+  
+  <ul class="nav-list">
+    <!-- Home Section (Optional) -->
+    <!-- <li>
+      <a href="#" [routerLink]="['/t-home']">
+        <i class='bx bx-home'></i>
+        <span class="links_name">Home</span>
+      </a>
+      <span class="tooltip">Home</span>
+    </li> -->
+    
+    <!-- Timetable Section -->
+    <li>
+      <a href="#" [routerLink]="['/t-timetable']">
+        <i class='bx bx-calendar'></i>
+        <span class="links_name">Timetable</span>
+      </a>
+      <span class="tooltip">Timetable</span>
+    </li>
+    
+    <!-- Profile Section -->
+    <li>
+      <a href="#" [routerLink]="['/t-profile', teacherid]">
+        <i class='bx bx-check-circle'></i>
+        <span class="links_name">Profile</span>
+      </a>
+      <span class="tooltip">Profile</span>
+    </li>
 
-  <section class="home-section" [class.open]="isOpen">
-    <div class="text">
-        <router-outlet></router-outlet>
-<!-- <app-student-notification></app-student-notification> -->
+    <!-- Notifications Section -->
+    <li>
+      <a href="#" [routerLink]="['/t-notification']">
+        <i class='bx bx-bell'></i>
+        <span class="links_name">Notifications</span>
+      </a>
+      <span class="tooltip">Notifications</span>
+    </li>
 
-    </div>
-  </section>
+    <!-- Feedback Section -->
+    <li>
+      <a href="#" [routerLink]="['/t-feedback']">
+        <i class='bx bx-message-dots'></i>
+        <span class="links_name">Feedback</span>
+      </a>
+      <span class="tooltip">Feedback</span>
+    </li>
+
+    <!-- Logout Section (same structure as student) -->
+    <li class="logout">
+      <div class="logout-details">
+        <div class="name_job">
+          <div class="name"></div> <!-- Dynamically show the teacher's username -->
+        </div>
+      </div>
+      <i class='bx bx-log-out' id="log_out"></i>
+    </li>
+  </ul>
+</div>
+
+<section class="home-section" [class.open]="isOpen">
+  <div class="text">
+    <router-outlet></router-outlet>
+  </div>
+</section>
