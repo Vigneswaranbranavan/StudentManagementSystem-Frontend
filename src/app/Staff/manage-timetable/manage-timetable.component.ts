@@ -15,6 +15,7 @@ import { RouterModule } from '@angular/router';
 })
 export class ManageTimetableComponent {
   teachers = [{ id: 't1', name: 'John Doe' }, { id: 't2', name: 'Jane Smith' }];
+  subject = [{ id: 's1', name: 'Maths' }, { id: 's2', name: 'Tamil' }];
 
   constructor(private timetableservice: TimetableService){}
 

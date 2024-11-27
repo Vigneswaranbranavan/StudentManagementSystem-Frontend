@@ -1,74 +1,65 @@
-<div class="container py-5">
+<div class="container">
+  <div class="sidebar">
+    <h3>Mark Attendance</h3>
+    <ul id="timetable-list">
+      <!-- Sidebar content can go here -->
+    </ul>
+  </div>
 
-    <div class="sidebar">
-        <h3>Mark Attendance</h3>
-        <ul id="timetable-list">
-
-        </ul>
+  <div class="main-content">
+    <h2 class="text-center mb-4">Students Attendance</h2>
+    <div class="row mb-3">
+      <div class="col-6">
+        <input type="date" id="attendance-date" class="form-control date-picker" value="2024-11-19" />
+      </div>
     </div>
 
-    <div class=" main-content">
-        <h2 class="text-center mb-4">Students Attendance</h2>
-
-        <div class="row mb-3">
-            <div class="col-6">
-                <input type="date" id="attendance-date" class="form-control date-picker" value="2024-11-19">
-            </div>
-        </div>
-
-        <div class="row mb-3">
-            <div class="col-6">
-                <input type="text" id="search-student" class="form-control search-bar"
-                    placeholder="Search Student by Name">
-            </div>
-        </div>
-
-
-        <div class="table-responsive">
-            <table class="table table-bordered " id="attendance-table">
-                <thead>
-                    <tr>
-                        <th>#</th>
-                        <th>Student Name</th>
-                        <th>Attendance</th>
-                    </tr>
-                </thead>
-                <tbody id="attendance-list">
-                    <tr>
-                        <td>1</td>
-                        <td>John Doe</td>
-                        <td><input type="checkbox" class="attendance-checkbox" data-student="John Doe"></td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>Jane Smith</td>
-                        <td><input type="checkbox" class="attendance-checkbox" data-student="Jane Smith"></td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td>Robert Brown</td>
-                        <td><input type="checkbox" class="attendance-checkbox" data-student="Robert Brown"></td>
-                    </tr>
-                    <tr>
-                        <td>4</td>
-                        <td>Emily White</td>
-                        <td><input type="checkbox" class="attendance-checkbox" data-student="Emily White"></td>
-                    </tr>
-                    <tr>
-                        <td>5</td>
-                        <td>Michael Johnson</td>
-                        <td><input type="checkbox" class="attendance-checkbox" data-student="Michael Johnson"></td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-
-
-        <div id="attendance-status" class="mt-4">
-            <div class="status-header">Attendance Status:</div>
-            <ul id="status-list" class="status-list">
-
-            </ul>
-        </div>
+    <div class="table-responsive">
+      <table class="table table-bordered" id="attendance-table">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Student Name</th>
+            <th>Attendance</th>
+          </tr>
+        </thead>
+        <tbody id="attendance-list">
+          <tr *ngFor="let student of students">
+            <td>{{ student.id }}</td>
+            <td>{{ student.name }}</td>
+            <td>
+              <select
+                class="form-control attendance-dropdown"
+                [(ngModel)]="student.status"
+                (change)="updateAttendanceStatus(student.id, student.status)"
+                [ngStyle]="{ 'background-color': getBackgroundColor(student.status) }"
+              >
+                <option *ngFor="let status of attendanceStatuses" [value]="status.value">
+                  {{ status.label }}
+                </option>
+              </select>
+            </td>
+          </tr>
+        </tbody>
+      </table>
     </div>
+
+    <div id="attendance-status" class="mt-4">
+      <h3 class="text-center mb-4">Attendance Status Summary</h3>
+      <div class="status-container d-flex justify-content-around">
+        <div class="status-card present">
+          <h4>Present</h4>
+          <p>{{ getTotalCount('Present') }}</p>
+        </div>
+        <div class="status-card absent">
+          <h4>Absent</h4>
+          <p>{{ getTotalCount('Absent') }}</p>
+        </div>
+        <div class="status-card late-coming">
+          <h4>Late Coming</h4>
+          <p>{{ getTotalCount('Late Coming') }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

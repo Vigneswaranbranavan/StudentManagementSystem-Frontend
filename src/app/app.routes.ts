@@ -24,10 +24,13 @@ import { TeacherAddUpdateComponent } from './Administrator/teacher-add-update/te
 import { StaffAddUpdateComponent } from './Administrator/staff-add-update/staff-add-update.component';
 import { ViewTeacherComponent } from './Administrator/view-teacher/view-teacher.component';
 import { ViewStaffComponent } from './Administrator/view-staff/view-staff.component';
+import { HomeComponent } from './Home/home/home.component';
+import { StudentSidebarComponent } from './Student/student-sidebar/student-sidebar.component';
 import { ViewSubjectComponent } from './Staff/view-subject/view-subject.component';
 
 export const routes: Routes = [
     // for student
+    {path : 'student', component:StudentSidebarComponent},
     {path : '', component: StudentHomeComponent },
     {path : 'attendance', component: StudentAttendanceComponent },
     {path : 'feedback', component: StudentFeedbackComponent },
@@ -64,5 +67,9 @@ export const routes: Routes = [
     {path : 't-profile/:id', component: TeacherProfileComponent },
     {path : 't-timetable', component: TeacherTimetableComponent },
     {path : 't-home', component: EditProfileComponent },
+
+
+    {path : 'home', component: HomeComponent},
+    {path : 'login', component: LoginComponent}
 
 ];
