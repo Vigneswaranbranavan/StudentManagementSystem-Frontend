@@ -17,7 +17,7 @@ export class LoginComponent {
   isLoading = false;
   errorMessage: string | null = null;
 
-  constructor(private fb: FormBuilder, private loginService: LoginService,  private router: Router
+  constructor(private fb: FormBuilder, private loginService: LoginService, private router: Router
   ) {
     this.loginForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
@@ -25,14 +25,14 @@ export class LoginComponent {
     });
   }
 
-    // Clear error message on form changes
-    get email() {
-      return this.loginForm.get('email');
-    }
-  
-    get password() {
-      return this.loginForm.get('password');
-    }
+  // Clear error message on form changes
+  get email() {
+    return this.loginForm.get('email');
+  }
+
+  get password() {
+    return this.loginForm.get('password');
+  }
 
   // Handle form submission
   onSubmit(): void {
@@ -47,19 +47,40 @@ export class LoginComponent {
     this.loginService.login(email, password).subscribe(
       (response) => {
         this.isLoading = false;
-        localStorage.setItem('token', response.token); // Save token if needed
-        this.router.navigate(['/student']); 
+        localStorage.setItem('token', response.token); // Save token 
+        localStorage.setItem('role', response.role);
+        // this.router.navigate(['/student']); 
+
+        switch (response.role) {
+          case 'student':
+            this.router.navigate(['/student/student']);
+            break;
+          case 'teacher':
+            this.router.navigate(['/teacher']);
+            break;
+          case 'admin':
+            this.router.navigate(['/admin']);
+            break;
+          case 'staff':
+            this.router.navigate(['/staff']);
+            break;
+          default:
+            this.errorMessage = 'Invalide role.';
+
+        }
+
       },
       (error) => {
         this.isLoading = false;
         console.error('Login error:', error);
         this.errorMessage = 'Invalid email or password. Please try again.';
       }
-      
 
 
-      
+
+
     );
   }
-
 }
+
+

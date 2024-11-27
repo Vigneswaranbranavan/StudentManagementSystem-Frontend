@@ -11,19 +11,19 @@
                   <!-- <img src="/campus-education-logo.avif" 
                      style="width: 140px;" alt="logo"> -->
                   <img src="cap2.png" style="width: 140px;" alt="logo">
-                  <h4 class="mt-1 mb-5 pb-2">Student Management System</h4>
+                  <h4 class="mt-1 mb-5 pb-2">CampusSphere - Student Management System</h4>
                 </div>
 
                 <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
 
                   <div data-mdb-input-init class="form-outline mb-4">
-                    <label class="form-label" for="form2Example11">E-Mail</label>
+                    <label class="form-label" for="form2Example11"><i class="bi bi-envelope-fill"></i> E-Mail</label>
                     <input type="email" id="form2Example11" class="form-control" placeholder="Enter Your E-Mail "
                       formControlName="email" />
                   </div>
 
                   <div data-mdb-input-init class="form-outline mb-4">
-                    <label class="form-label" for="form2Example22">Password</label>
+                    <label class="form-label" for="form2Example22"><i class="bi bi-key-fill"></i> Password</label>
                     <input type="password" id="form2Example22" class="form-control" placeholder="Enter Password"
                       formControlName="password" />
                     <!-- Error Message -->
