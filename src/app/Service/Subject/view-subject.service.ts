@@ -14,6 +14,14 @@ export class ViewSubjectService {
     return this.http.get<any[]>(this.url);
   }
 
+
+  AddSubject(subject : any){
+    return this.http.post(this.url, subject);
+  }
+
+  deleteSubject(subjectId: any) {
+    return this.http.delete(this.url + '/' + subjectId);
+}
 //   AddClass(Class : any){
 //     return this.http.post(this.url, Class);
 //   }

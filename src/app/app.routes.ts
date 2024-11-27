@@ -24,6 +24,7 @@ import { TeacherAddUpdateComponent } from './Administrator/teacher-add-update/te
 import { StaffAddUpdateComponent } from './Administrator/staff-add-update/staff-add-update.component';
 import { ViewTeacherComponent } from './Administrator/view-teacher/view-teacher.component';
 import { ViewStaffComponent } from './Administrator/view-staff/view-staff.component';
+import { ViewSubjectComponent } from './Staff/view-subject/view-subject.component';
 
 export const routes: Routes = [
     // for student
@@ -40,6 +41,7 @@ export const routes: Routes = [
     {path : 'manage-timetable' , component: ManageTimetableComponent},
     {path : 'viewStudents', component: ViewStudentsComponent },
     {path : 'viewClass', component: ViewClassComponent },
+    {path : 'viewSubject', component: ViewSubjectComponent },
 
     //for admin
     {path : '', component: DashboardComponent },
