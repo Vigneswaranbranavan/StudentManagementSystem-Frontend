@@ -24,41 +24,77 @@ import { TeacherAddUpdateComponent } from './Administrator/teacher-add-update/te
 import { StaffAddUpdateComponent } from './Administrator/staff-add-update/staff-add-update.component';
 import { ViewTeacherComponent } from './Administrator/view-teacher/view-teacher.component';
 import { ViewStaffComponent } from './Administrator/view-staff/view-staff.component';
+import { HomeComponent } from './Home/home/home.component';
+import { StudentSidebarComponent } from './Student/student-sidebar/student-sidebar.component';
+import { ViewSubjectComponent } from './Staff/view-subject/view-subject.component';
 
 export const routes: Routes = [
+    { path: '', redirectTo: 'home', pathMatch: 'full' },
+    { path: 'home', component: HomeComponent },
+    { path: 'login', component: LoginComponent },
+
     // for student
-    {path : '', component: StudentHomeComponent },
-    {path : 'attendance', component: StudentAttendanceComponent },
-    {path : 'feedback', component: StudentFeedbackComponent },
-    {path : 'notification', component: StudentNotificationComponent },
-    {path : 'timetable', component: StudentTimetableComponent },
+    {
+        path: 'student',
+        children: [
+            { path: 'student', component: StudentSidebarComponent },
+            { path: '', component: StudentHomeComponent },
+            { path: 'attendance', component: StudentAttendanceComponent },
+            { path: 'feedback', component: StudentFeedbackComponent },
+            { path: 'notification', component: StudentNotificationComponent },
+            { path: 'timetable', component: StudentTimetableComponent },
+            { path: 'edit-profile/:id', component: EditProfileComponent },
+
+        ],
+    },
+
 
     //for staff
-    {path : 'student-register', component: RegisterStudentComponent},
-    {path : 'studentupdate/:id', component : RegisterStudentComponent},
-    {path : 'mark-attendance' , component: MarkAttendanceComponent},
-    {path : 'manage-timetable' , component: ManageTimetableComponent},
-    {path : 'viewStudents', component: ViewStudentsComponent },
-    {path : 'viewClass', component: ViewClassComponent },
+    {
+        path: 'staff',
+        children: [
+            { path: 'student-register', component: RegisterStudentComponent },
+            { path: 'studentupdate/:id', component: RegisterStudentComponent },
+            { path: 'mark-attendance', component: MarkAttendanceComponent },
+            { path: 'manage-timetable', component: ManageTimetableComponent },
+            { path: 'viewStudents', component: ViewStudentsComponent },
+            { path: 'viewClass', component: ViewClassComponent },
+            { path: 'viewSubject', component: ViewSubjectComponent },
+        ],
+    },
 
     //for admin
-    {path : '', component: DashboardComponent },
-    {path : 'viewAttendance', component: AdminViewAttendanceComponent },
-    {path : 'viewFeedback', component: AdminViewFeedbackComponent },
-    {path : 'viewTimetable', component: AdminViewTimetablesComponent },
-    {path : 'viewTeacher', component: ViewTeacherComponent },
-    {path : 'ViewStaff', component: ViewStaffComponent },
-    {path : 'addStaff', component: StaffAddUpdateComponent },
-    {path : 'staffupdate/:id', component: StaffAddUpdateComponent },
-    {path : 'addTeacher', component: TeacherAddUpdateComponent },
-    {path : 'teacherupdate/:id', component: TeacherAddUpdateComponent },
-    
+    {
+        path: 'admin',
+        children: [
+            { path: '', component: DashboardComponent },
+            { path: 'viewAttendance', component: AdminViewAttendanceComponent },
+            { path: 'viewFeedback', component: AdminViewFeedbackComponent },
+            { path: 'viewTimetable', component: AdminViewTimetablesComponent },
+            { path: 'viewTeacher', component: ViewTeacherComponent },
+            { path: 'ViewStaff', component: ViewStaffComponent },
+            { path: 'addStaff', component: StaffAddUpdateComponent },
+            { path: 'staffupdate/:id', component: StaffAddUpdateComponent },
+            { path: 'addTeacher', component: TeacherAddUpdateComponent },
+            { path: 'teacherupdate/:id', component: TeacherAddUpdateComponent },
+
+        ],
+    },
+
 
     //for teachers
-    {path : 't-notification', component: TeacherNotificationComponent },
-    {path : 't-feedback', component: TeacherFeedbackComponent },
-    {path : 't-profile', component: TeacherProfileComponent },
-    {path : 't-timetable', component: TeacherTimetableComponent },
-    {path : 't-home', component: EditProfileComponent },
+    {
+        path: 'teacher',
+        children: [
+            { path: 't-notification', component: TeacherNotificationComponent },
+            { path: 't-feedback', component: TeacherFeedbackComponent },
+            { path: 't-profile/:id', component: TeacherProfileComponent },
+            { path: 't-timetable', component: TeacherTimetableComponent },
+            { path: 't-home', component: EditProfileComponent },
+        ]
+    }
+
+
+
 
 ];
