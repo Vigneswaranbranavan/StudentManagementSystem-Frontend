@@ -18,21 +18,14 @@ export class TimetableService {
     return this.http.get<any[]>(`${this.apiUrl}/teacher/${teacherId}`);
   }
 
-  getTimetableByClassGrade(classGrade: string): Observable<any[]> {
-    return this.http.get<any[]>(`${this.apiUrl}/class/${classGrade}`);
+  getTimetableByClassId(classId: string): Observable<any[]> {
+    return this.http.get<any[]>(`${this.apiUrl}/class/${classId}`);
   }
 }
 
 export interface TimetableEntry {
-  id: string; 
-  subjectID: string;
-  subject: { name: string }; 
   teacherID: string;
-  teacher: { name: string }; 
-  classID: string;
-  class: { name: string }; 
-  room: string;
-  endTime: any;
-  startTime: any; 
-  date: string; 
+  subject: string;
+  startTime: string;
+  endTime: string;
 }

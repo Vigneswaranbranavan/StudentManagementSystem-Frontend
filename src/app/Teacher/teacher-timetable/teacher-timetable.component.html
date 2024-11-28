@@ -1,21 +1,24 @@
 <div class="container timetable">
-    <h1>{{ teacherName }}'s Weekly Timetable</h1>
-    <table class="table table-bordered text-center">
+  <h1>{{ teacherName }}'s Weekly Timetable</h1>
+
+  <table class="table table-bordered text-center">
       <thead>
-        <tr>
-          <th *ngFor="let day of filteredTimetable">{{ day.day }}</th>
-        </tr>
+          <tr>
+              <th *ngFor="let day of filteredTimetable">{{ day.day }}</th>
+          </tr>
       </thead>
       <tbody>
-        <tr>
-          <td *ngFor="let day of filteredTimetable">
-            <div *ngFor="let classInfo of day.classes" class="class">
-              <div class="class-time">{{ classInfo.time }}</div>
-              <div class="class-subject">{{ classInfo.subject }}</div>
-              <div class="class-location">{{ classInfo.location }}</div>
-            </div>
-          </td>
-        </tr>
+          <tr>
+              <td *ngFor="let day of filteredTimetable">
+                  <div *ngFor="let classInfo of day.classes" class="class">
+                      <div class="class-time">
+                          {{ classInfo.startTime | date: 'shortTime' }} - {{ classInfo.endTime | date: 'shortTime' }}
+                      </div>
+                      <div class="class-subject">{{ classInfo.subject }}</div>
+                      <div class="class-location">{{ classInfo.room }}</div>
+                  </div>
+              </td>
+          </tr>
       </tbody>
-    </table>
+  </table>
 </div>

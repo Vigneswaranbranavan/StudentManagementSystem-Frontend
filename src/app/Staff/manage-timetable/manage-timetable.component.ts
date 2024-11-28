@@ -1,9 +1,9 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { FormsModule, NgModel } from '@angular/forms';
+import { FormsModule, NgForm, NgModel } from '@angular/forms';
 import { TimetableService } from '../../Service/Timetable/timetable.service';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-manage-timetable',
@@ -15,13 +15,19 @@ import { RouterModule } from '@angular/router';
 })
 export class ManageTimetableComponent {
   teachers = [{ id: 't1', name: 'John Doe' }, { id: 't2', name: 'Jane Smith' }];
-  subject = [{ id: 's1', name: 'Maths' }, { id: 's2', name: 'Tamil' }];
 
-  constructor(private timetableservice: TimetableService){}
+  constructor(private timetableservice: TimetableService, private router: Router) {}
 
-  onSubmit(form: { value: any; }){
-    this.timetableservice.addTimetable(form.value).subscribe(Response => 
-      console.log('Timetable saved')
-    )
+  onSubmit(form: NgForm) {
+    const timetableData = form.value;
+
+    this.timetableservice.addTimetable(timetableData).subscribe(response => {
+      console.log('Timetable saved:', response);
+      form.reset();
+
+      (error: any) => {
+        console.error('Error saving timetable:', error);
+      }
+    });
   }
 }
