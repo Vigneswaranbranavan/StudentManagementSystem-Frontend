@@ -74,7 +74,7 @@ export const routes: Routes = [
             { path: 'viewFeedback', component: AdminViewFeedbackComponent },
             { path: 'viewTimetable', component: AdminViewTimetablesComponent },
             { path: 'viewTeacher', component: ViewTeacherComponent },
-            { path: 'ViewStaff', component: ViewStaffComponent },
+            { path: 'viewStaff', component: ViewStaffComponent },
             { path: 'addStaff', component: StaffAddUpdateComponent },
             { path: 'staffupdate/:id', component: StaffAddUpdateComponent },
             { path: 'addTeacher', component: TeacherAddUpdateComponent },
