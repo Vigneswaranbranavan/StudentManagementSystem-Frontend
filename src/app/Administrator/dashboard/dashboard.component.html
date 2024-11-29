@@ -1,56 +1,55 @@
 <div class="container mt-4">
 
-    <!-- Overview Section -->
-    <div class="row mb-4">
-      <div class="col-md-3 mb-3" *ngFor="let card of [
+  <!-- Overview Section -->
+  <div class="row mb-4">
+    <div class="col-md-3 mb-3" *ngFor="let card of [
         { title: 'Total Students', value: totalStudents },
         { title: 'Total Teachers', value: totalTeachers },
         { title: 'Total Classes', value: totalClasses },
         { title: 'Total Subjects', value: totalSubjects }
       ]">
-        <div class="card shadow-sm">
-          <div class="card-body text-center">
-            <h5 class="card-title">{{ card.title }}</h5>
-            <p class="card-text">{{ card.value }}</p>
-          </div>
+      <div class="card shadow-sm">
+        <div class="card-body text-center">
+          <h5 class="card-title">{{ card.title }}</h5>
+          <p class="card-text">{{ card.value }}</p>
         </div>
       </div>
     </div>
-  
-    <!-- Latest Activities Section -->
-    <div class="section">
-      <h2>Latest Activities</h2>
-      <table class="table">
-        <thead>
-          <tr>
-            <th>Activity</th>
-            <th>Date</th>
-            <th>Status</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let activity of latestActivities">
-            <td>{{ activity.activity }}</td>
-            <td>{{ activity.date }}</td>
-            <td>
-              <span [ngStyle]="{ color: activity.status === 'Completed' ? 'green' : 'orange' }">
-                {{ activity.status }}
-              </span>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  
-    <!-- Notifications Section -->
-    <div class="section">
-      <h2>Recent Notifications</h2>
-      <ul class="list-group">
-        <li class="list-group-item" *ngFor="let notification of notifications">
-          <i class="bi bi-bell"></i> {{ notification }}
-        </li>
-      </ul>
-    </div>
-  
   </div>
-  
+
+  <!-- Latest Activities Section -->
+  <div class="section">
+    <h2>Latest Activities</h2>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Activity</th>
+          <th>Date</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let activity of latestActivities">
+          <td>{{ activity.activity }}</td>
+          <td>{{ activity.date }}</td>
+          <td>
+            <span [ngStyle]="{ color: activity.status === 'Completed' ? 'green' : 'orange' }">
+              {{ activity.status }}
+            </span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Notifications Section -->
+  <div class="section">
+    <h2>Recent Notifications</h2>
+    <ul class="list-group">
+      <li class="list-group-item" *ngFor="let notification of notifications">
+        <i class="bi bi-bell"></i> {{ notification }}
+      </li>
+    </ul>
+  </div>
+
+</div>

@@ -1,25 +1,29 @@
 <div class="container">
   <div class="sidebar">
     <h3>Mark Attendance</h3>
+    <!-- Sidebar content (optional) -->
     <ul id="timetable-list">
-      <!-- Sidebar content can go here -->
+      <!-- You can add a list of classes here if needed -->
     </ul>
   </div>
 
   <div class="main-content">
     <h2 class="text-center mb-4">Students Attendance</h2>
+    
+    <!-- Class and Date Picker -->
     <div class="row mb-3">
       <div class="col-6">
-        <input type="date" id="attendance-date" class="form-control date-picker" value="2024-11-19" />
+        <input type="date" id="attendance-date" class="form-control date-picker"  />
       </div>
       <div class="col-6">
-        <select id="class-select" class="form-control" [(ngModel)]="selectedClass">
+        <select id="class-select" class="form-control" [(ngModel)]="selectedClass" (change)="loadStudents(selectedClass)">
           <option value="" disabled selected>Select Class</option>
           <option *ngFor="let class of Classes" [value]="class.id">{{ class.className }}</option>
         </select>
       </div>
-    </div> 
+    </div>
 
+    <!-- Students Table -->
     <div class="table-responsive">
       <table class="table table-bordered" id="attendance-table">
         <thead>
@@ -50,6 +54,7 @@
       </table>
     </div>
 
+    <!-- Attendance Status Summary -->
     <div id="attendance-status" class="mt-4">
       <h3 class="text-center mb-4">Attendance Status Summary</h3>
       <div class="status-container d-flex justify-content-around">
