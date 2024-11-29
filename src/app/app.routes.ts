@@ -90,7 +90,7 @@ export const routes: Routes = [
         children: [
             { path: '', component: TeacherTimetableComponent },
             { path: 'notification', component: TeacherNotificationComponent },
-            { path: 'feedback', component: TeacherFeedbackComponent },
+            { path: 'feedback/:userID', component: TeacherFeedbackComponent },
             { path: 'profile/:id', component: TeacherProfileComponent },
             { path: 'home', component: EditProfileComponent },
         ],

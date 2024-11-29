@@ -12,7 +12,7 @@ import { NgIf } from '@angular/common';
   selector: 'app-teacher-profile',
   templateUrl: './teacher-profile.component.html',
   styleUrls: ['./teacher-profile.component.css'],
-  imports: [RouterModule, HttpClientModule, ReactiveFormsModule,NgIf],
+  imports: [RouterModule, HttpClientModule, ReactiveFormsModule],
   providers:[TeacherProfileService]
 
 })

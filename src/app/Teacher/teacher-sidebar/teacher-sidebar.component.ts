@@ -17,7 +17,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 export class TeacherSidebarComponent  {
   isOpen = true;
   userName: string = '';
-
+  userID:string;
   teacherid: string;
   
 
@@ -34,6 +34,10 @@ export class TeacherSidebarComponent  {
   {
     const Sid = this.route.snapshot.paramMap.get('id');
     this.teacherid = String(Sid);
+
+    const uId = this.route.snapshot.paramMap.get('userID');
+    this.userID = String(uId);
+    
   }
 
   

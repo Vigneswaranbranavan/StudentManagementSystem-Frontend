@@ -1,35 +1,43 @@
 <div class="container-fluid mt-4">
-    <div class="feedback-section">
-      <h1 class="text-center mb-4">Feedback</h1>
-  
-      <!-- Feedback Form -->
-      <div class="feedback-form mb-5">
-        <h2>Submit New Feedback</h2>
-        <form>
-          <div class="form-group">
-            <label for="message">Message</label>
-            <textarea class="form-control" id="message" name="message" rows="4" placeholder="Write your feedback message here"></textarea>
-          </div>
-          <button type="submit" class="btn btn-primary mt-3">Submit Feedback</button>
-        </form>
-      </div>
-  
-      <!-- Feedback List -->
-      <div class="feedback-list">
-        <h2>Previous Feedback</h2>
-  
-        <div *ngFor="let feedback of feedbackList" class="feedback-item" [ngClass]="{'pending': feedback.status === 'Pending', 'resolved': feedback.status === 'Resolved'}">
-          <div class="feedback-details">
-            <!-- Hardcoded icons based on feedback title -->
-            
-            <div class="feedback-text">
-              <h3>{{ feedback.title }}</h3>
-              <p>{{ feedback.message }}</p>
-            </div>
-          </div>
-          <div class="feedback-status">{{ feedback.status }}</div>
+  <div class="feedback-section">
+    <h1 class="text-center mb-4">Feedback</h1>
+
+    <!-- Feedback Form -->
+    <div class="feedback-form mb-5">
+      <h2>Submit New Feedback</h2>
+      <form #feedbackForm="ngForm" (ngSubmit)="submitFeedback(feedbackForm)">
+        <div class="form-group">
+          <label for="feedbackType">Feedback Type</label>
+          <select class="form-control" id="feedbackType" name="feedbackType" [(ngModel)]="feedback.feedbackType"
+            required>
+            <option value="" disabled>Select Feedback Type</option>
+            <option *ngFor="let type of feedbackTypes" [value]="type">{{ type }}</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="comments">Comments</label>
+          <textarea class="form-control" id="comments" name="comments" rows="4" [(ngModel)]="feedback.comments" required
+            placeholder="Write your feedback message here"></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-primary mt-3" [disabled]="!feedbackForm.valid || isSubmitting">
+          {{ isSubmitting ? 'Submitting...' : 'Submit Feedback' }}
+        </button>
+      </form>
+    </div>
+
+    <!-- Feedback List -->
+    <!-- Inside the feedback-list div -->
+    <div *ngFor="let feedback of feedbackList" class="feedback-item">
+      <div class="feedback-details">
+        <div class="feedback-text">
+          <h3>{{ feedback.feedbackType }}</h3>
+          <p>{{ feedback.comments }}</p>
         </div>
       </div>
+      <button (click)="deleteFeedback(feedback)" class="btn btn-danger btn-sm">Delete</button>
     </div>
+
   </div>
-  
+</div>
