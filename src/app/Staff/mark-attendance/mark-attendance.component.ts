@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormsModule, NgModel } from '@angular/forms';
+import { ViewclassService } from '../../Service/Class/viewclass.service';
 
 @Component({
   selector: 'app-mark-attendance',
@@ -9,7 +10,25 @@ import { FormsModule, NgModel } from '@angular/forms';
   templateUrl: './mark-attendance.component.html',
   styleUrl: './mark-attendance.component.css'
 })
-export class MarkAttendanceComponent {
+export class MarkAttendanceComponent implements OnInit {
+  ngOnInit(): void {
+    this.loadClasses();
+  }
+
+  constructor(private classService: ViewclassService) { }
+
+  loadClasses(): void {
+    this.classService.getClasses().subscribe({
+      next: (response) => {
+        this.Classes = response;  // Populate the Classes array with the response
+      },
+      error: (err) => {
+        console.error('Error fetching classes:', err);  // Handle error
+      }
+    });
+  }
+  Classes: any[] = [];
+  selectedClass: any = '';
 
   attendanceStatuses: { value: string, label: string }[] = [
     { value: 'Present', label: 'Present' },
