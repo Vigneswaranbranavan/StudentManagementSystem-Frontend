@@ -20,7 +20,7 @@ import { student } from '../../Service/Models/model';
 export class StudentSidebarComponent implements OnInit {
   isOpen = true;
   userName: string = '';
-
+  userID:string;
   studentid: string;
   
 
@@ -48,6 +48,10 @@ export class StudentSidebarComponent implements OnInit {
   {
     const Sid = this.route.snapshot.paramMap.get('id');
     this.studentid = String(Sid);
+
+    
+    const uId = this.route.snapshot.paramMap.get('userID');
+    this.userID = String(uId);
   }
 
   ngOnInit(): void {
