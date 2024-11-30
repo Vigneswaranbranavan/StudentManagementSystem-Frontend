@@ -18,10 +18,4 @@ export class StudentService {
     return this.http.get<any>(`your-api-endpoint/students/${studentId}`);
   }
 
-  getAttendanceByDate(studentId: number, date: string): Observable<any[]> {
-    return this.http.get<any[]>(`your-api-endpoint/students/${studentId}/attendance?date=${date}`);
-  }
-  submitAttendance(attendanceData: any[]): Observable<any> {
-    return this.http.post<any>(`${this.baseUrl}/submitAttendance`, attendanceData);  
-  }
 }

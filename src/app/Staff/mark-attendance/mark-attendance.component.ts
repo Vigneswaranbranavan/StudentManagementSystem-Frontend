@@ -4,7 +4,7 @@ import { ViewclassService } from '../../Service/Class/viewclass.service';
 import { StudentService } from '../../Service/Student/student.service';
 import { CommonModule } from '@angular/common';
 import { StudentAttendanceService } from '../../Service/Attendance/student-attendance.service';
-import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-mark-attendance',
@@ -23,13 +23,16 @@ export class MarkAttendanceComponent implements OnInit {
   ];
   selectedClass: any = '';
 
-  constructor(private classService: ViewclassService, private studentService: StudentService, private studentAttendanceService: StudentAttendanceService, private router: Router) { }
+  constructor(
+    private classService: ViewclassService,
+    private studentService: StudentService,
+    private attendanceService: StudentAttendanceService
+  ) { }
 
   ngOnInit(): void {
     this.loadClasses();
   }
 
-  // Load classes from the backend
   loadClasses(): void {
     this.classService.getClasses().subscribe({
       next: (response) => {
@@ -41,12 +44,11 @@ export class MarkAttendanceComponent implements OnInit {
     });
   }
 
-  // Load students based on the selected class
   loadStudents(classId: string): void {
     if (!classId) return;
     this.studentService.getStudentsByClass(classId).subscribe({
       next: (response) => {
-        this.students = response.map(student => ({ ...student, status: '' })); // Add status field
+        this.students = response.map(student => ({ ...student, status: '' }));
       },
       error: (err) => {
         console.error('Error fetching students:', err);
@@ -54,7 +56,6 @@ export class MarkAttendanceComponent implements OnInit {
     });
   }
 
-  // Handle attendance updates
   updateAttendanceStatus(studentId: number, status: string): void {
     const student = this.students.find(s => s.id === studentId);
     if (student) {
@@ -77,19 +78,26 @@ export class MarkAttendanceComponent implements OnInit {
   }
 
   submitAttendance(): void {
-    // Assuming you send the data to the backend here
+    const attendanceStatusMap: { [key: string]: number } = {
+      'Present': 1,
+      'Absent': 2,
+      'Late Coming': 3
+    };
+
     const attendanceData = this.students.map(student => ({
-      studentId: student.id,
-      status: student.status
+      studentID: student.id.toString(),
+      date: new Date().toISOString(),
+      status: attendanceStatusMap[student.status]
     }));
 
-    // Assuming there's an API call here
-    this.studentService.submitAttendance(attendanceData).subscribe({
+    this.attendanceService.submitAttendance(attendanceData).subscribe({
       next: (response) => {
-        console.log('Attendance submitted successfully', response);
+        console.log('Attendance submitted successfully:', response);
+        alert('Attendance submitted successfully!');
       },
       error: (err) => {
         console.error('Error submitting attendance:', err);
+        alert('Failed to submit attendance. Please try again.');
       }
     });
   }

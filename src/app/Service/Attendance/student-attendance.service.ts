@@ -7,19 +7,20 @@ import { Observable } from 'rxjs';
 })
 export class StudentAttendanceService {
 
-  private baseUrl = 'https://localhost:7058/api/Attendance';  // Adjust base URL for the Attendance API
+  private baseUrl = 'https://localhost:7058/api/Attendance';
 
   constructor(private http: HttpClient) { }
 
-  submitAttendance(attendanceData: any[]): Observable<any> {
-    return this.http.post<any>(`${this.baseUrl}/submit`, attendanceData); 
+  submitAttendance(attendanceData: { studentID: string; date: string; status: number }[]): Observable<any> {
+    return this.http.post<any>(`${this.baseUrl}/submit`, attendanceData);
+  }
+    
+
+  getAttendanceByStudent(studentId: number): Observable<any[]> {
+    return this.http.get<any[]>(`${this.baseUrl}/student/${studentId}`);
   }
 
-  getAttendanceByStudent(studentId: number): Observable<any> {
-    return this.http.get<any>(`${this.baseUrl}/student/${studentId}`); 
-  }
-
-  getAttendanceByDate(studentId: number, date: string): Observable<any> {
-    return this.http.get<any>(`${this.baseUrl}/student/${studentId}/attendance?date=${date}`);  
+  getAttendanceByDate(studentId: number, date: string): Observable<any[]> {
+    return this.http.get<any[]>(`${this.baseUrl}/student/${studentId}/attendance`, { params: { date } });
   }
 }

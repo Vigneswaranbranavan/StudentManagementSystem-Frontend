@@ -42,18 +42,18 @@ export class StudentAttendanceComponent implements OnInit {
   }
 
   // Method to show attendance details based on the selected date
-  showAttendanceDetails(): void {
-    if (this.selectedDate) {
-      this.studentService.getAttendanceByDate(this.studentId, this.selectedDate).subscribe({
-        next: (response) => {
-          this.attendanceDetails = response;
-        },
-        error: (err) => {
-          console.error('Error fetching attendance details:', err);
-        }
-      });
-    }
-  }
+  // showAttendanceDetails(): void {
+  //   if (this.selectedDate) {
+  //     this.studentService.getAttendanceByDate(this.studentId, this.selectedDate).subscribe({
+  //       next: (response) => {
+  //         this.attendanceDetails = response;
+  //       },
+  //       error: (err) => {
+  //         console.error('Error fetching attendance details:', err);
+  //       }
+  //     });
+  //   }
+  // }
 
   // Method to determine background color based on attendance status
   getStatusColor(status: string): string {
