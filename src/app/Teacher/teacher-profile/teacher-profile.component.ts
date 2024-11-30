@@ -18,7 +18,6 @@ import { NgIf } from '@angular/common';
 })
 export class TeacherProfileComponent implements OnInit {
 
-
   teacherid: string;
   
 
@@ -52,6 +51,8 @@ export class TeacherProfileComponent implements OnInit {
       (error) => {
         console.error('Error fetching Teacher:', error);
         // Optionally, show user-friendly error messages (e.g., using toastr)
+        console.log(this.Teacher);
+        
       }
     );
   }

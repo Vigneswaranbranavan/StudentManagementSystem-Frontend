@@ -1,79 +1,71 @@
-import { NgFor, NgIf } from '@angular/common';
+import { CommonModule, NgFor, NgIf } from '@angular/common';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Component } from '@angular/core';
+import { ReactiveFormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
+import { feedback } from '../../Service/Models/model';
+import { AdminNotificationService } from '../../Service/Notification/admin-notification.service';
 
 @Component({
   selector: 'app-admin-view-feedback',
   standalone: true,
-  imports: [NgFor, NgIf],
+  imports: [CommonModule, HttpClientModule,RouterModule,ReactiveFormsModule],
   templateUrl: './admin-view-feedback.component.html',
   styleUrl: './admin-view-feedback.component.css'
 })
 export class AdminViewFeedbackComponent {
-  feedbacks = [
-    {
-      studentName: 'John Doe',
-      feedbackDate: '2024-11-19',
-      message: 'Great experience in the last class. Learned a lot!',
-    },
-    {
-      studentName: 'Jane Smith',
-      feedbackDate: '2024-11-20',
-      message: 'The lecture was informative, but the pace was a bit fast.',
-    },
-  ];
-
-  filteredFeedbacks = [...this.feedbacks];
-  selectedDate: string = '';
+  feedbacks: feedback[] = []; // This will hold all feedbacks
+  filteredFeedbacks: feedback[] = []; // This will hold filtered feedbacks
 
   // Modal-related properties
-  modalStudentName: string = '';
-  modalFeedbackDate: string = '';
-  modalFeedbackMessage: string = '';
+  modalFeedbackType: string = '';
+  modalFeedbackComments: string = '';
+  modalFeedbackUserId:string=';'
   isModalOpen: boolean = false;
 
-  constructor() {}
+  constructor(private notificationService: AdminNotificationService) {}
+
+  ngOnInit(): void {
+    this.loadFeedbacks(); // Load all feedbacks on component initialization
+  }
+
+  // Fetch all feedbacks from the server
+  loadFeedbacks(): void {
+    this.notificationService.getFeedbacks().subscribe((feedbacks: feedback[]) => {
+      this.feedbacks = feedbacks;
+      this.filteredFeedbacks = [...this.feedbacks];
+    });
+  }
 
   // Handles search input
   onSearch(event: Event): void {
     const inputElement = event.target as HTMLInputElement;
     const searchQuery = inputElement.value.toLowerCase();
-    this.filterFeedbacks(searchQuery, this.selectedDate);
+    this.filterFeedbacks(searchQuery);
   }
 
-  // Handles date filter selection
-  onDateFilterChange(event: Event): void {
-    const selectElement = event.target as HTMLSelectElement;
-    const selectedDate = selectElement.value;
-    this.selectedDate = selectedDate;
-    this.filterFeedbacks('', selectedDate);
-  }
-
-  // Filters feedbacks based on search query and date
-  private filterFeedbacks(searchQuery: string, dateFilter: string): void {
+  // Filters feedbacks based on search query
+  private filterFeedbacks(searchQuery: string): void {
     this.filteredFeedbacks = this.feedbacks.filter((feedback) => {
       const matchesQuery =
         !searchQuery ||
-        feedback.studentName.toLowerCase().includes(searchQuery) ||
-        feedback.message.toLowerCase().includes(searchQuery);
-
-      const matchesDate = !dateFilter || feedback.feedbackDate === dateFilter;
-
-      return matchesQuery && matchesDate;
+        feedback.feedbackType.toLowerCase().includes(searchQuery) ||
+        feedback.comments.toLowerCase().includes(searchQuery);
+      return matchesQuery;
     });
   }
 
   // Opens the modal with the selected feedback details
-  openModal(studentName: string, feedbackDate: string, feedbackMessage: string): void {
-    this.modalStudentName = studentName;
-    this.modalFeedbackDate = feedbackDate;
-    this.modalFeedbackMessage = feedbackMessage;
-    this.isModalOpen = true;
+  openModal(feedbackType: string, feedbackComments: string,userId:string): void {
+    console.log("Modal opened with feedback type:", feedbackType, "and comments:", feedbackComments);
+    this.modalFeedbackType = feedbackType;
+    this.modalFeedbackComments = feedbackComments;
+    this.modalFeedbackUserId=userId
+    this.isModalOpen = true; // Open the modal
   }
 
   // Closes the modal
   closeModal(): void {
-    this.isModalOpen = false;
+    this.isModalOpen = false; // Close the modal
   }
 }
-
-
