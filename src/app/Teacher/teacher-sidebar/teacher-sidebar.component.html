@@ -19,7 +19,7 @@
     
     <!-- Timetable Section -->
     <li>
-      <a href="#" [routerLink]="['/teacher/t-timetable']">
+      <a href="#" [routerLink]="['/teacher']">
         <i class='bx bx-calendar'></i>
         <span class="links_name">Timetable</span>
       </a>
@@ -28,7 +28,7 @@
     
     <!-- Profile Section -->
     <li>
-      <a href="#" [routerLink]="['/teacher/t-profile', teacherid]">
+      <a href="#" [routerLink]="['/teacher/profile', teacherid]">
         <i class='bx bx-check-circle'></i>
         <span class="links_name">Profile</span>
       </a>
@@ -37,7 +37,7 @@
 
     <!-- Notifications Section -->
     <li>
-      <a href="#" [routerLink]="['/teacher/t-notification']">
+      <a href="#" [routerLink]="['/teacher/notification']">
         <i class='bx bx-bell'></i>
         <span class="links_name">Notifications</span>
       </a>
@@ -46,7 +46,7 @@
 
     <!-- Feedback Section -->
     <li>
-      <a href="#" [routerLink]="['/teacher/t-feedback']">
+      <a href="#" [routerLink]="['/teacher/feedback',userID]">
         <i class='bx bx-message-dots'></i>
         <span class="links_name">Feedback</span>
       </a>

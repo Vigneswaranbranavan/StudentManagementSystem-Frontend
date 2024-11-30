@@ -13,9 +13,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
   styleUrl: './view-class.component.css',
   providers: [ViewclassService]
 })
-export class ViewClassComponent implements OnInit{
+export class ViewClassComponent implements OnInit {
   Classes: any[] = [];
-  
+  selectedClass: any = '';
 
   constructor(private service: ViewclassService, private router: Router) { }
 
@@ -25,13 +25,13 @@ export class ViewClassComponent implements OnInit{
 
   loadData() {
     this.service.getClasses().subscribe(data => {
-          this.Classes = data;
-        });
+      this.Classes = data;
+    });
   }
 
 
   newClassName: string = ''; // Variable to bind the input field
-  
+
 
   AddClass() {
     if (this.newClassName) {
@@ -50,26 +50,22 @@ export class ViewClassComponent implements OnInit{
     }
   }
 
-  
+
 
   DeleteClass(classId: any) {
     if (confirm('Are you sure you want to delete this class?')) {
-        this.service.deleteClass(classId).subscribe({
-            next: () => {
-                alert('Class deleted successfully!');
-                this.loadData(); // Reload updated data
-            },
-            error: (error) => {
-                console.error('Error deleting class:', error);
-                alert('Failed to delete the class. Please try again.');
-            }
-        });
+      this.service.deleteClass(classId).subscribe({
+        next: () => {
+          alert('Class deleted successfully!');
+          this.loadData(); // Reload updated data
+        },
+        error: (error) => {
+          console.error('Error deleting class:', error);
+          alert('Failed to delete the class. Please try again.');
+        }
+      });
     }
-}
+  }
 
 
-
- 
-
-  
 }

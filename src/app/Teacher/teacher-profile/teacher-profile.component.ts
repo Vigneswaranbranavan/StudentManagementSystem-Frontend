@@ -12,18 +12,16 @@ import { NgIf } from '@angular/common';
   selector: 'app-teacher-profile',
   templateUrl: './teacher-profile.component.html',
   styleUrls: ['./teacher-profile.component.css'],
-  imports: [RouterModule, HttpClientModule, ReactiveFormsModule,NgIf],
+  imports: [RouterModule, HttpClientModule, ReactiveFormsModule],
   providers:[TeacherProfileService]
 
 })
 export class TeacherProfileComponent implements OnInit {
 
-
   teacherid: string;
   
 
   Teacher: teacher = {
-    email: '',
     id: '',
     name: '',
     phone: '',
@@ -52,6 +50,8 @@ export class TeacherProfileComponent implements OnInit {
       (error) => {
         console.error('Error fetching Teacher:', error);
         // Optionally, show user-friendly error messages (e.g., using toastr)
+        console.log(this.Teacher);
+        
       }
     );
   }

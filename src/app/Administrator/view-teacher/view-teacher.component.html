@@ -1,7 +1,7 @@
 <div class="container mt-5">
     <div class="d-flex justify-content-between align-items-center mb-3">
       <h2>Teacher List</h2>
-      <button type="button" class="btn btn-primary" [routerLink]="['/addTeacher']">+ Add Teacher</button>
+      <button type="button" class="btn btn-primary" [routerLink]="['/admin/addTeacher']">+ Add Teacher</button>
     </div>
   
     <div class="table-responsive">
@@ -18,7 +18,7 @@
         <tbody>
           <tr *ngFor="let teacher of teachers">
             <td>{{ teacher.name }}</td>
-            <td>{{ teacher.email }}</td>
+            <td>{{ teacher.userRes.email }}</td>
             <td>{{ teacher.phone }}</td>
             <td>{{ teacher.subject.subjectName }}</td>
             <td>

@@ -1,42 +1,39 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { feedback } from '../Models/model';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TeacherFeedbackService {
-
-  url = "http://localhost:5101/api/Class/Class";
+  private url = "https://localhost:7058/api/Feedback/Feedback"; // Your API URL
 
   constructor(private http: HttpClient) { }
 
-  getFeedbacks() {
-    return this.http.get<feedback>(this.url);
+  // Get all feedbacks
+  getFeedbacks(): Observable<feedback[]> {
+    return this.http.get<feedback[]>(this.url);
   }
 
-  getFeedback(feedbackid: string) {
-    return this.http.get<feedback>(`${this.url}/${feedbackid}`);
+  // Get specific feedback by user ID
+  getFeedback(userId: string): Observable<feedback[]> {
+    return this.http.get<feedback[]>(`${this.url}?UserId=${userId}`);
   }
-  addFeedback(feedback : feedback){
-    return this.http.post(this.url, feedback);
+
+  // Add new feedback
+  addFeedback(feedback: feedback): Observable<feedback> {
+    return this.http.post<feedback>(this.url, feedback);  // Assuming the backend will generate the 'id'
+  }
+
+  // Update feedback (assuming you update feedback with the 'id')
+  updateFeedback(feedback: feedback): Observable<feedback> {
+    return this.http.put<feedback>(this.url, feedback);  // Assuming the API expects 'id' here as well
+  }
+
+  deleteFeedback(feedbackId: string): Observable<void> {
+    return this.http.delete<void>(`${this.url}?UserId=${feedbackId}`);
   }
   
-  deletefeedbck(feedbackid: feedback) {
-    return this.http.delete(this.url + '?id=' + feedbackid);
-
-  }
-  // deleteClass(classId: any) {
-  //   return this.http.delete(this.url + '?id=' + classId);
-// }
-
-
+  
 }
-
-  // editClass( classid: string, class: any)
-  // {
-  //   return this.http.put(this.url + "?id=" + classid, class);
-
-  // }
-
-  

@@ -8,8 +8,7 @@ export interface staff {
 
 // teacher.ts (Model)
 export interface teacher {
-  email: string;
-  id: string; // Use string for UUID
+  id: string;
   name: string;
   phone: string;
   subjectID: string;
@@ -20,14 +19,14 @@ export interface student {
   id: string;
   name: string;
   phone: string;
-  enrollmentDate: string; // You can later format it if you need a more readable format
+  enrollmentDate: string;
   classID: string;
 }
 
 
 
 export interface feedback {
-  id:string;
+  id: string; 
   userID:string;
   feedbackType:string;
   comments:string; 
