@@ -3,11 +3,13 @@ import { FormsModule } from '@angular/forms';
 import { ViewclassService } from '../../Service/Class/viewclass.service';
 import { StudentService } from '../../Service/Student/student.service';
 import { CommonModule } from '@angular/common';
+import { StudentAttendanceService } from '../../Service/Attendance/student-attendance.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-mark-attendance',
   standalone: true,
-  imports: [FormsModule,CommonModule],
+  imports: [FormsModule, CommonModule],
   templateUrl: './mark-attendance.component.html',
   styleUrl: './mark-attendance.component.css'
 })
@@ -21,7 +23,7 @@ export class MarkAttendanceComponent implements OnInit {
   ];
   selectedClass: any = '';
 
-  constructor(private classService: ViewclassService, private studentService: StudentService) { }
+  constructor(private classService: ViewclassService, private studentService: StudentService, private studentAttendanceService: StudentAttendanceService, private router: Router) { }
 
   ngOnInit(): void {
     this.loadClasses();
@@ -69,7 +71,26 @@ export class MarkAttendanceComponent implements OnInit {
     }
   }
 
+
   getTotalCount(status: string): number {
     return this.students.filter(student => student.status === status).length;
+  }
+
+  submitAttendance(): void {
+    // Assuming you send the data to the backend here
+    const attendanceData = this.students.map(student => ({
+      studentId: student.id,
+      status: student.status
+    }));
+
+    // Assuming there's an API call here
+    this.studentService.submitAttendance(attendanceData).subscribe({
+      next: (response) => {
+        console.log('Attendance submitted successfully', response);
+      },
+      error: (err) => {
+        console.error('Error submitting attendance:', err);
+      }
+    });
   }
 }

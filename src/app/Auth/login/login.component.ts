@@ -53,7 +53,7 @@ export class LoginComponent {
 
         switch (response.role) {
           case 'student':
-            this.router.navigate(['/student/student']);
+            this.router.navigate(['/student']);
             break;
           case 'teacher':
             this.router.navigate(['/teacher']);
