@@ -6,7 +6,9 @@ import { ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-teacher-timetable',
   standalone: true,
+
   imports: [NgIf,NgFor,CommonModule],
+
   templateUrl: './teacher-timetable.component.html',
   styleUrl: './teacher-timetable.component.css'
 })

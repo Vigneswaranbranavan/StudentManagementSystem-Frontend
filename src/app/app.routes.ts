@@ -42,7 +42,7 @@ export const routes: Routes = [
         children: [
             { path: 'home', component: StudentHomeComponent },
             { path: 'attendance', component: StudentAttendanceComponent },
-            { path: 'feedback', component: StudentFeedbackComponent },
+            { path: 'feedback/:userID', component: StudentFeedbackComponent },
             { path: 'notification', component: StudentNotificationComponent },
             { path: 'timetable', component: StudentTimetableComponent },
             { path: 'edit-profile/:id', component: EditProfileComponent },
@@ -90,7 +90,7 @@ export const routes: Routes = [
         children: [
             { path: '', component: TeacherTimetableComponent },
             { path: 'notification', component: TeacherNotificationComponent },
-            { path: 'feedback', component: TeacherFeedbackComponent },
+            { path: 'feedback/:userID', component: TeacherFeedbackComponent },
             { path: 'profile/:id', component: TeacherProfileComponent },
             { path: 'home', component: EditProfileComponent },
         ],
