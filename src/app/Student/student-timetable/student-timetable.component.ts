@@ -5,17 +5,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { TimetableEntry, TimetableService } from '../../Service/Timetable/timetable.service';
 
-interface ProcessedTimetableEntry {
-  time: string;
-  subject: string;
-  location: string;
-}
-
-interface TimetableDay {
-  day: string;
-  classes: ProcessedTimetableEntry[];
-}
-
 @Component({
   selector: 'app-student-timetable',
   standalone: true,
@@ -25,32 +14,16 @@ interface TimetableDay {
   providers: [TimetableService]
 })
 export class StudentTimetableComponent implements OnInit {
-  timetable: TimetableDay[] = [];
+  timetable: any[] = [];
+  classId: string = '';
 
-  constructor(private route: ActivatedRoute, private timetableService: TimetableService) {}
+  constructor(private timetableService: TimetableService, private route: ActivatedRoute) {}
 
-  ngOnInit(): void {
-    this.route.params.subscribe(params => {
-      this.timetableService.getTimetableByClassGrade(params['grade']).subscribe((data: TimetableEntry[]) => {
-        this.processTimetableData(data);
-      });
+  ngOnInit() {
+    this.classId = this.route.snapshot.paramMap.get('classId')!;
+
+    this.timetableService.getTimetableByClassId(this.classId).subscribe(data => {
+      this.timetable = data;
     });
-  }
-
-  processTimetableData(data: TimetableEntry[]): void {
-    const groupedData = data.reduce((acc, curr) => {
-      const day = new Date(curr.date).toLocaleDateString('en-US', { weekday: 'long' });
-      if (!acc[day]) {
-        acc[day] = [];
-      }
-      acc[day].push({
-        time: `${curr.startTime} - ${curr.endTime}`,
-        subject: curr.subject.name,
-        location: curr.room
-      });
-      return acc;
-    }, {} as { [key: string]: ProcessedTimetableEntry[] });
-
-    this.timetable = Object.entries(groupedData).map(([day, classes]) => ({ day, classes }));
   }
 }

@@ -45,7 +45,7 @@ export class ViewStudentsComponent implements OnInit{
 
   EditStudent(id: string)
   {
-    this.router.navigate(["/studentupdate/" + id]);
+    this.router.navigate(["/staff/studentupdate/" + id]);
   }
 
   DeleteStudent(deleteId: any) {

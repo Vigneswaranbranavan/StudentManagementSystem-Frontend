@@ -33,13 +33,15 @@ export class ViewStaffComponent {
     });
   }
   
+
+
   
 
  
 
   EditStaff(id: string)
   {
-    this.router.navigate(['staffupdate' , id]);
+    this.router.navigate(['admin/staffupdate' , id]);
   }
 
   DeleteStaff(deleteId: any) {

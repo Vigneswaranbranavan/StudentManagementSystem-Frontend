@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { StaffRegisterService } from '../../Service/Register/staff-register.service';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -13,18 +13,15 @@ import { HttpClientModule } from '@angular/common/http';
   styleUrl: './staff-add-update.component.css',
   providers: [StaffRegisterService]
 })
-export class StaffAddUpdateComponent {
+export class StaffAddUpdateComponent implements OnInit{
   StaffForm: FormGroup;
   isEditMode: boolean = false;
 
   staffs: any[] = [];
-
-
-
   staffid: string;
 
 
-  constructor(private fb: FormBuilder, private service:StaffRegisterService , private router: Router, private route: ActivatedRoute) {
+  constructor(private fb: FormBuilder, private service: StaffRegisterService, private router: Router, private route: ActivatedRoute) {
 
 
     const sid = this.route.snapshot.paramMap.get("id");
@@ -32,73 +29,68 @@ export class StaffAddUpdateComponent {
     this.staffid = String(sid);
 
     if (sid) {
+      this.staffid = sid;
       this.isEditMode = true;
     }
     else {
       this.isEditMode = false;
     }
 
-
-
-
-
     if (this.isEditMode == true) {
       this.StaffForm = this.fb.group({
         id: [''],
         name: ['', [Validators.required]],
-        email: ['', [Validators.required, Validators.email]],
         phone: ['', [Validators.required, Validators.pattern('^[0-9]{10}$')]]
-        
+
       });
     } else {
       this.StaffForm = this.fb.group({
         name: ['', [Validators.required]],
-        email: ['', [Validators.required, Validators.email]],
-        phone: ['', [Validators.required, Validators.pattern('^[0-9]{10}$')]]
-       
+        phone: ['', [Validators.required, Validators.pattern('^[0-9]{10}$')]],
+        userReq: this.fb.group({
+          email: ['', [Validators.required, Validators.email]],
+          password: ['', [Validators.required, Validators.minLength(8)]]
+        })
+
       });
     }
-
-
-
-
   }
-
-
-
-
 
   ngOnInit(): void {
 
 
     if (this.isEditMode == true) {
+      console.log("ygjhgjg")
       this.service.getstaff(this.staffid).subscribe((data: any) => {
         this.StaffForm.patchValue(data);
 
-
-
       })
     }
-
-
-
   }
-
-
 
 
 
   onSubmit() {
     if (this.StaffForm.valid) {
       const staff = this.StaffForm.value; // Get form data
+      
+
+      const staffData = {
+        name: staff.name,
+        phone: staff.phone,
+        userReq: staff.userReq // userReq is the object with email and password
+      };
+
+      const staffUpdateData = {
+        name: staff.name,
+        phone: staff.phone
+      };
 
       if (this.isEditMode) {
-
-        this.staffid = staff.id
-        this.service.editstaff(this.staffid, staff).subscribe(data => {
+        this.service.editstaff(this.staffid, staffUpdateData).subscribe(data => {
           alert("Staff updated successfully!");
           this.StaffForm.reset();
-          this.router.navigate(["/ViewStaff"]); // Reset the form after successful update
+          this.router.navigate(["/admin/viewStaff"]); // Reset the form after successful update
         },
           (error) => {
             console.error("Error updating Staff:", error);
@@ -107,11 +99,11 @@ export class StaffAddUpdateComponent {
         );
       } else {
         // If adding, add a new student
-        this.service.Addstaff(staff).subscribe(
+        this.service.Addstaff(staffData).subscribe(
           (data) => {
             alert("Staff added successfully!");
             this.StaffForm.reset();
-            this.router.navigate(["/ViewStaff"]);  // Reset the form after successful addition
+            this.router.navigate(["/admin/viewStaff"]);  // Reset the form after successful addition
           },
           (error) => {
             console.error("Error adding Staff:", error);
@@ -128,6 +120,13 @@ export class StaffAddUpdateComponent {
 
   cancel() {
     this.StaffForm.reset()
-    this.router.navigate(['/ViewStaff'])
+    this.router.navigate(['/admin/viewStaff'])
   }
 }
+
+
+
+
+
+
+

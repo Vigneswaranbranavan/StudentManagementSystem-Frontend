@@ -39,7 +39,7 @@ export class ViewTeacherComponent {
 
   EditTeacher(id: string)
   {
-    this.router.navigate(['teacherupdate' , id]);
+    this.router.navigate(['/admin/teacherupdate' , id]);
   }
 
   DeleteTeacher(deleteId: any) {

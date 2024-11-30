@@ -33,6 +33,7 @@ export class TeacherAddUpdateComponent {
     this.teacherid = String(tid);
 
     if (tid) {
+      this.teacherid = tid;
       this.isEditMode = true;
     }
     else {
@@ -47,16 +48,19 @@ export class TeacherAddUpdateComponent {
       this.TeacherForm = this.fb.group({
         id: [''],
         name: ['', [Validators.required]],
-        email: ['', [Validators.required, Validators.email]],
         phone: ['', [Validators.required, Validators.pattern('^[0-9]{10}$')]],
         subjectID: ['', [Validators.required]] 
       });
     } else {
       this.TeacherForm = this.fb.group({
         name: ['', [Validators.required]],
-        email: ['', [Validators.required, Validators.email]],
         phone: ['', [Validators.required, Validators.pattern('^[0-9]{10}$')]],
-        subjectID: ['', [Validators.required]] 
+        subjectID: ['', [Validators.required]],
+        userReq: this.fb.group({
+          email: ['', [Validators.required, Validators.email]],
+          password: ['', [Validators.required, Validators.minLength(8)]]
+        })
+
       });
     }
 
@@ -95,13 +99,30 @@ export class TeacherAddUpdateComponent {
     if (this.TeacherForm.valid) {
       const teacher = this.TeacherForm.value; // Get form data
 
+      const teacherData = {
+        name: teacher.name,
+        phone: teacher.phone,
+        subjectID: teacher.subjectID,
+        userReq: teacher.userReq // userReq is the object with email and password
+      };
+      
+      const teacherUpdateData = {
+        name: teacher.name,
+        phone: teacher.phone,
+        subjectID: teacher.subjectID
+      };
+
+
+
+
+
       if (this.isEditMode) {
 
-        this.teacherid = teacher.id
-        this.service.editTeacher(this.teacherid, teacher).subscribe(data => {
+        
+        this.service.editTeacher(this.teacherid, teacherUpdateData).subscribe(data => {
           alert("Teacher updated successfully!");
           this.TeacherForm.reset();
-          this.router.navigate(["/viewTeacher"]); // Reset the form after successful update
+          this.router.navigate(["/admin/viewTeacher"]); // Reset the form after successful update
         },
           (error) => {
             console.error("Error updating teacher:", error);
@@ -110,11 +131,11 @@ export class TeacherAddUpdateComponent {
         );
       } else {
         // If adding, add a new student
-        this.service.AddTeacher(teacher).subscribe(
+        this.service.AddTeacher(teacherData).subscribe(
           (data) => {
             alert("teacher added successfully!");
             this.TeacherForm.reset();
-            this.router.navigate(["/viewTeacher"]);  // Reset the form after successful addition
+            this.router.navigate(["/admin/viewTeacher"]);  // Reset the form after successful addition
           },
           (error) => {
             console.error("Error adding teacher:", error);
@@ -131,7 +152,7 @@ export class TeacherAddUpdateComponent {
 
   cancel() {
     this.TeacherForm.reset()
-    this.router.navigate(['/viewTeacher'])
+    this.router.navigate(['/admin/viewTeacher'])
   }
 
 }
