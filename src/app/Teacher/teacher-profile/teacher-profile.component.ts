@@ -22,7 +22,6 @@ export class TeacherProfileComponent implements OnInit {
   
 
   Teacher: teacher = {
-    email: '',
     id: '',
     name: '',
     phone: '',

@@ -10,13 +10,13 @@ import { of } from 'rxjs';
 })
 export class TeacherProfileService {
 
-  private url = 'http://localhost:5101/api/Teacher/Teacher'; // Replace with your actual API URL
+   url = 'https://localhost:7058/api/Teacher/Teacher'; // Replace with your actual API URL
 
   constructor(private http: HttpClient) {}
 
   // Fetch teacher profile by ID
   getTeacher(teacherid: string) {
-    return this.http.get<teacher>(`${this.url}?id=${teacherid}`);
+    return this.http.get<teacher>('https://localhost:7058/api/Teacher/TeacherById?id=' + teacherid);
   }
   // Update teacher profile
   updateTeacher(teacher: teacher, teacherid: number) {

@@ -8,7 +8,6 @@ export interface staff {
 
 // teacher.ts (Model)
 export interface teacher {
-  email: string;
   id: string;
   name: string;
   phone: string;
