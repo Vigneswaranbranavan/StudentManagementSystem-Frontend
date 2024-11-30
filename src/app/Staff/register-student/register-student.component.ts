@@ -168,45 +168,6 @@ export class RegisterStudentComponent implements OnInit {
 
 
 
-// onSubmit() {
-//   if (this.studentForm.valid) {
-//     const student = this.studentForm.value;
-//     if (this.isEditMode) {
-//       // If in edit mode, update the student
-//       this.service.editStudent(this.studentid, student).subscribe(
-//         (data) => {
-//           alert('Student updated successfully!');
-//           this.router.navigate(['/viewStudents']);
-//         },
-//         (error) => {
-//           console.error('Error updating student:', error);
-//           alert('Failed to update student. Please try again.');
-//         }
-//       );
-//     } else {
-//       // If adding a new student
-//       this.service.AddStudent(student).subscribe(
-//         (data) => {
-//           alert('Student added successfully!');
-//           this.studentForm.reset();
-//           this.router.navigate(['/viewStudents']);  // Navigate after successful add
-//         },
-//         (error) => {
-//           console.error('Error adding student:', error);
-//           alert('Failed to add student. Please try again.');
-//         }
-//       );
-//     }
-//   } else {
-//     alert('Please fill all required fields correctly.');
-//   }
-// }
-
-
-
-
-
-
 
 
 
