@@ -9,7 +9,7 @@ export class StudentRegisterService {
 
   constructor(private http:HttpClient) { }
 
-  url = 'http://localhost:5101/api/Student';
+  url = 'https://localhost:7058/api/Student';
 
   getStudents(): Observable<any> {
     return this.http.get(this.url);
@@ -19,9 +19,16 @@ export class StudentRegisterService {
     return this.http.get<any>(this.url + "/" + studentId);
   }
 
+
+
+  
   AddStudent(student: any): Observable<any> {
     return this.http.post(this.url, student);
   }
+
+
+
+
 
   deleteStudent(deleteId : any)
   {
@@ -34,3 +41,17 @@ export class StudentRegisterService {
 
   }
 }
+
+// export interface Student{
+//   id: string;
+//   name: string;
+//   phone: string;
+//   userReq: UserReq[]
+// }
+
+// export interface UserReq{
+//   id: string;
+//   email: string;
+//   password: string;
+ 
+// }

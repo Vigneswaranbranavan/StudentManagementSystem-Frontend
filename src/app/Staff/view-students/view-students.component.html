@@ -1,7 +1,7 @@
 <div class="container mt-5">
   <div class="d-flex justify-content-between align-items-center mb-3">
     <h2>Student List</h2>
-    <button type="button" class="btn btn-primary" [routerLink]="['/student-register']">+ Add Student</button>
+    <button type="button" class="btn btn-primary" [routerLink]="['/staff/student-register']">+ Add Student</button>
   </div>
 
   <div class="table-responsive">
@@ -19,7 +19,7 @@
       <tbody>
         <tr *ngFor="let student of students">
           <td>{{ student.name }}</td>
-          <td>{{ student.email }}</td>
+          <td>{{ student.userRes.email }}</td>
           <td>{{ student.phone }}</td>
           <td>{{ student.enrollmentDate | date: 'yyyy-MM-dd' }}</td>
           <td>{{ student.class.className }}</td>

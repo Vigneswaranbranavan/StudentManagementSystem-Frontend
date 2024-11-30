@@ -24,6 +24,8 @@ export class RegisterStudentComponent implements OnInit {
 
   studentid: string;
 
+  
+
 
   constructor(private fb: FormBuilder, private service: StudentRegisterService, private router: Router, private classService: ViewclassService, private route: ActivatedRoute) {
 
@@ -46,17 +48,19 @@ export class RegisterStudentComponent implements OnInit {
       this.studentForm = this.fb.group({
         id: [''],
         name: ['', [Validators.required]],
-        email: ['', [Validators.required, Validators.email]],
         phone: ['', [Validators.required, Validators.pattern('^[0-9]{10}$')]],
-        classID: ['', [Validators.required]] // Class field for students
-      });
+        classID: ['', [Validators.required]],
+       
+    })
     } else {
       this.studentForm = this.fb.group({
         name: ['', [Validators.required]],
-        email: ['', [Validators.required, Validators.email]],
-        password: ['', [Validators.required, Validators.minLength(6)]],
         phone: ['', [Validators.required, Validators.pattern('^[0-9]{10}$')]],
-        classID: ['', [Validators.required]] // Class field for students
+        classID: ['', [Validators.required]],
+        userReq: this.fb.group({
+          email: ['', [Validators.required, Validators.email]],
+          password: ['', [Validators.required, Validators.minLength(8)]]
+        })
       });
     }
 
@@ -91,23 +95,27 @@ export class RegisterStudentComponent implements OnInit {
     if (this.studentForm.valid) {
       const student = this.studentForm.value; 
       
-      let obj : any = {
-        name : student.name,
-        email : student.email,
-        password : student.password,
-        phone : student.phone,
-        classID : student.classID,
-       }
+      const studentData = {
+        name: student.name,
+        phone: student.phone,
+        classID: student.classID,
+        userReq: student.userReq // userReq is the object with email and password
+      };
       
+      const studentUpdateData = {
+        name: student.name,
+        phone: student.phone,
+        classID: student.classID,
+      };
       
 
       if (this.isEditMode) {
 
         this.studentid = student.id
-        this.service.editStudent(this.studentid, student).subscribe(data => {
+        this.service.editStudent(this.studentid, studentUpdateData).subscribe(data => {
           alert("Student updated successfully!");
           this.studentForm.reset();
-          this.router.navigate(["/viewStudents"]); // Reset the form after successful update
+          this.router.navigate(["/staff/viewStudents"]); // Reset the form after successful update
         },
           (error) => {
             console.error("Error updating student:", error);
@@ -116,11 +124,11 @@ export class RegisterStudentComponent implements OnInit {
         );
       } else {
         // If adding, add a new student
-        this.service.AddStudent(obj).subscribe(
+        this.service.AddStudent(studentData).subscribe(
           (data) => {
             alert("Student added successfully!");
             this.studentForm.reset();
-            this.router.navigate(["/viewStudents"]);  // Reset the form after successful addition
+            this.router.navigate(["/staff/viewStudents"]);  // Reset the form after successful addition
           },
           (error) => {
             console.error("Error adding student:", error);
@@ -135,6 +143,12 @@ export class RegisterStudentComponent implements OnInit {
 
 
 
+
+ 
+  
+
+
+
   cancel() {
     this.studentForm.reset()
     this.router.navigate(['/viewStudents'])
@@ -143,82 +157,32 @@ export class RegisterStudentComponent implements OnInit {
 
 
 
+  
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  //   this.studentForm = this.fb.group({
-  //     name: ['', [Validators.required]],
-  //     email: ['', [Validators.required, Validators.email]],
-  //     phone: ['', [Validators.required, Validators.pattern('^[0-9]{10}$')]],
-  //     classID: ['', [Validators.required]] // Class field for students
-  //   });
-  // }
-
-
-  //  ngOnInit() {
-  //     this.classService.getClasses().subscribe(data => {
-  //       this.classes = data
-  //     })
-  //   }
-
-
-  //   onSubmit() {
-  //     if (this.studentForm.valid) {
-  //       const student = this.studentForm.value;
-
-
-  //       // let obj : any = {
-  //       //   name : student.name,
-  //       //   email : student.email,
-  //       //   phone : student.phone,
-  //       //   classID : parseInt(student.classID),
-
-  //       //  }
-
-
-
-
-
-  //       this.service.AddStudent(student).subscribe(
-  //         () => {
-  //           alert('Student added successfully');
-  //           this.studentForm.reset();
-  //           this.router.navigate(["/viewStudents"]);
-  //         },
-  //         (error) => {
-  //           console.error('Error adding student:', error);
-  //           alert('Failed to add student. Please try again.');
-  //         }
-  //       );
-  //     } else {
-  //       alert('Please fill all required fields correctly.');
-  //     }
-  //   }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 

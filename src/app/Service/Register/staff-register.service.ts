@@ -8,14 +8,14 @@ import { Observable } from 'rxjs';
 export class StaffRegisterService {
   constructor(private http:HttpClient) { }
 
-  url = 'http://localhost:5101/api/Staff/Staff';
+  url = 'https://localhost:7058/api/Staff/Staff';
 
   getstaffs(): Observable<any> {
     return this.http.get(this.url);
   }
 
   getstaff(staffId: string) {
-    return this.http.get<any>("http://localhost:5101/api/Staff/StaffById?id=" + staffId);
+    return this.http.get<any>("https://localhost:7058/api/Staff/StaffById?id=" + staffId);
   }
 
   Addstaff(staff: any): Observable<any> {
@@ -29,7 +29,7 @@ export class StaffRegisterService {
 
 editstaff( staffId : string, staff: any)
 {
-  return this.http.put(this.url + '?id=' + staffId, staff)
+  return this.http.put(this.url + '?Id=' + staffId, staff)
 
 }
 }

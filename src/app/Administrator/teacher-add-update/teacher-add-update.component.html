@@ -14,13 +14,23 @@
                             Name is required.
                         </div>
                     </div>
-                    <div class="form-group">
-                        <label for="email">Email</label>
-                        <input id="email" formControlName="email" type="email" class="form-control" placeholder="Enter your email address">
-                        <div *ngIf="TeacherForm.get('email')?.invalid && TeacherForm.get('email')?.touched" class="error-message">
+                    <div formGroupName="userReq" *ngIf="!isEditMode">
+                        <div class="form-group">
+                          <label for="email">Email</label>
+                          <input id="email" formControlName="email" type="email" class="form-control" placeholder="Enter your email address">
+                          <div *ngIf="TeacherForm.get('userReq.email')?.invalid && TeacherForm.get('userReq.email')?.touched" class="error-message">
                             A valid email is required.
+                          </div>
                         </div>
-                    </div>
+                    
+                        <div class="form-group" *ngIf="!isEditMode">
+                          <label for="password">Password</label>
+                          <input id="password" formControlName="password" type="password" class="form-control" placeholder="Enter your password">
+                          <div *ngIf="TeacherForm.get('userReq.password')?.invalid && TeacherForm.get('userReq.password')?.touched" class="error-message">
+                            Password is required and must meet the required criteria.
+                          </div>
+                        </div>
+                      </div>
                     <div class="form-group">
                         <label for="phone">Phone</label>
                         <input id="phone" formControlName="phone" type="text" class="form-control" placeholder="Enter your phone number">
