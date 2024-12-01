@@ -3,11 +3,14 @@ import { FormsModule } from '@angular/forms';
 import { ViewclassService } from '../../Service/Class/viewclass.service';
 import { StudentService } from '../../Service/Student/student.service';
 import { CommonModule } from '@angular/common';
+import { StudentAttendanceService } from '../../Service/Attendance/student-attendance.service';
+import { Attendance } from '../../Service/Models/model';
+
 
 @Component({
   selector: 'app-mark-attendance',
   standalone: true,
-  imports: [FormsModule,CommonModule],
+  imports: [FormsModule, CommonModule],
   templateUrl: './mark-attendance.component.html',
   styleUrl: './mark-attendance.component.css'
 })
@@ -21,13 +24,16 @@ export class MarkAttendanceComponent implements OnInit {
   ];
   selectedClass: any = '';
 
-  constructor(private classService: ViewclassService, private studentService: StudentService) { }
+  constructor(
+    private classService: ViewclassService,
+    private studentService: StudentService,
+    private attendanceService: StudentAttendanceService
+  ) { }
 
   ngOnInit(): void {
     this.loadClasses();
   }
 
-  // Load classes from the backend
   loadClasses(): void {
     this.classService.getClasses().subscribe({
       next: (response) => {
@@ -39,12 +45,11 @@ export class MarkAttendanceComponent implements OnInit {
     });
   }
 
-  // Load students based on the selected class
   loadStudents(classId: string): void {
     if (!classId) return;
     this.studentService.getStudentsByClass(classId).subscribe({
       next: (response) => {
-        this.students = response.map(student => ({ ...student, status: '' })); // Add status field
+        this.students = response.map(student => ({ ...student, status: '' }));
       },
       error: (err) => {
         console.error('Error fetching students:', err);
@@ -52,7 +57,6 @@ export class MarkAttendanceComponent implements OnInit {
     });
   }
 
-  // Handle attendance updates
   updateAttendanceStatus(studentId: number, status: string): void {
     const student = this.students.find(s => s.id === studentId);
     if (student) {
@@ -69,7 +73,35 @@ export class MarkAttendanceComponent implements OnInit {
     }
   }
 
+
   getTotalCount(status: string): number {
     return this.students.filter(student => student.status === status).length;
+  }
+
+  submitAttendance(): void {
+    const attendanceStatusMap: { [key: string]: number } = {
+      'Present': 1,
+      'Absent': 2,
+      'Late Coming': 3
+    };
+
+    const attendanceData:Attendance[] = this.students.map(student => ({
+      studentID: student.id.toString(),
+      date: new Date().toISOString(),
+      status: attendanceStatusMap[student.status]
+    }));
+
+    console.log('Attendance Data:', attendanceData);
+
+    this.attendanceService.submitAttendance(attendanceData).subscribe({
+      next: (response) => {
+        console.log('Attendance submitted successfully:', response);
+        alert('Attendance submitted successfully!');
+      },
+      error: (err) => {
+        console.error('Error submitting attendance:', err);
+        alert('Failed to submit attendance!!. Please try again.');
+      }
+    });
   }
 }

@@ -31,3 +31,10 @@ export interface feedback {
   feedbackType:string;
   comments:string; 
 }
+
+export interface Attendance {
+  studentID: string; 
+  date: string;
+  status: number;
+}
+

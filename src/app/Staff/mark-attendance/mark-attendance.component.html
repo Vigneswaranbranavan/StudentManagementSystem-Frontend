@@ -1,16 +1,14 @@
 <div class="container">
   <div class="sidebar">
     <h3>Mark Attendance</h3>
-    <!-- Sidebar content (optional) -->
     <ul id="timetable-list">
-      <!-- You can add a list of classes here if needed -->
+      
     </ul>
   </div>
 
   <div class="main-content">
     <h2 class="text-center mb-4">Students Attendance</h2>
     
-    <!-- Class and Date Picker -->
     <div class="row mb-3">
       <div class="col-6">
         <input type="date" id="attendance-date" class="form-control date-picker"  />
@@ -23,7 +21,6 @@
       </div>
     </div>
 
-    <!-- Students Table -->
     <div class="table-responsive">
       <table class="table table-bordered" id="attendance-table">
         <thead>
@@ -51,10 +48,13 @@
             </td>
           </tr>
         </tbody>
+        
       </table>
+      <div class="text-end">
+        <button type="submit" class="btn custom-btn" (click)="submitAttendance()" >Submit</button>
+      </div>
     </div>
 
-    <!-- Attendance Status Summary -->
     <div id="attendance-status" class="mt-4">
       <h3 class="text-center mb-4">Attendance Status Summary</h3>
       <div class="status-container d-flex justify-content-around">
