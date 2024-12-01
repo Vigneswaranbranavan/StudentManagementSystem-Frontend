@@ -1,59 +1,74 @@
-<div class="container py-4">
+<div class="container">
     <div class="side-component">
         <h3>Update Timetable</h3>
     </div>
 
     <div class="main-content">
         <h2 class="text-center mb-3">Add Timetable</h2>
-        <form (ngSubmit)="onSubmit(form)" #form="ngForm">
+        <form [formGroup]="timeTableForm" (ngSubmit)="onSubmit()">
             <div class="form-group">
                 <label for="className">Class Name:</label>
-                <select class="form-control" name="className" required>
-                    <option value="" disabled selected>Select Class:</option>
-                    <option value="10">Grade 10</option>
-                    <option value="11">Grade 11</option>
-                    <option value="12">Grade 12</option>
-                    <option value="13">Grade 13</option>
+                <select class="form-control" id="className" name="className" formControlName="classID" required>
+                    <option value="" disabled selected>Select Class</option>
+                    <option *ngFor="let class of classes" [value]="class.id">
+                        {{ class.className }}
+                    </option>
                 </select>
+                <div *ngIf="timeTableForm.get('classID')?.invalid && timeTableForm.get('classID')?.touched" class="error-message">
+                    Class is required.
+                </div>
             </div>
 
-            <div class="form-group">
+
+             <!-- <div class="form-group">
                 <label for="subjectName">Subject Name:</label>
                 <select name="subjectName" id="subjectName" class="form-control" required>
                     <option value="">Select a Subject</option>
-                    <option value="Maths">Maths</option>
-                    <option value="Science">Science</option>
-                    <option value="English">English</option>
-                    <option value="History">History</option>
-                    <option value="Geography">Geography</option>
+                    <option value="sub-01" *ngFor="let subject of subjects" value="{{subject.id}}">{{subject.subjectName}}</option>
                 </select>
-            </div>
+            </div> -->
 
+            
             <div class="form-group">
                 <label for="teacherName">Teacher Name:</label>
-                <select name="teacherName" id="teacherName" class="form-control" required>
+                <select id="teacherName" name="teacherName" formControlName="teacherID" class="form-control" required>
+                    <option value="" disabled selected>Select Teacher</option>
                     <option *ngFor="let teacher of teachers" [value]="teacher.id">
                         {{ teacher.name }}
                     </option>
                 </select>
+                <div *ngIf="timeTableForm.get('teacherID')?.invalid && timeTableForm.get('teacherID')?.touched" class="error-message">
+                    Teacher is required.
+                </div>
             </div>
 
             <div class="form-group">
                 <label for="date">Date:</label>
-                <input type="date" class="form-control" name="date" required>
+                <input type="date" id="date" class="form-control" name="date" formControlName="date" required>
+                <div *ngIf="timeTableForm.get('date')?.invalid && timeTableForm.get('date')?.touched" class="error-message">
+                    A valid date is required.
+                </div>
             </div>
 
             <div class="form-group">
                 <label for="startTime">Start Time:</label>
-                <input type="time" class="form-control" name="startTime" required>
+                <input type="time" id="startTime" class="form-control" name="startTime" formControlName="startTime" required>
+                <div *ngIf="timeTableForm.get('startTime')?.invalid && timeTableForm.get('startTime')?.touched" class="error-message">
+                    A valid start time is required.
+                </div>
             </div>
 
             <div class="form-group">
                 <label for="endTime">End Time:</label>
-                <input type="time" class="form-control" name="endTime" required>
+                <input type="time" id="endTime" class="form-control" name="endTime" formControlName="endTime" required>
+                <div *ngIf="timeTableForm.get('endTime')?.invalid && timeTableForm.get('endTime')?.touched" class="error-message">
+                    A valid end time is required.
+                </div>
             </div>
 
             <button type="submit" class="btn btn-secondary btn-block mt-4">Save Timetable</button>
         </form>
     </div>
 </div>
+
+
