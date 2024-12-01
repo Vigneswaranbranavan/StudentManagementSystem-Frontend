@@ -43,11 +43,11 @@ export const routes: Routes = [
         path: 'student', component:StudentSidebarComponent,
         children: [
             { path: 'home', component: StudentHomeComponent },
-            { path: 'attendance', component: StudentAttendanceComponent },
+            { path: 'attendance/:studentid', component: StudentAttendanceComponent },
             { path: 'feedback', component: StudentFeedbackComponent },
             { path: 'notification', component: StudentNotificationComponent },
             { path: 'timetable', component: StudentTimetableComponent },
-            { path: 'edit-profile/:id', component: EditProfileComponent },
+            { path: 'edit-profile', component: EditProfileComponent },
 
         ],
     },

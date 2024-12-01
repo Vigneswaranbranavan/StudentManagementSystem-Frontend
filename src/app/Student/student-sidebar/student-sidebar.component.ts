@@ -19,6 +19,7 @@ import { student } from '../../Service/Models/model';
 })
 export class StudentSidebarComponent  {
   isOpen = true;
+studentid: any|string;
 
 
   toggleSidebar() {
