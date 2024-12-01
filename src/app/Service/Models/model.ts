@@ -35,6 +35,6 @@ export interface feedback {
 export interface Attendance {
   studentID: string; 
   date: string;
-  status: string;
+  status: number;
 }
 

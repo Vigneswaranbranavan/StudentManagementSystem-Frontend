@@ -90,6 +90,8 @@ export class MarkAttendanceComponent implements OnInit {
       status: attendanceStatusMap[student.status]
     }));
 
+    console.log('Attendance Data:', attendanceData);
+
     this.attendanceService.submitAttendance(attendanceData).subscribe({
       next: (response) => {
         console.log('Attendance submitted successfully:', response);
@@ -97,7 +99,7 @@ export class MarkAttendanceComponent implements OnInit {
       },
       error: (err) => {
         console.error('Error submitting attendance:', err);
-        alert('Failed to submit attendance. Please try again.');
+        alert('Failed to submit attendance!!. Please try again.');
       }
     });
   }
