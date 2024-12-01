@@ -12,17 +12,15 @@ export class StudentAttendanceService {
 
   constructor(private http: HttpClient) { }
 
-  submitAttendance(attendanceData: { studentID: string; date: string; status: number }[]): Observable<Attendance> {
-    return this.http.post<Attendance>(`${this.baseUrl}/submit`, attendanceData, {
-      headers: { 'Content-Type': 'application/json' }
-    });
+  submitAttendance(attendanceData:Attendance[] ) {
+    return this.http.post(`${this.baseUrl}`, attendanceData);
   }
   
-  // getAttendanceByStudent(studentId: number): Observable<Attendance[]> {
-  //   return this.http.get<Attendance[]>(`${this.baseUrl}/student/${studentId}`);
-  // }
+  getAttendanceSummary(studentId: string): Observable<{ presentDays: number; absentDays: number; lateDays: number }> {
+    return this.http.get<{ presentDays: number; absentDays: number; lateDays: number }>(`${this.baseUrl}/${studentId}`);
+  }
 
-  // getAttendanceByDate(studentId: number, date: string): Observable<Attendance[]> {
-  //   return this.http.get<Attendance[]>(`${this.baseUrl}/student/${studentId}/attendance`, { params: { date } });
-  // }
+  getAttendanceDetails(studentId: string, date: string): Observable<{ time: string; subject: string; status: string }[]> {
+    return this.http.get<{ time: string; subject: string; status: string }[]>(`${this.baseUrl}/${studentId}${date}`);
+  }
 }

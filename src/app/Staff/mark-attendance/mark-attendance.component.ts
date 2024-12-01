@@ -4,6 +4,7 @@ import { ViewclassService } from '../../Service/Class/viewclass.service';
 import { StudentService } from '../../Service/Student/student.service';
 import { CommonModule } from '@angular/common';
 import { StudentAttendanceService } from '../../Service/Attendance/student-attendance.service';
+import { Attendance } from '../../Service/Models/model';
 
 
 @Component({
@@ -84,7 +85,7 @@ export class MarkAttendanceComponent implements OnInit {
       'Late Coming': 3
     };
 
-    const attendanceData = this.students.map(student => ({
+    const attendanceData:Attendance[] = this.students.map(student => ({
       studentID: student.id.toString(),
       date: new Date().toISOString(),
       status: attendanceStatusMap[student.status]
