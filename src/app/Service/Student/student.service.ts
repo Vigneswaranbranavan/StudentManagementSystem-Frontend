@@ -11,8 +11,11 @@ export class StudentService {
 
   constructor(private http: HttpClient) { }
 
-  // Fetch students by class ID
   getStudentsByClass(classId: string): Observable<any[]> {
     return this.http.get<any[]>(`${this.baseUrl}/class/${classId}`);
   }
+  getStudentById(studentId: number): Observable<any> {
+    return this.http.get<any>(`your-api-endpoint/students/${studentId}`);
+  }
+
 }

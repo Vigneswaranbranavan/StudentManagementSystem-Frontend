@@ -179,4 +179,19 @@
     background: linear-gradient(to right, #ff8c00, #ffa500, #ffb84d, #ffd699); 
   } */
 
+  .custom-btn {
+    background-color: #333147; /* Orange background */
+    color: white;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  .custom-btn:hover {
+    background-color: #706666; /* Darker orange on hover */
+    color: #161419;
+    border: #161419;
+  }
   

@@ -1,15 +1,17 @@
-/* Custom styles for the timetable form page */
+/* General styles */
 body {
     background-color: #11101d;
     color: #f4f4f4;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
 }
 
 /* Main Container */
 .container {
     display: flex;
     justify-content: space-between;
-    padding-top: 20px;
-    padding-bottom: 20px;
+    padding: 35px 20px;
 }
 
 /* Side Component */
@@ -27,24 +29,6 @@ body {
     font-size: 1.5em;
 }
 
-.side-component ul {
-    list-style: none;
-    padding-left: 0;
-}
-
-.side-component ul li {
-    margin-bottom: 10px;
-}
-
-.side-component ul li span {
-    color: #fff;
-    font-size: 1.1em;
-}
-
-.side-component ul li small {
-    color: #d1d1d1;
-}
-
 /* Main Content */
 .main-content {
     flex: 1;
@@ -52,14 +36,13 @@ body {
     background-color: #fff;
     padding: 30px;
     border-radius: 8px;
-    box-shadow: rgb(0, 0, 0) 0px 0px 0px 2px inset;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 h2 {
     color: #11101d;
     font-size: 1.8rem;
     margin-bottom: 20px;
-    text-align: center;
 }
 
 /* Form Group */
@@ -67,9 +50,13 @@ h2 {
     margin-bottom: 20px;
 }
 
-/* Input and Select Styling */
+label {
+    font-size: 1rem;
+    margin-bottom: 5px;
+}
+
 input[type="text"], input[type="date"], input[type="time"], select {
-    padding: 12px;
+    padding: 10px;
     border-radius: 4px;
     font-size: 1rem;
     margin-top: 5px;
@@ -84,24 +71,23 @@ button[type="submit"] {
     font-size: 1.1rem;
     width: 100%;
     cursor: pointer;
-    background-color: #02113b; /* Blue color */
+    background-color: #02113b;
     color: white;
+    transition: background-color 0.3s ease;
 }
 
 button[type="submit"]:hover {
     background-color: #121f42;
 }
 
-/* Side Component item style */
-.side-component ul li span {
-    font-size: 1.1em;
+/* Error Message */
+.error-message {
+    color: red;
+    font-size: 0.9rem;
+    margin-top: 5px;
 }
 
-.side-component ul li small {
-    color: #d1d1d1;
-}
-
-/* Responsive design */
+/* Responsive Design */
 @media (max-width: 768px) {
     .container {
         flex-direction: column;
@@ -121,7 +107,7 @@ button[type="submit"]:hover {
     }
 
     button[type="submit"] {
-        padding: 10px 16px;
+        padding: 10px;
         font-size: 1rem;
     }
 }

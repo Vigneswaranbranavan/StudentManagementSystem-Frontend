@@ -30,6 +30,8 @@ import { ViewSubjectComponent } from './Staff/view-subject/view-subject.componen
 import { StaffSidebarComponent } from './Staff/staff-sidebar/staff-sidebar.component';
 import { AdminSidebarComponent } from './Administrator/admin-sidebar/admin-sidebar.component';
 import { TeacherSidebarComponent } from './Teacher/teacher-sidebar/teacher-sidebar.component';
+import { ViewtimetableComponent } from './Staff/viewtimetable/viewtimetable.component';
+
 
 export const routes: Routes = [
     { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -59,6 +61,7 @@ export const routes: Routes = [
             { path: 'studentupdate/:id', component: RegisterStudentComponent },
             { path: 'mark-attendance', component: MarkAttendanceComponent },
             { path: 'manage-timetable', component: ManageTimetableComponent },
+            { path: 'viewTimetable', component: ViewtimetableComponent },
             { path: 'viewStudents', component: ViewStudentsComponent },
             { path: 'viewClass', component: ViewClassComponent },
             { path: 'viewSubject', component: ViewSubjectComponent },

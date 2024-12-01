@@ -10,8 +10,15 @@ export class TimetableService {
 
   constructor(private http: HttpClient) { }
 
+
+
+    
   addTimetable(timetable: any): Observable<any> {
-    return this.http.post<any>(`${this.apiUrl}/add`, timetable);
+    return this.http.post(this.apiUrl, timetable);
+  }
+  
+  getTimetables(): Observable<any[]> {
+    return this.http.get<any[]>(this.apiUrl);
   }
 
   getTimetableByTeacherId(teacherId: string): Observable<any[]> {
@@ -19,7 +26,7 @@ export class TimetableService {
   }
 
   getTimetableByClassId(classId: string): Observable<any[]> {
-    return this.http.get<any[]>(`${this.apiUrl}/class/${classId}`);
+    return this.http.get<any[]>("https://localhost:7058/api/Timetable/ByClassId?id=" + classId);
   }
 }
 

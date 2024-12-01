@@ -24,7 +24,9 @@ body {
     display: flex;
     justify-content: space-around;
     padding: 20px;
-    background-color: #f9f9f9;
+    /* background-color: #51E2F5; */
+    /* background-color: #E6D9F9;  */
+    background-color: #D8F9ff; 
     border-radius: 8px;
     margin-bottom: 20px;
   }
@@ -32,6 +34,7 @@ body {
   .summary-item {
     text-align: center;
     color: #2d3a4b;
+    
   }
   
   .summary-item h2 {
@@ -88,7 +91,7 @@ body {
   .container {
     width: 80%;
     margin: 0 auto;
-    background-color: #fff;
+    background-color: #e7fbff; 
     border-radius: 8px;
     padding: 20px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);

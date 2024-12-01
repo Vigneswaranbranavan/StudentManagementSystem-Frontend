@@ -37,3 +37,10 @@ export interface feedback {
 export interface CustomJwtPayload extends JwtPayload {
   'http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier': string;
 }
+
+export interface Attendance {
+  studentID: string; 
+  date: string;
+  status: number;
+}
+
