@@ -1,3 +1,5 @@
+import { JwtPayload } from "jwt-decode";
+
 export interface staff {
   id: number;
   name: string;
@@ -31,3 +33,14 @@ export interface feedback {
   feedbackType:string;
   comments:string; 
 }
+
+export interface CustomJwtPayload extends JwtPayload {
+  'http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier': string;
+}
+
+export interface Attendance {
+  studentID: string; 
+  date: string;
+  status: number;
+}
+

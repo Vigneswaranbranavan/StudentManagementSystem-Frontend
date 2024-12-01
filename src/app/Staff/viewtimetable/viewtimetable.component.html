@@ -1,0 +1,49 @@
+
+
+<div class="container timetable">
+  <h1>Weekly Timetable</h1>
+  <!-- Display current day -->
+  <p>Today: {{ date | date: 'EEEE' }}</p>
+
+  <!-- Class Selection -->
+  <div class="flex-container">
+    <div class="class-select">
+      <label for="class-select">Select Class:</label>
+      <select id="class-select" (change)="onClassChange()" [(ngModel)]="selectedClassId">
+        <option value="" disabled selected>Select Class</option>
+        <option *ngFor="let class of classes" [value]="class.id">
+          {{ class.className }}
+        </option>
+      </select>
+    </div>
+    <button type="button" class="btn add-teacher-btn" [routerLink]="['/staff/manage-timetable']">+ Add Timetable</button>
+  </div>
+
+  <!-- Timetable Display -->
+  <table class="table table-bordered text-center" *ngIf="getTimetableDays().length > 0">
+    <thead>
+      <tr>
+        <th *ngFor="let day of daysOfWeek">{{ day }}</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td *ngFor="let day of daysOfWeek">
+          <div *ngIf="timetablesByDay[day]">
+            <div *ngFor="let timetable of timetablesByDay[day]" class="class">
+              <div class="class-time">{{ timetable.startTime }} - {{ timetable.endTime }}</div>
+              <div class="class-subject">{{ timetable.teacherSubject.name }}</div>
+              <div class="class-location">{{ timetable.class.className }}</div>
+            </div>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- No Timetable Available -->
+  <div *ngIf="getTimetableDays().length === 0">
+    <p>No timetable available for the selected class.</p>
+  </div>
+</div>
+

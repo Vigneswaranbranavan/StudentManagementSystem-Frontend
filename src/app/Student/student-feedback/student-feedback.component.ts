@@ -16,27 +16,27 @@ import { StudentFeedbackService } from '../../Service/Feedback/student-feedback.
   providers:[StudentFeedbackService]
 })
 export class StudentFeedbackComponent {
-  feedback: feedback = { id:'',userID: '', feedbackType: '', comments: '' };
-  feedbackTypes = ['Payment Added', 'Payment Failed', 'General Feedback']; // Example feedback types
+  feedback: feedback = { id:'', userID: '', feedbackType: '', comments: '' };
+  feedbackTypes = ['Technical Feedback', 'Suggestions for Improvement', 'Support and Help']; // Example feedback types
   feedbackList: feedback[] = [];
   isSubmitting = false;
-  userId: string = '';  // User ID will be extracted from the URL
+  userId: string = '';  // User ID will be fetched from localStorage
   feedbackToEdit: feedback | null = null; // Store the feedback to be edited
 
-  constructor(private route: ActivatedRoute, private feedbackService: TeacherFeedbackService) { }
+  constructor(private feedbackService: TeacherFeedbackService) { }
 
-    ngOnInit(): void {
-    // Fetch userId from the route parameters (URL)
-    this.route.paramMap.subscribe(params => {
-      this.userId = params.get('userID') || '';  // userId from the URL
-      console.log('userId from URL:', this.userId);  // For debugging
-    });
+  ngOnInit(): void {
+    // Fetch userId from localStorage
+    this.userId = localStorage.getItem('UserId') || ''; // Get the logged-in user's ID from localStorage
+    console.log('userId from localStorage:', this.userId);  // For debugging
+
+    if (!this.userId) {
+      console.error('User ID not found in localStorage!');
+    }
 
     // Get the previous feedback list
     this.getFeedbackList();
   }
-
-
 
   // Submit feedback to the backend
   submitFeedback(feedbackForm: NgForm): void {
@@ -45,7 +45,7 @@ export class StudentFeedbackComponent {
   
       // Prepare the feedback data to send to the API
       const feedbackData: feedback = {
-        userID: this.userId,  // The userID is fetched from the URL
+        userID: this.userId,  // Use the userID from localStorage
         feedbackType: this.feedback.feedbackType,
         comments: this.feedback.comments,
         id: ''  // Ensure this is empty, as we are not editing existing feedback
@@ -64,6 +64,7 @@ export class StudentFeedbackComponent {
       });
     }
   }
+
   // Fetch the list of feedback for the current user
   getFeedbackList(): void {
     if (this.userId) {
@@ -82,7 +83,6 @@ export class StudentFeedbackComponent {
     this.feedback.comments = feedback.comments;
   }
 
-
   deleteFeedback(feedback: feedback): void {
     this.feedbackService.deleteFeedback(feedback.id).subscribe(() => {
       // Remove the deleted feedback from the list
@@ -93,4 +93,3 @@ export class StudentFeedbackComponent {
     });
   }
 }
-

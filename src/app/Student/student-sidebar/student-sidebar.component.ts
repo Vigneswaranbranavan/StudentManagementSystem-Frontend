@@ -17,28 +17,14 @@ import { student } from '../../Service/Models/model';
   styleUrl: './student-sidebar.component.css',
   providers:[StudentProfileService]
 })
-export class StudentSidebarComponent implements OnInit {
+export class StudentSidebarComponent  {
   isOpen = true;
-  userName: string = '';
-  userID:string;
-  studentid: string;
-  
+studentid: any|string;
 
 
   toggleSidebar() {
     this.isOpen = !this.isOpen;  // Toggle sidebar visibility
   }
-
-
-
-  student: student = {
-    id: '',
-    name: '',
-    phone: '',
-    enrollmentDate: '',
-    classID: ''
-  };
-
 
   constructor
   (  
@@ -46,31 +32,9 @@ export class StudentSidebarComponent implements OnInit {
     private route: ActivatedRoute
   )
   {
-    const Sid = this.route.snapshot.paramMap.get('id');
-    this.studentid = String(Sid);
-
     
-    const uId = this.route.snapshot.paramMap.get('userID');
-    this.userID = String(uId);
   }
 
-  ngOnInit(): void {
-    if (this.studentid) {
-      this.getStudentInfo(this.studentid);  // Fetch student data using studentid
-    }
-  }
-
-  getStudentInfo(studentid: string) {
-    this.studentProfileService.getStudent(studentid).subscribe(
-      (data) => {
-        this.student = data;
-      },
-      (error) => {
-        console.error('Error fetching student:', error);
-        // Optionally, show user-friendly error messages (e.g., using toastr)
-      }
-    );
-  }
 }
 
 

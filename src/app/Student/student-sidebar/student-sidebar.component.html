@@ -2,9 +2,9 @@
 <div class="sidebar" [class.open]="isOpen">
   <div class="logo-details">
     <div>
-      <img class="icon" src="/logo.jpg" alt="" width="45px">
+      <img class="icon" src="graduation_cap.png" alt="" width="45px">
     </div>
-    <div class="logo_name">ClassMate</div>
+    <div class="logo_name">CampusSphear</div>
     <i class='bx' [ngClass]="isOpen ? 'bx-menu-alt-right' : 'bx-menu'" id="btn" (click)="toggleSidebar()"></i>
   </div>
   <ul class="nav-list">
@@ -16,7 +16,7 @@
       <span class="tooltip">Home</span>
     </li>
     <li>
-      <a [routerLink]="['/student/edit-profile', studentid]">
+      <a [routerLink]="['/student/edit-profile']">
 
         <i class='bx bx-check-circle'></i>
         <span class="links_name">Profile</span>
@@ -24,7 +24,7 @@
       <span class="tooltip">Profile</span>
     </li>
     <li>
-      <a href="#" [routerLink]="['/student/attendance']">
+      <a href="#" [routerLink]="['/student/attendance',studentid]">
         <i class='bx bx-check-circle'></i>
         <span class="links_name">Attendance</span>
       </a>
@@ -45,7 +45,7 @@
       <span class="tooltip">Notifications</span>
     </li>
     <li>
-      <a href="#" [routerLink]="['/student/feedback',userID]">
+      <a href="#" [routerLink]="['/student/feedback']">
         <i class='bx bx-message-dots'></i>
         <span class="links_name">Feedback</span>
       </a>
@@ -54,7 +54,8 @@
     <li class="logout">
       <div class="logout-details">
         <div class="name_job">
-          <div class="name">{{ student.name }}jhyj</div>  <!-- Dynamically show the username -->
+
+          <div class="name">STUDENT</div>  <!-- Dynamically show the username -->
         </div>
       </div>
       <i class='bx bx-log-out' id="log_out"></i>

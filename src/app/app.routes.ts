@@ -30,6 +30,8 @@ import { ViewSubjectComponent } from './Staff/view-subject/view-subject.componen
 import { StaffSidebarComponent } from './Staff/staff-sidebar/staff-sidebar.component';
 import { AdminSidebarComponent } from './Administrator/admin-sidebar/admin-sidebar.component';
 import { TeacherSidebarComponent } from './Teacher/teacher-sidebar/teacher-sidebar.component';
+import { ViewtimetableComponent } from './Staff/viewtimetable/viewtimetable.component';
+
 
 export const routes: Routes = [
     { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -41,11 +43,11 @@ export const routes: Routes = [
         path: 'student', component:StudentSidebarComponent,
         children: [
             { path: 'home', component: StudentHomeComponent },
-            { path: 'attendance', component: StudentAttendanceComponent },
-            { path: 'feedback/:userID', component: StudentFeedbackComponent },
+            { path: 'attendance/:studentid', component: StudentAttendanceComponent },
+            { path: 'feedback', component: StudentFeedbackComponent },
             { path: 'notification', component: StudentNotificationComponent },
             { path: 'timetable', component: StudentTimetableComponent },
-            { path: 'edit-profile/:id', component: EditProfileComponent },
+            { path: 'edit-profile', component: EditProfileComponent },
 
         ],
     },
@@ -59,6 +61,7 @@ export const routes: Routes = [
             { path: 'studentupdate/:id', component: RegisterStudentComponent },
             { path: 'mark-attendance', component: MarkAttendanceComponent },
             { path: 'manage-timetable', component: ManageTimetableComponent },
+            { path: 'viewTimetable', component: ViewtimetableComponent },
             { path: 'viewStudents', component: ViewStudentsComponent },
             { path: 'viewClass', component: ViewClassComponent },
             { path: 'viewSubject', component: ViewSubjectComponent },
