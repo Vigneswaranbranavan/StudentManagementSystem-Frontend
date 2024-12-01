@@ -13,6 +13,7 @@ import { RegisterStudentComponent } from './Staff/register-student/register-stud
 import { TeacherSidebarComponent } from './Teacher/teacher-sidebar/teacher-sidebar.component';
 
 
+
 @Component({
   selector: 'app-root',
   standalone: true,
