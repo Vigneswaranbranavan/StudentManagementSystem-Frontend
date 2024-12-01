@@ -6,11 +6,12 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { ViewclassService } from '../../Service/Class/viewclass.service';
 import { TeacherRegisterService } from '../../Service/Register/Teacher/teacher-register.service';
+import { ToastrModule, ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-manage-timetable',
   standalone: true,
-  imports: [FormsModule,HttpClientModule,RouterModule,CommonModule, ReactiveFormsModule],
+  imports: [FormsModule,HttpClientModule,RouterModule,CommonModule, ReactiveFormsModule,ToastrModule],
   templateUrl: './manage-timetable.component.html',
   styleUrl: './manage-timetable.component.css',
   providers: [TimetableService, ViewclassService, TeacherRegisterService]
@@ -30,10 +31,16 @@ export class ManageTimetableComponent implements OnInit {
 
 
 
-  
+  constructor(
+    private fb: FormBuilder, 
+    private router: Router, 
+    private classService: ViewclassService, 
+    private timetableService: TimetableService,
+    private teacherservice: TeacherRegisterService, 
+    private route: ActivatedRoute,
+    private toastr: ToastrService
 
-
-  constructor(private fb: FormBuilder, private router: Router, private classService: ViewclassService, private timetableService: TimetableService,private teacherservice: TeacherRegisterService, private route: ActivatedRoute) {
+     ) {
     this.timeTableForm = this.fb.group(
       {
         classID: ['', [Validators.required]],
@@ -47,15 +54,11 @@ export class ManageTimetableComponent implements OnInit {
   }
 
 
-
-
-
   ngOnInit(): void {
     this.loadClasses();
     this.loadTeachers();
   }
 
-  // Fetch the list of classes
   private loadClasses(): void {
     this.classService.getClasses().subscribe(
       (data) => {
@@ -68,7 +71,6 @@ export class ManageTimetableComponent implements OnInit {
     );
   }
 
-  // Fetch the list of teachers
   private loadTeachers(): void {
     this.teacherservice.getTeachers().subscribe(
       (data) => {
@@ -81,21 +83,20 @@ export class ManageTimetableComponent implements OnInit {
     );
   }
 
-  // Handle form submission
   onSubmit(): void {
     if (this.timeTableForm.invalid) {
-      alert('Please fill in all required fields.');
+      this.toastr.error('Please fill in all required fields.');
       return;
     }
 
     this.timetableService.addTimetable(this.timeTableForm.value).subscribe(
       () => {
-        alert('Timetable saved successfully!');
+        this.toastr.success('Timetable saved successfully!');
         this.router.navigate(['/staff/viewTimetable']);
       },
       (error) => {
         console.error('Error saving timetable:', error);
-        alert('Failed to save timetable. Please try again later.');
+        this.toastr.error('Failed to save timetable. Please try again later.');
       }
     );
   }

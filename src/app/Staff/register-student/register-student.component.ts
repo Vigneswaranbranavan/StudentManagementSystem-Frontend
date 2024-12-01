@@ -5,11 +5,12 @@ import { StudentRegisterService } from '../../Service/Register/student-register.
 import { HttpClientModule } from '@angular/common/http';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ViewclassService } from '../../Service/Class/viewclass.service';
+import { ToastrModule, ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-register-student',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, HttpClientModule],
+  imports: [CommonModule, ReactiveFormsModule, HttpClientModule,ToastrModule],
   templateUrl: './register-student.component.html',
   styleUrl: './register-student.component.css',
   providers: [StudentRegisterService, ViewclassService]
@@ -24,10 +25,17 @@ export class RegisterStudentComponent implements OnInit {
 
   studentid: string;
 
-  
 
 
-  constructor(private fb: FormBuilder, private service: StudentRegisterService, private router: Router, private classService: ViewclassService, private route: ActivatedRoute) {
+
+  constructor(
+    private fb: FormBuilder,
+    private service: StudentRegisterService,
+    private router: Router,
+    private classService: ViewclassService,
+    private route: ActivatedRoute,
+    private toastr: ToastrService
+    ) {
 
 
     const sid = this.route.snapshot.paramMap.get("id");
@@ -50,8 +58,8 @@ export class RegisterStudentComponent implements OnInit {
         name: ['', [Validators.required]],
         phone: ['', [Validators.required, Validators.pattern('^[0-9]{10}$')]],
         classID: ['', [Validators.required]],
-       
-    })
+
+      })
     } else {
       this.studentForm = this.fb.group({
         name: ['', [Validators.required]],
@@ -64,9 +72,6 @@ export class RegisterStudentComponent implements OnInit {
       });
     }
 
-
-
-
   }
 
   ngOnInit(): void {
@@ -75,8 +80,6 @@ export class RegisterStudentComponent implements OnInit {
     if (this.isEditMode == true) {
       this.service.getStudent(this.studentid).subscribe((data: any) => {
         this.studentForm.patchValue(data);
-
-
 
       })
     }
@@ -93,59 +96,59 @@ export class RegisterStudentComponent implements OnInit {
 
   onSubmit() {
     if (this.studentForm.valid) {
-      const student = this.studentForm.value; 
-      
+      const student = this.studentForm.value;
+
       const studentData = {
         name: student.name,
         phone: student.phone,
         classID: student.classID,
         userReq: student.userReq // userReq is the object with email and password
       };
-      
+
       const studentUpdateData = {
         name: student.name,
         phone: student.phone,
         classID: student.classID,
       };
-      
+
 
       if (this.isEditMode) {
 
         this.studentid = student.id
         this.service.editStudent(this.studentid, studentUpdateData).subscribe(data => {
-          alert("Student updated successfully!");
+          this.toastr.success("Student updated successfully!");
           this.studentForm.reset();
-          this.router.navigate(["/staff/viewStudents"]); // Reset the form after successful update
+          this.router.navigate(["/staff/viewStudents"]);
         },
           (error) => {
             console.error("Error updating student:", error);
-            alert("Failed to update student. Please try again.");
+            this.toastr.error("Failed to update student. Please try again.");
           }
         );
       } else {
         // If adding, add a new student
         this.service.AddStudent(studentData).subscribe(
           (data) => {
-            alert("Student added successfully!");
+            this.toastr.success("Student added successfully!");
             this.studentForm.reset();
-            this.router.navigate(["/staff/viewStudents"]);  // Reset the form after successful addition
+            this.router.navigate(["/staff/viewStudents"]); 
           },
           (error) => {
             console.error("Error adding student:", error);
-            alert("Failed to add student. Please try again.");
+            this.toastr.error("Failed to add student. Please try again.");
           }
         );
       }
     } else {
-      alert("Please fill all required fields correctly.");
+      this.toastr.error("Please fill all required fields correctly.");
     }
   }
 
 
 
 
- 
-  
+
+
 
 
 
@@ -157,7 +160,7 @@ export class RegisterStudentComponent implements OnInit {
 
 
 
-  
+
 
 }
 
@@ -185,4 +188,3 @@ export class RegisterStudentComponent implements OnInit {
 
 
 
- 

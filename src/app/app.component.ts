@@ -11,6 +11,7 @@ import { AdminSidebarComponent } from './Administrator/admin-sidebar/admin-sideb
 
 import { RegisterStudentComponent } from './Staff/register-student/register-student.component';
 import { TeacherSidebarComponent } from './Teacher/teacher-sidebar/teacher-sidebar.component';
+import { ToastrModule } from 'ngx-toastr';
 
 
 
@@ -18,7 +19,6 @@ import { TeacherSidebarComponent } from './Teacher/teacher-sidebar/teacher-sideb
   selector: 'app-root',
   standalone: true,
 
-  // imports: [StaffSidebarComponent, AdminSidebarComponent, HomeComponent, LoginComponent,RouterOutlet,TeacherSidebarComponent,StudentSidebarComponent],
   imports: [RouterOutlet],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'

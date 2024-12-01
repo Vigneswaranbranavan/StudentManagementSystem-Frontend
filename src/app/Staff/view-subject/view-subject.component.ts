@@ -4,11 +4,12 @@ import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ToastrModule, ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-view-subject',
   standalone: true,
-  imports: [CommonModule, HttpClientModule, ReactiveFormsModule, FormsModule],
+  imports: [CommonModule, HttpClientModule, ReactiveFormsModule, FormsModule, ToastrModule],
   templateUrl: './view-subject.component.html',
   styleUrl: './view-subject.component.css',
   providers: [ViewSubjectService]
@@ -16,9 +17,13 @@ import { Router } from '@angular/router';
 export class ViewSubjectComponent {
 
   subjects: any[] = [];
-  
 
-  constructor(private service: ViewSubjectService, private router: Router) { }
+
+  constructor(
+    private service: ViewSubjectService,
+    private router: Router,
+    private toastr: ToastrService
+  ) { }
 
   ngOnInit(): void {
     this.loadData();
@@ -26,51 +31,53 @@ export class ViewSubjectComponent {
 
   loadData() {
     this.service.getSubjects().subscribe(data => {
-          this.subjects = data;
-        });
+      this.subjects = data;
+    });
   }
 
 
-  newSubjectName: string = ''; // Variable to bind the input field
-  
+  newSubjectName: string = ''; 
+
 
   AddSubject() {
     if (this.newSubjectName) {
-      const newSubject = { subjectName: this.newSubjectName }; // Create object to send to the API
+      const newSubject = { subjectName: this.newSubjectName }; 
 
       this.service.AddSubject(newSubject).subscribe(
         response => {
           console.log('Subject added successfully:', response);
-          this.loadData(); // Reload classes after adding a new one
-          this.newSubjectName = ''; // Clear input field
+          this.toastr.success('Subject added successfully!!')
+          this.loadData(); 
+          this.newSubjectName = ''; 
         },
         error => {
           console.error('Error adding Subject:', error);
+          this.toastr.error('Error adding Subject!!')
         }
       );
     }
   }
 
-  
+
 
   DeleteSubject(subjectId: any) {
     if (confirm('Are you sure you want to delete this subject?')) {
-        this.service.deleteSubject(subjectId).subscribe({
-            next: () => {
-                alert('subject deleted successfully!');
-                this.loadData(); // Reload updated data
-            },
-            error: (error) => {
-                console.error('Error deleting subject:', error);
-                alert('Failed to delete the subject. Please try again.');
-            }
-        });
+      this.service.deleteSubject(subjectId).subscribe({
+        next: () => {
+          this.toastr.success('subject deleted successfully!');
+          this.loadData(); 
+        },
+        error: (error) => {
+          console.error('Error deleting subject:', error);
+          this.toastr.error('Failed to delete the subject. Please try again.');
+        }
+      });
     }
-}
+  }
 
 
 
- 
 
-  
+
+
 }

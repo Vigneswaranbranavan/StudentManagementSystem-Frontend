@@ -5,12 +5,13 @@ import { StudentService } from '../../Service/Student/student.service';
 import { CommonModule } from '@angular/common';
 import { StudentAttendanceService } from '../../Service/Attendance/student-attendance.service';
 import { Attendance } from '../../Service/Models/model';
+import { ToastrModule, ToastrService } from 'ngx-toastr';
 
 
 @Component({
   selector: 'app-mark-attendance',
   standalone: true,
-  imports: [FormsModule, CommonModule],
+  imports: [FormsModule, CommonModule, ToastrModule],
   templateUrl: './mark-attendance.component.html',
   styleUrl: './mark-attendance.component.css'
 })
@@ -27,7 +28,9 @@ export class MarkAttendanceComponent implements OnInit {
   constructor(
     private classService: ViewclassService,
     private studentService: StudentService,
-    private attendanceService: StudentAttendanceService
+    private attendanceService: StudentAttendanceService,
+    private toastr: ToastrService
+
   ) { }
 
   ngOnInit(): void {
@@ -96,11 +99,11 @@ export class MarkAttendanceComponent implements OnInit {
     this.attendanceService.submitAttendance(attendanceData).subscribe({
       next: (response) => {
         console.log('Attendance submitted successfully:', response);
-        alert('Attendance submitted successfully!');
+        this.toastr.success('Attendance submitted successfully!');
       },
       error: (err) => {
         console.error('Error submitting attendance:', err);
-        alert('Failed to submit attendance!!. Please try again.');
+        this.toastr.success('Failed to submit attendance!!. Please try again.');
       }
     });
   }

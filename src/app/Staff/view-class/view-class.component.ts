@@ -4,11 +4,12 @@ import { ViewclassService } from '../../Service/Class/viewclass.service';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ToastrModule, ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-view-class',
   standalone: true,
-  imports: [CommonModule, HttpClientModule, ReactiveFormsModule, FormsModule],
+  imports: [CommonModule, HttpClientModule, ReactiveFormsModule, FormsModule,ToastrModule],
   templateUrl: './view-class.component.html',
   styleUrl: './view-class.component.css',
   providers: [ViewclassService]
@@ -17,7 +18,12 @@ export class ViewClassComponent implements OnInit {
   Classes: any[] = [];
   selectedClass: any = '';
 
-  constructor(private service: ViewclassService, private router: Router) { }
+  constructor(
+    private service: ViewclassService, 
+    private router: Router,
+    private toastr: ToastrService
+
+    ) { }
 
   ngOnInit(): void {
     this.loadData();
@@ -30,18 +36,19 @@ export class ViewClassComponent implements OnInit {
   }
 
 
-  newClassName: string = ''; // Variable to bind the input field
+  newClassName: string = ''; 
 
 
   AddClass() {
     if (this.newClassName) {
-      const newClass = { className: this.newClassName }; // Create object to send to the API
+      const newClass = { className: this.newClassName };
 
       this.service.AddClass(newClass).subscribe(
         response => {
           console.log('Class added successfully:', response);
-          this.loadData(); // Reload classes after adding a new one
-          this.newClassName = ''; // Clear input field
+          this.toastr.success('Class added successfully');
+          this.loadData();
+          this.newClassName = '';
         },
         error => {
           console.error('Error adding class:', error);
@@ -56,12 +63,12 @@ export class ViewClassComponent implements OnInit {
     if (confirm('Are you sure you want to delete this class?')) {
       this.service.deleteClass(classId).subscribe({
         next: () => {
-          alert('Class deleted successfully!');
-          this.loadData(); // Reload updated data
+          this.toastr.success('Class deleted successfully!');
+          this.loadData(); 
         },
         error: (error) => {
           console.error('Error deleting class:', error);
-          alert('Failed to delete the class. Please try again.');
+          this.toastr.error('Failed to delete the class. Please try again.');
         }
       });
     }
