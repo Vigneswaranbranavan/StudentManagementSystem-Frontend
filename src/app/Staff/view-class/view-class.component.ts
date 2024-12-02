@@ -21,7 +21,8 @@ export class ViewClassComponent implements OnInit {
   constructor(
     private service: ViewclassService, 
     private router: Router,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    
 
     ) { }
 
