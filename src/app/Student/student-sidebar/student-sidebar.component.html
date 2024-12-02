@@ -24,7 +24,7 @@
       <span class="tooltip">Profile</span>
     </li>
     <li>
-      <a href="#" [routerLink]="['/student/attendance',studentid]">
+      <a href="#" [routerLink]="['/student/attendance']">
         <i class='bx bx-check-circle'></i>
         <span class="links_name">Attendance</span>
       </a>
@@ -55,7 +55,7 @@
       <div class="logout-details">
         <div class="name_job">
 
-          <div class="name">STUDENT</div>  <!-- Dynamically show the username -->
+          <div class="name">{{student.name}}</div>  <!-- Dynamically show the username -->
         </div>
       </div>
       <i class='bx bx-log-out' id="log_out"></i>

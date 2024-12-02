@@ -4,6 +4,7 @@ import { StudentProfileService } from '../../Service/Profile/student-profile.ser
 import { student } from '../../Service/Models/model';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-edit-profile',
@@ -11,33 +12,44 @@ import { ReactiveFormsModule } from '@angular/forms';
   templateUrl: './edit-profile.component.html',
   styleUrls: ['./edit-profile.component.css'],
   imports: [
-    RouterModule,HttpClientModule, ReactiveFormsModule
+    RouterModule,HttpClientModule, ReactiveFormsModule,CommonModule
   ],
   providers: [StudentProfileService]
 })
 export class EditProfileComponent implements OnInit {
 
-  studentid: string;
+  userId: string = '';  // User ID will be fetched from localStorage
+date=''
   
   student: student = {
     id: '',
-    name: '',
-    phone: '',
-    enrollmentDate: '',
-    classID: ''
+  name: '',
+  phone: '',
+  enrollmentDate:'',
+  classID: '',
+  class: {
+    id:'',
+    className: '',
+  },
+  userRes: {
+    id:'',
+    email: ''
+  }
   };
 
   constructor(
     private studentProfileService: StudentProfileService,
     private route: ActivatedRoute
   ) {
-    const tid = this.route.snapshot.paramMap.get('id');
-    this.studentid = String(tid);
+   
   }
 
   ngOnInit(): void {
-    if (this.studentid) {
-      this.getStudentInfo(this.studentid);  // Fetch student data using studentid
+
+    this.userId = localStorage.getItem('UserId') || ''; // Get the logged-in user's ID from localStorage
+    console.log('userId from localStorage:', this.userId);
+    if (this.userId) {
+      this.getStudentInfo(this.userId);  // Fetch student data using studentid
     }
   }
 
