@@ -1,5 +1,3 @@
-
-
 <div class="container timetable">
   <h1>Weekly Timetable</h1>
   <!-- Display current day -->
@@ -15,7 +13,10 @@
         </option>
       </select>
     </div>
-    <button  type="button" class="btn add-teacher-btn" [routerLink]="['/staff/manage-timetable']">+ Add Timetable</button>
+    <button type="button" class="btn add-teacher-btn" [routerLink]="['/staff/manage-timetable']"
+      *ngIf="userRole === 'staff'">
+      + Add Timetable
+    </button>
   </div>
 
   <!-- Timetable Display -->
@@ -45,4 +46,3 @@
     <p>No timetable available for the selected class.</p>
   </div>
 </div>
-

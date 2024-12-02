@@ -15,9 +15,14 @@ export class StudentProfileService {
   //   return this.http.get(`${this.url}/${studentId}`);
   // }
 
+    // getStudent(studentId: string) {
+    //   return this.http.get<student>(`${this.url}/${studentId}`);
+    // }
+
     getStudent(studentId: string) {
-      return this.http.get<student>(`${this.url}/${studentId}`);
-    }
+        return this.http.get<student>("https://localhost:7058/api/Student/user/" + studentId);
+      }
+
 
   updateStudent(student: student, studentId: number) {
     return this.http.put(`${this.url}/${studentId}`, student);

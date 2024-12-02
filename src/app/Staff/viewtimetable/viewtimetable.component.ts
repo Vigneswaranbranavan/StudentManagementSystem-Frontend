@@ -21,13 +21,22 @@ date: Date = new Date();
   selectedClassId: string = ''; // Initially empty
   daysOfWeek: string[] = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
   timetablesByDay: { [key: string]: any[] } = {};
+  userRole: string ="";
 
   constructor(private classservice: ViewclassService, private timetableservice: TimetableService) {}
 
   ngOnInit(): void {
     this.loadData();
+    this.userRole = localStorage.getItem('role') || ''; // Get the logged-in user's ID from localStorage
+    console.log('userId from localStorage:', this.userRole);  // For debugging
+
+    if (!this.userRole) {
+      console.error('User ID not found in localStorage!');
+    }
   }
 
+
+ 
   loadData() {
     // Load classes from the service
     this.classservice.getClasses().subscribe(data => {

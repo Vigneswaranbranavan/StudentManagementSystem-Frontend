@@ -16,6 +16,7 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class ViewStudentsComponent implements OnInit{
   students: any[] = [];
+  userRole: string ="";
   
 
 
@@ -23,6 +24,12 @@ export class ViewStudentsComponent implements OnInit{
 
   ngOnInit(): void {
     this.loadData();
+    this.userRole = localStorage.getItem('role') || ''; // Get the logged-in user's ID from localStorage
+    console.log('userId from localStorage:', this.userRole);  // For debugging
+
+    if (!this.userRole) {
+      console.error('User ID not found in localStorage!');
+    }
   }
 
 
