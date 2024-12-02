@@ -24,6 +24,8 @@ export class MarkAttendanceComponent implements OnInit {
     { value: 'Late Coming', label: 'Late Coming' }
   ];
   selectedClass: any = '';
+  attendanceDate: string = '';
+  submittedClass: { [key: string]: string } = {}
 
   constructor(
     private classService: ViewclassService,
@@ -82,6 +84,15 @@ export class MarkAttendanceComponent implements OnInit {
   }
 
   submitAttendance(): void {
+    if (!this.attendanceDate || !this.selectedClass){
+      this.toastr.error('please select a date and class before submitting attendance.');
+      return;
+    }
+    if (this.submittedClass[this.selectedClass] === this.attendanceDate ){
+      this.toastr.warning('Attendance for this class has already been submitted this date.');
+      return;
+    }
+
     const attendanceStatusMap: { [key: string]: number } = {
       'Present': 1,
       'Absent': 2,
@@ -90,7 +101,7 @@ export class MarkAttendanceComponent implements OnInit {
 
     const attendanceData:Attendance[] = this.students.map(student => ({
       studentID: student.id.toString(),
-      date: new Date().toISOString(),
+      date: this.attendanceDate,
       status: attendanceStatusMap[student.status]
     }));
 
@@ -98,12 +109,17 @@ export class MarkAttendanceComponent implements OnInit {
 
     this.attendanceService.submitAttendance(attendanceData).subscribe({
       next: (response) => {
-        console.log('Attendance submitted successfully:', response);
         this.toastr.success('Attendance submitted successfully!');
+        this.submittedClass[this.selectedClass] = this.attendanceDate;
       },
       error: (err) => {
-        console.error('Error submitting attendance:', err);
-        this.toastr.success('Failed to submit attendance!!. Please try again.');
+        if(err.status === 400){
+          this.toastr.warning('Attendance for this class hasa already been submitted this date.')
+        } 
+        else{
+          this.toastr.error('Failed to submit attendance!!. Please try again.');
+        }
+        console.error('Error:', err);
       }
     });
   }

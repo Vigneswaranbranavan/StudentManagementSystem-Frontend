@@ -17,10 +17,11 @@ export class StudentAttendanceService {
   }
   
   getAttendanceSummary(studentId: string): Observable<{ presentDays: number; absentDays: number; lateDays: number }> {
-    return this.http.get<{ presentDays: number; absentDays: number; lateDays: number }>(`${this.baseUrl}/${studentId}`);
+    return this.http.get<{ presentDays: number; absentDays: number; lateDays: number }>(`${this.baseUrl}/Summary?studentId=${studentId}`);
   }
 
   getAttendanceDetails(studentId: string, date: string): Observable<{ time: string; subject: string; status: string }[]> {
-    return this.http.get<{ time: string; subject: string; status: string }[]>(`${this.baseUrl}/${studentId}${date}`);
+    return this.http.get<{ time: string; subject: string; status: string }[]>(`${this.baseUrl}/Details?studentId=${studentId}&date=${date}`);
   }
 }
+//?UserId=${userId}
