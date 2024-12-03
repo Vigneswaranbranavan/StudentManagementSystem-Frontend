@@ -26,7 +26,7 @@ import { ViewTeacherComponent } from './Administrator/view-teacher/view-teacher.
 import { ViewStaffComponent } from './Administrator/view-staff/view-staff.component';
 import { HomeComponent } from './Home/home/home.component';
 import { StudentSidebarComponent } from './Student/student-sidebar/student-sidebar.component';
-import { ViewSubjectComponent } from './Staff/view-subject/view-subject.component';
+
 import { StaffSidebarComponent } from './Staff/staff-sidebar/staff-sidebar.component';
 import { AdminSidebarComponent } from './Administrator/admin-sidebar/admin-sidebar.component';
 import { TeacherSidebarComponent } from './Teacher/teacher-sidebar/teacher-sidebar.component';
@@ -66,9 +66,9 @@ export const routes: Routes = [
             { path: 'manage-timetable', component: ManageTimetableComponent },
             { path: 'viewTimetable', component: ViewtimetableComponent },
             { path: 'viewStudents', component: ViewStudentsComponent },
-            { path: 'viewClass', component: ViewClassComponent },
-            { path: 'viewSubject', component: ViewSubjectComponent },
+            { path: 'viewClassSubject', component: ViewClassComponent },
             { path: 'profile', component: StaffProfileComponent },
+
             
         ],
     },
