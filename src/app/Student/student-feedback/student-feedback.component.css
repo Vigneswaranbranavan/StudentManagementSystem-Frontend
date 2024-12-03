@@ -7,61 +7,58 @@ body {
 }
 
 /* Feedback Section */
-.feedback-section {
-  max-width: 1200px;
+.feedback-section, .notifications {
+  max-width: 1500px;
   margin: 0 auto;
   background-color: #ffffff;
   border-radius: 8px;
   padding: 20px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  border: 1px solid #e0e0e0;
 }
 
-/* Title Styling */
+/* Notifications Section */
+.notifications {
+  max-width: 1500px;
+  margin: 0 auto;
+  background-color: #ffffff;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
 h1 {
   text-align: center;
   color: #2d3a4b;
   margin-bottom: 20px;
-  font-size: 2rem;
 }
 
-/* Feedback Form Styling */
+/* Feedback Form */
 .feedback-form {
   margin-bottom: 30px;
-  margin-top: 30px;
 }
 
-.feedback-form h3 {
+.feedback-form h2 {
   color: #2d3a4b;
   margin-bottom: 15px;
-  font-size: 1.5rem;
 }
 
 .feedback-form label {
   display: block;
   margin-bottom: 5px;
   color: #333;
-  font-weight: bold;
 }
 
-.feedback-form input[type="text"],
-.feedback-form textarea,
-.feedback-form select {
+.feedback-form input[type="text"], .feedback-form textarea {
   width: 100%;
-  padding: 12px;
+  padding: 10px;
   margin-bottom: 15px;
   border: 1px solid #ddd;
   border-radius: 5px;
   font-size: 1rem;
-  box-sizing: border-box;
-}
-
-.feedback-form textarea {
-  resize: vertical;
 }
 
 .feedback-form button {
-  padding: 12px 25px;
+  padding: 10px 20px;
   border: none;
   background-color: #2d3a4b;
   color: #ffffff;
@@ -75,24 +72,12 @@ h1 {
   background-color: #ffc107;
 }
 
-.feedback-form button:disabled {
-  background-color: #dcdcdc;
-  cursor: not-allowed;
-}
-
 /* Feedback List */
 .feedback-list {
   background-color: #ffffff;
   border-radius: 8px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   padding: 20px;
-  margin-top: 40px;
-}
-
-.feedback-list h2 {
-  color: #2d3a4b;
-  margin-bottom: 15px;
-  font-size: 1.4rem;
 }
 
 .feedback-item {
@@ -110,7 +95,12 @@ h1 {
 .feedback-details {
   display: flex;
   align-items: center;
-  max-width: 85%;
+}
+
+.feedback-details i {
+  font-size: 1.5rem;
+  color: #ffc107;
+  margin-right: 15px;
 }
 
 .feedback-text {
@@ -118,14 +108,13 @@ h1 {
 }
 
 .feedback-text h3 {
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   margin: 0;
   color: #2d3a4b;
-  font-weight: bold;
 }
 
 .feedback-text p {
-  font-size: 1rem;
+  font-size: 0.9rem;
   color: #555;
   margin: 5px 0 0;
 }
@@ -144,134 +133,52 @@ h1 {
   color: #4caf50;
 }
 
-/* Button Styling */
-.btn-danger {
-  padding: 5px 15px;
-  background-color: #e74c3c;
-  border: none;
-  border-radius: 5px;
-  color: white;
+/* Notification Section */
+.notification-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  border-bottom: 1px solid #f0f0f0;
+  transition: background 0.3s;
+}
+
+.notification-item:hover {
+  background-color: #f9f9f9;
+}
+
+.notification-item.unread {
+  background-color: #e9f5ff;
+}
+
+.notification-content {
+  display: flex;
+  align-items: center;
+}
+
+.notification-content i {
+  font-size: 1.5rem;
+  color: #ffc107;
+  margin-right: 15px;
+}
+
+.notification-text {
+  max-width: 600px;
+}
+
+.notification-text h3 {
+  font-size: 1.2rem;
+  margin: 0;
+  color: #2d3a4b;
+}
+
+.notification-text p {
   font-size: 0.9rem;
-  cursor: pointer;
-  transition: background-color 0.3s;
+  color: #555;
+  margin: 5px 0 0;
 }
 
-.btn-danger:hover {
-  background-color: #c0392b;
-}
-
-/* Responsive Design */
-@media (max-width: 1200px) {
-  .feedback-section {
-    padding: 15px;
-  }
-
-  .feedback-form button {
-    width: 100%;
-  }
-}
-
-@media (max-width: 992px) {
-  h1 {
-    font-size: 1.8rem;
-  }
-
-  .feedback-item {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .feedback-text h3 {
-    font-size: 1.1rem;
-  }
-
-  .feedback-text p {
-    font-size: 0.9rem;
-  }
-
-  .feedback-form {
-    margin-bottom: 25px;
-  }
-}
-
-@media (max-width: 768px) {
-  h1 {
-    font-size: 1.6rem;
-  }
-
-  .feedback-section {
-    padding: 10px;
-  }
-
-  .feedback-form button {
-    padding: 10px 20px;
-  }
-
-  .feedback-item {
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 10px;
-    border-bottom: 1px solid #f0f0f0;
-  }
-
-  .feedback-text h3 {
-    font-size: 1rem;
-  }
-
-  .feedback-text p {
-    font-size: 0.8rem;
-  }
-
-  .feedback-form input[type="text"],
-  .feedback-form textarea,
-  .feedback-form select {
-    padding: 10px;
-  }
-
-  .feedback-list h2 {
-    font-size: 1.2rem;
-  }
-
-  .btn-danger {
-    padding: 5px 10px;
-    font-size: 0.8rem;
-  }
-}
-
-@media (max-width: 576px) {
-  .feedback-form input[type="text"],
-  .feedback-form textarea,
-  .feedback-form select {
-    font-size: 0.9rem;
-  }
-
-  .feedback-form button {
-    font-size: 0.9rem;
-  }
-
-  .feedback-item {
-    padding: 8px;
-    border-bottom: 1px solid #f0f0f0;
-  }
-
-  .feedback-text h3 {
-    font-size: 1rem;
-  }
-
-  .feedback-text p {
-    font-size: 0.8rem;
-  }
-
-  .btn-danger {
-    padding: 5px 10px;
-    font-size: 0.8rem;
-  }
-
-  .feedback-list h2 {
-    font-size: 1rem;
-  }
-
-  h1 {
-    font-size: 1.4rem;
-  }
+.notification-date {
+  font-size: 0.9rem;
+  color: #888;
 }
