@@ -19,9 +19,11 @@ export class StudentProfileService {
     // getStudent(studentId: string) {
     //   return this.http.get<student>(`${this.url}/${studentId}`);
     // }
+
     getStudent(userId: string): Observable<student> {  // Return single student instead of array
     return this.http.get<student>(`${this.url}/${userId}`);
   }
+
 
 
   updateStudent(student: student, studentId: number) {

@@ -4,6 +4,7 @@ import { StaffRegisterService } from '../../Service/Register/staff-register.serv
 import { ActivatedRoute, Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-staff-add-update',
@@ -21,7 +22,7 @@ export class StaffAddUpdateComponent implements OnInit{
   staffid: string;
 
 
-  constructor(private fb: FormBuilder, private service: StaffRegisterService, private router: Router, private route: ActivatedRoute) {
+  constructor(private fb: FormBuilder, private service: StaffRegisterService, private router: Router, private route: ActivatedRoute, private toastr: ToastrService) {
 
 
     const sid = this.route.snapshot.paramMap.get("id");
@@ -60,7 +61,7 @@ export class StaffAddUpdateComponent implements OnInit{
 
 
     if (this.isEditMode == true) {
-      console.log("ygjhgjg")
+      
       this.service.getstaff(this.staffid).subscribe((data: any) => {
         this.StaffForm.patchValue(data);
 
@@ -88,31 +89,36 @@ export class StaffAddUpdateComponent implements OnInit{
 
       if (this.isEditMode) {
         this.service.editstaff(this.staffid, staffUpdateData).subscribe(data => {
-          alert("Staff updated successfully!");
+          // alert("Staff updated successfully!");
+          this.toastr.success('Staff updated successfully!');
           this.StaffForm.reset();
           this.router.navigate(["/admin/viewStaff"]); // Reset the form after successful update
         },
           (error) => {
             console.error("Error updating Staff:", error);
-            alert("Failed to update Staff. Please try again.");
+            // alert("Failed to update Staff. Please try again.");
+            this.toastr.error('Failed to update Staff. Please try again.');
           }
         );
       } else {
         // If adding, add a new student
         this.service.Addstaff(staffData).subscribe(
           (data) => {
-            alert("Staff added successfully!");
+            // alert("Staff added successfully!");
+            this.toastr.success('Staff added successfully!');
             this.StaffForm.reset();
             this.router.navigate(["/admin/viewStaff"]);  // Reset the form after successful addition
           },
           (error) => {
             console.error("Error adding Staff:", error);
-            alert("Failed to add Staff. Please try again.");
+            // alert("Failed to add Staff. Please try again.");
+            this.toastr.error('Failed to add Staff. Please try again.');
           }
         );
       }
     } else {
-      alert("Please fill all required fields correctly.");
+      // alert("Please fill all required fields correctly.");
+      this.toastr.error('Please fill all required fields correctly.');
     }
   }
 

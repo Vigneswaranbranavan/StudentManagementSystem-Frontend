@@ -25,6 +25,7 @@ date=''
     id: '',
   name: '',
   phone: '',
+
   enrollmentDate:'',
   classID: '',
   class: {
@@ -36,6 +37,7 @@ date=''
     email: ''
   }
   };
+
 
   constructor(
     private studentProfileService: StudentProfileService,

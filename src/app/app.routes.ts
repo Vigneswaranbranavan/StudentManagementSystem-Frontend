@@ -31,6 +31,7 @@ import { StaffSidebarComponent } from './Staff/staff-sidebar/staff-sidebar.compo
 import { AdminSidebarComponent } from './Administrator/admin-sidebar/admin-sidebar.component';
 import { TeacherSidebarComponent } from './Teacher/teacher-sidebar/teacher-sidebar.component';
 import { ViewtimetableComponent } from './Staff/viewtimetable/viewtimetable.component';
+import { StaffdashboardComponent } from './Staff/staffdashboard/staffdashboard.component';
 
 
 export const routes: Routes = [
@@ -57,6 +58,7 @@ export const routes: Routes = [
     {
         path: 'staff',component:StaffSidebarComponent,
         children: [
+            { path: '', component: StaffdashboardComponent },
             { path: 'student-register', component: RegisterStudentComponent },
             { path: 'studentupdate', component: RegisterStudentComponent },
             { path: 'mark-attendance', component: MarkAttendanceComponent },
@@ -75,8 +77,9 @@ export const routes: Routes = [
             { path: '', component: DashboardComponent },
             { path: 'viewAttendance', component: AdminViewAttendanceComponent },
             { path: 'viewFeedback', component: AdminViewFeedbackComponent },
-            { path: 'viewTimetable', component: AdminViewTimetablesComponent },
+            { path: 'viewTimetable', component: ViewtimetableComponent },
             { path: 'viewTeacher', component: ViewTeacherComponent },
+            { path: 'viewStudents', component: ViewStudentsComponent },
             { path: 'viewStaff', component: ViewStaffComponent },
             { path: 'addStaff', component: StaffAddUpdateComponent },
             { path: 'staffupdate', component: StaffAddUpdateComponent },

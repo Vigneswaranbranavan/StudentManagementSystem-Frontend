@@ -3,6 +3,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
 import { StaffRegisterService } from '../../Service/Register/staff-register.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-view-staff',
@@ -17,7 +18,7 @@ export class ViewStaffComponent {
   
 
 
-  constructor(private service: StaffRegisterService, private router: Router) { }
+  constructor(private service: StaffRegisterService, private router: Router, private toastr: ToastrService) { }
 
   ngOnInit(): void {
     this.loadData();
@@ -48,12 +49,14 @@ export class ViewStaffComponent {
     if (confirm('Are you sure you want to delete this Staff?')) {
       this.service.deletestaff(deleteId).subscribe(
         () => {
-          alert('Staff deleted successfully!');
+          // alert('Staff deleted successfully!');
+          this.toastr.success('Staff deleted successfully!');
           this.loadData(); 
         },
         (error) => {
           console.error('Error deleting Staff:', error);
-          alert('Failed to delete the Staff. Please try again.');
+          // alert('Failed to delete the Staff. Please try again.');
+          this.toastr.error('Failed to delete the Staff. Please try again.');
         }
       );
     }

@@ -24,7 +24,6 @@ export interface teacher {
   };
 }
 
-
 export interface student {
   id: string;
   name: string;
@@ -40,7 +39,6 @@ export interface student {
     email: string
   };
 }
-
 
 
 export interface feedback {
