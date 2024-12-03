@@ -1,12 +1,15 @@
 import { JwtPayload } from "jwt-decode";
 
 export interface staff {
-  id: number;
+  id: string;
   name: string;
   email: string;
   phone: string;
+  userRes: {
+    id: string;
+    email:string;
 
-}
+}}
 
 // teacher.ts (Model)
 export interface teacher {

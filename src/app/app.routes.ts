@@ -32,6 +32,7 @@ import { AdminSidebarComponent } from './Administrator/admin-sidebar/admin-sideb
 import { TeacherSidebarComponent } from './Teacher/teacher-sidebar/teacher-sidebar.component';
 import { ViewtimetableComponent } from './Staff/viewtimetable/viewtimetable.component';
 import { StaffdashboardComponent } from './Staff/staffdashboard/staffdashboard.component';
+import { StaffProfileComponent } from './Staff/staff-profile/staff-profile.component';
 
 
 export const routes: Routes = [
@@ -44,7 +45,7 @@ export const routes: Routes = [
         path: 'student', component:StudentSidebarComponent,
         children: [
             { path: 'home', component: StudentHomeComponent },
-            { path: 'attendance/:studentid', component: StudentAttendanceComponent },
+            { path: 'attendance', component: StudentAttendanceComponent },
             { path: 'feedback', component: StudentFeedbackComponent },
             { path: 'notification', component: StudentNotificationComponent },
             { path: 'timetable', component: StudentTimetableComponent },
@@ -67,6 +68,8 @@ export const routes: Routes = [
             { path: 'viewStudents', component: ViewStudentsComponent },
             { path: 'viewClass', component: ViewClassComponent },
             { path: 'viewSubject', component: ViewSubjectComponent },
+            { path: 'profile', component: StaffProfileComponent },
+            
         ],
     },
 
