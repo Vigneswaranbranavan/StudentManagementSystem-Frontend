@@ -28,6 +28,14 @@ export class TimetableService {
   getTimetableByClassId(classId: string): Observable<any[]> {
     return this.http.get<any[]>("https://localhost:7058/api/Timetable/ByClassId?id=" + classId);
   }
+
+
+
+ getTimetableByDate(date: string) {
+  return this.http.get<any[]>(`/api/timetables/byDate?date=${date}`);
+}
+
+  
 }
 
 export interface TimetableEntry {

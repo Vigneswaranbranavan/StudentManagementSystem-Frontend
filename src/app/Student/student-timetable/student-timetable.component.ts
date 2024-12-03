@@ -19,49 +19,52 @@ import { StudentProfileService } from '../../Service/Profile/student-profile.ser
 })
 export class StudentTimetableComponent implements OnInit {
   date: Date = new Date();
+  selectedDate: string = ''; // Store the selected date in the format yyyy-mm-dd
   timetables: any[] = [];
   classes: any[] = [];
   selectedClassId: string = ''; // Initially empty
   daysOfWeek: string[] = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
   timetablesByDay: { [key: string]: any[] } = {};
-  userRole: string ="";
+  userRole: string = "";
   userId: string = '';  // User ID will be fetched from localStorage
   student: student = {
     id: '',
-  name: '',
-  phone: '',
-  enrollmentDate:'',
-  classID: '',
-  class: {
-    id:'',
-    className: '',
-  },
-  userRes: {
-    id:'',
-    email: ''
-  }
+    name: '',
+    phone: '',
+    enrollmentDate: '',
+    classID: '',
+    class: {
+      id: '',
+      className: '',
+    },
+    userRes: {
+      id: '',
+      email: ''
+    }
   };
 
-
-  constructor(private classservice: ViewclassService, private timetableservice: TimetableService,    private studentProfileService: StudentProfileService,
+  constructor(
+    private classservice: ViewclassService,
+    private timetableservice: TimetableService,
+    private studentProfileService: StudentProfileService
   ) {}
 
   ngOnInit(): void {
     this.loadData();
     this.userRole = localStorage.getItem('role') || ''; // Get the logged-in user's role from localStorage
     console.log('userRole from localStorage:', this.userRole);  // For debugging
-  
+
     if (!this.userRole) {
       console.error('User role not found in localStorage!');
     }
-  
+
     this.userId = localStorage.getItem('UserId') || ''; // Get the logged-in user's ID from localStorage
     console.log('userId from localStorage:', this.userId);
     if (this.userId) {
       this.getStudentInfo(this.userId);  // Fetch student data using studentid
     }
   }
-  
+
   getStudentInfo(studentid: string) {
     this.studentProfileService.getStudent(studentid).subscribe(
       (data) => {
@@ -69,35 +72,40 @@ export class StudentTimetableComponent implements OnInit {
         // Once the student data is loaded, load the timetable for their class
         this.selectedClassId = this.student.classID; // Set the selectedClassId to the student's class
         this.loadTimetableForClass();  // Load timetable for the student's class
-  
-        // Filter classes to show only the student’s class in the dropdown
-        this.classes = this.classes.filter((classItem) => classItem.id === this.student.classID);
       },
       (error) => {
         console.error('Error fetching student:', error);
       }
     );
   }
-  
+
   loadData() {
-    // Load classes from the service, but now we will filter them later for the student
+    // Load classes from the service
     this.classservice.getClasses().subscribe(data => {
       this.classes = data;
-  
-      // You can skip the automatic selection here if the student’s class is already selected
-      if (this.student.classID) {
-        this.selectedClassId = this.student.classID; // Set selectedClassId from student data
-        this.loadTimetableForClass(); // Load timetable for the student's class
-      }
+      // No need to filter classes by student’s class here since we're using student.classID to load timetables
     });
   }
-  
+
   loadTimetableForClass() {
     // Fetch timetable for the student's class (using student.classID)
     if (this.selectedClassId) {
       this.timetableservice.getTimetableByClassId(this.selectedClassId).subscribe(data => {
         this.timetables = data;
-  
+
+        // Filter by selected date if available
+        if (this.selectedDate) {
+          const selectedDateObj = new Date(this.selectedDate);
+          this.timetables = this.timetables.filter(timetable => {
+            const timetableDate = new Date(timetable.date);
+            return (
+              timetableDate.getFullYear() === selectedDateObj.getFullYear() &&
+              timetableDate.getMonth() === selectedDateObj.getMonth() &&
+              timetableDate.getDate() === selectedDateObj.getDate()
+            );
+          });
+        }
+
         // Group timetable by day
         this.timetablesByDay = {};
         for (const timetable of this.timetables) {
@@ -111,14 +119,19 @@ export class StudentTimetableComponent implements OnInit {
       });
     }
   }
-  
+
   onClassChange() {
     // When the user selects a different class, load its timetable
     this.loadTimetableForClass();
   }
-  
+
+  onDateChange() {
+    // Filter the timetables by selected date
+    this.loadTimetableForClass();
+  }
+
   // Expose the keys of timetablesByDay for the template
   getTimetableDays(): string[] {
     return Object.keys(this.timetablesByDay);
   }
-}  
+}

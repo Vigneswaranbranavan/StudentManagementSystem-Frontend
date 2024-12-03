@@ -3,22 +3,29 @@
   <!-- Display current day -->
   <p>Today: {{ date | date: 'EEEE' }}</p>
 
-  <!-- Class Selection -->
-<!-- Class Selection -->
-<div class="flex-container">
-  <div class="class-select">
-    <label for="class-select">Select Class:</label>
-    <select id="class-select" (change)="onClassChange()" [(ngModel)]="selectedClassId" [disabled]="true">
-      <option *ngFor="let class of classes" [value]="class.id">
-        {{ class.className }}
-      </option>
-    </select>
+  <!-- Class Selection and Date Picker -->
+  <div class="flex-container">
+    <!-- Date Picker for Searching by Date -->
+    <div class="form-group">
+      <input
+        type="date"
+        class="form-control"
+        [(ngModel)]="selectedDate"
+        (change)="onDateChange()"
+        placeholder="Search by Date"
+      />
+    </div>
+
+    <!-- Class Selection -->
+    <div class="form-group class-select">
+      <label for="class-select">Select Class:</label>
+      <select id="class-select" (change)="onClassChange()" [(ngModel)]="selectedClassId" [disabled]="true">
+        <option *ngFor="let class of classes" [value]="class.id">
+          {{ class.className }}
+        </option>
+      </select>
+    </div>
   </div>
-  <button type="button" class="btn add-teacher-btn" [routerLink]="['/staff/manage-timetable']"
-    *ngIf="userRole === 'staff'">
-    + Add Timetable
-  </button>
-</div>
 
   <!-- Timetable Display -->
   <table class="table table-bordered text-center" *ngIf="getTimetableDays().length > 0">
