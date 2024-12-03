@@ -4,6 +4,7 @@ import { StudentRegisterService } from '../../Service/Register/student-register.
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { RegisterStudentComponent } from '../register-student/register-student.component';
 import { HttpClientModule } from '@angular/common/http';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-view-students',
@@ -15,13 +16,20 @@ import { HttpClientModule } from '@angular/common/http';
 })
 export class ViewStudentsComponent implements OnInit{
   students: any[] = [];
+  userRole: string ="";
   
 
 
-  constructor(private service: StudentRegisterService, private router: Router) { }
+  constructor(private service: StudentRegisterService, private router: Router, private toastr: ToastrService) { }
 
   ngOnInit(): void {
     this.loadData();
+    this.userRole = localStorage.getItem('role') || ''; // Get the logged-in user's ID from localStorage
+    console.log('userId from localStorage:', this.userRole);  // For debugging
+
+    if (!this.userRole) {
+      console.error('User ID not found in localStorage!');
+    }
   }
 
 
@@ -52,12 +60,14 @@ export class ViewStudentsComponent implements OnInit{
     if (confirm('Are you sure you want to delete this student?')) {
       this.service.deleteStudent(deleteId).subscribe(
         () => {
-          alert('Student deleted successfully!');
+          // alert('Student deleted successfully!');
+          this.toastr.success('Student deleted successfully!');
           this.loadData(); // Refresh the student list after deletion
         },
         (error) => {
           console.error('Error deleting student:', error);
-          alert('Failed to delete the student. Please try again.');
+          // alert('Failed to delete the student. Please try again.');
+          this.toastr.error('Failed to delete the student. Please try again.');
         }
       );
     }

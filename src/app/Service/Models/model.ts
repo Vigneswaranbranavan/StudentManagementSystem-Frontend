@@ -16,15 +16,21 @@ export interface teacher {
   subjectID: string;
 }
 
-
 export interface student {
   id: string;
   name: string;
   phone: string;
   enrollmentDate: string;
   classID: string;
+  class: {
+    id: string;
+    className: string;
+  };
+  userRes: {
+    id: string;
+    email: string
+  };
 }
-
 
 
 export interface feedback {

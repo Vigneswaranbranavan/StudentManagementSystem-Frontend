@@ -21,11 +21,19 @@ export class EditProfileComponent implements OnInit {
   
   student: student = {
     id: '',
-    name: '',
-    phone: '',
-    enrollmentDate: '',
-    classID: ''
-  };
+  name: '',
+  phone: '',
+  enrollmentDate: '',
+  classID: '',
+  class: {
+    id: '',
+    className: '',
+  },
+  userRes: {
+    id: '',
+    email: ''
+  }
+  }
 
   constructor(
     private studentProfileService: StudentProfileService,

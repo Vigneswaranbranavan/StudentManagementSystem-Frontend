@@ -154,7 +154,7 @@ export class RegisterStudentComponent implements OnInit {
 
   cancel() {
     this.studentForm.reset()
-    this.router.navigate(['/viewStudents'])
+    this.router.navigate(['/staff/viewStudents'])
   }
 
 

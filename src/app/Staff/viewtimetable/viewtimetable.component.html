@@ -1,5 +1,3 @@
-
-
 <div class="container timetable">
   <h1>Weekly Timetable</h1>
   <!-- Display current day -->
@@ -10,13 +8,15 @@
     <div class="class-select">
       <label for="class-select">Select Class:</label>
       <select id="class-select" (change)="onClassChange()" [(ngModel)]="selectedClassId">
-        <option value="" disabled selected>Select Class</option>
         <option *ngFor="let class of classes" [value]="class.id">
           {{ class.className }}
         </option>
       </select>
     </div>
-    <button type="button" class="btn add-teacher-btn" [routerLink]="['/staff/manage-timetable']">+ Add Timetable</button>
+    <button type="button" class="btn add-teacher-btn" [routerLink]="['/staff/manage-timetable']"
+      *ngIf="userRole === 'staff'">
+      + Add Timetable
+    </button>
   </div>
 
   <!-- Timetable Display -->
@@ -46,4 +46,3 @@
     <p>No timetable available for the selected class.</p>
   </div>
 </div>
-

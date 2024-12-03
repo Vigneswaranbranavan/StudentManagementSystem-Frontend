@@ -5,6 +5,7 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { TeacherRegisterService } from '../../Service/Register/Teacher/teacher-register.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ViewSubjectService } from '../../Service/Subject/view-subject.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-teacher-add-update',
@@ -25,7 +26,7 @@ export class TeacherAddUpdateComponent {
   teacherid: string;
 
 
-  constructor(private fb: FormBuilder, private service:TeacherRegisterService , private router: Router, private subsservice: ViewSubjectService, private route: ActivatedRoute) {
+  constructor(private fb: FormBuilder, private service:TeacherRegisterService , private router: Router, private subsservice: ViewSubjectService, private route: ActivatedRoute, private toastr: ToastrService) {
 
 
     const tid = this.route.snapshot.paramMap.get("id");
@@ -120,31 +121,36 @@ export class TeacherAddUpdateComponent {
 
         
         this.service.editTeacher(this.teacherid, teacherUpdateData).subscribe(data => {
-          alert("Teacher updated successfully!");
+          // alert("Teacher updated successfully!");
+          this.toastr.success('Teacher updated successfully!');
           this.TeacherForm.reset();
           this.router.navigate(["/admin/viewTeacher"]); // Reset the form after successful update
         },
           (error) => {
             console.error("Error updating teacher:", error);
-            alert("Failed to update teacher. Please try again.");
+            // alert("Failed to update teacher. Please try again.");
+            this.toastr.error('Failed to update teacher. Please try again.');
           }
         );
       } else {
         // If adding, add a new student
         this.service.AddTeacher(teacherData).subscribe(
           (data) => {
-            alert("teacher added successfully!");
+            // alert("teacher added successfully!");
+            this.toastr.success('teacher added successfully!');
             this.TeacherForm.reset();
             this.router.navigate(["/admin/viewTeacher"]);  // Reset the form after successful addition
           },
           (error) => {
             console.error("Error adding teacher:", error);
-            alert("Failed to add teacher. Please try again.");
+            // alert("Failed to add teacher. Please try again.");
+            this.toastr.error('Failed to add teacher. Please try again.');
           }
         );
       }
     } else {
-      alert("Please fill all required fields correctly.");
+      // alert("Please fill all required fields correctly.");
+      this.toastr.error('Please fill all required fields correctly.');
     }
   }
 
