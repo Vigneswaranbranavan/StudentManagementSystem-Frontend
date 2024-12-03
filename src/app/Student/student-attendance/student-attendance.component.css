@@ -1,117 +1,85 @@
-/* Include the same CSS you provided, no changes here */
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 20px;
-    background-color: #f4f4f9;
-  }
-  
-  .attendance {
-    background-color: #ffffff;
-    border-radius: 8px;
-    padding: 20px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  }
-  
-  h1 {
-    font-size: 2rem;
-    color: #2d3a4b;
-    margin-bottom: 20px;
-    text-align: center;
-  }
-  
-  .attendance-summary {
-    display: flex;
-    justify-content: space-around;
-    padding: 20px;
-    /* background-color: #51E2F5; */
-    /* background-color: #E6D9F9;  */
-    background-color: #D8F9ff; 
-    border-radius: 8px;
-    margin-bottom: 20px;
-  }
-  
-  .summary-item {
-    text-align: center;
-    color: #2d3a4b;
-    
-  }
-  
-  .summary-item h2 {
-    font-size: 2rem;
-    color: #11101d;
-    margin: 5px 0;
-  }
-  
-  .summary-item p {
-    font-size: 1rem;
-    color: #333;
-  }
-  
-  .attendance-table {
-    width: 100%;
-    border-collapse: collapse;
-    background-color: #ffffff;
-    border-radius: 8px;
-    overflow: hidden;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  }
-  
-  .attendance-table th, .attendance-table td {
-    padding: 15px;
-    text-align: center;
-    border-bottom: 1px solid #f0f0f0;
-  }
-  
-  .attendance-table th {
-    background-color: #11101d;
-    color: #ffffff;
-    font-weight: bold;
-  }
-  
-  .attendance-table tr:nth-child(even) {
-    background-color: #f9f9f9;
-  }
-  
-  .status-present {
-    color: green;
-    font-weight: bold;
-  }
-  
-  .status-absent {
-    color: red;
-    font-weight: bold;
-  }
-  
-  .status-late {
-    color: orange;
-    font-weight: bold;
-  }
-  
-  .container {
-    width: 80%;
-    margin: 0 auto;
-    background-color: #e7fbff; 
-    border-radius: 8px;
-    padding: 20px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  }
-  
-  .search-section {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 20px;
-  }
-  
-  .search-section label {
-    font-size: 1rem;
-    margin-right: 10px;
-  }
-  
-  .search-section input {
-    padding: 10px;
-    font-size: 1rem;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-  }
-  
+/* Container Styling */
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Heading Styling */
+h2.text-center {
+  font-size: 24px;
+  color: #333;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+/* Date Picker Input */
+.date-picker {
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Table Styling */
+.table-responsive {
+  margin-top: 20px;
+}
+
+table.table {
+  width: 100%;
+  margin: 0;
+  border-collapse: collapse;
+  background-color: #fff;
+}
+
+table.table th,
+table.table td {
+  padding: 12px;
+  text-align: center;
+  font-size: 16px;
+}
+
+table.table th {
+  background-color: #5f635f;
+  color: white;
+  font-weight: 600;
+}
+
+table.table td {
+  border: 1px solid #ddd;
+}
+
+table.table tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+/* Table Row Hover Effect */
+table.table tbody tr:hover {
+  background-color: #e7f7e7;
+  cursor: pointer;
+}
+
+/* Adjusting Columns */
+table.table td:first-child {
+  width: 10%;
+}
+
+table.table td:nth-child(2) {
+  width: 40%;
+}
+
+table.table td:nth-child(3) {
+  width: 30%;
+}
+
+/* Input Date - Focus State */
+.date-picker:focus {
+  border-color: #4CAF50;
+  box-shadow: 0 0 8px rgba(76, 175, 80, 0.5);
+}

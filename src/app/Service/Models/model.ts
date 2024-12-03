@@ -53,8 +53,16 @@ export interface CustomJwtPayload extends JwtPayload {
 }
 
 export interface Attendance {
+  id? : string;
   studentID: string;
   date: string;
   status: number;
 }
 
+export class AttendanceComponent {
+  attendanceRecords = [
+    { date: new Date(), status: 1 },
+    { date: new Date(), status: 2 },
+    { date: new Date(), status: 3 },
+    // Add more records as needed
+  ]};
