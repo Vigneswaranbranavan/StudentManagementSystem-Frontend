@@ -3,6 +3,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
 import { TeacherRegisterService } from '../../Service/Register/Teacher/teacher-register.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-view-teacher',
@@ -17,7 +18,7 @@ export class ViewTeacherComponent {
   
 
 
-  constructor(private service: TeacherRegisterService, private router: Router) { }
+  constructor(private service: TeacherRegisterService, private router: Router, private toastr: ToastrService) { }
 
   ngOnInit(): void {
     this.loadData();
@@ -46,12 +47,14 @@ export class ViewTeacherComponent {
     if (confirm('Are you sure you want to delete this Teacher?')) {
       this.service.deleteTeacher(deleteId).subscribe(
         () => {
-          alert('Teacher deleted successfully!');
+          // alert('Teacher deleted successfully!');
+          this.toastr.success('Teacher deleted successfully!');
           this.loadData(); 
         },
         (error) => {
           console.error('Error deleting Teacher:', error);
-          alert('Failed to delete the Teacher. Please try again.');
+          // alert('Failed to delete the Teacher. Please try again.');
+          this.toastr.error('Failed to delete the Teacher. Please try again.');
         }
       );
     }

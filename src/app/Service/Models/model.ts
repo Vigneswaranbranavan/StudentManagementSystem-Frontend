@@ -14,8 +14,15 @@ export interface teacher {
   name: string;
   phone: string;
   subjectID: string;
+  subject: {
+    id: string;
+    subjectName: string;
+  };
+  userRes: {
+    id: string;
+    email: string
+  };
 }
-
 
 export interface student {
   id: string;
@@ -23,15 +30,22 @@ export interface student {
   phone: string;
   enrollmentDate: string;
   classID: string;
+  class: {
+    id: string;
+    className: string;
+  };
+  userRes: {
+    id: string;
+    email: string
+  };
 }
 
 
-
 export interface feedback {
-  id: string; 
-  userID:string;
-  feedbackType:string;
-  comments:string; 
+  id: string;
+  userID: string;
+  feedbackType: string;
+  comments: string;
 }
 
 export interface CustomJwtPayload extends JwtPayload {
@@ -39,7 +53,7 @@ export interface CustomJwtPayload extends JwtPayload {
 }
 
 export interface Attendance {
-  studentID: string; 
+  studentID: string;
   date: string;
   status: number;
 }

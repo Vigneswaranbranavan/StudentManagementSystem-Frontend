@@ -18,27 +18,36 @@ import { NgIf } from '@angular/common';
 })
 export class TeacherProfileComponent implements OnInit {
 
-  teacherid: string;
+  userId: string='';
   
 
   Teacher: teacher = {
     id: '',
-    name: '',
-    phone: '',
-    subjectID: '',
+  name: '',
+  phone: '',
+  subjectID: '',
+  subject: {
+    id: '',
+    subjectName: '',
+  },
+  userRes: {
+    id: '',
+    email: ''
+  }
   };
 
   constructor(
     private TeacherProfileService: TeacherProfileService,
     private route: ActivatedRoute
   ) {
-    const tid = this.route.snapshot.paramMap.get('id');
-    this.teacherid = String(tid);
+  
   }
 
   ngOnInit(): void {
-    if (this.teacherid) {
-      this.getTeacherInfo(this.teacherid);  // Fetch student data using studentid
+    this.userId = localStorage.getItem('UserId') || ''; // Get the logged-in user's ID from localStorage
+    console.log('userId from localStorage:', this.userId);
+    if (this.userId) {
+      this.getTeacherInfo(this.userId);  // Fetch student data using studentid
     }
   }
 

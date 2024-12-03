@@ -1,7 +1,7 @@
 <div class="container mt-5">
   <div class="d-flex justify-content-between align-items-center mb-3">
     <h2>STUDENT'S LIST</h2>
-    <button type="button" class="btn btn-primary" [routerLink]="['/staff/student-register']">+ Add Student</button>
+    <button type="button" class="btn btn-primary" [routerLink]="['/staff/student-register']" *ngIf="userRole === 'staff'">+ Add Student</button>
   </div>
 
   <div class="table-responsive">

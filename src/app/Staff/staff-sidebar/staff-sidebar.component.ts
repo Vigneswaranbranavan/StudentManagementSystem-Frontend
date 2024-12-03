@@ -10,7 +10,7 @@ import { RouterModule } from '@angular/router';
   styleUrl: './staff-sidebar.component.css'
 })
 export class StaffSidebarComponent {
-  isOpen = false;
+  isOpen = true;
 
   toggleSidebar() {
     this.isOpen = !this.isOpen;
