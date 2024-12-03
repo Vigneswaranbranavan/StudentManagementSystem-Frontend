@@ -28,7 +28,7 @@
     
     <!-- Profile Section -->
     <li>
-      <a href="#" [routerLink]="['/teacher/profile', teacherid]">
+      <a href="#" [routerLink]="['/teacher/profile']">
         <i class='bx bx-check-circle'></i>
         <span class="links_name">Profile</span>
       </a>
@@ -46,7 +46,7 @@
 
     <!-- Feedback Section -->
     <li>
-      <a href="#" [routerLink]="['/teacher/feedback',userID]">
+      <a href="#" [routerLink]="['/teacher/feedback']">
         <i class='bx bx-message-dots'></i>
         <span class="links_name">Feedback</span>
       </a>
@@ -57,7 +57,7 @@
     <li class="logout">
       <div class="logout-details">
         <div class="name_job">
-          <div class="name"></div> <!-- Dynamically show the teacher's username -->
+          <div class="name">{{Teacher.name}}</div> <!-- Dynamically show the teacher's username -->
         </div>
       </div>
       <i class='bx bx-log-out' id="log_out"></i>

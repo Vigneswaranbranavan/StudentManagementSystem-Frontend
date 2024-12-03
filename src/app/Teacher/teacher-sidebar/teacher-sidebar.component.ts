@@ -17,27 +17,56 @@ import { ReactiveFormsModule } from '@angular/forms';
 export class TeacherSidebarComponent  {
   isOpen = true;
   userName: string = '';
-  userID:string;
-  teacherid: string;
+  userId: string='';
   
 
-  toggleSidebar() {
-    this.isOpen = !this.isOpen;  // Toggle sidebar visibility
+  Teacher: teacher = {
+    id: '',
+  name: '',
+  phone: '',
+  subjectID: '',
+  subject: {
+    id: '',
+    subjectName: '',
+  },
+  userRes: {
+    id: '',
+    email: ''
+  }
+  };
+
+  constructor(
+    private TeacherProfileService: TeacherProfileService,
+    private route: ActivatedRoute
+  ) {
+  
+  }
+
+  ngOnInit(): void {
+    this.userId = localStorage.getItem('UserId') || ''; // Get the logged-in user's ID from localStorage
+    console.log('userId from localStorage:', this.userId);
+    if (this.userId) {
+      this.getTeacherInfo(this.userId);  // Fetch student data using studentid
+    }
+  }
+
+  getTeacherInfo(teacherid: string) {
+    this.TeacherProfileService.getTeacher(teacherid).subscribe(
+      (data) => {
+        this.Teacher = data;
+      },
+      (error) => {
+        console.error('Error fetching Teacher:', error);
+        // Optionally, show user-friendly error messages (e.g., using toastr)
+        console.log(this.Teacher);
+        
+      }
+    );
   }
 
 
-  constructor
-  (  
-    private teacherProfileService: TeacherProfileService,
-    private route: ActivatedRoute
-  )
-  {
-    const Sid = this.route.snapshot.paramMap.get('id');
-    this.teacherid = String(Sid);
-
-    const uId = this.route.snapshot.paramMap.get('userID');
-    this.userID = String(uId);
-    
+  toggleSidebar() {
+    this.isOpen = !this.isOpen;  // Toggle sidebar visibility
   }
 
   

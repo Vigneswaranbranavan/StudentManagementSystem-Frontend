@@ -60,7 +60,7 @@ export const routes: Routes = [
         children: [
             { path: '', component: StaffdashboardComponent },
             { path: 'student-register', component: RegisterStudentComponent },
-            { path: 'studentupdate/:id', component: RegisterStudentComponent },
+            { path: 'studentupdate', component: RegisterStudentComponent },
             { path: 'mark-attendance', component: MarkAttendanceComponent },
             { path: 'manage-timetable', component: ManageTimetableComponent },
             { path: 'viewTimetable', component: ViewtimetableComponent },
@@ -82,9 +82,9 @@ export const routes: Routes = [
             { path: 'viewStudents', component: ViewStudentsComponent },
             { path: 'viewStaff', component: ViewStaffComponent },
             { path: 'addStaff', component: StaffAddUpdateComponent },
-            { path: 'staffupdate/:id', component: StaffAddUpdateComponent },
+            { path: 'staffupdate', component: StaffAddUpdateComponent },
             { path: 'addTeacher', component: TeacherAddUpdateComponent },
-            { path: 'teacherupdate/:id', component: TeacherAddUpdateComponent },
+            { path: 'teacherupdate', component: TeacherAddUpdateComponent },
 
         ],
     },
@@ -96,8 +96,8 @@ export const routes: Routes = [
         children: [
             { path: '', component: TeacherTimetableComponent },
             { path: 'notification', component: TeacherNotificationComponent },
-            { path: 'feedback/:userID', component: TeacherFeedbackComponent },
-            { path: 'profile/:id', component: TeacherProfileComponent },
+            { path: 'feedback', component: TeacherFeedbackComponent },
+            { path: 'profile', component: TeacherProfileComponent },
             { path: 'home', component: EditProfileComponent },
         ],
     },
