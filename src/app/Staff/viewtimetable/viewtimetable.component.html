@@ -7,15 +7,10 @@
   <div class="flex-container">
     <!-- Date Picker -->
     <div class="form-group">
-      <input
-        type="date"
-        class="form-control"
-        [(ngModel)]="selectedDate"
-        (change)="onDateChange()"
-        placeholder="Search by Date"
-      />
+      <input type="date" class="form-control" [(ngModel)]="selectedDate" (change)="onDateChange()"
+        placeholder="Search by Date" />
     </div>
-  
+
     <!-- Class Selection -->
     <div class="form-group class-select">
       <label for="class-select">Select Class:</label>
@@ -25,13 +20,14 @@
         </option>
       </select>
     </div>
-  
+
     <!-- Add Timetable Button -->
-    <button type="button" class="btn add-teacher-btn" [routerLink]="['/staff/manage-timetable']" *ngIf="userRole === 'staff'">
+    <button type="button" class="btn add-teacher-btn" [routerLink]="['/staff/manage-timetable']"
+      *ngIf="userRole === 'staff'">
       + Add Timetable
     </button>
   </div>
-  
+
 
 
 

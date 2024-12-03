@@ -1,10 +1,50 @@
 <div class="container">
+
   <h2 class="text-center mb-4">Your Attendance</h2>
+
+  <!-- Summary Container for Total Classes, Present Days, and Late Coming Days -->
+  <div class="row mb-3">
+    <div class="col-4">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Total Classes:</h5>
+          <p class="card-text">{{ totalClasses }}</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-4">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Present Days:</h5>
+          <p class="card-text">{{ presentCount }}</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-4">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Late Coming Days:</h5>
+          <p class="card-text">{{ lateComingCount }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-body">
+      <div class="info-icon" (click)="showInfoMessage()">
+        <i class="fas fa-info-circle"></i>
+      </div>
+      <h5 class="card-title">Attendance Rate:</h5>
+      <p class="card-text">{{ attendanceRate | number:'1.0-2' }}%</p>
+    </div>
+  </div>
 
   <!-- Date Picker Input -->
   <div class="row mb-3">
     <div class="col-6">
-      <input type="date" id="attendance-date" class="form-control date-picker" [(ngModel)]="attendanceDate" />
+      <input type="date" id="attendance-date" class="form-control date-picker" [(ngModel)]="attendanceDate"
+        (change)="filterByDate()" />
     </div>
   </div>
 
@@ -26,4 +66,14 @@
       </tbody>
     </table>
   </div>
+
+  <!-- Information Message Modal -->
+  <div class="info-modal" *ngIf="showMessage">
+    <div class="modal-content">
+      <p>Students with attendance rates below 90% will be monitored, and actions will be taken.</p>
+      <button class="close-btn" (click)="closeInfoMessage()">Close</button>
+    </div>
+  </div>
+
+
 </div>

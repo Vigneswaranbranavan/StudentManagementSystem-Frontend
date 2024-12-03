@@ -18,6 +18,13 @@ import { StudentProfileService } from '../../Service/Profile/student-profile.ser
 export class StudentAttendanceComponent implements OnInit {
   attendanceDate: string = '';
   attendanceRecords: Attendance[] = [];
+  totalClasses: number = 0;
+  presentCount: number = 0; 
+  lateComingCount: number = 0;
+  attendanceRate: number = 0;
+  showMessage: boolean = false;
+
+
   userId: string = ''; // User ID will be fetched from localStorage
   student: student = {
     id: '', // STUDENT ID
@@ -51,14 +58,11 @@ export class StudentAttendanceComponent implements OnInit {
     }
   }
 
-  // Method to fetch student data using student ID
   getStudentInfo(studentId: string): void {
     this.studentProfileService.getStudent(studentId).subscribe({
       next: (data) => {
         this.student = data;
         console.log('Student data:', this.student);
-
-        // Now that student data is available, load attendance records
         this.loadAttendanceRecords();
       },
       error: (error) => {
@@ -68,13 +72,13 @@ export class StudentAttendanceComponent implements OnInit {
     });
   }
 
-  // Method to load attendance records for the student
   loadAttendanceRecords(): void {
     if (!this.student.id) return;  // Ensure student.id is populated
 
     this.attendanceService.getAttendanceByStudentId(this.student.id).subscribe({
       next: (response) => {
         this.attendanceRecords = response;
+        this.calculateAttendanceStats();
       },
       error: (err) => {
         console.error('Error fetching attendance:', err);
@@ -83,12 +87,12 @@ export class StudentAttendanceComponent implements OnInit {
     });
   }
 
-  // Method to filter attendance by date
   filterByDate(): void {
     if (this.attendanceDate) {
       this.attendanceService.getAttendanceByStudentAndDate(this.student.id, this.attendanceDate).subscribe({
         next: (response) => {
           this.attendanceRecords = response;
+          this.calculateAttendanceStats();
         },
         error: (err) => {
           console.error('Error fetching attendance:', err);
@@ -98,7 +102,6 @@ export class StudentAttendanceComponent implements OnInit {
     }
   }
 
-  // Method to map numeric status to a human-readable format
   getStatusLabel(status: number): string {
     switch (status) {
       case 1:
@@ -111,4 +114,27 @@ export class StudentAttendanceComponent implements OnInit {
         return 'Unknown';
     }
   }
+
+  // Calculate total classes, present, and late coming counts
+  calculateAttendanceStats(): void {
+    this.totalClasses = this.attendanceRecords.length;
+    this.presentCount = this.attendanceRecords.filter(record => record.status === 1).length;
+    this.lateComingCount = this.attendanceRecords.filter(record => record.status === 3).length;
+
+    if (this.totalClasses > 0) {
+      this.attendanceRate = ((this.presentCount + this.lateComingCount )/ this.totalClasses) * 100;
+    } else {
+      this.attendanceRate = 0;  
+    }
+  }
+
+   showInfoMessage(): void {
+    this.showMessage = true;
+  }
+  closeInfoMessage(): void {
+    this.showMessage = false;
+  }
+
 }
+
+
