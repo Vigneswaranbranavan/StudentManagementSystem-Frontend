@@ -25,6 +25,8 @@ date=''
     id: '',
   name: '',
   phone: '',
+  gender: 0,
+  indexNumber: '',
 
   enrollmentDate:'',
   classID: '',

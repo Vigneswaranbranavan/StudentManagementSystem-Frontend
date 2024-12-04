@@ -31,6 +31,8 @@ export interface student {
   id: string;
   name: string;
   phone: string;
+  gender: number;
+  indexNumber: string;
   enrollmentDate: string;
   classID: string;
   class: {

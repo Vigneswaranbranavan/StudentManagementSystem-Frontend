@@ -10,7 +10,7 @@ import { ToastrModule, ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-register-student',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, HttpClientModule,ToastrModule],
+  imports: [CommonModule, ReactiveFormsModule, HttpClientModule, ToastrModule],
   templateUrl: './register-student.component.html',
   styleUrl: './register-student.component.css',
   providers: [StudentRegisterService, ViewclassService]
@@ -20,12 +20,8 @@ export class RegisterStudentComponent implements OnInit {
   isEditMode: boolean = false;
 
   students: any[] = [];
-
   classes: any[] = [];
-
   studentid: string;
-
-
 
 
   constructor(
@@ -35,7 +31,7 @@ export class RegisterStudentComponent implements OnInit {
     private classService: ViewclassService,
     private route: ActivatedRoute,
     private toastr: ToastrService
-    ) {
+  ) {
 
 
     const sid = this.route.snapshot.paramMap.get("id");
@@ -47,9 +43,6 @@ export class RegisterStudentComponent implements OnInit {
     else {
       this.isEditMode = false;
     }
-
-
-
 
 
     if (this.isEditMode == true) {
@@ -87,11 +80,7 @@ export class RegisterStudentComponent implements OnInit {
       this.classes = data
     })
 
-
   }
-
-
-
 
 
   onSubmit() {
@@ -126,12 +115,11 @@ export class RegisterStudentComponent implements OnInit {
           }
         );
       } else {
-        // If adding, add a new student
         this.service.AddStudent(studentData).subscribe(
           (data) => {
             this.toastr.success("Student added successfully!");
             this.studentForm.reset();
-            this.router.navigate(["/staff/viewStudents"]); 
+            this.router.navigate(["/staff/viewStudents"]);
           },
           (error) => {
             console.error("Error adding student:", error);
@@ -145,21 +133,10 @@ export class RegisterStudentComponent implements OnInit {
   }
 
 
-
-
-
-
-
-
-
   cancel() {
     this.studentForm.reset()
     this.router.navigate(['/staff/viewStudents'])
   }
-
-
-
-
 
 
 }

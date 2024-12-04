@@ -26,6 +26,7 @@
         <thead>
           <tr>
             <!-- <th>#</th> -->
+            <th>Index Number</th>
             <th>Student Name</th>
             <th>Attendance</th>
           </tr>
@@ -33,6 +34,7 @@
         <tbody id="attendance-list">
           <tr *ngFor="let student of students">
             <!-- <td>{{ student.id }}</td> -->
+            <td>{{ student.indexNumber}}</td>
             <td>{{ student.name }}</td>
             <td>
               <select

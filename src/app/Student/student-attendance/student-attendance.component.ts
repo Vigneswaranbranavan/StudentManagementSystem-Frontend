@@ -39,7 +39,9 @@ export class StudentAttendanceComponent implements OnInit {
     userRes: {
       id: '',
       email: ''
-    }
+    },
+    gender: 0,
+    indexNumber: ''
   };
 
   constructor(
