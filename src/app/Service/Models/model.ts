@@ -1,12 +1,15 @@
 import { JwtPayload } from "jwt-decode";
 
 export interface staff {
-  id: number;
+  id: string;
   name: string;
   email: string;
   phone: string;
+  userRes: {
+    id: string;
+    email:string;
 
-}
+}}
 
 // teacher.ts (Model)
 export interface teacher {
@@ -53,8 +56,16 @@ export interface CustomJwtPayload extends JwtPayload {
 }
 
 export interface Attendance {
+  id? : string;
   studentID: string;
   date: string;
   status: number;
 }
 
+export class AttendanceComponent {
+  attendanceRecords = [
+    { date: new Date(), status: 1 },
+    { date: new Date(), status: 2 },
+    { date: new Date(), status: 3 },
+    // Add more records as needed
+  ]};

@@ -1,52 +1,79 @@
-<div class="attendance">
-  <h1>Attendance Overview</h1>
+<div class="container">
 
-  <!-- Display Attendance Summary -->
-  <div class="attendance-summary">
-    <div class="summary-item">
-      <h2>{{ attendanceSummary.presentDays }}</h2>
-      <p>Present Days</p>
+  <h2 class="text-center mb-4">Your Attendance</h2>
+
+  <!-- Summary Container for Total Classes, Present Days, and Late Coming Days -->
+  <div class="row mb-3">
+    <div class="col-4">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Total Classes:</h5>
+          <p class="card-text">{{ totalClasses }}</p>
+        </div>
+      </div>
     </div>
-    <div class="summary-item">
-      <h2>{{ attendanceSummary.absentDays }}</h2>
-      <p>Absent Days</p>
+    <div class="col-4">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Present Days:</h5>
+          <p class="card-text">{{ presentCount }}</p>
+        </div>
+      </div>
     </div>
-    <div class="summary-item">
-      <h2>{{ attendanceSummary.lateDays }}</h2>
-      <p>Late Days</p>
+    <div class="col-4">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Late Coming Days:</h5>
+          <p class="card-text">{{ lateComingCount }}</p>
+        </div>
+      </div>
     </div>
   </div>
 
-  <div class="container">
-    <h1>Student Attendance</h1>
-
-    <!-- Date Picker Section -->
-    <div class="search-section">
-      <label for="attendance-date">Select Date: </label>
-      <input type="date" id="attendance-date" [(ngModel)]="selectedDate" >
+  <div class="card">
+    <div class="card-body">
+      <div class="info-icon" (click)="showInfoMessage()">
+        <i class="fas fa-info-circle"></i>
+      </div>
+      <h5 class="card-title">Attendance Rate:</h5>
+      <p class="card-text">{{ attendanceRate | number:'1.0-2' }}%</p>
     </div>
+  </div>
 
-    <!-- Attendance Table -->
-    <table id="attendance-table" class="attendance-table" *ngIf="attendanceDetails.length > 0">
+  <!-- Date Picker Input -->
+  <div class="row mb-3">
+    <div class="col-6">
+      <input type="date" id="attendance-date" class="form-control date-picker" [(ngModel)]="attendanceDate"
+        (change)="filterByDate()" />
+    </div>
+  </div>
+
+  <!-- Attendance Table -->
+  <div class="table-responsive">
+    <table class="table table-bordered" id="attendance-table">
       <thead>
         <tr>
-          <th>Time</th>
-          <th>Subject</th>
-          <th>Attendance Status</th>
+          <th>Date</th>
+          <th>Status</th>
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let detail of attendanceDetails">
-          <td>{{ detail.time }}</td>
-          <td>{{ detail.subject }}</td>
-          <td [ngStyle]="{ 'background-color': getStatusColor(detail.status) }">
-            {{ detail.status }}
-          </td>
+        <!-- Loop through attendanceRecords array -->
+        <tr *ngFor="let record of attendanceRecords">
+          <td>{{ record.date | date:'EEE/M/yy' }}</td>
+          <td>{{ getStatusLabel(record.status) }}</td>
         </tr>
       </tbody>
     </table>
-
-    <!-- If no data is available for the selected date -->
-    <p *ngIf="attendanceDetails.length === 0">No attendance data available for the selected date.</p>
   </div>
+
+  <!-- Information Message Modal -->
+  <div class="info-modal" *ngIf="showMessage">
+    <div class="modal-content">
+      <p>Students with attendance rates below 90% will be monitored, and actions will be taken.</p>
+      <button class="close-btn" (click)="closeInfoMessage()">Close</button>
+    </div>
+  </div>
+
+
 </div>

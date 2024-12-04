@@ -31,10 +31,17 @@ export class TeacherFeedbackComponent implements OnInit {
   
   ngOnInit(): void {
     // Fetch userId from the route parameters (URL)
-    this.route.paramMap.subscribe(params => {
-      this.userId = params.get('userID') || '';  // userId from the URL
-      console.log('userId from URL:', this.userId);  // For debugging
-    });
+        // Fetch userId from localStorage
+        this.userId = localStorage.getItem('UserId') || ''; // Get the logged-in user's ID from localStorage
+        console.log('userId from localStorage:', this.userId);  // For debugging
+    
+        if (!this.userId) {
+          console.error('User ID not found in localStorage!');
+        }
+    
+        // Get the previous feedback list
+        this.getFeedbackList();
+    
 
     // Get the previous feedback list
     this.getFeedbackList();

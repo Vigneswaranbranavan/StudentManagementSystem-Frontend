@@ -26,12 +26,13 @@ import { ViewTeacherComponent } from './Administrator/view-teacher/view-teacher.
 import { ViewStaffComponent } from './Administrator/view-staff/view-staff.component';
 import { HomeComponent } from './Home/home/home.component';
 import { StudentSidebarComponent } from './Student/student-sidebar/student-sidebar.component';
-import { ViewSubjectComponent } from './Staff/view-subject/view-subject.component';
+
 import { StaffSidebarComponent } from './Staff/staff-sidebar/staff-sidebar.component';
 import { AdminSidebarComponent } from './Administrator/admin-sidebar/admin-sidebar.component';
 import { TeacherSidebarComponent } from './Teacher/teacher-sidebar/teacher-sidebar.component';
 import { ViewtimetableComponent } from './Staff/viewtimetable/viewtimetable.component';
 import { StaffdashboardComponent } from './Staff/staffdashboard/staffdashboard.component';
+import { StaffProfileComponent } from './Staff/staff-profile/staff-profile.component';
 
 
 export const routes: Routes = [
@@ -44,7 +45,7 @@ export const routes: Routes = [
         path: 'student', component:StudentSidebarComponent,
         children: [
             { path: 'home', component: StudentHomeComponent },
-            { path: 'attendance/:studentid', component: StudentAttendanceComponent },
+            { path: 'attendance', component: StudentAttendanceComponent },
             { path: 'feedback', component: StudentFeedbackComponent },
             { path: 'notification', component: StudentNotificationComponent },
             { path: 'timetable', component: StudentTimetableComponent },
@@ -65,8 +66,10 @@ export const routes: Routes = [
             { path: 'manage-timetable', component: ManageTimetableComponent },
             { path: 'viewTimetable', component: ViewtimetableComponent },
             { path: 'viewStudents', component: ViewStudentsComponent },
-            { path: 'viewClass', component: ViewClassComponent },
-            { path: 'viewSubject', component: ViewSubjectComponent },
+            { path: 'viewClassSubject', component: ViewClassComponent },
+            { path: 'profile', component: StaffProfileComponent },
+
+            
         ],
     },
 

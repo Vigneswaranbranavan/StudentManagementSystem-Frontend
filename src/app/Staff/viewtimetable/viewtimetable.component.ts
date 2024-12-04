@@ -15,67 +15,82 @@ import { TimetableService } from '../../Service/Timetable/timetable.service';
   providers: [TimetableService, ViewclassService]
 })
 export class ViewtimetableComponent {
-date: Date = new Date();
+   date: Date = new Date();
+  selectedDate: string = '';
   timetables: any[] = [];
   classes: any[] = [];
-  selectedClassId: string = ''; // Initially empty
-  daysOfWeek: string[] = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+  selectedClassId: string = '';
   timetablesByDay: { [key: string]: any[] } = {};
-  userRole: string ="";
+  userRole: string = '';
+  daysOfWeek: string[] = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
 
-  constructor(private classservice: ViewclassService, private timetableservice: TimetableService) {}
+  constructor(
+    private timetableservice: TimetableService,
+    private classservice: ViewclassService
+  ) {}
 
   ngOnInit(): void {
     this.loadData();
-    this.userRole = localStorage.getItem('role') || ''; // Get the logged-in user's ID from localStorage
-    console.log('userId from localStorage:', this.userRole);  // For debugging
-
-    if (!this.userRole) {
-      console.error('User ID not found in localStorage!');
-    }
+    this.userRole = localStorage.getItem('role') || '';
   }
 
-
- 
   loadData() {
-    // Load classes from the service
-    this.classservice.getClasses().subscribe(data => {
+    this.classservice.getClasses().subscribe((data) => {
       this.classes = data;
-
-      // Automatically select the first class if available
       if (this.classes.length > 0) {
-        this.selectedClassId = this.classes[0].id; // Set the first class ID
-        this.loadTimetableForClass(); // Load timetable for the first class
+        this.selectedClassId = this.classes[0].id;
+        this.loadTimetableForClass();
       }
     });
   }
 
   loadTimetableForClass() {
-    // Fetch timetable for the selected class
     if (this.selectedClassId) {
-      this.timetableservice.getTimetableByClassId(this.selectedClassId).subscribe(data => {
-        this.timetables = data;
-
-        // Group timetable by day
-        this.timetablesByDay = {};
-        for (const timetable of this.timetables) {
-          const date = new Date(timetable.date); // Parse the date
-          const dayName = date.toLocaleDateString('en-US', { weekday: 'long' }); // Get the day name (e.g., Monday)
-          if (!this.timetablesByDay[dayName]) {
-            this.timetablesByDay[dayName] = [];
-          }
-          this.timetablesByDay[dayName].push(timetable);
-        }
+      this.timetableservice.getTimetableByClassId(this.selectedClassId).subscribe((data) => {
+        this.groupTimetablesByDay(data);
       });
     }
   }
 
   onClassChange() {
-    // When the user selects a class, load its timetable
-    this.loadTimetableForClass();
+    if (this.selectedClassId) {
+      this.loadTimetableForClass();
+    }
   }
 
-  // Expose the keys of timetablesByDay for the template
+  onDateChange() {
+    if (this.selectedDate && this.selectedClassId) {
+      const selectedDateObj = new Date(this.selectedDate);
+
+      this.timetableservice.getTimetableByClassId(this.selectedClassId).subscribe((data) => {
+        const filteredTimetables = data.filter((timetable: any) => {
+          const timetableDate = new Date(timetable.date);
+          return (
+            timetableDate.getFullYear() === selectedDateObj.getFullYear() &&
+            timetableDate.getMonth() === selectedDateObj.getMonth() &&
+            timetableDate.getDate() === selectedDateObj.getDate()
+          );
+        });
+
+        this.groupTimetablesByDay(filteredTimetables);
+      });
+    } else {
+      this.loadTimetableForClass();
+    }
+  }
+
+  groupTimetablesByDay(timetables: any[]) {
+    this.timetablesByDay = {};
+    for (const timetable of timetables) {
+      const date = new Date(timetable.date);
+      const dayName = date.toLocaleDateString('en-US', { weekday: 'long' });
+      if (!this.timetablesByDay[dayName]) {
+        this.timetablesByDay[dayName] = [];
+      }
+      this.timetablesByDay[dayName].push(timetable);
+    }
+  }
+
   getTimetableDays(): string[] {
     return Object.keys(this.timetablesByDay);
   }

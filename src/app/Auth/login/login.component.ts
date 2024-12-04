@@ -5,13 +5,14 @@ import { Router, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import jwtDecode, { JwtPayload } from 'jwt-decode';
 import { CustomJwtPayload } from '../../Service/Models/model';
+import { ToastrModule, ToastrService } from 'ngx-toastr';
 
 
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [ReactiveFormsModule,RouterModule,FormsModule,CommonModule],
+  imports: [ReactiveFormsModule,RouterModule,FormsModule,CommonModule,ToastrModule],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css',
 })
@@ -26,7 +27,8 @@ export class LoginComponent {
   constructor(
     private fb: FormBuilder,
     private loginService: LoginService,
-    private router: Router
+    private router: Router,
+    private toastr:ToastrService
   ) {
     this.loginForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
@@ -46,7 +48,7 @@ export class LoginComponent {
   // Handle form submission
   onSubmit(): void {
     if (this.loginForm.invalid) {
-      this.errorMessage = 'Please fill out the form correctly.';
+      this.toastr.error('Please fill out the form correctly.');
       return;
     }
 
@@ -90,7 +92,7 @@ export class LoginComponent {
       (error) => {
         this.isLoading = false;
         console.error('Login error:', error);
-        this.errorMessage = 'Invalid email or password. Please try again.';
+        this.toastr.error('Invalid email or password!!');
       }
     );
   }
