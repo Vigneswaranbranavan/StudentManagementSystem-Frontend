@@ -33,7 +33,7 @@ export interface student {
   phone: string;
   gender: number;
   indexNumber: string;
-  enrollmentDate: string;
+  enrollmentDate?: string;
   classID: string;
   class: {
     id: string;

@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { StudentRegisterService } from '../../Service/Register/student-register.service';
 import { HttpClientModule } from '@angular/common/http';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -10,7 +10,7 @@ import { ToastrModule, ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-register-student',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, HttpClientModule, ToastrModule],
+  imports: [CommonModule, ReactiveFormsModule, HttpClientModule, ToastrModule, FormsModule],
   templateUrl: './register-student.component.html',
   styleUrl: './register-student.component.css',
   providers: [StudentRegisterService, ViewclassService]
@@ -19,9 +19,15 @@ export class RegisterStudentComponent implements OnInit {
   studentForm: FormGroup;
   isEditMode: boolean = false;
 
-  students: any[] = [];
+  student: any[] = [];
   classes: any[] = [];
   studentid: string;
+
+  genderOptions = [
+    { value: 1, label: 'Male' },
+    { value: 2, label: 'Female' },
+    { value: 3, label: 'Other' }
+  ];
 
 
   constructor(
@@ -55,9 +61,11 @@ export class RegisterStudentComponent implements OnInit {
       })
     } else {
       this.studentForm = this.fb.group({
+        indexNumber: ['', [Validators.required]],
         name: ['', [Validators.required]],
         phone: ['', [Validators.required, Validators.pattern('^[0-9]{10}$')]],
         classID: ['', [Validators.required]],
+        gender: ['', [Validators.required]],
         userReq: this.fb.group({
           email: ['', [Validators.required, Validators.email]],
           password: ['', [Validators.required, Validators.minLength(8)]]
@@ -72,6 +80,7 @@ export class RegisterStudentComponent implements OnInit {
 
     if (this.isEditMode == true) {
       this.service.getStudent(this.studentid).subscribe((data: any) => {
+        console.log(data)
         this.studentForm.patchValue(data);
 
       })
@@ -88,9 +97,11 @@ export class RegisterStudentComponent implements OnInit {
       const student = this.studentForm.value;
 
       const studentData = {
+        indexNumber: student.indexNumber,
         name: student.name,
         phone: student.phone,
         classID: student.classID,
+        gender: student.gender,
         userReq: student.userReq // userReq is the object with email and password
       };
 
@@ -129,39 +140,12 @@ export class RegisterStudentComponent implements OnInit {
       }
     } else {
       this.toastr.error("Please fill all required fields correctly.");
+      console.error('Form validation failed:', this.studentForm.errors);
     }
   }
-
 
   cancel() {
     this.studentForm.reset()
     this.router.navigate(['/staff/viewStudents'])
   }
-
-
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
