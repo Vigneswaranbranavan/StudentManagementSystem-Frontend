@@ -65,7 +65,7 @@ export class RegisterStudentComponent implements OnInit {
         name: ['', [Validators.required]],
         phone: ['', [Validators.required, Validators.pattern('^[0-9]{10}$')]],
         classID: ['', [Validators.required]],
-        gender: ['', [Validators.required]],
+        gender: [null, [Validators.required]],
         userReq: this.fb.group({
           email: ['', [Validators.required, Validators.email]],
           password: ['', [Validators.required, Validators.minLength(8)]]
@@ -77,17 +77,19 @@ export class RegisterStudentComponent implements OnInit {
 
   ngOnInit(): void {
 
-
-    if (this.isEditMode == true) {
+    if (this.isEditMode) {
       this.service.getStudent(this.studentid).subscribe((data: any) => {
         console.log(data)
-        this.studentForm.patchValue(data);
+        this.studentForm.patchValue({
+          ...data,
+          gender:Number(data.gender),
+        });
 
-      })
+      });
     }
     this.classService.getClasses().subscribe(data => {
       this.classes = data
-    })
+    });
 
   }
 
@@ -101,7 +103,7 @@ export class RegisterStudentComponent implements OnInit {
         name: student.name,
         phone: student.phone,
         classID: student.classID,
-        gender: student.gender,
+        gender: Number(student.gender),
         userReq: student.userReq // userReq is the object with email and password
       };
 
