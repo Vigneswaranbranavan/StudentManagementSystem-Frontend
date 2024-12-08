@@ -1,0 +1,100 @@
+/* Full-Screen Background */
+.background {
+    background: url('https://static.vecteezy.com/system/resources/previews/002/174/758/non_2x/forgot-password-landing-page-template-vector.jpg') no-repeat center center/cover;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #333;
+}
+
+/* Container Card */
+.container {
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    max-width: 400px;
+    width: 90%;
+    text-align: center;
+}
+
+/* Title */
+h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #555;
+}
+
+/* Email Input Section */
+.email-section {
+    margin: 20px 0;
+}
+
+.email-section input,
+.otp-modal input,
+.password-section input {
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 100%;
+    font-size: 16px;
+}
+
+/* Buttons Common Style */
+.email-section button,
+.otp-modal button,
+.password-section button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background 0.3s ease;
+}
+
+/* Button Variants */
+.email-section button {
+    background: #007bff;
+    color: #fff;
+}
+
+.email-section button:hover {
+    background: #0056b3;
+}
+
+.otp-modal button {
+    background: #28a745;
+    color: #fff;
+}
+
+.otp-modal button:hover {
+    background: #218838;
+}
+
+.password-section button {
+    background: #ffc107;
+    color: #fff;
+}
+
+.password-section button:hover {
+    background: #e0a800;
+}
+
+/* Media Query for Responsiveness */
+@media (max-width: 768px) {
+    .container {
+        padding: 20px;
+    }
+
+    h1 {
+        font-size: 20px;
+    }
+
+    input,
+    button {
+        font-size: 14px;
+    }
+}
