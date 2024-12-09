@@ -1,6 +1,7 @@
 /* Full-Screen Background */
 .background {
-    background: url('https://static.vecteezy.com/system/resources/previews/002/174/758/non_2x/forgot-password-landing-page-template-vector.jpg') no-repeat center center/cover;
+    /* background: url('https://static.vecteezy.com/system/resources/previews/002/174/758/non_2x/forgot-password-landing-page-template-vector.jpg') no-repeat center center/cover; */
+    background: linear-gradient(45deg, blue, rgb(69, 69, 202), rgb(165, 0, 165));
     height: 100vh;
     display: flex;
     justify-content: center;
