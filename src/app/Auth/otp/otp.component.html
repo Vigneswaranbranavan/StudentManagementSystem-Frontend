@@ -1,27 +1,28 @@
-<!-- Background Section -->
-<div class="background">
-    <div class="container">
-        <h1>Forgot Password</h1>
-
-        <!-- Email Input Section -->
-        <div class="email-section">
-            <input type="email" placeholder="Enter your email address" [(ngModel)]="email" />
-            <button (click)="sendOTP()">Submit</button>
-        </div>
-
-        <!-- OTP Modal Section -->
-        <div class="otp-modal" *ngIf="showOTPModal">
-            <h2>Enter OTP</h2>
-            <input type="text" maxlength="6" placeholder="Enter 6-digit OTP" [(ngModel)]="otp" />
-            <button (click)="verifyOTP()">Verify OTP</button>
-        </div>
-
-        <!-- Password Reset Section -->
-        <div class="password-section" *ngIf="showPasswordSection">
-            <h2>Reset Your Password</h2>
-            <input type="password" placeholder="Enter new password" [(ngModel)]="newPassword" />
-            <input type="password" placeholder="Confirm new password" [(ngModel)]="confirmPassword" />
-            <button (click)="resetPassword()">Change Password</button>
-        </div>
+<div class="container">
+    <h2>Forgot Password</h2>
+    @if (!EnterdEmail) {
+    <div>
+        <label for="email">Enter your email:</label>
+        <input type="email" id="email" [(ngModel)]="userEmail" />
+        <button (click)="SentOTP()">Verify Email & Send OTP</button>
     </div>
+    }
+    @if(EnterdEmail && !localOTP){
+    <div>
+        <h3>Enter OTP</h3>
+        <label for="otp">OTP:</label>
+        <input type="text" id="otp" [(ngModel)]="UserOTP" />
+        <button (click)="EnterOTP()">Verify OTP</button>
+    </div>
+    }
+    @if(localOTP){
+    <div>
+        <h3>Enter Password</h3>
+        <label for="otp">New Password:</label>
+        <input type="text" id="otp"  [(ngModel)]="UserPassword"/>
+        <button (click)="changePassword()">Add Password</button>
+    </div>
+    }
+
+
 </div>
