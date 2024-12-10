@@ -16,10 +16,6 @@ export class ForgotPasswordService {
     return this.http.post(this.apiUrl + `SentOTP?email=${email}`,{})
   }
 
-  // verifyEmail(email: string): Observable<any> {
-  //   const url = `${this.apiUrl}/VerifyEmail`;
-  //   return this.http.post(url, { email });
-  // }
 
   verifyOtp(OTP:string){
     return this.http.post(this.apiUrl + `CheckOTP?otp=${OTP}`,{})

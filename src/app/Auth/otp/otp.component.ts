@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { ForgotPasswordService } from '../../Service/Login/OTP/forgot-password.service';
@@ -14,45 +14,56 @@ import { Router, RouterLink } from '@angular/router';
   templateUrl: './otp.component.html',
   styleUrl: './otp.component.css'
 })
-export class OtpComponent {
-  OTPService = inject(ForgotPasswordService)
-  toster = inject(ToastrService)
-  EnterdEmail = localStorage.getItem('Email')
-  localOTP = localStorage.getItem('OTP')
+export class OtpComponent implements OnInit {
+  EnterdEmail: string | null = null;
+  localOTP: string | null = null;
+
   userEmail: string = '';
   UserOTP: string = '';
   UserPassword: string = '';
-  rout = inject (Router)
+
+  constructor(
+    private OTPService: ForgotPasswordService,
+    private toster: ToastrService,
+    private rout: Router
+  ) { }
+  ngOnInit(): void {
+    this.EnterdEmail = localStorage.getItem('Email');
+    this.localOTP = localStorage.getItem('OTP');
+  }
+
 
 
   SentOTP() {
     this.OTPService.sendOtp(this.userEmail).subscribe({
       next: res => {
-        this.toster.success("Please enter the otp")
+        this.toster.success("Please enter the OTP sent to your email.")
         localStorage.setItem('Email', this.userEmail)
         setTimeout(() => {
           window.location.reload()
         }, 300);
       }, error: err => {
-        this.toster.error(err.error)
+        this.toster.error("Error sending OTP.")
       }
-    })
+    });
   }
 
   EnterOTP() {
     this.OTPService.verifyOtp(this.UserOTP).subscribe({
       next: res => {
-        this.toster.success("OTP is valid")
+        this.toster.success("OTP verified successfully.")
         localStorage.setItem('OTP', this.UserOTP)
         setTimeout(() => {
           window.location.reload()
         }, 300);
+      }, error: err =>{
+        this.toster.error("Invalid OTP.")
       }
     })
   }
 
   changePassword() {
-    let theemail = localStorage.getItem('Email');
+    const theemail = localStorage.getItem('Email');
     if (!theemail) {
       this.toster.error('Email not found. Please log in again.');
       return;
@@ -70,8 +81,8 @@ export class OtpComponent {
         this.rout.navigateByUrl('/login')
       },
       error: err => {
-        this.toster.error(err.error)
+        this.toster.error("Error changing password.")
       }
-    })
+    });
   }
 }

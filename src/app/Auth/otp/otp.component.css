@@ -1,48 +1,25 @@
-/* General Styles */
-div.container {
-    margin: 20px auto;
-    font-family: Arial, sans-serif;
-    max-width: 400px;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
+body {
+  background-color: #f8f9fa;
+}
 
-  /* Header Styling */
-  h2,
-  h3 {
-    text-align: center;
-    color: #333;
-  }
+.form-container {
+  background: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
 
-  /* Styling for forms */
-  label {
-    display: block;
-    margin: 10px 0 5px;
-    color: #555;
-  }
+h2, h3 {
+  color: #343a40;
+}
 
-  /* Button Styling */
-  button {
-    display: block;
-    width: 100%;
-    background-color: #007bff;
-    color: #fff;
-    padding: 10px;
-    margin: 5px 0;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.2s ease;
-  }
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.7;
+}
 
-  button:hover {
-    background-color: #0056b3;
-  }
-
-
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}

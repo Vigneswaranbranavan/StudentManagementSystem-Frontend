@@ -1,28 +1,53 @@
 <div class="container">
-    <h2>Forgot Password</h2>
-    @if (!EnterdEmail) {
-    <div>
-        <label for="email">Enter your email:</label>
-        <input type="email" id="email" [(ngModel)]="userEmail" />
-        <button (click)="SentOTP()">Verify Email & Send OTP</button>
-    </div>
-    }
-    @if(EnterdEmail && !localOTP){
-    <div>
-        <h3>Enter OTP</h3>
-        <label for="otp">OTP:</label>
-        <input type="text" id="otp" [(ngModel)]="UserOTP" />
-        <button (click)="EnterOTP()">Verify OTP</button>
-    </div>
-    }
-    @if(localOTP){
-    <div>
-        <h3>Enter Password</h3>
-        <label for="otp">New Password:</label>
-        <input type="text" id="otp"  [(ngModel)]="UserPassword"/>
-        <button (click)="changePassword()">Add Password</button>
-    </div>
-    }
+    <div class="row align-items-center" style="height: 100vh;">
 
+        <div class="col-lg-6 d-none d-lg-block">
+            <img src="forgot-password.avif" alt="Forgot Password" class="img-fluid"
+                style="max-height: 700px; margin: auto; display: block;" />
+        </div>
 
+        <div class="col-lg-6 col-12">
+            <div class="form-container shadow p-5 rounded bg-white">
+                <h2 class="text-center mb-4">Forgot Password</h2>
+
+                <div *ngIf="!EnterdEmail">
+                    <label for="email" class="form-label">Enter Your Email:</label>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text"><i class="bi bi-envelope"></i></span>
+                        <input type="email" id="email" class="form-control" [(ngModel)]="userEmail"
+                            placeholder="Enter your mail" required />
+                    </div>
+                    <button class="btn btn-secondary w-100" (click)="SentOTP()">
+                        Verify Email & Send OTP
+                    </button>
+                </div>
+
+                <div *ngIf="EnterdEmail && !localOTP">
+                    <h3 class="text-center mb-4">Enter OTP</h3>
+                    <label for="otp" class="form-label">OTP:</label>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text"><i class="bi bi-key"></i></span>
+                        <input type="text" id="otp" class="form-control" [(ngModel)]="UserOTP" placeholder="Enter OTP"
+                            required />
+                    </div>
+                    <button class="btn btn-secondary w-100" (click)="EnterOTP()">
+                        Verify OTP
+                    </button>
+                </div>
+
+                <div *ngIf="localOTP">
+                    <h3 class="text-center mb-4">Enter New Password</h3>
+                    <label for="newPassword" class="form-label">New Password:</label>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text"><i class="bi bi-lock"></i></span>
+                        <input type="password" id="newPassword" class="form-control" [(ngModel)]="UserPassword"
+                            placeholder="Enter New Password" required />
+                    </div>
+                    <button class="btn btn-secondary w-100" (click)="changePassword()">
+                        Change Password
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
