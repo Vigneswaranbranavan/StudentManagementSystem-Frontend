@@ -1,4 +1,3 @@
-/* Container styles */
 .container {
   background-color: #f8f9fa;
   padding: 30px;
@@ -8,7 +7,6 @@
   max-width: 95%;
 }
 
-/* Header styles */
 h2 {
   font-weight: bold;
   font-size: 1.75rem;
@@ -17,7 +15,6 @@ h2 {
 
 }
 
-/* Add Staff button */
 .btn-primary {
   background-color: #46515e;
   border-color: #303030;
@@ -32,7 +29,6 @@ h2 {
   transform: scale(1.04);
 }
 
-/* Table styles */
 .table {
   background-color: white;
   margin-top: 20px;
@@ -47,16 +43,16 @@ h2 {
 }
 
 .table th {
-  padding: 10px 12px; /* Uniform padding for header and body cells */
-  font-size: 1.25rem; /* Uniform font size for header and body cells */
+  padding: 10px 12px;
+  font-size: 1.25rem;
   text-align: center;
   font-family: 'Arial', sans-serif;
 
 }
 
 .table td {
-  padding: 4px 12px; /* Uniform padding for header and body cells */
-  font-size: 1.12rem; /* Uniform font size for header and body cells */
+  padding: 4px 12px;
+  font-size: 1.12rem;
   text-align: center;
 }
 
@@ -73,7 +69,6 @@ h2 {
   background-color: #e9ecef;
 }
 
-/* Table action buttons */
 .table .btn {
   transition: transform 0.3s ease, background-color 0.3s ease;
 }
@@ -83,7 +78,7 @@ h2 {
 }
 
 .table .btn-danger {
-  background-color: #dc3545;
+  background-color: #ffffff;
   border-color: #dc3545;
 }
 
@@ -92,20 +87,21 @@ h2 {
 }
 
 .table .btn-warning {
-  background-color: #ffc107;
+  background-color: #ffffff;
   border-color: #ffc107;
+}
+.btn .bi {
+  color: black;
 }
 
 .table .btn-warning:hover {
   background-color: #e0a800;
 }
 
-/* Responsive table */
 .table-responsive {
   overflow-x: auto;
 }
 
-/* Mobile-friendly adjustments */
 @media (max-width: 768px) {
   h2 {
     font-size: 1.5rem;
@@ -122,6 +118,6 @@ h2 {
 
   .table th,
   .table td {
-    padding: 8px 10px; /* Adjust padding for mobile */
+    padding: 8px 10px;
   }
 }

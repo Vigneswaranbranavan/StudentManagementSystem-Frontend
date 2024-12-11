@@ -3,7 +3,7 @@
       <h2>TEACHER'S LIST</h2>
       <button type="button" class="btn btn-primary" [routerLink]="['/admin/addTeacher']">+ Add Teacher</button>
     </div>
-  
+
     <div class="table-responsive">
       <table class="table table-bordered table-hover table-striped align-middle">
         <thead class="table-dark">
@@ -24,10 +24,10 @@
             <td>
                 <div class="d-flex justify-content-evenly">
                   <button class="btn btn-danger"(click)="DeleteTeacher(teacher.id)">
-                    <i class="bi bi-x-circle"></i> 
+                    <i class="bi bi-person-x-fill"></i>
                   </button>
                   <button class="btn btn-warning" (click)="EditTeacher(teacher.id)">
-                    <i class="bi bi-pencil-square"></i> 
+                    <i class="bi bi-pencil-square"></i>
                   </button>
                 </div>
               </td>
@@ -36,5 +36,5 @@
       </table>
     </div>
   </div>
-  
+
 
