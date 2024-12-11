@@ -36,7 +36,9 @@ export class StudentSidebarComponent {
     userRes: {
       id: '',
       email: ''
-    }
+    },
+    gender: 0,
+    indexNumber: ''
   };
 
 
@@ -74,13 +76,6 @@ export class StudentSidebarComponent {
     );
   }
 }
-
-
-
-
-
-
-
 
 
 

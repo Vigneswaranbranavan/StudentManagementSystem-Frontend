@@ -12,46 +12,54 @@ import { CommonModule } from '@angular/common';
   templateUrl: './edit-profile.component.html',
   styleUrls: ['./edit-profile.component.css'],
   imports: [
-    RouterModule,HttpClientModule, ReactiveFormsModule,CommonModule
+    RouterModule, HttpClientModule, ReactiveFormsModule, CommonModule
   ],
   providers: [StudentProfileService]
 })
 export class EditProfileComponent implements OnInit {
 
   userId: string = '';  // User ID will be fetched from localStorage
-date=''
-  
+  date = ''
+
   student: student = {
     id: '',
-  name: '',
-  phone: '',
+    name: '',
+    phone: '',
+    gender: 0,
+    indexNumber: '',
 
-  enrollmentDate:'',
-  classID: '',
-  class: {
-    id:'',
-    className: '',
-  },
-  userRes: {
-    id:'',
-    email: ''
-  }
+    enrollmentDate: '',
+    classID: '',
+    class: {
+      id: '',
+      className: '',
+    },
+    userRes: {
+      id: '',
+      email: ''
+    }
   };
+
+  genderOptions = [
+    { value: 1, label: 'Male' },
+    { value: 2, label: 'Female' },
+    { value: 3, label: 'Other' }
+  ];
 
 
   constructor(
     private studentProfileService: StudentProfileService,
     private route: ActivatedRoute
   ) {
-   
+
   }
 
   ngOnInit(): void {
 
-    this.userId = localStorage.getItem('UserId') || ''; // Get the logged-in user's ID from localStorage
+    this.userId = localStorage.getItem('UserId') || '';
     console.log('userId from localStorage:', this.userId);
     if (this.userId) {
-      this.getStudentInfo(this.userId);  // Fetch student data using studentid
+      this.getStudentInfo(this.userId);
     }
   }
 
@@ -62,8 +70,12 @@ date=''
       },
       (error) => {
         console.error('Error fetching student:', error);
-        // Optionally, show user-friendly error messages (e.g., using toastr)
       }
     );
+  }
+
+  get genderDisplay(): string {
+    const matchOption = this.genderOptions.find(opt => opt.value === this.student.gender);
+    return matchOption ? matchOption.label : 'Unknown';
   }
 }
