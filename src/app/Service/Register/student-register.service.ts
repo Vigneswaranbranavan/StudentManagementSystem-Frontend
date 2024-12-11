@@ -19,16 +19,9 @@ export class StudentRegisterService {
     return this.http.get<any>(this.url + "/" + studentId);
   }
 
-
-
-  
   AddStudent(student: any): Observable<any> {
     return this.http.post(this.url, student);
   }
-
-
-
-
 
   deleteStudent(deleteId : any)
   {
@@ -38,20 +31,6 @@ export class StudentRegisterService {
   editStudent( studentid : string, student: any)
   {
     return this.http.put(this.url + "/" + studentid, student)
-
   }
 }
 
-// export interface Student{
-//   id: string;
-//   name: string;
-//   phone: string;
-//   userReq: UserReq[]
-// }
-
-// export interface UserReq{
-//   id: string;
-//   email: string;
-//   password: string;
- 
-// }

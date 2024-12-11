@@ -33,12 +33,14 @@ import { TeacherSidebarComponent } from './Teacher/teacher-sidebar/teacher-sideb
 import { ViewtimetableComponent } from './Staff/viewtimetable/viewtimetable.component';
 import { StaffdashboardComponent } from './Staff/staffdashboard/staffdashboard.component';
 import { StaffProfileComponent } from './Staff/staff-profile/staff-profile.component';
+import { OtpComponent } from './Auth/otp/otp.component';
 
 
 export const routes: Routes = [
     { path: '', redirectTo: 'home', pathMatch: 'full' },
     { path: 'home', component: HomeComponent },
     { path: 'login', component: LoginComponent },
+    { path: 'forgotPassword',component: OtpComponent},
 
     // for student
     {

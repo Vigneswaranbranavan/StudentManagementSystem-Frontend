@@ -2,19 +2,20 @@
   <div class="sidebar">
     <h3>Mark Attendance</h3>
     <ul id="timetable-list">
-      
+
     </ul>
   </div>
 
   <div class="main-content">
     <h2 class="text-center mb-4">Students Attendance</h2>
-    
+
     <div class="row mb-3">
       <div class="col-6">
         <input type="date" id="attendance-date" class="form-control date-picker" [(ngModel)]="attendanceDate" />
       </div>
       <div class="col-6">
-        <select id="class-select" class="form-control" [(ngModel)]="selectedClass" (change)="loadStudents(selectedClass)">
+        <select id="class-select" class="form-control" [(ngModel)]="selectedClass"
+          (change)="loadStudents(selectedClass)">
           <option value="" disabled selected>Select Class</option>
           <option *ngFor="let class of Classes" [value]="class.id">{{ class.className }}</option>
         </select>
@@ -26,6 +27,7 @@
         <thead>
           <tr>
             <!-- <th>#</th> -->
+            <th>Index Number</th>
             <th>Student Name</th>
             <th>Attendance</th>
           </tr>
@@ -33,14 +35,12 @@
         <tbody id="attendance-list">
           <tr *ngFor="let student of students">
             <!-- <td>{{ student.id }}</td> -->
+            <td>{{ student.indexNumber}}</td>
             <td>{{ student.name }}</td>
             <td>
-              <select
-                class="form-control attendance-dropdown"
-                [(ngModel)]="student.status"
+              <select class="form-control attendance-dropdown" [(ngModel)]="student.status"
                 (change)="updateAttendanceStatus(student.id, student.status)"
-                [ngStyle]="{ 'background-color': getBackgroundColor(student.status) }"
-              >
+                [ngStyle]="{ 'background-color': getBackgroundColor(student.status) }">
                 <option *ngFor="let status of attendanceStatuses" [value]="status.value">
                   {{ status.label }}
                 </option>
@@ -48,10 +48,10 @@
             </td>
           </tr>
         </tbody>
-        
+
       </table>
       <div class="text-end">
-        <button type="submit" class="btn custom-btn" (click)="submitAttendance()" >Submit</button>
+        <button type="submit" class="btn custom-btn" (click)="submitAttendance()">Submit</button>
       </div>
     </div>
 

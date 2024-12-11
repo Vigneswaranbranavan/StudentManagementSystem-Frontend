@@ -40,7 +40,9 @@ export class StudentTimetableComponent implements OnInit {
     userRes: {
       id: '',
       email: ''
-    }
+    },
+    gender: 0,
+    indexNumber: ''
   };
 
   constructor(

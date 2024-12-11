@@ -11,7 +11,7 @@ import { ToastrModule, ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-manage-timetable',
   standalone: true,
-  imports: [FormsModule,HttpClientModule,RouterModule,CommonModule, ReactiveFormsModule,ToastrModule],
+  imports: [FormsModule, HttpClientModule, RouterModule, CommonModule, ReactiveFormsModule, ToastrModule],
   templateUrl: './manage-timetable.component.html',
   styleUrl: './manage-timetable.component.css',
   providers: [TimetableService, ViewclassService, TeacherRegisterService]
@@ -24,23 +24,21 @@ export class ManageTimetableComponent implements OnInit {
 
 
   classes: any[] = [];
-
   subjects: any[] = [];
-
   teachers: any[] = [];
 
 
 
   constructor(
-    private fb: FormBuilder, 
-    private router: Router, 
-    private classService: ViewclassService, 
+    private fb: FormBuilder,
+    private router: Router,
+    private classService: ViewclassService,
     private timetableService: TimetableService,
-    private teacherservice: TeacherRegisterService, 
+    private teacherservice: TeacherRegisterService,
     private route: ActivatedRoute,
     private toastr: ToastrService
 
-     ) {
+  ) {
     this.timeTableForm = this.fb.group(
       {
         classID: ['', [Validators.required]],
@@ -50,7 +48,7 @@ export class ManageTimetableComponent implements OnInit {
         endTime: ['', [Validators.required]],
       }
     );
-    
+
   }
 
 
@@ -101,48 +99,4 @@ export class ManageTimetableComponent implements OnInit {
     );
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  // teachers = [{ id: 't1', name: 'John Doe' }, { id: 't2', name: 'Jane Smith' }];
-
-  // constructor(private timetableservice: TimetableService, private router: Router) {}
-
-
-  // onSubmit(form: NgForm) {
-  //   const timetableData = form.value;
-
-  //   this.timetableservice.addTimetable(timetableData).subscribe(response => {
-  //     console.log('Timetable saved:', response);
-  //     form.reset();
-
-  //     (error: any) => {
-  //       console.error('Error saving timetable:', error);
-  //     }
-  //   });
-  // }
 

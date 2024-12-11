@@ -37,12 +37,11 @@
                     <button data-mdb-button-init data-mdb-ripple-init class="btn btn-secondary btn-block mb-2 mt-5"
                       type="submit" (ngSubmit)="onSubmit()" [disabled]="loginForm.invalid || isLoading">
                       {{ isLoading ? 'Logging in...' : 'Log in' }}</button>
-                    <a class="text-muted mb-1 mt-2" href="#!">Forgot password?</a>
+                    <a class="text-muted mb-1 mt-2" [routerLink]="['/forgotPassword']" >Forgot password?</a>
                   </div>
                   <div *ngIf="errorMessage" class="alert alert-danger">
                     {{ errorMessage }}
                   </div>
-
 
                 </form>
 

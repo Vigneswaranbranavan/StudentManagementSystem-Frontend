@@ -17,7 +17,7 @@ import { ToastrModule, ToastrService } from 'ngx-toastr';
 })
 export class MarkAttendanceComponent implements OnInit {
   Classes: any[] = [];
-  students: { id: number, name: string, status: string }[] = [];
+  students: { id: number, name: string, status: string,indexNumber:string }[] = [];
   attendanceStatuses = [
     { value: 'Present', label: 'Present' },
     { value: 'Absent', label: 'Absent' },
@@ -89,7 +89,7 @@ export class MarkAttendanceComponent implements OnInit {
       return;
     }
     if (this.submittedClass[this.selectedClass] === this.attendanceDate ){
-      this.toastr.warning('Attendance for this class has already been submitted this date.');
+      this.toastr.warning('Attendance for this class has already been submitted in this date.');
       return;
     }
 
