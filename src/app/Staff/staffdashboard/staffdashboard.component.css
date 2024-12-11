@@ -1,115 +1,142 @@
 :host {
-    font-family: 'Roboto', sans-serif;
-  }
-  
-  .dashboard {
-    gap: 20px;
-  }
-  
-  .overview {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    gap: 10px;
-  }
-  
-  .overview-card {
-    background: linear-gradient(135deg, #ffffff, #ebecec);
-    color: #000000;
-    border-radius: 12px;
-    padding: 20px 30px;
-    text-align: center;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    width: 100%;
-    max-width: 280px;
-    box-shadow: 0 5px 15px rgba(112, 112, 112, 0.3);
-  }
-  
-  .overview-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 25px rgba(0, 123, 255, 0.4);
-  }
-  
-  .section {
-    background: #ffffff;
-    padding: 20px;
-    border-radius: 12px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
-    margin-bottom: 20px;
-  }
-  
-  .section h2 {
-    font-size: 1.6rem;
-    color: #444;
-    margin-bottom: 15px;
-  }
-  
-  .table {
-    width: 100%;
-    border-collapse: collapse;
-    overflow: hidden;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-  }
-  
-  .table th,
-  .table td {
-    padding: 15px;
-    text-align: left;
-    border-bottom: 1px solid #ddd;
-  }
-  
-  .table th {
-    background-color: #f4f4f9;
-    font-weight: 700;
-  }
-  
-  .table tbody tr:hover {
-    background-color: #eaf4ff;
-    transition: background 0.3s ease;
-  }
-  
-  .status {
-    padding: 5px 10px;
-    border-radius: 12px;
-    font-size: 0.9rem;
-    font-weight: bold;
-  }
-  
-  .status-completed {
-    background-color: #d4edda;
-    color: #155724;
-  }
-  
-  .status-pending {
-    background-color: #fff3cd;
-    color: #856404;
-  }
-  
-  .notification-list {
-    list-style: none;
-    padding: 0;
-  }
-  
-  .notification-list li {
-    display: flex;
-    align-items: center;
-    padding: 12px 15px;
-    margin-bottom: 10px;
-    border-radius: 8px;
-    background: #f9f9f9;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
-    color: #333;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-  }
-  
-  .notification-list li:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  }
-  
-  .notification-list i {
-    margin-right: 10px;
-    color: #007bff;
-    font-size: 1.2rem;
-  }
-  
+  font-family: 'Roboto', sans-serif;
+}
+
+.dashboard {
+  gap: 20px;
+}
+
+.overview {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.overview-card {
+  background: linear-gradient(135deg, #ffffff, #ebecec);
+  color: #000000;
+  border-radius: 12px;
+  padding: 20px 30px;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  width: 100%;
+  max-width: 280px;
+  box-shadow: 0 5px 15px rgba(112, 112, 112, 0.3);
+}
+
+.overview-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 123, 255, 0.4);
+}
+
+.section {
+  background: #ffffff;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  margin-bottom: 20px;
+}
+
+.section h2 {
+  font-size: 1.6rem;
+  color: #444;
+  margin-bottom: 15px;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  overflow: hidden;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.table th,
+.table td {
+  padding: 15px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+.table th {
+  background-color: #f4f4f9;
+  font-weight: 700;
+}
+
+.table tbody tr:hover {
+  background-color: #eaf4ff;
+  transition: background 0.3s ease;
+}
+
+.status {
+  padding: 5px 10px;
+  border-radius: 12px;
+  font-size: 0.9rem;
+  font-weight: bold;
+}
+
+.status-completed {
+  background-color: #d4edda;
+  color: #155724;
+}
+
+.status-pending {
+  background-color: #fff3cd;
+  color: #856404;
+}
+
+.notification-list {
+  list-style: none;
+  padding: 0;
+}
+
+.notification-list li {
+  display: flex;
+  align-items: center;
+  padding: 12px 15px;
+  margin-bottom: 10px;
+  border-radius: 8px;
+  background: #f9f9f9;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  color: #333;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.notification-list li:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.notification-list i {
+  margin-right: 10px;
+  color: #007bff;
+  font-size: 1.2rem;
+}
+
+.pie-grid {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.pie-grid .col-12 {
+  margin-bottom: 20px;
+}
+
+.pie-grid ngx-charts-pie-chart {
+  display: block;
+  margin: auto;
+}
+
+.pie-chart-section {
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+}
+
+.overview-card {
+  text-align: center;
+  padding: 10px;
+  background-color: #f8f9fa;
+  border-radius: 5px;
+}
+
