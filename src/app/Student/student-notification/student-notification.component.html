@@ -1,22 +1,24 @@
 <div class="container mt-4">
-    <div class="notifications">
-      <h1 class="text-center  mb-4">Notifications</h1>
-  
-      <div *ngFor="let notification of notifications" class="notification-item" [ngClass]="{ 'unread': notification.unread }">
-        <div class="notification-content">
-          <!-- Hardcoded icons based on notification type -->
-          <i *ngIf="notification.title === 'New Assignment Uploaded'" class="bx bx-bell"></i>
-          <i *ngIf="notification.title === 'Upcoming Exam Reminder'" class="bx bx-calendar-event"></i>
-          <i *ngIf="notification.title === 'Feedback Received'" class="bx bx-message"></i>
-          <i *ngIf="notification.title === 'Attendance Award'" class="bx bx-trophy"></i>
-          
-          <div class="notification-text">
-            <h3>{{ notification.title }}</h3>
-            <p>{{ notification.message }}</p>
-          </div>
+  <div class="notifications">
+    <h1 class="text-center mb-4">Notifications</h1>
+
+    <div *ngFor="let notification of notifications" class="notification-item">
+      <div class="notification-content">
+        <!-- Hardcoded icons based on notification type -->
+        <i *ngIf="notification.notificationType === 'New Assignment Uploaded'" class="bx bx-bell"></i>
+        <i *ngIf="notification.notificationType === 'Upcoming Exam Reminder'" class="bx bx-calendar-event"></i>
+        <i *ngIf="notification.notificationType === 'Feedback Received'" class="bx bx-message"></i>
+        <i *ngIf="notification.notificationType === 'Attendance Award'" class="bx bx-trophy"></i>
+
+        <div class="notification-text">
+          <h3>{{ notification.notificationType }}</h3>
+          <p>{{ notification.message }}</p>
         </div>
-        <div class="notification-date">{{ notification.date }}</div>
       </div>
+      <div class="notification-date">{{ notification.date }}</div>
+      
+      <!-- Delete button for each notification -->
+      <button (click)="deleteNotification(notification.id)" class="btn btn-danger btn-sm">Delete</button>
     </div>
   </div>
-  
+</div>
