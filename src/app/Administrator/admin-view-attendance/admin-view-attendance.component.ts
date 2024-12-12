@@ -57,10 +57,10 @@ export class AdminViewAttendanceComponent implements OnInit {
           stats.Present += 1;
           break;
         case 2:
-          stats.Late += 1;
+          stats.Absent += 1;
           break;
         case 3:
-          stats.Absent += 1;
+          stats.Late += 1;
           break;
       }
     });
