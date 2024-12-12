@@ -71,3 +71,5 @@ export class AttendanceComponent {
     { date: new Date(), status: 3 },
     // Add more records as needed
   ]};
+
+
