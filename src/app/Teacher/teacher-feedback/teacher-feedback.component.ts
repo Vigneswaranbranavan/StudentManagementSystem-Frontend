@@ -109,21 +109,21 @@ export class TeacherFeedbackComponent implements OnInit {
   // }
 
   deleteFeedback(feedback: feedback): void {
-    // console.log('Feedback ID:', feedback.id);  // Debugging
+    console.log('Feedback ID:', feedback.id);  // Debugging
   
-    // if (feedback.id) {
-    //   this.feedbackService.deleteFeedback(feedback.id).subscribe({
-    //     next: () => {
-    //       this.feedbackList = this.feedbackList.filter(f => f.id !== feedback.id);
-    //       console.log('Feedback deleted successfully');
-    //     },
-    //     error: (error) => {
-    //       console.error('Error deleting feedback:', error);
-    //     }
-    //   });
-    // } else {
-    //   console.error('Feedback id is missing');
-    // }
+    if (feedback.id) {
+      this.feedbackService.deleteFeedback(feedback.id).subscribe({
+        next: () => {
+          this.feedbackList = this.feedbackList.filter(f => f.id !== feedback.id);
+          console.log('Feedback deleted successfully');
+        },
+        error: (error) => {
+          console.error('Error deleting feedback:', error);
+        }
+      });
+    } else {
+      console.error('Feedback id is missing');
+    }
   }
   
   
