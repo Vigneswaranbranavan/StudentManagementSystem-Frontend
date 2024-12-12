@@ -12,11 +12,11 @@ export class TimetableService {
 
 
 
-    
+
   addTimetable(timetable: any): Observable<any> {
     return this.http.post(this.apiUrl, timetable);
   }
-  
+
   getTimetables(): Observable<any[]> {
     return this.http.get<any[]>(this.apiUrl);
   }
@@ -35,12 +35,27 @@ export class TimetableService {
   return this.http.get<any[]>(`/api/timetables/byDate?date=${date}`);
 }
 
-  
+// getClassNameById(classId: string): Observable<any> {
+//   return this.http.get<any>(`https://localhost:7058/api/Classes/${classId}`);
+// }
+
+getClassNameById(classId: string): Observable<{ className: string }> {
+  return this.http.get<{ className: string }>(`https://localhost:7058/api/Class/Class/${classId}`);
+}
+// getClassNameById(classId: string): Observable<{ className: string }> {
+//   return this.http.get<{ className: string }>(`https://localhost:7058/api/Classes/${classId}`);
+// }
+
+
+
 }
 
 export interface TimetableEntry {
+  id: string;
   teacherID: string;
-  subject: string;
+  classID: string; // Added this
+  date: string;
   startTime: string;
   endTime: string;
+  className?: string;
 }
