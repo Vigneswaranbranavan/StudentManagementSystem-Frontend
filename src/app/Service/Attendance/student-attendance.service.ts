@@ -17,9 +17,9 @@ export class StudentAttendanceService {
   }
   
   getAttendanceByStudentId(studentId: string): Observable<Attendance[]> {
-    return this.http.get<Attendance[]>(`${this.baseUrl}?id=${studentId}`);
+    return this.http.get<Attendance[]>(`${this.baseUrl}/TimetablesByStudentId?id=${studentId}`);
   }
-
+  
   // Get attendance for a student by a specific date
   getAttendanceByStudentAndDate(studentId: string, date: string): Observable<Attendance[]> {
     return this.http.get<Attendance[]>(`${this.baseUrl}/student/${studentId}/date/${date}`);

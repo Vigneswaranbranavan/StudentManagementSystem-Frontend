@@ -39,13 +39,13 @@ export class StudentAttendanceComponent implements OnInit {
   ngOnInit(): void {
     this.userId = localStorage.getItem('UserId') || ''; // Get the logged-in user's ID from localStorage
     console.log('userId from localStorage:', this.userId);
-
+  
     if (this.userId) {
       this.getStudentInfo(this.userId);  // Fetch student data using userId
       this.checkAndPostNotification();  // Check and post attendance warning notification if needed
     }
   }
-
+  
 
   getStudentInfo(studentId: string): void {
     this.studentProfileService.getStudent(studentId).subscribe({

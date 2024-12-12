@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class TeacherFeedbackService {
-  private url = "https://localhost:7058/api/Feedback/Feedback"; // Your API URL
+  private url = "https://localhost:7058/api/Feedback/"; // Your API URL
 
   constructor(private http: HttpClient) { }
 
@@ -18,22 +18,21 @@ export class TeacherFeedbackService {
 
   // Get specific feedback by user ID
   getFeedback(userId: string): Observable<feedback[]> {
-    return this.http.get<feedback[]>(`${this.url}?UserId=${userId}`);
+    return this.http.get<feedback[]>(`${this.url}GetFeedbackByUserId/${userId}`);
   }
 
   // Add new feedback
   addFeedback(feedback: feedback): Observable<feedback> {
-    return this.http.post<feedback>(this.url, feedback);  // Assuming the backend will generate the 'id'
+    return this.http.post<feedback>(`${this.url}Feedback`, feedback);  // Assuming the backend will generate the 'id'
   }
 
   // Update feedback (assuming you update feedback with the 'id')
   updateFeedback(feedback: feedback): Observable<feedback> {
     return this.http.put<feedback>(this.url, feedback);  // Assuming the API expects 'id' here as well
   }
-
   deleteFeedback(feedbackId: string): Observable<void> {
-    return this.http.delete<void>(`${this.url}?UserId=${feedbackId}`);
+    return this.http.delete<void>(`${this.url}Feedback?UserId=${feedbackId}`);
   }
-  
-  
+
+
 }
