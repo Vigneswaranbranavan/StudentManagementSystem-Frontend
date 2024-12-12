@@ -74,22 +74,21 @@ export class StudentAttendanceComponent implements OnInit {
     });
   }
 
-  calculateAttendanceStats(): void {
-    this.totalClasses = this.attendanceRecords.length;
-    this.presentCount = this.attendanceRecords.filter(record => record.status === 1).length;
-    this.lateComingCount = this.attendanceRecords.filter(record => record.status === 3).length;
+//   calculateAttendanceStats(): void {
+//     this.totalClasses = this.attendanceRecords.length;
+//     this.presentCount = this.attendanceRecords.filter(record => record.status === 1).length;
+//     this.lateComingCount = this.attendanceRecords.filter(record => record.status === 3).length;
 
-    if (this.totalClasses > 0) {
-      this.attendanceRate = ((this.presentCount + this.lateComingCount) / this.totalClasses) * 100;
-    } else {
-      this.attendanceRate = 0;
-    }
+//     if (this.totalClasses > 0) {
+//       this.attendanceRate = ((this.presentCount + this.lateComingCount) / this.totalClasses) * 100;
+//     } else {
+//       this.attendanceRate = 0;
+//     }
 
-    // Check if attendance rate is below 85%, and if no "Attendance Warning" notification exists
-    if (this.attendanceRate < 85) {
-      this.checkAndPostNotification();
-    }
-  }
+//     if (this.attendanceRate < 85) {
+//       this.checkAndPostNotification();
+//     }
+//   }
 
 
 
@@ -159,4 +158,26 @@ export class StudentAttendanceComponent implements OnInit {
         return 'Unknown';
     }
   }
+
+
+  // Calculate total classes, present, and late coming counts
+  calculateAttendanceStats(): void {
+    this.totalClasses = this.attendanceRecords.length;
+    this.presentCount = this.attendanceRecords.filter(record => record.status === 1).length;
+    this.lateComingCount = this.attendanceRecords.filter(record => record.status === 3).length;
+
+    if (this.totalClasses > 0) {
+      this.attendanceRate = ((this.presentCount + this.lateComingCount )/ this.totalClasses) * 100;
+    } else {
+      this.attendanceRate = 0;
+    }
+  }
+
+   showInfoMessage(): void {
+    this.showMessage = true;
+  }
+  closeInfoMessage(): void {
+    this.showMessage = false;
+  }
+
 }

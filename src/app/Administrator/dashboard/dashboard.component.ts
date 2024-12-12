@@ -5,104 +5,132 @@ import { StudentRegisterService } from '../../Service/Register/student-register.
 import { ViewclassService } from '../../Service/Class/viewclass.service';
 import { ViewSubjectService } from '../../Service/Subject/view-subject.service';
 import { StaffRegisterService } from '../../Service/Register/staff-register.service';
+import { NgxChartsModule, ScaleType } from '@swimlane/ngx-charts';
+import { Color } from '@swimlane/ngx-charts';
+
+
 
 @Component({
   selector: 'app-dashboard',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, NgxChartsModule],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.css',
-  providers:[TeacherRegisterService, StudentRegisterService, ViewclassService, ViewSubjectService, StaffRegisterService]
+  // providers: [TeacherRegisterService, StudentRegisterService, ViewclassService, ViewSubjectService, StaffRegisterService]
 })
-export class DashboardComponent implements OnInit{
- // Data for the dashboard
- totalStudents = 0;
- totalTeachers = 0;
- totalClasses = 0;
- totalSubjects = 0;
- totalStaffs = 0 ;
 
-  constructor(private teacherService : TeacherRegisterService,private studentService: StudentRegisterService, private classService: ViewclassService, private subjectservice: ViewSubjectService, private staffService:StaffRegisterService){}
+export class DashboardComponent implements OnInit {
+  // Data for the dashboard
+  totalStudents = 0;
+  totalTeachers = 0;
+  totalClasses = 0;
+  totalSubjects = 0;
+  totalStaffs = 0;
 
- latestActivities = [
-   { activity: 'New student registered', date: 'November 20, 2024', status: 'Completed' },
-   { activity: 'New teacher added', date: 'November 19, 2024', status: 'Completed' },
-   { activity: 'Timetable updated', date: 'November 18, 2024', status: 'Pending' }
- ];
+  chartData: { name: string; value: number }[] = []; 
+  pieChartData: { name: string; value: number }[] = []; 
 
- notifications = [
-   'New feedback received',
-   'New staff registered',
-   'Timetable changes'
- ];
-
-
- ngOnInit(): void {
-  this.loadTeachers();
-  this.loadStudents();
-  this.loadClasses();
-  this.loadSubjects();
-  this.loadStaffs();
-
-}
-
-loadTeachers(): void {
-  this.teacherService.getTeachers().subscribe({
-    next: (teachers) => {
-      this.totalTeachers = teachers.length;
-    },
-    error: (err) => {
-      console.error('Error fetching teachers:', err);
-    },
-  });
-}
+  view: [number, number] = [700, 400]; 
+  colorScheme: Color = {
+    domain: ['#5D9CEC', '#FFB6C1', '#8E44AD', '#F39C12', '#1ABC9C'],
+    name: 'custom',
+    selectable: true, 
+    group: ScaleType.Ordinal
+  };
+  constructor(
+    private teacherService: TeacherRegisterService,
+    private studentService: StudentRegisterService,
+    private classService: ViewclassService,
+    private subjectservice: ViewSubjectService,
+    private staffService: StaffRegisterService
+  ) {}
 
 
-loadStudents(): void {
-  this.studentService.getStudents().subscribe({
-    next: (students) => {
-      this.totalStudents = students.length;
-    },
-    error: (err) => {
-      console.error('Error fetching students:', err);
-    },
-  });
-}
+  ngOnInit(): void {
+    this.loadTeachers();
+    this.loadStudents();
+    this.loadClasses();
+    this.loadSubjects();
+    this.loadStaffs();
+  }
 
+  loadTeachers(): void {
+    this.teacherService.getTeachers().subscribe({
+      next: (teachers) => {
+        this.totalTeachers = teachers.length;
+        this.updateChartData();
+      },
+      error: (err) => {
+        console.error('Error fetching teachers:', err);
+      },
+    });
+  }
 
-loadClasses(): void {
-  this.classService.getClasses().subscribe({
-    next: (classes) => {
-      this.totalClasses = classes.length;
-    },
-    error: (err) => {
-      console.error('Error fetching classes:', err);
-    },
-  });
-}
+  loadStudents(): void {
+    this.studentService.getStudents().subscribe({
+      next: (students) => {
+        this.totalStudents = students.length;
+        this.updateChartData();
+      },
+      error: (err) => {
+        console.error('Error fetching students:', err);
+      },
+    });
+  }
 
-loadSubjects(): void {
-  this.subjectservice.getSubjects().subscribe({
-    next: (subjects) => {
-      this.totalSubjects = subjects.length;
-    },
-    error: (err) => {
-      console.error('Error fetching subjects:', err);
-    },
-  });
-}
+  loadClasses(): void {
+    this.classService.getClasses().subscribe({
+      next: (classes) => {
+        this.totalClasses = classes.length;
+        this.updateChartData();
+      },
+      error: (err) => {
+        console.error('Error fetching classes:', err);
+      },
+    });
+  }
 
-loadStaffs(): void {
-  this.staffService.getstaffs().subscribe({
-    next: (staffs) => {
-      this.totalStaffs = staffs.length;
-    },
-    error: (err) => {
-      console.error('Error fetching staffs:', err);
-    },
-  });
-}
+  loadSubjects(): void {
+    this.subjectservice.getSubjects().subscribe({
+      next: (subjects) => {
+        this.totalSubjects = subjects.length;
+        this.updateChartData();
+      },
+      error: (err) => {
+        console.error('Error fetching subjects:', err);
+      },
+    });
+  }
 
+  loadStaffs(): void {
+    this.staffService.getstaffs().subscribe({
+      next: (staffs) => {
+        this.totalStaffs = staffs.length;
+        this.updateChartData();
+      },
+      error: (err) => {
+        console.error('Error fetching staffs:', err);
+      },
+    });
+  }
 
+  // Update chart data
+  updateChartData() {
+    this.chartData = [
+      { name: 'Students', value: this.totalStudents },
+      { name: 'Teachers', value: this.totalTeachers },
+      { name: 'Staffs', value: this.totalStaffs },
+      { name: 'Classes', value: this.totalClasses },
+      { name: 'Subjects', value: this.totalSubjects },
+    ];
+    this.pieChartData = [
+      { name: 'Students', value: this.totalStudents },
+      { name: 'Teachers', value: this.totalTeachers },
+      { name: 'Staffs', value: this.totalStaffs },
+      { name: 'Classes', value: this.totalClasses },
+      { name: 'Subjects', value: this.totalSubjects },
+    ];
+  }
 
+  
 }

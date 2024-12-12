@@ -1,24 +1,23 @@
-<div class="container timetable">
-  <h1>{{ teacherName }}'s Weekly Timetable</h1>
-
-  <table class="table table-bordered text-center">
-      <thead>
-          <tr>
-              <th *ngFor="let day of filteredTimetable">{{ day.day }}</th>
-          </tr>
-      </thead>
-      <tbody>
-          <tr>
-              <td *ngFor="let day of filteredTimetable">
-                  <div *ngFor="let classInfo of day.classes" class="class">
-                      <div class="class-time">
-                          {{ classInfo.startTime | date: 'shortTime' }} - {{ classInfo.endTime | date: 'shortTime' }}
-                      </div>
-                      <div class="class-subject">{{ classInfo.subject }}</div>
-                      <div class="class-location">{{ classInfo.room }}</div>
-                  </div>
-              </td>
-          </tr>
-      </tbody>
+<div>
+  <h2>Teacher Timetable</h2>
+  <div *ngIf="loading">Loading...</div>
+  <table *ngIf="!loading && timetables.length > 0" class="table">
+    <thead>
+      <tr>
+        <th>Date</th>
+        <th>Class Name</th>
+        <th>Start Time</th>
+        <th>End Time</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let timetable of timetables">
+        <td>{{ timetable.date | date: 'yyyy-MM-dd' }}</td>
+        <td>{{ timetable.className }}</td>
+        <td>{{ timetable.startTime }}</td>
+        <td>{{ timetable.endTime }}</td>
+      </tr>
+    </tbody>
   </table>
+  <div *ngIf="!loading && timetables.length === 0">No data available.</div>
 </div>

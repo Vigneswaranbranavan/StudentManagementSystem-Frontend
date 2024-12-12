@@ -5,6 +5,9 @@ import { routes } from './app.routes';
 import {  provideHttpClient } from '@angular/common/http';
 import { ToastrModule } from 'ngx-toastr';
 import { provideAnimations } from '@angular/platform-browser/animations';
+import { NgxChartsModule } from '@swimlane/ngx-charts';
+import { Chart, registerables } from 'chart.js';
+Chart.register(...registerables);
 
 export const appConfig: ApplicationConfig = {
   providers: [provideZoneChangeDetection({ eventCoalescing: true }), provideRouter(routes),provideHttpClient(),importProvidersFrom(ToastrModule.forRoot({

@@ -1,59 +1,66 @@
 <section class=" gradient-form d-flex justify-content-center align-items-center">
     <div class="container mt-4">
         <div class="signup-section">
-            <h1 class="text-center mb-4">{{isEditMode == true ? 'Update Staff' : 'Staff Registration'}}</h1>
-
-            <!-- Signup Form -->
-            <div class="signup-form mb-5">
-                <h2>{{isEditMode == true ? 'Update Staff' : 'Staff Registration'}}</h2>
-                <form [formGroup]="StaffForm" (ngSubmit)="onSubmit()">
-                    <div class="form-group">
-                        <label for="name">Name</label>
-                        <input id="name" formControlName="name" type="text" class="form-control"
-                            placeholder="Enter your full name">
-                        <div *ngIf="StaffForm.get('name')?.invalid && StaffForm.get('name')?.touched"
-                            class="error-message">
-                            Name is required.
-                        </div>
-                    </div>
-
-
-                    <div formGroupName="userReq" *ngIf="!isEditMode">
-                        <div class="form-group">
-                            <label for="email">Email</label>
-                            <input id="email" formControlName="email" type="email" class="form-control"
-                                placeholder="Enter your email address">
-                            <div *ngIf="StaffForm.get('userReq.email')?.invalid && StaffForm.get('userReq.email')?.touched"
-                                class="error-message">
-                                A valid email is required.
+            <h2 class="text-center text-secondary mb-4">{{isEditMode == true ? 'UPDATE STAFF' : 'STAFF REGISTRATION'}}</h2>
+            <div class="row mt-5">
+                <div class="col-5 d-flex justify-content-center align-items-center">
+                    <img src="staff2.png" alt="Staff Registration" class="img-fluid rounded">
+                </div>
+                <div class="col-7 mt-3">
+                    <!-- Signup Form -->
+                    <div class="signup-form mb-5">
+                        <!-- <h2>{{isEditMode == true ? 'Update Staff' : 'Staff Registration'}}</h2> -->
+                        <form [formGroup]="StaffForm" (ngSubmit)="onSubmit()">
+                            <div class="form-group">
+                                <label for="name">Full Name :</label>
+                                <input id="name" formControlName="name" type="text" class="form-control"
+                                    placeholder="Enter full name">
+                                <div *ngIf="StaffForm.get('name')?.invalid && StaffForm.get('name')?.touched"
+                                    class="error-message">
+                                    Name is required.
+                                </div>
                             </div>
-                        </div>
 
-                        <div class="form-group" *ngIf="!isEditMode">
-                            <label for="password">Password</label>
-                            <input id="password" formControlName="password" type="password" class="form-control"
-                                placeholder="Enter your password">
-                            <div *ngIf="StaffForm.get('userReq.password')?.invalid && StaffForm.get('userReq.password')?.touched"
-                                class="error-message">
-                                Password is required and must meet the required criteria.
+
+                            <div formGroupName="userReq" *ngIf="!isEditMode">
+                                <div class="form-group">
+                                    <label for="email">Email</label>
+                                    <input id="email" formControlName="email" type="email" class="form-control"
+                                        placeholder="Enter email address">
+                                    <div *ngIf="StaffForm.get('userReq.email')?.invalid && StaffForm.get('userReq.email')?.touched"
+                                        class="error-message">
+                                        A valid email is required.
+                                    </div>
+                                </div>
+
+                                <div class="form-group" *ngIf="!isEditMode">
+                                    <label for="password">Password</label>
+                                    <input id="password" formControlName="password" type="password" class="form-control"
+                                        placeholder="Enter password">
+                                    <div *ngIf="StaffForm.get('userReq.password')?.invalid && StaffForm.get('userReq.password')?.touched"
+                                        class="error-message">
+                                        Password is required and must meet the required criteria.
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                    </div>
 
-                    <div class="form-group">
-                        <label for="phone">Phone</label>
-                        <input id="phone" formControlName="phone" type="text" class="form-control"
-                            placeholder="Enter your phone number">
-                        <div *ngIf="StaffForm.get('phone')?.invalid && StaffForm.get('phone')?.touched"
-                            class="error-message">
-                            A valid phone number is required.
-                        </div>
-                    </div>
+                            <div class="form-group">
+                                <label for="phone">Phone</label>
+                                <input id="phone" formControlName="phone" type="text" class="form-control"
+                                    placeholder="Enter phone number">
+                                <div *ngIf="StaffForm.get('phone')?.invalid && StaffForm.get('phone')?.touched"
+                                    class="error-message">
+                                    A valid phone number is required.
+                                </div>
+                            </div>
 
-                    <button type="submit" class="btn btn-primary mt-3 me-3" [disabled]="StaffForm.invalid">{{isEditMode
-                        == true ? 'Update' : 'Submit'}}</button>
-                    <button class="btn btn-danger mt-3" (click)="cancel()">Cancel</button>
-                </form>
+                            <button type="submit" class="btn btn-primary mt-3 me-3"
+                                [disabled]="StaffForm.invalid">{{isEditMode
+                                == true ? 'Update' : 'Submit'}}</button>
+                            <button class="btn btn-danger mt-3" (click)="cancel()">Cancel</button>
+                        </form>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

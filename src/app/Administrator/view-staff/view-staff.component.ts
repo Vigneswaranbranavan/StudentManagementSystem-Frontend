@@ -8,15 +8,13 @@ import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-view-staff',
   standalone: true,
-  imports: [ HttpClientModule, CommonModule, RouterModule],
+  imports: [HttpClientModule, CommonModule, RouterModule],
   templateUrl: './view-staff.component.html',
   styleUrl: './view-staff.component.css',
   providers: [StaffRegisterService]
 })
 export class ViewStaffComponent {
   staffs: any[] = [];
-  
-
 
   constructor(private service: StaffRegisterService, private router: Router, private toastr: ToastrService) { }
 
@@ -24,25 +22,15 @@ export class ViewStaffComponent {
     this.loadData();
   }
 
-
-  
-
   loadData() {
     this.service.getstaffs().subscribe(data => {
       this.staffs = data;
 
     });
   }
-  
 
-
-  
-
- 
-
-  EditStaff(id: string)
-  {
-    this.router.navigate(['admin/staffupdate' , id]);
+  EditStaff(id: string) {
+    this.router.navigate(['admin/staffupdate', id]);
   }
 
   DeleteStaff(deleteId: any) {
@@ -51,7 +39,7 @@ export class ViewStaffComponent {
         () => {
           // alert('Staff deleted successfully!');
           this.toastr.success('Staff deleted successfully!');
-          this.loadData(); 
+          this.loadData();
         },
         (error) => {
           console.error('Error deleting Staff:', error);

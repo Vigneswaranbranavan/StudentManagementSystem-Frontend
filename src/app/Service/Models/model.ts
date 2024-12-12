@@ -72,4 +72,3 @@ export class AttendanceComponent {
     // Add more records as needed
   ]};
 
-
