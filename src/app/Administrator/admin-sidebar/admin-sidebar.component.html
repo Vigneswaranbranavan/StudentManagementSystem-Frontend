@@ -4,12 +4,12 @@
         <div >
             <img class="icon" src="graduation_cap.png" alt="" width="45px">
         </div>
-        
+
       <div class="logo_name">CampusSphear</div>
       <i class='bx' [ngClass]="isOpen ? 'bx-menu-alt-right' : 'bx-menu'" id="btn" (click)="toggleSidebar()"></i>
     </div>
     <ul class="nav-list">
-    
+
       <li>
         <a href="#" [routerLink]="['/admin']">
           <i class='bx bx-home'></i>
@@ -21,59 +21,59 @@
       <li>
         <a href="#" [routerLink]="['/admin/viewTeacher']">
             <i class='bx bx-chalkboard'></i>
-          <span class="links_name">View Teachers</span>
+          <span class="links_name">Teachers List</span>
         </a>
-        <span class="tooltip">View Teachers</span>
+        <span class="tooltip">Teachers List</span>
       </li>
 
       <li>
         <a href="#" [routerLink]="['/admin/viewStaff']">
             <i class='bx bx-group'></i>
-            <span class="links_name">View Staff</span>
+            <span class="links_name">Staff List</span>
         </a>
-        <span class="tooltip">View Staff</span>
+        <span class="tooltip">Staff List</span>
     </li>
 
 
     <li>
       <a href="#" [routerLink]="['/admin/viewStudents']">
           <i class="bi bi-person"></i>
-        <span class="links_name">View Students</span>
+        <span class="links_name">Students List</span>
       </a>
-      <span class="tooltip">View Students</span>
+      <span class="tooltip">Students List</span>
     </li>
-    
+
 
       <li>
         <a href="#" [routerLink]="['/admin/viewAttendance']">
             <i class='bx bx-check-circle'></i>
-          <span class="links_name">View Attendance</span>
+          <span class="links_name">Attendance Report</span>
         </a>
-        <span class="tooltip">View Attendance</span>
+        <span class="tooltip">Attendance Overview</span>
       </li>
 
       <li>
         <a href="#" [routerLink]="['/admin/viewTimetable']" >
             <i class='bx bx-calendar'></i>
-          <span class="links_name">View Timetable</span>
+          <span class="links_name">Timetable List</span>
         </a>
-        <span class="tooltip">View Timetable</span>
+        <span class="tooltip">Timetable List</span>
       </li>
 
-      
+
 
       <li>
         <a href="#" [routerLink]="['/admin/viewFeedback']" >
             <i class='bx bx-message-dots'></i>
-          <span class="links_name">View Feedback</span>
+          <span class="links_name">View Feedback's</span>
         </a>
-        <span class="tooltip">View Feedback</span>
+        <span class="tooltip">View Feedback's</span>
       </li>
 
       <li class="logout">
         <div class="logout-details">
           <div class="name_job">
-            <div class="name">AdminName</div>
+            <div class="name">Administrator</div>
           </div>
         </div>
         <i class='bx bx-log-out' id="log_out"></i>

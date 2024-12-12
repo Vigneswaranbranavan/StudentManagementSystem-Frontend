@@ -1,109 +1,100 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormsModule, NgModel } from '@angular/forms';
+import { StudentAttendanceService } from '../../Service/Attendance/student-attendance.service';
+import { Color, NgxChartsModule, ScaleType } from '@swimlane/ngx-charts';
+import { Attendance } from '../../Service/Models/model';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-admin-view-attendance',
   standalone: true,
-  imports: [FormsModule],
+  imports: [FormsModule, NgxChartsModule],
   templateUrl: './admin-view-attendance.component.html',
   styleUrl: './admin-view-attendance.component.css'
 })
-export class AdminViewAttendanceComponent {
- // Explicitly define the type for classAttendanceData
- classAttendanceData: Record<string, Record<string, { status: string }[]>> = {
-  "class1": {
-    "2024-11-19": [
-      { status: "Present" },
-      { status: "Absent" },
-      { status: "Present" }
-    ],
-    "2024-11-20": [
-      { status: "Late" },
-      { status: "Present" },
-      { status: "Present" }
-    ]
-  },
-  "class2": {
-    "2024-11-19": [
-      { status: "Present" },
-      { status: "Absent" }
-    ],
-    "2024-11-20": [
-      { status: "Late" },
-      { status: "Present" }
-    ]
-  }
-};
+export class AdminViewAttendanceComponent implements OnInit {
+  attendancelistData: Attendance[] = [];
+  multi: any[] = []; // Data for pie chart
+  barChartData: any[] = []; // Data for bar chart
+  view: [number, number] = [700, 400];
+  gradient = true;
+  legend = true;
+  showLabels = true;
+  colorScheme: Color = {
+    domain: ['#5AA454', '#C7B42C', '#A10A28'],
+    name: 'Attendance',
+    selectable: false,
+    group: ScaleType.Ordinal
+  };
 
-presentCount = 0;
-absentCount = 0;
-lateCount = 0;
+  constructor(private attendanceService: StudentAttendanceService) {}
 
-// Function to calculate and show total attendance for selected class and date range
-showTotalAttendance() {
-  const classSelect = (<HTMLSelectElement>document.getElementById('class-select')).value;
-  const dateInput = (<HTMLInputElement>document.getElementById('attendance-date')).value;
-  const attendanceTable = document.getElementById('attendance-table');
-  const attendanceBody = document.getElementById('attendance-body');
-  const attendanceSummary = document.getElementById('attendance-summary');
-
-  // Reset the table and summary
-  if (attendanceBody) {
-    attendanceBody.innerHTML = '';
-  }
-  if (attendanceTable) {
-    attendanceTable.style.display = 'none';
-  }
-  if (attendanceSummary) {
-    attendanceSummary.style.display = 'none';
+  ngOnInit() {
+    this.loadAttendanceData();
   }
 
-  if (classSelect && dateInput && this.classAttendanceData[classSelect]) {
-    let totalPresent = 0;
-    let totalAbsent = 0;
-    let totalLate = 0;
-    let tableRows = '';
-
-    const attendanceData = this.classAttendanceData[classSelect][dateInput];
-    if (attendanceData) {
-      totalPresent = attendanceData.filter((a: { status: string }) => a.status === 'Present').length;
-      totalAbsent = attendanceData.filter((a: { status: string }) => a.status === 'Absent').length;
-      totalLate = attendanceData.filter((a: { status: string }) => a.status === 'Late').length;
-
-      tableRows += `
-        <tr>
-          <td>${dateInput}</td>
-          <td>${totalPresent}</td>
-          <td>${totalAbsent}</td>
-          <td>${totalLate}</td>
-        </tr>
-      `;
-    }
-
-    this.presentCount = totalPresent;
-    this.absentCount = totalAbsent;
-    this.lateCount = totalLate;
-
-    // Show the summary and table
-    if (attendanceSummary) {
-      attendanceSummary.style.display = 'flex';
-    }
-    if (attendanceTable) {
-      attendanceTable.style.display = 'table';
-    }
-    if (attendanceBody) {
-      attendanceBody.innerHTML = tableRows;
-    }
-  } else {
-    alert('No attendance data found for this selection!');
+  loadAttendanceData() {
+    this.attendanceService.getAllAttendance().subscribe({
+      next: (data) => {
+        this.attendancelistData = data;
+        this.prepareChartData();
+      },
+      error: (error) => console.error('Error fetching attendance data', error),
+    });
   }
-}
 
-// Call showTotalAttendance on page load with default values
-ngOnInit() {
-  // Set default class and date values
-  (<HTMLSelectElement>document.getElementById('class-select')).value = 'class1';  // Default class
-  (<HTMLInputElement>document.getElementById('attendance-date')).value = '2024-11-19';  // Default date
-  this.showTotalAttendance();  // Display default data
-}
+  prepareChartData() {
+    const stats = {
+      Present: 0,
+      Late: 0,
+      Absent: 0,
+    };
+
+    // Aggregate attendance data
+    this.attendancelistData.forEach((record) => {
+      switch (record.status) {
+        case 1:
+          stats.Present += 1;
+          break;
+        case 2:
+          stats.Absent += 1;
+          break;
+        case 3:
+          stats.Late += 1;
+          break;
+      }
+    });
+
+    // Set data for the pie chart
+    this.multi = [
+      {
+        name: 'Present',
+        value: stats.Present,
+      },
+      {
+        name: 'Late',
+        value: stats.Late,
+      },
+      {
+        name: 'Absent',
+        value: stats.Absent,
+      },
+    ];
+
+    // Set data for the bar chart
+    this.barChartData = [
+      {
+        name: 'Present',
+        value: stats.Present,
+      },
+      {
+        name: 'Late',
+        value: stats.Late,
+      },
+      {
+        name: 'Absent',
+        value: stats.Absent,
+      },
+    ];
+  }
 }

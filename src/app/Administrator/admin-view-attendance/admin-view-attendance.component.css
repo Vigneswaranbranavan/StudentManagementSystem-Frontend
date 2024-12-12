@@ -1,69 +1,10 @@
-.section {
-    background-color: #ffffff;
-    border-radius: 8px;
-    padding: 20px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  }
-  
-  .section h2 {
-    color: #333;
-    margin-bottom: 15px;
-    font-size: 1.5rem;
-   
-  }
-  
-  .card-body {
-    background-color: #f4f4f9;
-  }
-  
-  .card-title {
-    font-size: 1.2rem;
-    margin-bottom: 10px;
-    color: #2d3a4b;
-  }
-  
-  .card-text {
-    font-size: 1.5rem;
-    color: #333;
-  }
-  
-/* Table Container to Match Summary Width */
-.table-container {
-    max-width: 900px; /* Adjust table width */
-    margin: 0 auto; /* Center the table */
-  }
-  
-  /* Table Styling */
-  .table {
- 
-    width: 100%;
-    border-collapse: collapse;
-    background-color: #ffffff;
-    border-radius: 8px;
-    overflow: hidden;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    margin-top: 20px;
-  }
-  
-  .table th,
-  .table td {
-    padding: 12px;
-    text-align: center;
-    border-bottom: 1px solid #ddd;
-    font-size: 1rem;
-  }
-  
-  .table th {
-    background-color: #070707;
-    color: white;
-    font-weight: bold;
-  }
-  
-  .table tr:nth-child(even) {
-    background-color: #f2f2f2;
-  }
-  
-  .table tr:hover {
-    background-color: #e6f7ff;
-  }
-  
+.admin-overview {
+  margin: 20px;
+  text-align: center;
+}
+.bar-chart-container {
+  margin-top: 100px;
+}
+.pie-chart-container{
+  margin-top: 100px;
+}

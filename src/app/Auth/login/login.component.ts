@@ -7,8 +7,6 @@ import jwtDecode, { JwtPayload } from 'jwt-decode';
 import { CustomJwtPayload } from '../../Service/Models/model';
 import { ToastrModule, ToastrService } from 'ngx-toastr';
 
-
-
 @Component({
   selector: 'app-login',
   standalone: true,
@@ -16,7 +14,6 @@ import { ToastrModule, ToastrService } from 'ngx-toastr';
   templateUrl: './login.component.html',
   styleUrl: './login.component.css',
 })
-
 
 export class LoginComponent {
 
@@ -36,7 +33,6 @@ export class LoginComponent {
     });
   }
 
-  // Clear error message on form changes
   get email() {
     return this.loginForm.get('email');
   }
@@ -45,7 +41,6 @@ export class LoginComponent {
     return this.loginForm.get('password');
   }
 
-  // Handle form submission
   onSubmit(): void {
     if (this.loginForm.invalid) {
       this.toastr.error('Please fill out the form correctly.');
@@ -61,12 +56,11 @@ export class LoginComponent {
 
         // Decode the JWT token
         const decoded = jwtDecode<CustomJwtPayload>(response.token);
-        
+
         // Get the user ID from the decoded token
         const userId = decoded['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier'];
-        console.log(userId);  // Log the user ID
+        console.log(userId);
 
-        // Save token and user role
         localStorage.setItem('token', response.token);
         localStorage.setItem('role', response.role);
         localStorage.setItem('UserId',userId)

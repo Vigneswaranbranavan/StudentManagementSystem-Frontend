@@ -19,7 +19,7 @@ export class StudentAttendanceComponent implements OnInit {
   attendanceDate: string = '';
   attendanceRecords: Attendance[] = [];
   totalClasses: number = 0;
-  presentCount: number = 0; 
+  presentCount: number = 0;
   lateComingCount: number = 0;
   attendanceRate: number = 0;
   showMessage: boolean = false;
@@ -126,7 +126,7 @@ export class StudentAttendanceComponent implements OnInit {
     if (this.totalClasses > 0) {
       this.attendanceRate = ((this.presentCount + this.lateComingCount )/ this.totalClasses) * 100;
     } else {
-      this.attendanceRate = 0;  
+      this.attendanceRate = 0;
     }
   }
 
@@ -138,5 +138,3 @@ export class StudentAttendanceComponent implements OnInit {
   }
 
 }
-
-

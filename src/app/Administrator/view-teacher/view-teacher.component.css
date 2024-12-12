@@ -79,7 +79,7 @@ h2 {
 }
 
 .table .btn-danger {
-  background-color: #dc3545;
+  background-color: #ffffff;
   border-color: #dc3545;
 }
 
@@ -87,8 +87,12 @@ h2 {
   background-color: #c82333;
 }
 
+.btn .bi {
+  color: black;
+}
+
 .table .btn-warning {
-  background-color: #ffc107;
+  background-color: #ffffff;
   border-color: #ffc107;
 }
 

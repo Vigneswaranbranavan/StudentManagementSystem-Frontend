@@ -61,7 +61,7 @@ export class RegisterStudentComponent implements OnInit {
       })
     } else {
       this.studentForm = this.fb.group({
-        indexNumber: ['', [Validators.required]],
+        indexNumber: ['', [Validators.required, Validators.pattern(/^[A-Z]{2}\d{5}$/)]],
         name: ['', [Validators.required]],
         phone: ['', [Validators.required, Validators.pattern('^[0-9]{10}$')]],
         classID: ['', [Validators.required]],
@@ -72,7 +72,6 @@ export class RegisterStudentComponent implements OnInit {
         })
       });
     }
-
   }
 
   ngOnInit(): void {

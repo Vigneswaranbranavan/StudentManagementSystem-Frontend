@@ -78,7 +78,7 @@ h2 {
 }
 
 .table .btn-danger {
-  background-color: #dc3545;
+  background-color: #ffffff;
   border-color: #dc3545;
 }
 
@@ -87,7 +87,7 @@ h2 {
 }
 
 .table .btn-warning {
-  background-color: #ffc107;
+  background-color: #ffffff;
   border-color: #ffc107;
 }
 
@@ -98,6 +98,9 @@ h2 {
 /* Responsive table */
 .table-responsive {
   overflow-x: auto;
+}
+.btn .bi {
+  color: black;
 }
 
 /* Mobile-friendly adjustments */

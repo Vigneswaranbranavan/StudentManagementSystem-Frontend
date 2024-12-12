@@ -20,8 +20,8 @@ export class ViewStudentsComponent implements OnInit{
   students: any[] = [];
   filteredStudents: any[] = [];
   userRole: string = '';
-  selectedClassId: string = ''; // Store selected class ID
-  classes: any[] = []; // Store list of available classes
+  selectedClassId: string = '';
+  classes: any[] = [];
 
   constructor(private service: StudentRegisterService, private router: Router, private toastr: ToastrService,private classService : ViewclassService) { }
 
@@ -37,23 +37,22 @@ export class ViewStudentsComponent implements OnInit{
     this.service.getStudents().subscribe(data => {
       this.students = data.map((student: any) => ({
         ...student,
-        enrollmentDate: new Date(student.enrollmentDate) // Convert to Date object
+        enrollmentDate: new Date(student.enrollmentDate)
       }));
-      this.filteredStudents = [...this.students]; // Initially show all students
+      this.filteredStudents = [...this.students];
     });
 
-    // Fetch class list for the filter dropdown
     this.classService.getClasses().subscribe(data => {
-      this.classes = data; // Assuming the service provides a list of classes
+      this.classes = data;
     });
   }
 
   onClassChange() {
     if (this.selectedClassId === '') {
-      this.filteredStudents = [...this.students]; // Show all students if no class is selected
+      this.filteredStudents = [...this.students];
     } else {
-      this.filteredStudents = this.students.filter(student => 
-        student.class.id === this.selectedClassId // Filter students by class ID
+      this.filteredStudents = this.students.filter(student =>
+        student.class.id === this.selectedClassId
       );
     }
   }
@@ -67,7 +66,7 @@ export class ViewStudentsComponent implements OnInit{
       this.service.deleteStudent(deleteId).subscribe(
         () => {
           this.toastr.success('Student deleted successfully!');
-          this.loadData(); // Refresh the student list after deletion
+          this.loadData();
         },
         (error) => {
           console.error('Error deleting student:', error);
