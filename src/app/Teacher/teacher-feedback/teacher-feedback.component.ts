@@ -17,7 +17,7 @@ import { HttpClientModule } from '@angular/common/http';
 })
 export class TeacherFeedbackComponent implements OnInit {
   feedback: feedback = { id:'',userID: '', feedbackType: '', comments: '' };
-  feedbackTypes = ['Payment Added', 'Payment Failed', 'General Feedback']; // Example feedback types
+  feedbackTypes = ['Assessment and Grading', 'Support and Encouragement', 'Suggestions for Improvement']; // Example feedback types
   feedbackList: feedback[] = [];
   isSubmitting = false;
   userId: string = '';  // User ID will be extracted from the URL

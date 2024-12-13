@@ -10,8 +10,8 @@
             <div class="form-group">
                 <label for="className">Class Name:</label>
                 <select class="form-control" id="className" name="className" formControlName="classID" required>
-                    <option value="" disabled selected>Select Class</option>
-                    <option *ngFor="let class of classes" [value]="class.id">
+                    <option  value="" disabled selected>Select Class</option>
+                    <option *ngFor="let class of classes" [value]="class.id" >
                         {{ class.className }}
                     </option>
                 </select>

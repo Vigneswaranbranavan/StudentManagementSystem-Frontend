@@ -122,8 +122,8 @@ export class ManageTimetableComponent implements OnInit {
       await this.getTeacherUserId(teacherId);  // Wait for the userId to be fetched
       
       // Create a notification message
-      const className = this.timeTableForm.get('classID')?.value;
-      const message = `Your timetable has been updated for class ${className} on ${this.timeTableForm.get('date')?.value}.`;
+      const className = this.timeTableForm.get('className')?.value;
+      const message = `Your time table for  ${this.timeTableForm.get('date')?.value} has been updated.`;
   
       // Send notification
       if (this.userId) {
