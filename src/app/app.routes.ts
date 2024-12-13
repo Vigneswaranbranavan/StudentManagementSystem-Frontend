@@ -37,80 +37,75 @@ import { OtpComponent } from './Auth/otp/otp.component';
 
 
 export const routes: Routes = [
-    { path: '', redirectTo: 'home', pathMatch: 'full' },
-    { path: 'home', component: HomeComponent },
-    { path: 'login', component: LoginComponent },
-    { path: 'forgotPassword',component: OtpComponent},
+  { path: '', redirectTo: 'home', pathMatch: 'full' },
+  { path: 'home', component: HomeComponent },
+  { path: 'login', component: LoginComponent },
+  { path: 'forgotPassword', component: OtpComponent },
 
-    // for student
-    {
-        path: 'student', component:StudentSidebarComponent,
-        children: [
-            { path: 'home', component: StudentHomeComponent },
-            { path: 'attendance', component: StudentAttendanceComponent },
-            { path: 'feedback', component: StudentFeedbackComponent },
-            { path: 'notification', component: StudentNotificationComponent },
-            { path: 'timetable', component: StudentTimetableComponent },
-            { path: 'edit-profile', component: EditProfileComponent },
+  // for student
+  {
+    path: 'student', component: StudentSidebarComponent,
+    children: [
+      { path: '', component: EditProfileComponent },
+      { path: 'attendance', component: StudentAttendanceComponent },
+      { path: 'feedback', component: StudentFeedbackComponent },
+      { path: 'notification', component: StudentNotificationComponent },
+      { path: 'timetable', component: StudentTimetableComponent },
 
-        ],
-    },
-
-
-    //for staff
-    {
-        path: 'staff',component:StaffSidebarComponent,
-        children: [
-            { path: '', component: StaffdashboardComponent },
-            { path: 'student-register', component: RegisterStudentComponent },
-            { path: 'studentupdate', component: RegisterStudentComponent },
-            { path: 'mark-attendance', component: MarkAttendanceComponent },
-            { path: 'manage-timetable', component: ManageTimetableComponent },
-            { path: 'viewTimetable', component: ViewtimetableComponent },
-            { path: 'viewStudents', component: ViewStudentsComponent },
-            { path: 'viewClassSubject', component: ViewClassComponent },
-            { path: 'profile', component: StaffProfileComponent },
-
-            
-        ],
-    },
-
-    //for admin
-    {
-        path: 'admin',component:AdminSidebarComponent,
-        children: [
-            { path: '', component: DashboardComponent },
-            { path: 'viewAttendance', component: AdminViewAttendanceComponent },
-            { path: 'viewFeedback', component: AdminViewFeedbackComponent },
-            { path: 'viewTimetable', component: ViewtimetableComponent },
-            { path: 'viewTeacher', component: ViewTeacherComponent },
-            { path: 'viewStudents', component: ViewStudentsComponent },
-            { path: 'viewStaff', component: ViewStaffComponent },
-            { path: 'addStaff', component: StaffAddUpdateComponent },
-            { path: 'staffupdate', component: StaffAddUpdateComponent },
-            { path: 'addTeacher', component: TeacherAddUpdateComponent },
-            { path: 'teacherupdate', component: TeacherAddUpdateComponent },
-
-        ],
-    },
+    ],
+  },
 
 
-    //for teachers
-    {
-        path: 'teacher',component:TeacherSidebarComponent,
-        children: [
-            { path: '', component: TeacherTimetableComponent },
-            { path: 'notification', component: TeacherNotificationComponent },
-            { path: 'feedback', component: TeacherFeedbackComponent },
-            { path: 'profile', component: TeacherProfileComponent },
-            { path: 'home', component: EditProfileComponent },
-        ],
-    },
-
-    { path: '**', redirectTo: '/home' },
-
-
+  //for staff
+  {
+    path: 'staff', component: StaffSidebarComponent,
+    children: [
+      { path: '', component: StaffdashboardComponent },
+      { path: 'student-register', component: RegisterStudentComponent },
+      { path: 'studentupdate/:id', component: RegisterStudentComponent },
+      { path: 'mark-attendance', component: MarkAttendanceComponent },
+      { path: 'manage-timetable', component: ManageTimetableComponent },
+      { path: 'viewTimetable', component: ViewtimetableComponent },
+      { path: 'viewStudents', component: ViewStudentsComponent },
+      { path: 'viewClassSubject', component: ViewClassComponent },
+      { path: 'profile', component: StaffProfileComponent },
 
 
+    ],
+  },
+
+  //for admin
+  {
+    path: 'admin', component: AdminSidebarComponent,
+    children: [
+      { path: '', component: DashboardComponent },
+      { path: 'viewAttendance', component: AdminViewAttendanceComponent },
+      { path: 'viewFeedback', component: AdminViewFeedbackComponent },
+      { path: 'viewTimetable', component: ViewtimetableComponent },
+      { path: 'viewTeacher', component: ViewTeacherComponent },
+      { path: 'viewStudents', component: ViewStudentsComponent },
+      { path: 'viewStaff', component: ViewStaffComponent },
+      { path: 'addStaff', component: StaffAddUpdateComponent },
+      { path: 'staffupdate/:id', component: StaffAddUpdateComponent },
+      { path: 'addTeacher', component: TeacherAddUpdateComponent },
+      { path: 'teacherupdate/:id', component: TeacherAddUpdateComponent },
+
+    ],
+  },
+
+
+  //for teachers
+  {
+    path: 'teacher', component: TeacherSidebarComponent,
+    children: [
+      { path: '', component: TeacherTimetableComponent },
+      { path: 'notification', component: TeacherNotificationComponent },
+      { path: 'feedback', component: TeacherFeedbackComponent },
+      { path: 'profile', component: TeacherProfileComponent },
+      { path: 'home', component: EditProfileComponent },
+    ],
+  },
+
+  { path: '**', redirectTo: '/home' },
 
 ];

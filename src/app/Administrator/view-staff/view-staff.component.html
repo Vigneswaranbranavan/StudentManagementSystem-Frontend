@@ -3,7 +3,7 @@
       <h2>STAFF'S LIST</h2>
       <button type="button" class="btn btn-primary" [routerLink]="['/admin/addStaff']">+ Add Staff</button>
     </div>
-  
+
     <div class="table-responsive">
       <table class="table table-bordered table-hover table-striped align-middle">
         <thead class="table-dark">
@@ -19,14 +19,14 @@
             <td>{{ staff.name }}</td>
             <td>{{ staff.userRes.email }}</td>
             <td>{{ staff.phone }}</td>
-            
+
             <td>
                 <div class="d-flex justify-content-evenly">
                   <button class="btn btn-danger"(click)="DeleteStaff(staff.id)">
-                    <i class="bi bi-x-circle"></i> 
+                    <i class="bi bi-person-x-fill"></i>
                   </button>
                   <button class="btn btn-warning" (click)="EditStaff(staff.id)">
-                    <i class="bi bi-pencil-square"></i> 
+                    <i class="bi bi-pencil-square"></i>
                   </button>
                 </div>
               </td>
@@ -35,5 +35,5 @@
       </table>
     </div>
   </div>
-  
+
 

@@ -1,53 +1,36 @@
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 20px;
-    background-color: #f4f4f9;
-  }
-  
-  .timetable {
-    background-color: #ffffff;
-    border-radius: 8px;
-    padding: 20px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    max-width: 98%;
-  }
-  
-  h1 {
-    font-size: 2rem;
-    color: #2d3a4b;
-    margin-bottom: 20px;
-    text-align: center;
-  }
-  
-  .table {
-    border: 1px solid #ccc;
-  }
-  
-  .table th {
-    background-color: #11101d;
-    color: #ffffff;
-    font-size: 1.2rem;
-  }
-  
-  .class {
-    background-color: #ffffff;
-    border-radius: 5px;
-    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
-    padding: 10px;
-    margin-bottom: 10px;
-    color: #333;
-  }
-  
-  .class-time,
-  .class-subject,
-  .class-location {
-    font-size: 0.9rem;
-  }
-  
-  .class-subject {
-    font-weight: bold;
-    color: #2d3a4b;
-    margin: 5px 0;
-  }
-  
+.timetable-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Responsive grid with min width 250px */
+  gap: 20px; /* Space between grid items */
+  padding: 10px;
+}
+
+.timetable-item {
+  border: 1px solid #ccc;
+  padding: 15px;
+  border-radius: 8px;
+  background: linear-gradient(144deg, #001F3F, #003366 50%, #004080);     
+  color: white;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+
+  /* Add font properties */
+  font-family: 'Roboto', sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.6;
+  text-align: left;
+}
+
+/* Title inside each timetable item */
+.timetable-item .timetable-title {
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 5px;
+}
+
+/* Subtitle or time details */
+.timetable-item .timetable-details {
+  font-size: 14px;
+  font-weight: 400;
+  color: #d1d1d1;
+}

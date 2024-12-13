@@ -16,6 +16,4 @@ export class StaffSidebarComponent {
     this.isOpen = !this.isOpen;
   }
 
-
-
 }
