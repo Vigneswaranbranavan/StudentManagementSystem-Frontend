@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class StudentNotificationService {
   private apiUrl = 'https://localhost:7058/api/Notification/Notification'; // Your API endpoint
-  private getapiUrl = 'https://localhost:7058/api/Notification/Get%20Notification%20By%20UserId'; 
+  private getapiUrl = 'https://localhost:7058/api/Notification/Get%20Notification%20By%20UserId';
 
   constructor(private http: HttpClient) {}
 
@@ -19,10 +19,9 @@ export class StudentNotificationService {
     return this.http.get(`${this.getapiUrl}?UserId=${userId}`);
   }
   deleteNotification(notificationId: string): Observable<any> {
-    const url = `${this.apiUrl}/${notificationId}`;
+    const url = `https://localhost:7058/api/Notification/Notification?id=${notificationId}`;
     return this.http.delete(url);
   }
-
 
 }
 
