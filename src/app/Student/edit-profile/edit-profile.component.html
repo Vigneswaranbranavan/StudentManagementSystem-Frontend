@@ -28,8 +28,11 @@
     </div>
     <div class="profile-item">
       <label>Gender</label>
-      <p>{{ student.gender }}</p>
+      <p>
+        {{ student.gender == 1 ? 'Male' : (student.gender == 2 ? 'Female' : 'Other') }}
+      </p>
     </div>
+    
     <div class="profile-item">
       <label>Enrollment Date:</label>
       <p>{{ student.enrollmentDate |date:'MMM d, yyyy, h:mm:ss a'  }}</p> <!-- Format the date -->
