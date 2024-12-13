@@ -22,7 +22,7 @@ export class TimetableService {
   }
 
   getTimetableByTeacherId(teacherId: string): Observable<any[]> {
-    return this.http.get<any[]>(`${this.apiUrl}/teacher/${teacherId}`);
+    return this.http.get<any[]>(`https://localhost:7058/api/Teacher/TimetableByTeacherId?id=${teacherId}`);
   }
   getTimetableByClassId(classId: string): Observable<any[]> {
     return this.http.get<any[]>("https://localhost:7058/api/Timetable/ByClassId?id=" + classId);
