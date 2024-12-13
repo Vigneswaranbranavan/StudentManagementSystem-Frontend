@@ -4,7 +4,6 @@
     <button type="button" class="btn btn-primary" [routerLink]="['/staff/student-register']" *ngIf="userRole === 'staff'">+ Add Student</button>
   </div>
 
-  <!-- Select Class to Filter -->
   <div class="mb-3">
     <label for="classSelect" class="form-label">Filter by Class</label>
     <select id="class-select" (change)="onClassChange()" [(ngModel)]="selectedClassId" class="form-control">
@@ -25,7 +24,7 @@
           <th>Phone</th>
           <th>Enrollment Date</th>
           <th>Class Name</th>
-          <th>Action</th>
+          <th *ngIf="userRole === 'staff'">Action</th>
         </tr>
       </thead>
       <tbody>
@@ -36,7 +35,7 @@
           <td>{{ student.phone }}</td>
           <td>{{ student.enrollmentDate | date: 'yyyy-MM-dd' }}</td>
           <td>{{ student.class.className }}</td>
-          <td>
+          <td *ngIf="userRole === 'staff'">
             <div class="d-flex justify-content-evenly">
               <button class="btn btn-danger" (click)="DeleteStudent(student.id)">
                 <i class="bi bi-person-x-fill"></i>
