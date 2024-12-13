@@ -1,6 +1,7 @@
 <div class="profile-section">
-  <h1>Teacher Profile</h1>
-
+  <h1>
+    Hello, <img src="wave.png" alt="Greeting GIF" style="width: 40px; height: 40px; margin-left: 0px;" />  {{ Teacher.name }}
+  </h1>
   <!-- Personal Information -->
   <div class="profile-info">
     <h2>Personal Information</h2>
@@ -14,11 +15,11 @@
     </div>
     <div class="profile-item">
       <label>Email:</label>
-      <p>{{ Teacher.userRes.email }}</p>  <!-- Binding the Teacher's phone -->
+      <p>{{ Teacher.userRes.email }}</p>  <!-- Binding the Teacher's email -->
     </div>
     <div class="profile-item">
       <label>Subject:</label>
-      <p>{{ Teacher.subject.subjectName }}</p>  <!-- Binding the Teacher's subject ID -->
+      <p>{{ Teacher.subject.subjectName }}</p>  <!-- Binding the Teacher's subject -->
     </div>
   </div>
 </div>

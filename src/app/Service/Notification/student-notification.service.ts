@@ -19,7 +19,7 @@ export class StudentNotificationService {
     return this.http.get(`${this.getapiUrl}?UserId=${userId}`);
   }
   deleteNotification(notificationId: string): Observable<any> {
-    const url = `${this.apiUrl}?id=${notificationId}`;
+    const url = `${this.apiUrl}/${notificationId}`;
     return this.http.delete(url);
   }
 

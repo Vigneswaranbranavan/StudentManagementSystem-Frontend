@@ -34,7 +34,6 @@ export class TeacherTimetableComponent implements OnInit {
       }
     });
   }
-
   resolveClassNames(timetables: TimetableEntry[]): void {
     const classIds = Array.from(new Set(timetables.map(t => t.classID))); // Extract unique class IDs
     const classNameObservables = classIds.map(classId =>
@@ -42,20 +41,22 @@ export class TeacherTimetableComponent implements OnInit {
         map(response => ({ classId, className: response.className }))
       )
     );
-
+  
     forkJoin(classNameObservables).subscribe(classNameData => {
       const classMap = classNameData.reduce((map, item) => {
         map[item.classId] = item.className;
         return map;
       }, {} as Record<string, string>);
-
+  
       this.timetables = timetables.map(t => ({
         ...t,
         className: classMap[t.classID] || t.classID // Fallback to classID if name can't be resolved
       }));
-
-      console.log('Resolved Timetables with Class Names:', this.timetables); // Log the final timetable entries
+  
+      // Sort the timetables by date in ascending order
+      this.timetables.sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
+  
+      console.log('Resolved Timetables with Class Names (Sorted):', this.timetables); // Log the sorted timetable entries
     });
   }
-
 }

@@ -6,6 +6,7 @@
     <div class="main-content">
         <h2 class="text-center mb-3">Add Timetable</h2>
         <form [formGroup]="timeTableForm" (ngSubmit)="onSubmit()">
+            <!-- Class Name Dropdown -->
             <div class="form-group">
                 <label for="className">Class Name:</label>
                 <select class="form-control" id="className" name="className" formControlName="classID" required>
@@ -19,16 +20,7 @@
                 </div>
             </div>
 
-
-             <!-- <div class="form-group">
-                <label for="subjectName">Subject Name:</label>
-                <select name="subjectName" id="subjectName" class="form-control" required>
-                    <option value="">Select a Subject</option>
-                    <option value="sub-01" *ngFor="let subject of subjects" value="{{subject.id}}">{{subject.subjectName}}</option>
-                </select>
-            </div> -->
-
-            
+            <!-- Teacher Name Dropdown -->
             <div class="form-group">
                 <label for="teacherName">Teacher Name:</label>
                 <select id="teacherName" name="teacherName" formControlName="teacherID" class="form-control" required>
@@ -42,6 +34,7 @@
                 </div>
             </div>
 
+            <!-- Date Field -->
             <div class="form-group">
                 <label for="date">Date:</label>
                 <input type="date" id="date" class="form-control" name="date" formControlName="date" required>
@@ -50,6 +43,7 @@
                 </div>
             </div>
 
+            <!-- Start Time Field -->
             <div class="form-group">
                 <label for="startTime">Start Time:</label>
                 <input type="time" id="startTime" class="form-control" name="startTime" formControlName="startTime" required>
@@ -58,6 +52,7 @@
                 </div>
             </div>
 
+            <!-- End Time Field -->
             <div class="form-group">
                 <label for="endTime">End Time:</label>
                 <input type="time" id="endTime" class="form-control" name="endTime" formControlName="endTime" required>
@@ -66,9 +61,8 @@
                 </div>
             </div>
 
+            <!-- Submit Button -->
             <button type="submit" class="btn btn-secondary btn-block mt-4">Save Timetable</button>
         </form>
     </div>
 </div>
-
-

@@ -10,7 +10,7 @@ import { of } from 'rxjs';
 })
 export class TeacherProfileService {
 
-   url = 'https://localhost:7058/api/Teacher/user'; // Replace with your actual API URL
+  url = 'https://localhost:7058/api/Teacher/user'; // Replace with your actual API URL
 
   constructor(private http: HttpClient) {}
 
@@ -23,4 +23,9 @@ export class TeacherProfileService {
   updateTeacher(teacher: teacher, teacherid: number) {
     return this.http.put(`${this.url}/${teacherid}`, teacher);
   }
+
+  teacherbyteacherid(teacherid: string): Observable<teacher> {  // Return single student instead of array
+    return this.http.get<teacher>(`https://localhost:7058/api/Teacher/TeacherByTeacherId?teacherId=${teacherid}`);
+  }
+
 }
