@@ -1,16 +1,36 @@
-.table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 10px;
+.timetable-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Responsive grid with min width 250px */
+  gap: 20px; /* Space between grid items */
+  padding: 10px;
 }
 
-.table th,
-.table td {
-  border: 1px solid #ddd;
-  padding: 8px;
+.timetable-item {
+  border: 1px solid #ccc;
+  padding: 15px;
+  border-radius: 8px;
+  background: linear-gradient(144deg, #00274D, #004080 50%, #0066CC);
+  color: white;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+
+  /* Add font properties */
+  font-family: 'Roboto', sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.6;
   text-align: left;
 }
 
-.table th {
-  background-color: #f2f2f2;
+/* Title inside each timetable item */
+.timetable-item .timetable-title {
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 5px;
+}
+
+/* Subtitle or time details */
+.timetable-item .timetable-details {
+  font-size: 14px;
+  font-weight: 400;
+  color: #d1d1d1;
 }

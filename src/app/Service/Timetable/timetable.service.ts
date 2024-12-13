@@ -40,7 +40,7 @@ export class TimetableService {
 // }
 
 getClassNameById(classId: string): Observable<{ className: string }> {
-  return this.http.get<{ className: string }>(`https://localhost:7058/api/Class/Class/${classId}`);
+  return this.http.get<{ className: string }>(`https://localhost:7058/api/Class/ClassById?id=${classId}`);
 }
 // getClassNameById(classId: string): Observable<{ className: string }> {
 //   return this.http.get<{ className: string }>(`https://localhost:7058/api/Classes/${classId}`);

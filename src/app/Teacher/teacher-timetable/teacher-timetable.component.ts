@@ -2,6 +2,7 @@ import { CommonModule, NgFor, NgIf } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { TimetableEntry, TimetableService } from '../../Service/Timetable/timetable.service';
 import { ActivatedRoute } from '@angular/router';
+import { forkJoin, map } from 'rxjs';
 
 @Component({
   selector: 'app-teacher-timetable',
@@ -24,8 +25,8 @@ export class TeacherTimetableComponent implements OnInit {
     this.loading = true;
     this.timetableService.getTimetables().subscribe({
       next: (data) => {
-        this.timetables = data;
         this.loading = false;
+        this.resolveClassNames(data);
       },
       error: (error) => {
         console.error('Error fetching timetables:', error);
@@ -33,4 +34,28 @@ export class TeacherTimetableComponent implements OnInit {
       }
     });
   }
+
+  resolveClassNames(timetables: TimetableEntry[]): void {
+    const classIds = Array.from(new Set(timetables.map(t => t.classID))); // Extract unique class IDs
+    const classNameObservables = classIds.map(classId =>
+      this.timetableService.getClassNameById(classId).pipe(
+        map(response => ({ classId, className: response.className }))
+      )
+    );
+
+    forkJoin(classNameObservables).subscribe(classNameData => {
+      const classMap = classNameData.reduce((map, item) => {
+        map[item.classId] = item.className;
+        return map;
+      }, {} as Record<string, string>);
+
+      this.timetables = timetables.map(t => ({
+        ...t,
+        className: classMap[t.classID] || t.classID // Fallback to classID if name can't be resolved
+      }));
+
+      console.log('Resolved Timetables with Class Names:', this.timetables); // Log the final timetable entries
+    });
+  }
+
 }

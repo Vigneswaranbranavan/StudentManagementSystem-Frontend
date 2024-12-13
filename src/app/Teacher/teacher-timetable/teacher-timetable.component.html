@@ -1,23 +1,18 @@
 <div>
   <h2>Teacher Timetable</h2>
   <div *ngIf="loading">Loading...</div>
-  <table *ngIf="!loading && timetables.length > 0" class="table">
-    <thead>
-      <tr>
-        <th>Date</th>
-        <th>Class Name</th>
-        <th>Start Time</th>
-        <th>End Time</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let timetable of timetables">
-        <td>{{ timetable.date | date: 'yyyy-MM-dd' }}</td>
-        <td>{{ timetable.className }}</td>
-        <td>{{ timetable.startTime }}</td>
-        <td>{{ timetable.endTime }}</td>
-      </tr>
-    </tbody>
-  </table>
+
+  <!-- Timetables Container -->
+  <div *ngIf="!loading && timetables.length > 0" class="timetable-grid">
+    <div *ngFor="let timetable of timetables" class="timetable-item">
+      <p><strong>Date:</strong> {{ timetable.date | date: 'yyyy-MM-dd' }}</p>
+      <p><strong>Class Name:</strong> {{ timetable.className }}</p>
+      <p><strong>Start Time:</strong> {{ timetable.startTime }}</p>
+      <p><strong>End Time:</strong> {{ timetable.endTime }}</p>
+      <hr />
+    </div>
+  </div>
+
+  <!-- Message if no data is available -->
   <div *ngIf="!loading && timetables.length === 0">No data available.</div>
 </div>
