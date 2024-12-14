@@ -88,7 +88,7 @@ export class ManageTimetableComponent implements OnInit {
         (data) => {
           this.userId = data.userRes.id;  // Extract userId from the response and store it
           console.log('User ID from userRes:', this.userId);
-          this.toastr.success('User ID fetched successfully!', 'Success');
+          // this.toastr.success('User ID fetched successfully!', 'Success');
           resolve();  // Resolve the promise after userId is fetched
         },
         (error) => {
