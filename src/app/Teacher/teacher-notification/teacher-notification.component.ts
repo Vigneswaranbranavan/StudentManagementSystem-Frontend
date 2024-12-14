@@ -11,29 +11,23 @@ import { TeacherNotificationService } from '../../Service/Notification/teacher-n
   styleUrl: './teacher-notification.component.css'
 })
 export class TeacherNotificationComponent {
-  notifications: any[] = [];  // Array to store notifications
+  notifications: any[] = [];
 
   constructor(private notificationService: TeacherNotificationService,
-    private toastr: ToastrService // Inject Toastr for success/error messages
+    private toastr: ToastrService 
 
   ) {}
 
   ngOnInit(): void {
     this.getNotifications();
   }
-  // Method to fetch notifications
+
   getNotifications(): void {
     const userId = localStorage.getItem('UserId');
     if (userId) {
       this.notificationService.getNotificationsByUserId(userId).subscribe({
         next: (data) => {
           this.notifications = data;
-          
-          // Check if no notifications are returned, then clear the 'notificationType' in localStorage
-          // if (this.notifications.length === 0) {
-          //   // localStorage.removeItem('notificationType');
-          //   // this.toastr.info('No notifications found, clearing notification type.');
-          // }
         },
         error: (error) => {
           console.error('Error fetching notifications:', error);
@@ -50,11 +44,9 @@ export class TeacherNotificationComponent {
           (notification) => notification.id !== notificationId
         );
         this.toastr.success('Notification deleted successfully.');
-        
-        // If no notifications remain, clear the 'notificationType' in localStorage
+
         if (this.notifications.length === 0) {
           localStorage.removeItem('notificationType');
-          this.toastr.info('No notifications found, clearing notification type.');
         }
       },
       error: (error) => {

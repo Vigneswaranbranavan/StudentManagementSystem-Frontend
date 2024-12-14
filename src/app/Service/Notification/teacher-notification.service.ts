@@ -27,7 +27,7 @@ export class TeacherNotificationService {
     return this.http.get(`https://localhost:7058/api/Notification/Get Notification By UserId?UserId=${userId}`);
   }
   deleteNotification(notificationId: string): Observable<any> {
-    const url = `https://localhost:7058/api/Notification/Notification?id=${notificationId}`;
+    const url = `https://localhost:7058/api/Notification/Notification/${notificationId}`;
     return this.http.delete(url);
   }
 
