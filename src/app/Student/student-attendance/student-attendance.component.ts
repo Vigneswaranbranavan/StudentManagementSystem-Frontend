@@ -91,11 +91,11 @@ export class StudentAttendanceComponent implements OnInit {
         next: () => {
           // Save the notification type in localStorage to avoid posting the same notification again
           localStorage.setItem('notificationType', 'Attendance Warning');
-          this.toastr.success('Attendance Warning notification posted successfully.');
+          // this.toastr.success('Attendance Warning notification posted successfully.');
         },
         error: (err) => {
           console.error('Error posting notification:', err);
-          this.toastr.error('Failed to post Attendance Warning notification.');
+          // this.toastr.error('Failed to post Attendance Warning notification.');
         }
       });
     }
