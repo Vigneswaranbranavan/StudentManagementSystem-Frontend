@@ -6,18 +6,9 @@
     <div class="logo_name">CampusSphear</div>
     <i class='bx' [ngClass]="isOpen ? 'bx-menu-alt-right' : 'bx-menu'" id="btn" (click)="toggleSidebar()"></i>
   </div>
-  
+
   <ul class="nav-list">
-    <!-- Home Section (Optional) -->
-    <!-- <li>
-      <a href="#" [routerLink]="['/t-home']">
-        <i class='bx bx-home'></i>
-        <span class="links_name">Home</span>
-      </a>
-      <span class="tooltip">Home</span>
-    </li> -->
-    
-    <!-- Timetable Section -->
+
     <li>
       <a href="#" [routerLink]="['/teacher']">
         <i class='bx bx-calendar'></i>
@@ -25,7 +16,7 @@
       </a>
       <span class="tooltip">Timetable</span>
     </li>
-    
+
     <!-- Profile Section -->
     <li>
       <a href="#" [routerLink]="['/teacher/profile']">
@@ -60,7 +51,11 @@
           <div class="name">{{Teacher.name}}</div> <!-- Dynamically show the teacher's username -->
         </div>
       </div>
-      <i class='bx bx-log-out' id="log_out"></i>
+      <i
+      class='bx bx-log-out'
+      id="log_out"
+      (click)="logout()"
+    ></i>
     </li>
   </ul>
 </div>

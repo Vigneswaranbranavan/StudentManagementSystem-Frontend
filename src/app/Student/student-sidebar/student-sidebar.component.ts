@@ -1,6 +1,6 @@
 import { CommonModule, NgClass } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, RouterModule } from '@angular/router';
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { StudentProfileService } from '../../Service/Profile/student-profile.service';
@@ -50,7 +50,8 @@ export class StudentSidebarComponent {
   constructor
     (
       private studentProfileService: StudentProfileService,
-      private route: ActivatedRoute
+      private route: ActivatedRoute,
+      private router:Router
     ) {
 
   }
@@ -74,6 +75,14 @@ export class StudentSidebarComponent {
         // Optionally, show user-friendly error messages (e.g., using toastr)
       }
     );
+  }
+
+  logout() {
+    // Clear local storage
+    localStorage.clear();
+
+    // Redirect to the home page
+    this.router.navigate(['/']);
   }
 }
 

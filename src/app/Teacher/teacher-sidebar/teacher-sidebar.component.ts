@@ -1,6 +1,6 @@
 import { NgClass, NgIf } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, RouterModule } from '@angular/router';
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { teacher } from '../../Service/Models/model';
 import { TeacherProfileService } from '../../Service/Profile/teacher-profile.service';
 import { HttpClientModule } from '@angular/common/http';
@@ -18,7 +18,7 @@ export class TeacherSidebarComponent  {
   isOpen = true;
   userName: string = '';
   userId: string='';
-  
+
 
   Teacher: teacher = {
     id: '',
@@ -37,9 +37,10 @@ export class TeacherSidebarComponent  {
 
   constructor(
     private TeacherProfileService: TeacherProfileService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private router:Router
   ) {
-  
+
   }
 
   ngOnInit(): void {
@@ -59,15 +60,22 @@ export class TeacherSidebarComponent  {
         console.error('Error fetching Teacher:', error);
         // Optionally, show user-friendly error messages (e.g., using toastr)
         console.log(this.Teacher);
-        
+
       }
     );
   }
 
+  logout() {
+    // Clear local storage
+    localStorage.clear();
+
+    // Redirect to the home page
+    this.router.navigate(['/']);
+  }
 
   toggleSidebar() {
     this.isOpen = !this.isOpen;  // Toggle sidebar visibility
   }
 
-  
+
 }
