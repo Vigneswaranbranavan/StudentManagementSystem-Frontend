@@ -34,6 +34,7 @@ import { ViewtimetableComponent } from './Staff/viewtimetable/viewtimetable.comp
 import { StaffdashboardComponent } from './Staff/staffdashboard/staffdashboard.component';
 import { StaffProfileComponent } from './Staff/staff-profile/staff-profile.component';
 import { OtpComponent } from './Auth/otp/otp.component';
+import { authGuard } from './auth.guard';
 
 
 export const routes: Routes = [
@@ -45,6 +46,7 @@ export const routes: Routes = [
   // for student
   {
     path: 'student', component: StudentSidebarComponent,
+    canActivate: [authGuard],
     children: [
       { path: '', component: EditProfileComponent },
       { path: 'attendance', component: StudentAttendanceComponent },
@@ -59,6 +61,7 @@ export const routes: Routes = [
   //for staff
   {
     path: 'staff', component: StaffSidebarComponent,
+    canActivate: [authGuard],
     children: [
       { path: '', component: StaffdashboardComponent },
       { path: 'student-register', component: RegisterStudentComponent },
@@ -77,6 +80,7 @@ export const routes: Routes = [
   //for admin
   {
     path: 'admin', component: AdminSidebarComponent,
+    canActivate: [authGuard],
     children: [
       { path: '', component: DashboardComponent },
       { path: 'viewAttendance', component: AdminViewAttendanceComponent },
@@ -97,6 +101,7 @@ export const routes: Routes = [
   //for teachers
   {
     path: 'teacher', component: TeacherSidebarComponent,
+    canActivate: [authGuard],
     children: [
       { path: '', component: TeacherTimetableComponent },
       { path: 'notification', component: TeacherNotificationComponent },
